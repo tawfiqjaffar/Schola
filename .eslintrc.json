@@ -22,5 +22,8 @@
         "react"
     ],
     "rules": {
-    }
+    },
+    "ignorePatterns": [
+        "*.css"
+    ]
 }

@@ -1,9 +1,14 @@
+import { ThemeProvider } from '@material-ui/core';
 import React from 'react';
+import NavigationBar from './components/common/NavigationBar';
+import theme from './theme';
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello world!</h1>
+      <ThemeProvider theme={theme}>
+        <NavigationBar />
+      </ThemeProvider>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  AppBar, Toolbar, Typography, makeStyles, Button,
+  AppBar, Toolbar, Typography, makeStyles, Button, Link,
 } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -28,9 +28,15 @@ export default function NavigationBar() {
   const classes = useStyles();
 
   return (
-    <AppBar>
+    <AppBar position="relative">
       <Toolbar>
-        <Typography className={classes.title} color="primary" variant="h4">Schola</Typography>
+        <Link className={classes.title} href="/">
+          <Typography
+            variant="h4"
+          >
+            Schola
+          </Typography>
+        </Link>
         <Button
           disableElevation
           className={[classes.menuButton, classes.buttonLogin]}

@@ -6,12 +6,12 @@ import theme from './theme';
 
 function App() {
   return (
-    <div className="App">
+    <>
       <ThemeProvider theme={theme}>
         <NavigationBar />
         <Router />
       </ThemeProvider>
-    </div>
+    </>
   );
 }
 

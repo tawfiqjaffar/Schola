@@ -13,7 +13,6 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(1),
     color: theme.palette.secondary.contrastText,
     '&:hover': {
-      // you want this to be the same as the backgroundColor above
       backgroundColor: theme.palette.primary.dark,
     },
   },

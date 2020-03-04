@@ -11,13 +11,13 @@ jobs:
           steps:
             - run: npm install
             - run: npm test
-    eslint:
-      executor:
-        name: node/default
-      steps:
-        - checkout
-        - node/with-cache:
-          - run: npm run lint
+  eslint:
+    executor:
+      name: node/default
+    steps:
+      - checkout
+      - node/with-cache:
+        - run: npm run lint
 workflows:
     build-and-test:
       jobs:

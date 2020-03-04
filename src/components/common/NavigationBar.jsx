@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  AppBar, Toolbar, Typography, makeStyles, Button,
+  AppBar, Toolbar, Typography, makeStyles, Button, Link,
 } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -13,7 +13,6 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(1),
     color: theme.palette.secondary.contrastText,
     '&:hover': {
-      // you want this to be the same as the backgroundColor above
       backgroundColor: theme.palette.primary.dark,
     },
   },
@@ -29,9 +28,15 @@ export default function NavigationBar() {
   const classes = useStyles();
 
   return (
-    <AppBar>
+    <AppBar position="relative">
       <Toolbar>
-        <Typography className={classes.title} color="primary" variant="h4">Schola</Typography>
+        <Link className={classes.title} href="/">
+          <Typography
+            variant="h4"
+          >
+            Schola
+          </Typography>
+        </Link>
         <Button
           disableElevation
           className={[classes.menuButton, classes.buttonLogin]}

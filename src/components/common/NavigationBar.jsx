@@ -1,12 +1,19 @@
-import React from 'react';
 import {
-  AppBar, Toolbar, Typography, makeStyles, Button, Link,
+  AppBar, Button, Link, makeStyles, Toolbar, Typography,
 } from '@material-ui/core';
+import HomeIcon from '@material-ui/icons/Home';
+import React from 'react';
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+  },
+  homeButton: {
+    marginRight: theme.spacing(1),
+    color: theme.palette.text.secondary,
+  },
   title: {
-    color: theme.palette.secondary.contrastText,
     flexGrow: 1,
+    color: theme.palette.secondary.contrastText,
   },
   menuButton: {
     padding: theme.spacing(1),
@@ -28,18 +35,19 @@ export default function NavigationBar() {
   const classes = useStyles();
 
   return (
-    <AppBar position="relative">
+    <AppBar position="relative" className={classes.root}>
       <Toolbar>
         <Link
-          className={classes.title}
           href="/"
         >
-          <Typography
-            variant="h4"
-          >
-            Schola
-          </Typography>
+          <HomeIcon fontSize="large" className={classes.homeButton} />
         </Link>
+        <Typography
+          className={classes.title}
+          variant="h4"
+        >
+          Schola
+        </Typography>
         <Button
           disableElevation
           className={[classes.menuButton, classes.buttonLogin]}

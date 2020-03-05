@@ -19,7 +19,7 @@ const ShowcaseItem = (props) => {
   const classes = useStyles();
   return (
     <Grid container justify="center" className={classes.root}>
-      <Grid item xs={12} sm={6}>
+      <Grid item xs={12} sm={9}>
         <Paper className={classes.paper}>
           <Typography variant="h2">{name}</Typography>
           <Typography variant="body">{description}</Typography>

@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(3),
   },
   backgroundImage: {
+    objectFit: 'cover',
     width: '100%',
     height: '100%',
     left: 0,
@@ -58,10 +59,10 @@ const LandingPage = () => {
             Join us today & manage your student life like never before
           </Typography>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={12} sm={6} md={3}>
           <CustomTextFieldFilled label="Enter your email address" className={classes.textfield} />
         </Grid>
-        <Grid item xs={1}>
+        <Grid item xs={12} sm={3} md={1}>
           <Button
             variant="contained"
             size="large"

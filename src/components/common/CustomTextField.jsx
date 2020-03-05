@@ -1,11 +1,12 @@
 import { TextField } from '@material-ui/core';
 import { makeStyles, withStyles } from '@material-ui/styles';
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const useStyles = makeStyles(({
-  input: { color: 'white' },
+const useStyles = makeStyles((theme) => ({
+  input: { color: theme.palette.grey[300] },
   root: {
-    // width: '100%',
+    width: '100%',
   },
 }));
 
@@ -32,12 +33,13 @@ const CssTextField = withStyles((theme) => ({
   },
 }))(TextField);
 
-export default function CustomTextField() {
+export default function CustomTextField({ label }) {
   const classes = useStyles();
   return (
     <CssTextField
       className={classes.root}
       variant="outlined"
+      label={label}
       InputLabelProps={{
         className: classes.input,
       }}
@@ -49,3 +51,11 @@ export default function CustomTextField() {
     />
   );
 }
+
+CustomTextField.propTypes = {
+  label: PropTypes.string,
+};
+
+CustomTextField.defaultProps = {
+  label: '',
+};

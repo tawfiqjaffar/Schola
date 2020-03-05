@@ -32,6 +32,7 @@
         "jest/valid-expect": "error"
     },
     "ignorePatterns": [
-        "*.css"
+        "*.css",
+        "*.svg"
     ]
 }

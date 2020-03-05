@@ -2,25 +2,36 @@
 
 exports[`NavigationBar should render NavigationBar and match snapshot 1`] = `
 <header
-  className="MuiPaper-root MuiAppBar-root MuiAppBar-positionRelative MuiAppBar-colorPrimary MuiPaper-elevation4"
+  className="MuiPaper-root MuiAppBar-root MuiAppBar-positionRelative MuiAppBar-colorPrimary makeStyles-root-1 MuiPaper-elevation4"
 >
   <div
     className="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
   >
     <a
-      className="MuiTypography-root MuiLink-root MuiLink-underlineHover makeStyles-title-1 MuiTypography-colorPrimary"
+      className="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
       href="/"
       onBlur={[Function]}
       onFocus={[Function]}
     >
-      <h4
-        className="MuiTypography-root MuiTypography-h4"
+      <svg
+        aria-hidden="true"
+        className="MuiSvgIcon-root makeStyles-homeButton-2 MuiSvgIcon-fontSizeLarge"
+        focusable="false"
+        role="presentation"
+        viewBox="0 0 24 24"
       >
-        Schola
-      </h4>
+        <path
+          d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"
+        />
+      </svg>
     </a>
+    <h4
+      className="MuiTypography-root makeStyles-title-3 MuiTypography-h4"
+    >
+      Schola
+    </h4>
     <button
-      className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-menuButton-2 makeStyles-buttonLogin-4 MuiButton-disableElevation"
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-menuButton-4 makeStyles-buttonLogin-6 MuiButton-disableElevation"
       disabled={false}
       onBlur={[Function]}
       onDragLeave={[Function]}
@@ -47,7 +58,7 @@ exports[`NavigationBar should render NavigationBar and match snapshot 1`] = `
       </span>
     </button>
     <button
-      className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-menuButton-2 makeStyles-buttonRegister-3 MuiButton-disableElevation"
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-menuButton-4 makeStyles-buttonRegister-5 MuiButton-disableElevation"
       disabled={false}
       onBlur={[Function]}
       onDragLeave={[Function]}

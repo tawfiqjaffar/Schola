@@ -4,6 +4,7 @@ exports[`CustomTextField should render CustomTextField and match snapshot 1`] = 
 <div
   className="MuiFormControl-root MuiTextField-root WithStyles(ForwardRef(TextField))-root-3 makeStyles-root-2"
 >
+  
   <div
     className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
     onClick={[Function]}
@@ -23,19 +24,9 @@ exports[`CustomTextField should render CustomTextField and match snapshot 1`] = 
     <fieldset
       aria-hidden={true}
       className="PrivateNotchedOutline-root-42 MuiOutlinedInput-notchedOutline"
-      style={
-        Object {
-          "paddingLeft": 8,
-        }
-      }
     >
       <legend
-        className="PrivateNotchedOutline-legend-43"
-        style={
-          Object {
-            "width": 0.01,
-          }
-        }
+        className="PrivateNotchedOutline-legendLabelled-44"
       >
         <span
           dangerouslySetInnerHTML={

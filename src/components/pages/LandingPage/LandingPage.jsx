@@ -45,7 +45,7 @@ const LandingPage = () => {
       />
       <Grid container alignItems="center" justify="center" spacing={2}>
         <Grid item xs={12}>
-          <Typography variant="h2" color="textSecondary">Schola</Typography>
+          <Typography variant="h2" color="textSecondary">Schola logo</Typography>
         </Grid>
         <Grid item xs={12}>
           <Typography variant="h5" color="textSecondary" className={classes.quote}>

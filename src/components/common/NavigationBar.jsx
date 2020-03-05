@@ -30,7 +30,10 @@ export default function NavigationBar() {
   return (
     <AppBar position="relative">
       <Toolbar>
-        <Link className={classes.title} href="/">
+        <Link
+          className={classes.title}
+          href="/"
+        >
           <Typography
             variant="h4"
           >

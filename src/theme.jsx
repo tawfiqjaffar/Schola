@@ -3,6 +3,13 @@ import { createMuiTheme } from '@material-ui/core/styles';
 const palette = {
   primary: { main: '#70C6C7', contrastText: '#212121' },
   secondary: { main: '#66DD77', contrastText: '#FAFAFA' },
+  text: {
+    primary: '#212121',
+    secondary: '#FAFAFA',
+  },
+  background: {
+    paper: '#70C6C7',
+  },
 };
 const themeName = 'Downy Pastel Green Gayal';
 

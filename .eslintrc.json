@@ -33,6 +33,8 @@
     },
     "ignorePatterns": [
         "*.css",
-        "*.svg"
+        "*.svg",
+        "*.zip",
+        "*.png"
     ]
 }

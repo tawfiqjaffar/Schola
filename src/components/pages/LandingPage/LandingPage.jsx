@@ -3,7 +3,7 @@ import {
 } from '@material-ui/core';
 import React from 'react';
 import backgroundSwirl from '../../../assets/backgroundSwirl.svg';
-import CustomTextField from '../../common/CustomTextField';
+import CustomTextFieldFilled from '../../common/CustomTextFieldFilled';
 import Showcase from './Showcase';
 
 const useStyles = makeStyles((theme) => ({
@@ -45,7 +45,7 @@ const LandingPage = () => {
       />
       <Grid container alignItems="center" justify="center" spacing={2}>
         <Grid item xs={12}>
-          <Typography variant="h2" color="textSecondary">Schola</Typography>
+          <Typography variant="h2" color="textSecondary">Schola logo</Typography>
         </Grid>
         <Grid item xs={12}>
           <Typography variant="h5" color="textSecondary" className={classes.quote}>
@@ -59,7 +59,7 @@ const LandingPage = () => {
           </Typography>
         </Grid>
         <Grid item xs={3}>
-          <CustomTextField label="Enter your email address" className={classes.textfield} />
+          <CustomTextFieldFilled label="Enter your email address" className={classes.textfield} />
         </Grid>
         <Grid item xs={1}>
           <Button

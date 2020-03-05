@@ -3,7 +3,7 @@ import {
 } from '@material-ui/core';
 import React from 'react';
 import backgroundSwirl from '../../../assets/backgroundSwirl.svg';
-import CustomTextField from '../../common/CustomTextField';
+import CustomTextFieldFilled from '../../common/CustomTextFieldFilled';
 import Showcase from './Showcase';
 
 const useStyles = makeStyles((theme) => ({
@@ -59,7 +59,7 @@ const LandingPage = () => {
           </Typography>
         </Grid>
         <Grid item xs={3}>
-          <CustomTextField label="Enter your email address" className={classes.textfield} />
+          <CustomTextFieldFilled label="Enter your email address" className={classes.textfield} />
         </Grid>
         <Grid item xs={1}>
           <Button

@@ -1,10 +1,11 @@
+import React from 'react';
 import {
   Button, Container, Grid, makeStyles, Typography,
 } from '@material-ui/core';
-import React from 'react';
-import backgroundSwirl from '../../../assets/backgroundSwirl.svg';
+import backgroundPageTurner from '../../../assets/backgroundPageTurner.svg';
 import CustomTextFieldFilled from '../../common/CustomTextFieldFilled';
 import Showcase from './Showcase';
+import logo from '../../../assets/logo.png';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -12,6 +13,22 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(3),
   },
   backgroundImage: {
+    objectFit: 'cover',
+    width: '100%',
+    height: '100%',
+    left: 0,
+    top: 0,
+    zIndex: -1,
+    position: 'fixed',
+  },
+  logo: {
+    objectFit: 'cover',
+    width: '100%',
+    height: '100%',
+    left: 0,
+    top: 0,
+  },
+  backgroundImageOld: {
     objectFit: 'cover',
     width: '100%',
     height: '100%',
@@ -40,13 +57,17 @@ const LandingPage = () => {
   return (
     <Container className={classes.root}>
       <img
-        src={backgroundSwirl}
+        src={backgroundPageTurner}
         className={classes.backgroundImage}
         alt="temp"
       />
       <Grid container alignItems="center" justify="center" spacing={2}>
-        <Grid item xs={12}>
-          <Typography variant="h2" color="textSecondary">Schola logo</Typography>
+        <Grid item xs={1}>
+          <img
+            alt="Schola Logo"
+            className={classes.logo}
+            src={logo}
+          />
         </Grid>
         <Grid item xs={12}>
           <Typography variant="h5" color="textSecondary" className={classes.quote}>

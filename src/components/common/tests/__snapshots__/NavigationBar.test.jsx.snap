@@ -2,7 +2,7 @@
 
 exports[`NavigationBar should render NavigationBar and match snapshot 1`] = `
 <header
-  className="MuiPaper-root MuiAppBar-root MuiAppBar-positionRelative MuiAppBar-colorPrimary makeStyles-root-1 MuiPaper-elevation4"
+  className="MuiPaper-root MuiAppBar-root MuiAppBar-positionSticky MuiAppBar-colorPrimary makeStyles-root-1 MuiPaper-elevation4"
 >
   <div
     className="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
@@ -31,7 +31,7 @@ exports[`NavigationBar should render NavigationBar and match snapshot 1`] = `
       Schola
     </h4>
     <button
-      className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-menuButton-4 makeStyles-buttonLogin-6 MuiButton-disableElevation"
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-menuButton-4 makeStyles-buttonLogin-6"
       disabled={false}
       onBlur={[Function]}
       onDragLeave={[Function]}
@@ -58,7 +58,7 @@ exports[`NavigationBar should render NavigationBar and match snapshot 1`] = `
       </span>
     </button>
     <button
-      className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-menuButton-4 makeStyles-buttonRegister-5 MuiButton-disableElevation"
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-menuButton-4 makeStyles-buttonRegister-5"
       disabled={false}
       onBlur={[Function]}
       onDragLeave={[Function]}

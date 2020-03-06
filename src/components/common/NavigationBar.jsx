@@ -2,7 +2,6 @@ import React from 'react';
 import {
   AppBar, Button, Link, makeStyles, Toolbar, Typography, Grid, Container,
 } from '@material-ui/core';
-import HomeIcon from '@material-ui/icons/Home';
 import logo from '../../assets/logo.png';
 
 const useStyles = makeStyles((theme) => ({
@@ -49,7 +48,6 @@ export default function NavigationBar() {
           href="/"
         >
           <img src={logo} className={classes.logo} alt="Schola logo" />
-          {/* <HomeIcon fontSize="large" className={classes.homeButton} /> */}
         </Link>
         <Typography
           className={classes.title}

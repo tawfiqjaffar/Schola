@@ -1,12 +1,20 @@
 import React from 'react';
 import Caroussel from 'react-material-ui-carousel';
-import items from './items';
 import ShowcaseItem from './ShowcaseItem';
+import iosMockup from
+  '../../../../assets/scholaios_iphonexspacegrey_portrait.png';
+import iosLandMockup from
+  '../../../../assets/scholaios_iphonexspacegrey_landscape.png';
+
+const items = [
+  iosMockup,
+  iosLandMockup,
+];
 
 const Showcase = () => (
   <Caroussel indicators={false} animation="fade">
     { items.map((el) => (
-      <ShowcaseItem name={el.name} description={el.description} />
+      <ShowcaseItem asset={el} />
     ))}
   </Caroussel>
 );

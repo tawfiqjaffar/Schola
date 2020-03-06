@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  AppBar, Button, Link, makeStyles, Toolbar, Typography, Grid, Container,
+  AppBar, Button, Link, makeStyles, Toolbar, Typography,
 } from '@material-ui/core';
 import logo from '../../assets/logo.png';
 

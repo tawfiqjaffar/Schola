@@ -35,7 +35,7 @@ export default function NavigationBar() {
   const classes = useStyles();
 
   return (
-    <AppBar position="relative" className={classes.root}>
+    <AppBar position="sticky" className={classes.root}>
       <Toolbar>
         <Link
           href="/"
@@ -49,14 +49,12 @@ export default function NavigationBar() {
           Schola
         </Typography>
         <Button
-          disableElevation
           className={[classes.menuButton, classes.buttonLogin]}
           variant="contained"
         >
           <Typography>Log in</Typography>
         </Button>
         <Button
-          disableElevation
           className={[classes.menuButton, classes.buttonRegister]}
           variant="contained"
         >

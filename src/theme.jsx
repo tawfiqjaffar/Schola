@@ -2,7 +2,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 
 const palette = {
   primary: { main: '#70C6C7', contrastText: '#212121' },
-  secondary: { main: '#66DD77', contrastText: '#FAFAFA' },
+  secondary: { main: '#60c07a', contrastText: '#FAFAFA' },
   text: {
     primary: '#212121',
     secondary: '#FAFAFA',

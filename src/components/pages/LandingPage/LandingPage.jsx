@@ -62,7 +62,7 @@ const LandingPage = () => {
         alt="temp"
       />
       <Grid container alignItems="center" justify="center" spacing={2}>
-        <Grid item xs={1}>
+        <Grid item sm={1} xs={4}>
           <img
             alt="Schola Logo"
             className={classes.logo}

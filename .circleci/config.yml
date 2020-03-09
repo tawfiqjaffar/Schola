@@ -3,6 +3,8 @@ orbs:
   node: circleci/node@1.1.6
 jobs:
   linting:
+    docker:
+      - image: circleci/node:12.2
     steps:
       - checkout
       - restore_cache:
@@ -16,6 +18,8 @@ jobs:
           key: v1-dependencies-{{ checksum "yarn.lock" }}
       - run: npm run lint
   test:
+    docker:
+      - image: circleci/node:12.2
     steps:
       - checkout
       - restore_cache:

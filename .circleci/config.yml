@@ -7,12 +7,12 @@ jobs:
     - restore_cache:
       keys:
         - v1-dependencies-{{ checksum "yarn.lock" }}
-	      - v1-dependencies-
+        - v1-dependencies-
     - run: yarn install
     - save_cache:
         paths:
-	        - node_modules
-	      key: v1-dependencies-{{ checksum "yarn.lock" }}
+          - node_modules
+        key: v1-dependencies-{{ checksum "yarn.lock" }}
     - run: npm run lint
   test:
     - checkout
@@ -21,7 +21,6 @@ jobs:
         - v1-dependencies-{{ checksum "yarn.lock" }}
         - v1-dependencies-
     - run: yarn install
-    - run: yarn bootstrap
     - save_cache:
         paths:
           - node_modules

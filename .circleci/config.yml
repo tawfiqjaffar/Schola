@@ -3,29 +3,31 @@ orbs:
   node: circleci/node@1.1.6
 jobs:
   linting:
-    - checkout
-    - restore_cache:
-      keys:
-        - v1-dependencies-{{ checksum "yarn.lock" }}
-        - v1-dependencies-
-    - run: yarn install
-    - save_cache:
-        paths:
-          - node_modules
-        key: v1-dependencies-{{ checksum "yarn.lock" }}
-    - run: npm run lint
+    steps:
+      - checkout
+      - restore_cache:
+        keys:
+          - v1-dependencies-{{ checksum "yarn.lock" }}
+          - v1-dependencies-
+      - run: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "yarn.lock" }}
+      - run: npm run lint
   test:
-    - checkout
-    - restore_cache:
-      keys:
-        - v1-dependencies-{{ checksum "yarn.lock" }}
-        - v1-dependencies-
-    - run: yarn install
-    - save_cache:
-        paths:
-          - node_modules
-        key: v1-dependencies-{{ checksum "yarn.lock" }}
-    - run: npm run test
+    steps:
+      - checkout
+      - restore_cache:
+        keys:
+          - v1-dependencies-{{ checksum "yarn.lock" }}
+          - v1-dependencies-
+      - run: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "yarn.lock" }}
+      - run: npm run test
 workflows:
     - linting
     - test:

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import uuid from 'react-uuid';
 import renderer from 'react-test-renderer';
 import { ThemeProvider } from '@material-ui/core';
 import { BookTwoTone } from '@material-ui/icons';
@@ -18,9 +18,9 @@ describe('CardItem', () => {
     ];
     const component = renderer.create(
       <ThemeProvider theme={theme}>
-        {data.map((el, key) => (
+        {data.map((el) => (
           <CardItem
-            key={key}
+            key={uuid()}
             icon={el.icon}
             title={el.title}
             description={el.description}

@@ -1,5 +1,6 @@
 import { AssessmentTwoTone, ForumTwoTone, ImportContactsTwoTone } from '@material-ui/icons';
 import React from 'react';
+import uuid from 'react-uuid';
 import CardItem from './CardItem';
 
 
@@ -20,7 +21,7 @@ const data = [{
 const Cards = () => (
   <>
     {data.map((el) => (
-      <CardItem icon={el.icon} title={el.title} description={el.description} />
+      <CardItem key={uuid()} icon={el.icon} title={el.title} description={el.description} />
     ))}
   </>
 );

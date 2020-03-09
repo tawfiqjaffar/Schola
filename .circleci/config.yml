@@ -2,27 +2,32 @@ version: 2.1
 orbs:
   node: circleci/node@1.1.6
 jobs:
-  build-and-test:
-    executor:
-      name: node/default
-    steps:
-      - checkout
-      - node/with-cache:
-          steps:
-            - run: npm install
-            - run: npm test
-  eslint:
-    executor:
-      name: node/default
-    steps:
-      - checkout
-      - node/with-cache:
-          steps:
-            - run: npm run lint
+  linting:
+    - checkout
+    - restore_cache:
+      keys:
+        - v1-dependencies-{{ checksum "yarn.lock" }}
+	- v1-dependencies-
+    - run: yarn install
+    - save_cache:
+        paths:
+	  - node_modules
+	key: v1-dependencies-{{ checksum "yarn.lock" }}
+    - run: npm run lint
+  test:
+    - checkout
+    - restore_cache:
+      keys:
+        - v1-dependencies-{{ checksum "yarn.lock" }}
+        - v1-dependencies-
+    - run: yarn install
+    - run: yarn bootstrap
+    - save_cache:
+        paths:
+          - node_modules
+        key: v1-dependencies-{{ checksum "yarn.lock" }}
+    - run: npm run test
 workflows:
-    build-and-test:
-      jobs:
-        - build-and-test
-    eslint:
-      jobs:
-        - eslint
+    - linting
+    - test:
+        requires: [linting]

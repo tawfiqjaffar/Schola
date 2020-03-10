@@ -1,16 +1,19 @@
-import React from 'react';
 import {
   Button, Container, Grid, makeStyles, Typography,
 } from '@material-ui/core';
+import React from 'react';
 import backgroundPageTurner from '../../../assets/backgroundPageTurner.svg';
-import CustomTextFieldFilled from '../../common/CustomTextFieldFilled';
-import Showcase from './Showcase';
 import logo from '../../../assets/logo.png';
+import CustomTextFieldFilled from '../../common/CustomTextFieldFilled';
+import Cards from './Cards';
+import Showcase from './Showcase';
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    width: '100%',
     textAlign: 'center',
-    padding: theme.spacing(3),
+    paddingTop: theme.spacing(3),
+    paddingBottom: theme.spacing(3),
   },
   backgroundImage: {
     objectFit: 'cover',
@@ -28,15 +31,6 @@ const useStyles = makeStyles((theme) => ({
     left: 0,
     top: 0,
   },
-  backgroundImageOld: {
-    objectFit: 'cover',
-    width: '100%',
-    height: '100%',
-    left: 0,
-    top: 0,
-    zIndex: -1,
-    position: 'absolute',
-  },
   submitButton: {
     background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
   },
@@ -50,6 +44,15 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold',
     fontStyle: 'italic',
   },
+  description: {
+    backgroundColor: theme.palette.primary.light,
+    marginBottom: theme.spacing(4),
+  },
+  descText: {
+    margin: theme.spacing(5),
+  },
+  cards: {
+  },
 }));
 
 const LandingPage = () => {
@@ -61,7 +64,13 @@ const LandingPage = () => {
         className={classes.backgroundImage}
         alt="temp"
       />
-      <Grid container alignItems="center" justify="center" spacing={2}>
+      <Grid
+        container
+        alignItems="center"
+        justify="center"
+        spacing={1}
+        className={classes.root}
+      >
         <Grid item sm={1} xs={4}>
           <img
             alt="Schola Logo"
@@ -96,6 +105,16 @@ const LandingPage = () => {
         <Grid item xs={12} sm={9}>
           <Showcase className={classes.showcase} />
         </Grid>
+        <Grid item xs={12} className={classes.description}>
+          <Typography variant="h5" color="textSecondary" className={classes.descText}>
+            Schola is an essential tool for parents, students and teachers.
+            <br />
+            {' '}
+            Available on your PC, smartphone or tablet
+          </Typography>
+        </Grid>
+        <Cards className={classes.cards} />
+
       </Grid>
 
     </Container>

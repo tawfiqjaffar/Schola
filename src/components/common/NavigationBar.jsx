@@ -1,8 +1,8 @@
+import React from 'react';
 import {
   AppBar, Button, Link, makeStyles, Toolbar, Typography,
 } from '@material-ui/core';
-import HomeIcon from '@material-ui/icons/Home';
-import React from 'react';
+import logo from '../../assets/logo.png';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -10,6 +10,13 @@ const useStyles = makeStyles((theme) => ({
   homeButton: {
     marginRight: theme.spacing(1),
     color: theme.palette.text.secondary,
+  },
+  logo: {
+    width: 50,
+    height: 50,
+    marginRight: theme.spacing(1),
+  },
+  logoContainer: {
   },
   title: {
     flexGrow: 1,
@@ -35,28 +42,26 @@ export default function NavigationBar() {
   const classes = useStyles();
 
   return (
-    <AppBar position="relative" className={classes.root}>
+    <AppBar position="sticky" className={classes.root}>
       <Toolbar>
         <Link
           href="/"
         >
-          <HomeIcon fontSize="large" className={classes.homeButton} />
+          <img src={logo} className={classes.logo} alt="Schola logo" />
         </Link>
         <Typography
           className={classes.title}
-          variant="h4"
+          variant="h5"
         >
           Schola
         </Typography>
         <Button
-          disableElevation
           className={[classes.menuButton, classes.buttonLogin]}
           variant="contained"
         >
           <Typography>Log in</Typography>
         </Button>
         <Button
-          disableElevation
           className={[classes.menuButton, classes.buttonRegister]}
           variant="contained"
         >

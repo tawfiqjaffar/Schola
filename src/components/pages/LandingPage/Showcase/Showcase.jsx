@@ -5,10 +5,12 @@ import iosMockup from
   '../../../../assets/scholaios_iphonexspacegrey_portrait.png';
 import iosLandMockup from
   '../../../../assets/scholaios_iphonexspacegrey_landscape.png';
+import macbookMockup from '../../../../assets/macbook.png';
 
 const items = [
   iosMockup,
   iosLandMockup,
+  macbookMockup,
 ];
 
 const Showcase = () => (

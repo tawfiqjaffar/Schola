@@ -13,25 +13,19 @@ exports[`NavigationBar should render NavigationBar and match snapshot 1`] = `
       onBlur={[Function]}
       onFocus={[Function]}
     >
-      <svg
-        aria-hidden="true"
-        className="MuiSvgIcon-root makeStyles-homeButton-2 MuiSvgIcon-fontSizeLarge"
-        focusable="false"
-        role="presentation"
-        viewBox="0 0 24 24"
-      >
-        <path
-          d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"
-        />
-      </svg>
+      <img
+        alt="Schola logo"
+        className="makeStyles-logo-3"
+        src="logo.png"
+      />
     </a>
-    <h4
-      className="MuiTypography-root makeStyles-title-3 MuiTypography-h4"
+    <h5
+      className="MuiTypography-root makeStyles-title-5 MuiTypography-h5"
     >
       Schola
-    </h4>
+    </h5>
     <button
-      className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-menuButton-4 makeStyles-buttonLogin-6"
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-menuButton-6 makeStyles-buttonLogin-8"
       disabled={false}
       onBlur={[Function]}
       onDragLeave={[Function]}
@@ -58,7 +52,7 @@ exports[`NavigationBar should render NavigationBar and match snapshot 1`] = `
       </span>
     </button>
     <button
-      className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-menuButton-4 makeStyles-buttonRegister-5"
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-menuButton-6 makeStyles-buttonRegister-7"
       disabled={false}
       onBlur={[Function]}
       onDragLeave={[Function]}

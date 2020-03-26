@@ -2,51 +2,47 @@ version: 2.1
 orbs:
   node: circleci/node@1.1.6
 jobs:
-  buildfront:
-    working_directory: ~/Schola/frontend
+  build:
     docker:
       - image: circleci/node:12.2
     steps:
-      - checkout:
-          path: ~/repo/frontend
+      - checkout
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "yarn.lock" }}
             - v1-dependencies
       - run: yarn install
+      - run: yarn bootstrap
       - save_cache:
           paths:
             - node_modules
+            - packages/frontend/node_modules
           key: v1-dependencies-{{ checksum "yarn.lock" }}
-  lintingfront:
-    working_directory: ~/Schola/frontend
+  linting:
     docker:
       - image: circleci/node:12.2
     steps:
-      - checkout:
-          path: ~/repo
+      - checkout
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "yarn.lock" }}
             - v1-dependencies-
-      - run: npm run lint
-  testfront:
-    working_directory: ~/Schola/frontend
+      - run: yarn lint
+  test:
     docker:
       - image: circleci/node:12.2
     steps:
-      - checkout:
-          path: ~/repo
+      - checkout
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "yarn.lock" }}
             - v1-dependencies-
-      - run: npm run test
+      - run: yarn test:ci
 workflows:
   mergerequest:
     jobs:
-      - buildfront
-      - lintingfront:
-          requires: [buildfront]
-      - testfront:
-          requires: [lintingfront]
+      - build
+      - linting:
+          requires: [build]
+      - test:
+          requires: [linting]

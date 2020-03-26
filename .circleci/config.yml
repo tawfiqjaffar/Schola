@@ -48,5 +48,5 @@ workflows:
       - buildfront
       - lintingfront:
           requires: [buildfront]
-      - test:
+      - testfront:
           requires: [lintingfront]

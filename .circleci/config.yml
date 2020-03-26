@@ -24,7 +24,7 @@ jobs:
       - image: circleci/node:12.2
     steps:
       - checkout:
-        path: ~/repo
+          path: ~/repo
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "yarn.lock" }}
@@ -36,7 +36,7 @@ jobs:
       - image: circleci/node:12.2
     steps:
       - checkout:
-        path: ~/repo
+          path: ~/repo
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "yarn.lock" }}

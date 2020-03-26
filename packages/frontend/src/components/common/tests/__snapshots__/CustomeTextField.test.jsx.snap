@@ -24,9 +24,19 @@ exports[`CustomTextField should render CustomTextField and match snapshot 1`] = 
     <fieldset
       aria-hidden={true}
       className="PrivateNotchedOutline-root-42 MuiOutlinedInput-notchedOutline"
+      style={
+        Object {
+          "paddingLeft": 8,
+        }
+      }
     >
       <legend
-        className="PrivateNotchedOutline-legendLabelled-44"
+        className="PrivateNotchedOutline-legend-43"
+        style={
+          Object {
+            "width": 0.01,
+          }
+        }
       >
         <span
           dangerouslySetInnerHTML={

@@ -80,7 +80,7 @@ const LandingPage = () => {
         </Grid>
         <Grid item xs={12}>
           <Typography variant="h5" color="textSecondary" className={classes.quote}>
-            &ldquo;Let us remember: One book, one pen, one child and one teacher
+            &ldquo;Let us remember : One book, one pen, one child and one teacher
             can change the world.&rdquo;
           </Typography>
         </Grid>

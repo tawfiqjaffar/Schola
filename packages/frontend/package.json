@@ -56,7 +56,7 @@
     "react-test-renderer": "^16.13.0"
   },
   "engines": {
-    "npm": "Please use yarn, npm should not be used for this project",
-    "node": "12.13.x"
+    "node": "12.x",
+    "yarn": "1.x"
   }
 }

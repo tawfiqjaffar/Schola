@@ -8,10 +8,9 @@ exports[`CardItem should render CardItem and match snapshot 1`] = `
     className="MuiPaper-root makeStyles-root-1 MuiPaper-elevation1 MuiPaper-rounded"
   >
     <svg
-      aria-hidden="true"
+      aria-hidden={true}
       className="MuiSvgIcon-root makeStyles-icon-2"
       focusable="false"
-      role="presentation"
       viewBox="0 0 24 24"
     >
       <path

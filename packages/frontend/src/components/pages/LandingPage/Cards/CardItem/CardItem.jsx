@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  Grid, makeStyles, Paper, Typography,
-} from '@material-ui/core';
+import { Grid, makeStyles, Paper, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,7 +33,7 @@ const CardItem = ({ icon, title, description }) => {
 };
 
 CardItem.propTypes = {
-  icon: PropTypes.func.isRequired,
+  icon: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
 };

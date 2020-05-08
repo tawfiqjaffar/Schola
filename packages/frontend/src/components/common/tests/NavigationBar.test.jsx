@@ -8,11 +8,9 @@ import theme from '../../../theme';
 describe('NavigationBar', () => {
   it('should render NavigationBar and match snapshot', () => {
     const component = renderer.create(
-      <ThemeProvider
-        theme={theme}
-      >
+      <ThemeProvider theme={theme}>
         <NavigationBar />
-      </ThemeProvider>,
+      </ThemeProvider>
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

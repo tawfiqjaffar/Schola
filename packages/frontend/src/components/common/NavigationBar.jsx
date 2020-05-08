@@ -7,8 +7,8 @@ import {
   Toolbar,
   Typography,
 } from '@material-ui/core';
-import logo from '../../assets/logo.png';
 import { useHistory } from 'react-router-dom';
+import logo from '../../assets/logo.png';
 
 const useStyles = makeStyles((theme) => ({
   root: {},

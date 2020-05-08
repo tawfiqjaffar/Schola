@@ -28,6 +28,7 @@ exports[`NavigationBar should render NavigationBar and match snapshot 1`] = `
       className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-menuButton-6 makeStyles-buttonLogin-8"
       disabled={false}
       onBlur={[Function]}
+      onClick={[Function]}
       onDragLeave={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}

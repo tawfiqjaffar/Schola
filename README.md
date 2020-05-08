@@ -1,6 +1,6 @@
-# Schola - EIP
+# Quizz 6D Backend server
 
-This is the node package the Schola EIP Project
+This is the node package for the backend server used by Quizz 6D
 
 ---
 ## Requirements
@@ -48,7 +48,28 @@ After installing node, this project will need yarn too, so just run the followin
 
 ## Install
 
-    $ git clone git@github.com:tawfiqjaffar/Schola.git
-    $ cd Schola
+    $ git clone git@bitbucket.org:6degres_dev/quiz-6d-back-end.git
+    $ cd quiz-6d-back-end.git
     $ yarn install
-    $ npx lerna bootstrap
+
+## Configure app
+
+You will need to create a .env file at the root of the repository with the following contents:
+
+```
+PORT=8080
+SECRET=#contact an administrator for this value#
+DATABASE=mongodb://localhost:27017/quizz6d
+```
+
+## Running the project
+
+    $ yarn start
+
+## Running the project for dev
+
+    $ yarn dev
+
+## API Documentation
+
+You can find the Postman generated API Documentation here [https://documenter.getpostman.com/view/10994541/SzYdTwd8](https://documenter.getpostman.com/view/10994541/SzYdTwd8)

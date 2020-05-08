@@ -1,5 +1,9 @@
 import {
-  Button, Container, Grid, makeStyles, Typography,
+  Button,
+  Container,
+  Grid,
+  makeStyles,
+  Typography,
 } from '@material-ui/core';
 import React from 'react';
 import backgroundPageTurner from '../../../assets/backgroundPageTurner.svg';
@@ -51,8 +55,7 @@ const useStyles = makeStyles((theme) => ({
   descText: {
     margin: theme.spacing(5),
   },
-  cards: {
-  },
+  cards: {},
 }));
 
 const LandingPage = () => {
@@ -72,16 +75,16 @@ const LandingPage = () => {
         className={classes.root}
       >
         <Grid item sm={1} xs={4}>
-          <img
-            alt="Schola Logo"
-            className={classes.logo}
-            src={logo}
-          />
+          <img alt="Schola Logo" className={classes.logo} src={logo} />
         </Grid>
         <Grid item xs={12}>
-          <Typography variant="h5" color="textSecondary" className={classes.quote}>
-            &ldquo;Let us remember : One book, one pen, one child and one teacher
-            can change the world.&rdquo;
+          <Typography
+            variant="h5"
+            color="textSecondary"
+            className={classes.quote}
+          >
+            &ldquo;Let us remember : One book, one pen, one child and one
+            teacher can change the world.&rdquo;
           </Typography>
         </Grid>
         <Grid item xs={12}>
@@ -90,7 +93,10 @@ const LandingPage = () => {
           </Typography>
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
-          <CustomTextFieldFilled label="Enter your email address" className={classes.textfield} />
+          <CustomTextFieldFilled
+            label="Enter your email address"
+            className={classes.textfield}
+          />
         </Grid>
         <Grid item xs={12} sm={3} md={1}>
           <Button
@@ -106,17 +112,18 @@ const LandingPage = () => {
           <Showcase className={classes.showcase} />
         </Grid>
         <Grid item xs={12} className={classes.description}>
-          <Typography variant="h5" color="textSecondary" className={classes.descText}>
+          <Typography
+            variant="h5"
+            color="textSecondary"
+            className={classes.descText}
+          >
             Schola is an essential tool for parents, students and teachers.
             <br />
-            {' '}
             Available on your PC, smartphone or tablet
           </Typography>
         </Grid>
         <Cards className={classes.cards} />
-
       </Grid>
-
     </Container>
   );
 };

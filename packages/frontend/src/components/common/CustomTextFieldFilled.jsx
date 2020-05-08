@@ -13,7 +13,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 const CssTextField = withStyles((theme) => ({
   root: {
     '& label.Mui-focused': {
@@ -36,12 +35,13 @@ const CssTextField = withStyles((theme) => ({
   },
 }))(TextField);
 
-export default function CustomTextFieldFilled({ label }) {
+export default function CustomTextFieldFilled({ label, type }) {
   const classes = useStyles();
   return (
     <CssTextField
       className={classes.root}
       label={label}
+      type={type}
       variant="filled"
       InputLabelProps={{
         className: classes.inputHint,
@@ -58,8 +58,10 @@ export default function CustomTextFieldFilled({ label }) {
 
 CustomTextFieldFilled.propTypes = {
   label: PropTypes.string,
+  type: PropTypes.string,
 };
 
 CustomTextFieldFilled.defaultProps = {
   label: '',
+  type: '',
 };

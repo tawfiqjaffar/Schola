@@ -6,7 +6,6 @@ import { BookTwoTone } from '@material-ui/icons';
 import theme from '../../../../../../theme';
 import CardItem from '../CardItem';
 
-
 describe('CardItem', () => {
   it('should render CardItem and match snapshot', () => {
     const data = [
@@ -26,7 +25,7 @@ describe('CardItem', () => {
             description={el.description}
           />
         ))}
-      </ThemeProvider>,
+      </ThemeProvider>
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

@@ -6,7 +6,7 @@ const routes = require('./src/routes/routes');
 
 const port = process.env.PORT || 8080;
 const secret = process.env.SECRET;
-const dbUri = process.env.DATABASE;
+const dbUri = process.env.MONGODB_URI;
 
 const checkPrerequisites = () => {
   let returnValue = true;

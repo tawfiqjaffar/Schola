@@ -26,11 +26,11 @@ exports[`CardItem should render CardItem and match snapshot 1`] = `
     >
       Test
     </h5>
-    <span
-      className="MuiTypography-root MuiTypography-colorTextSecondary"
+    <p
+      className="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
     >
       test description
-    </span>
+    </p>
   </div>
 </div>
 `;

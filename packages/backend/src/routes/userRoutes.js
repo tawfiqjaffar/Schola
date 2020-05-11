@@ -14,8 +14,9 @@ router.get(
   authenticateJwt,
   (req, res) => {
     const { user } = req;
+    console.log(user.role);
 
-    if (user.role === 'editor' || user.role === 'admin') {
+    if (user.role === 'teacher' || user.role === 'parent') {
       User.find({}, (err, users) => {
         if (err) {
           return res
@@ -132,7 +133,7 @@ router.post('/create', checkFields, async (req, res) => {
     email,
     dateofbirth,
     role,
-  } = req.headers;
+  } = req.body;
 
   const createUser = async () => {
     const hashed = await hashPassword(password);

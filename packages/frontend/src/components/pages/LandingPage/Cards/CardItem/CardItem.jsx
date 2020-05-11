@@ -24,7 +24,7 @@ const CardItem = ({ icon, title, description }) => {
         <Typography variant="h5" color="textSecondary">
           {title}
         </Typography>
-        <Typography variant="body" color="textSecondary">
+        <Typography variant="body1" color="textSecondary">
           {description}
         </Typography>
       </Paper>

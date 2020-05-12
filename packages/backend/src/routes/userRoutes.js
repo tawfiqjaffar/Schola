@@ -189,7 +189,7 @@ router.post('/create-google', checkFields, async (req, res) => {
     email,
     dateofbirth,
     role,
-  } = req.headers;
+  } = req.body;
 
   const createUser = async () => {
     const hashed = await hashPassword(password);
@@ -236,4 +236,31 @@ router.post('/create-google', checkFields, async (req, res) => {
     return newUser;
   });
 });
+
+router.put('/role/:id', (req, res) => {
+  const { id } = req.params;
+  const { role } = req.body;
+
+  User.findOneAndUpdate({ _id: id }, { role }, { new: true }, (err, result) => {
+    if (err) {
+      return res
+        .status(responseBody.responseCode.INTSERVERR)
+        .send(
+          responseBody.buildResponseBody(
+            err,
+            responseBody.responseCode.INTSERVERR
+          )
+        );
+    }
+    return res
+      .status(200)
+      .send(
+        responseBody.buildResponseBody(
+          result,
+          responseBody.responseCode.SUCCESS
+        )
+      );
+  });
+});
+
 module.exports = router;

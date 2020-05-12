@@ -24,7 +24,7 @@
     "prettier": "^2.0.4"
   },
   "engines": {
-    "npm": "Please use yarn, npm should not be used for this project"
+    "node": "12.x"
   },
   "dependencies": {
     "axios": "^0.19.2",

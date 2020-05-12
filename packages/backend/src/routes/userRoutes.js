@@ -14,9 +14,10 @@ router.get(
   authenticateJwt,
   (req, res) => {
     const { user } = req;
-    console.log(user.role);
+    console.log(user);
 
-    if (user.role === 'teacher' || user.role === 'parent') {
+    if (user.role === 'admin') {
+      console.log('here');
       User.find({}, (err, users) => {
         if (err) {
           return res

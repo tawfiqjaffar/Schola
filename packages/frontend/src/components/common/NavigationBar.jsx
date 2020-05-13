@@ -59,14 +59,14 @@ export default function NavigationBar() {
           Schola
         </Typography>
         <Button
-          className={[classes.menuButton, classes.buttonLogin]}
+          className={[classes.menuButton, classes.buttonLogin].join(' ')}
           variant="contained"
           onClick={redirectToLogin}
         >
           <Typography>Log in</Typography>
         </Button>
         <Button
-          className={[classes.menuButton, classes.buttonRegister]}
+          className={[classes.menuButton, classes.buttonRegister].join(' ')}
           variant="contained"
         >
           <Typography>Register</Typography>

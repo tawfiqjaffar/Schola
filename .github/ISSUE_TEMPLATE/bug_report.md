@@ -2,7 +2,7 @@
 name: Bug report
 about: Issue correspondant à un bug que vous avez détecté
 title: ''
-labels: ''
+labels: bug
 assignees: ''
 
 ---

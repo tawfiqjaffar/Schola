@@ -2,11 +2,13 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const mockgoose = require('mockgoose');
 const routes = require('./src/routes/routes');
 
 const port = process.env.PORT || 8080;
 const secret = process.env.SECRET;
 const dbUri = process.env.MONGODB_URI;
+const nodeEnv = process.env.NODE_ENV || 'test';
 
 const checkPrerequisites = () => {
   let returnValue = true;
@@ -20,22 +22,40 @@ const checkPrerequisites = () => {
   return returnValue;
 };
 
-const runServer = () => {
-  if (!checkPrerequisites())
-    throw new Error('Prerequisites check unsuccessful');
-  mongoose.connect(dbUri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-  });
-  const db = mongoose.connection;
+const checkMongooseConnection = (connection) => {
+  const db = connection.connection;
   db.on('error', (err) => {
     throw new Error(err);
   });
   db.once('open', () => {
     console.log(`connected to database at ${dbUri}`);
   });
+};
+
+const connectMongodb = () => {
+  if (nodeEnv === 'test') {
+    const mock = new mockgoose.Mockgoose(mongoose);
+
+    mock.prepareStorage().then(() => {
+      mongoose.connect(dbUri, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true,
+        useFindAndModify: false,
+      });
+    });
+  } else {
+    mongoose.connect(dbUri, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: false,
+    });
+  }
+  checkMongooseConnection(mongoose);
+};
+
+const connectExpress = () => {
   const app = express();
 
   app.use(bodyParser.json());
@@ -53,6 +73,13 @@ const runServer = () => {
   app.listen(port, () => {
     console.log(`Server started on port ${port}`);
   });
+};
+
+const runServer = () => {
+  if (!checkPrerequisites())
+    throw new Error('Prerequisites check unsuccessful');
+  connectMongodb();
+  connectExpress();
 };
 
 try {

@@ -5,8 +5,8 @@
     overflow: hidden;
   }
   .container:hover .top:before, .container:hover .top:after, .container:hover .bottom:before, .container:hover .bottom:after, .container:active .top:before, .container:active .top:after, .container:active .bottom:before, .container:active .bottom:after {
-    margin-left: 200px;
-    transform-origin: -200px 50%;
+    margin-left: 250px;
+    transform-origin: -250px 50%;
     transition-delay: 0s;
   }
   .container:hover .center, .container:active .center {
@@ -70,13 +70,20 @@
     color: #333;
   }
   .center input {
-    width: 80%;
-    padding: 15px;
-    margin: 5px;
-    opacity: 0.8;
-    border-radius: 1px;
-    border: 1px solid #ccc;
+    width: 100%;
     font-family: inherit;
+    border-radius: 5%;
+    background-color: #FFF;
+    opacity: 0.6;
+  }
+
+  .center p {
+    padding-top: 50px;
+    text-shadow: 3px 3px 8px #FFF;
+  }
+
+  .username {
+      padding-bottom: 20px!important;
   }
 
   .bold {

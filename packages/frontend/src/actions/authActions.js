@@ -25,7 +25,7 @@ export function login(data) {
     }
   }
   return dispatch => {
-    return axios.post('http://localhost:8080/api/auth/login', data, head).then(res => {
+    return axios.post('http://localhost:8080/api/auth/login', {email: data.email, password: data.password}, head).then(res => {
       const token = res.data.token;
       localStorage.setItem('jwtToken', token);
       setAuthorizationToken(token);

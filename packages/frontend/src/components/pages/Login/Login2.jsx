@@ -11,7 +11,7 @@ class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          username: '',
+          email: '',
           password: '',
           errors: {},
           isLoading: false
@@ -44,7 +44,7 @@ class Login extends React.Component {
     }
 
     render() {
-        const { errors, username, password, isLoading } = this.state;
+        const { errors, email, password, isLoading } = this.state;
         return (
             <div className="container">
                 <div className="top"></div>
@@ -52,16 +52,16 @@ class Login extends React.Component {
                 <div className="center">
                     <p className="bold">Bienvenue sur SCHOLA</p>
                     <TextField
-                        name="username"
+                        name="email"
                         id="standard-required"
-                        label="Username"
+                        label="Email"
                         variant="outlined"
                         InputLabelProps = {{
                             style: { color: '#333' },
                         }}
                         className="padbot-20"
-                        value={username}
-                        error={errors.username}
+                        value={email}
+                        error={errors.email}
                         onChange={this.onChange}
                         />
                     <TextField

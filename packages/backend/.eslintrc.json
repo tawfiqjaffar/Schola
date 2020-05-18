@@ -23,6 +23,12 @@
       {
         "allowModules": ["mockgoose"]
       }
+    ],
+    "node/no-extraneous-require": [
+      "error",
+      {
+        "allowModules": ["mockgoose", "cors"]
+      }
     ]
   }
 }

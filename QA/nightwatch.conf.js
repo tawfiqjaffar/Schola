@@ -1,6 +1,6 @@
 module.exports = {
     "src_folders" : ["tests"],
-    "output_folder" : "tests_output",
+    "output_folder" : false,
     "globals_path" : "globals.js",
 
     "test_workers": {
@@ -22,7 +22,7 @@ module.exports = {
             "desiredCapabilities": {
                 "browserName": "chrome",
                 "chromeOptions" : {
-                    "args" : ["--no-sandbox"]
+                    "args" : ["--headless"]
                 },
                 "acceptSslCerts": true
             }

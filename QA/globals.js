@@ -1,6 +1,15 @@
 var chromedriver = require('chromedriver');
 
+var identifiers = {
+    good_username: 'GoodUsername',
+    good_password: 'BadPassword',
+    bad_username: 'BadUsername',
+    bad_password: 'BadPassword'
+};
+
 module.exports = {
+    identifiers: identifiers,
+
     // lance le driver avant les tests
     before: function(done) {
         chromedriver.start();
@@ -8,7 +17,7 @@ module.exports = {
         done();
     },
 
-    // stop le driver une fois les tests terminé
+    // arrête le driver une fois les tests terminé
     after: function(done) {
         chromedriver.stop();
 

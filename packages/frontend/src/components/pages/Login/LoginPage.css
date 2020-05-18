@@ -73,8 +73,7 @@
     width: 100%;
     font-family: inherit;
     border-radius: 5%;
-    background-color: #FFF;
-    opacity: 0.6;
+    background-color: rgba(255, 255, 255, 0.6);
   }
 
   .center p {
@@ -82,9 +81,12 @@
     text-shadow: 3px 3px 8px #FFF;
   }
 
-  .username {
+  .padbot-20 {
       padding-bottom: 20px!important;
   }
+  .margtop-20 {
+    margin-top: 20px!important;
+}
 
   .bold {
       font-weight: bolder;

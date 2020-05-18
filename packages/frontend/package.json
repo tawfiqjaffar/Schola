@@ -10,7 +10,9 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
+    "history": "^4.10.1",
     "jwt-decode": "^2.2.0",
+    "lodash": "^4.17.15",
     "prop-types": "^15.7.2",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
@@ -20,7 +22,8 @@
     "react-scripts": "3.4.0",
     "react-uuid": "^1.0.2",
     "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "validator": "^13.0.0"
   },
   "scripts": {
     "lint": "eslint 'src/**'",

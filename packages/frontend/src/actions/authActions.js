@@ -19,22 +19,19 @@ export function logout() {
 }
 
 export function login(data) {
-  const head = {
-    headers: {
-      'Access-Control-Allow-Origin': '*/*',
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-  };
   const { email, password } = data;
 
   return (dispatch) => {
     return axios
       .post('http://localhost:8080/api/auth/login', { email, password })
       .then((res) => {
-        const { token } = res.data;
-        localStorage.setItem('jwtToken', token);
-        setAuthorizationToken(token);
-        dispatch(setCurrentUser(jwtDecode(token)));
+        const { accessToken } = res.data.data;
+        localStorage.setItem('jwtToken', accessToken);
+        // setAuthorizationToken(accesToken);
+        dispatch(setCurrentUser(jwtDecode(accessToken)));
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
 }

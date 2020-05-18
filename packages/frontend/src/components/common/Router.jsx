@@ -4,7 +4,7 @@ import LandingPage from '../pages/LandingPage';
 import PageNotFound from '../pages/PageNotFound';
 import Login from '../pages/Login';
 import NavigationBar from './NavigationBar';
-import Calendar from '../pages/Calendar/Calendar'
+import Calendar from '../pages/Calendar/Calendar';
 
 const Router = () => (
   <BrowserRouter>
@@ -12,7 +12,7 @@ const Router = () => (
     <Switch>
       <Route exact path="/" component={LandingPage} />
       <Route path="/login" component={Login} />
-      <Route path='/Calendar' component={Calendar}/>
+      <Route path="/Calendar" component={Calendar} />
       <Route component={PageNotFound} />
     </Switch>
   </BrowserRouter>

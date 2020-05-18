@@ -7,7 +7,6 @@ import thunk from 'redux-thunk';
 import { createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from './rootReducer';
 
-import setAuthorizationToken from './utils/setAuthorizationToken';
 import jwtDecode from 'jwt-decode';
 import { setCurrentUser } from './actions/authActions';
 
@@ -23,7 +22,6 @@ function App() {
   );
 
   if (localStorage.jwtToken) {
-    setAuthorizationToken(localStorage.jwtToken);
     store.dispatch(setCurrentUser(jwtDecode(localStorage.jwtToken)));
   }
 

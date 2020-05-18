@@ -8,7 +8,7 @@ const routes = [
   ['info', infoRoutes],
   ['user', userRoutes],
   ['auth', authRoutes],
-  ['agenda', diaryRoutes],
+  ['diary', diaryRoutes],
   ['schedule', scheduleRoutes],
 ];
 

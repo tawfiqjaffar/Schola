@@ -1,5 +1,5 @@
 import React from 'react';
-import {TextField} from '@material-ui/core'
+import {TextField, Button} from '@material-ui/core'
 import './LoginPage.css';
 
 const Login = () => {
@@ -28,6 +28,7 @@ const Login = () => {
                       }}
                     variant="outlined"
                     />
+                <Button>Connexion</Button>
             </div>
         </div>
     );

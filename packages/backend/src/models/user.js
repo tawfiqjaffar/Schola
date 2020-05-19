@@ -23,7 +23,7 @@ const schema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ['student', 'teacher', 'parent'],
+    enum: ['student', 'teacher', 'parent', 'viesco', 'admin'],
     default: 'student',
   },
   accountType: {

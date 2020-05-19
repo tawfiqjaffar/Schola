@@ -10,6 +10,25 @@
     "object-shorthand": "error",
     "class-methods-use-this": "off",
     "no-underscore-dangle": "off",
-    "no-restricted-syntax": "warn"
+    "no-restricted-syntax": "warn",
+    "no-else-return": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
+      }
+    ],
+    "node/no-unpublished-require": [
+      "error",
+      {
+        "allowModules": ["mockgoose"]
+      }
+    ],
+    "node/no-extraneous-require": [
+      "error",
+      {
+        "allowModules": ["mockgoose", "cors"]
+      }
+    ]
   }
 }

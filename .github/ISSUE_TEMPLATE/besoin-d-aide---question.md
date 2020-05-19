@@ -7,16 +7,16 @@ assignees: ''
 
 ---
 
-** Sujet **
+**Sujet**
 Exemple: Installation de la dernière version de Node
 
-** Question **
+**Question**
 Exemple: Lorsque j'essaye d'installer le projet, j'ai une erreur me disant que ma version de Node n'est pas à jour. Comment dois-je procéder ?
 
-** Log **
+**Log**
 Exemple: `node version 12.10.x required. Your node version is outdated`
 
-** Screenshots **
+**Screenshots**
 
 N'OUBLIEZ PAS DE VOUS ASSIGNER VOUS MEME A CETTE ISSUE ET D'ASSIGNER LA/LES PERSONNE(S) QUI DETIENT(DETIENNENT) LA REPONSE A VOTRE QUESTION / QUI PEUT VOUS AIDER
 

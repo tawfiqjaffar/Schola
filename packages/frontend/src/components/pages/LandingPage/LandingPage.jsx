@@ -6,6 +6,7 @@ import {
   Typography,
 } from '@material-ui/core';
 import React from 'react';
+import MobileStoreButton from 'react-mobile-store-button';
 import backgroundPageTurner from '../../../assets/backgroundPageTurner.svg';
 import logo from '../../../assets/logo.png';
 import CustomTextFieldFilled from '../../common/CustomTextFieldFilled';
@@ -60,6 +61,9 @@ const useStyles = makeStyles((theme) => ({
 
 const LandingPage = () => {
   const classes = useStyles();
+  const iOSUrl = 'https://itunes.apple.com/us/app/clash-of-clans/id529479190';
+  const androidUrl =
+    'https://play.google.com/store/apps/details?id=com.supercell.clashofclans';
   return (
     <Container className={classes.root}>
       <img
@@ -123,6 +127,16 @@ const LandingPage = () => {
           </Typography>
         </Grid>
         <Cards className={classes.cards} />
+        <MobileStoreButton
+          store="ios"
+          url={iOSUrl}
+          linkProps={{ title: 'iOS Store Button' }}
+        />
+        <MobileStoreButton
+          store="android"
+          url={androidUrl}
+          linkProps={{ title: 'android Store Button' }}
+        />
       </Grid>
     </Container>
   );

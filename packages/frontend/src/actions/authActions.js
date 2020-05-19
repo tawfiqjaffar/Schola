@@ -1,6 +1,6 @@
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
-import { SET_CURRENT_USER } from './types';
+import SET_CURRENT_USER from './types';
 
 export function setCurrentUser(user) {
   return {
@@ -19,8 +19,8 @@ export function logout() {
 export function login(data) {
   const { email, password } = data;
 
-  return (dispatch) => {
-    return axios
+  return (dispatch) =>
+    axios
       .post('http://localhost:8080/api/auth/login', { email, password })
       .then((res) => {
         const { accessToken } = res.data.data;
@@ -30,5 +30,4 @@ export function login(data) {
       .catch((err) => {
         console.log(err);
       });
-  };
 }

@@ -13,6 +13,12 @@ import CustomTextFieldFilled from '../../common/CustomTextFieldFilled';
 import Cards from './Cards';
 import Showcase from './Showcase';
 
+const backgroundColor = (theme) => {
+  const { primary } = theme.palette;
+  const { secondary } = theme.palette;
+  return `linear-gradient(90deg, ${primary.main}, ${secondary.main})`;
+};
+
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -37,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
     top: 0,
   },
   submitButton: {
-    background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+    background: backgroundColor(theme),
   },
   textfield: {
     width: '100%',
@@ -62,8 +68,7 @@ const useStyles = makeStyles((theme) => ({
 const LandingPage = () => {
   const classes = useStyles();
   const iOSUrl = 'https://itunes.apple.com/us/app/clash-of-clans/id529479190';
-  const androidUrl =
-    'https://play.google.com/store/apps/details?id=com.supercell.clashofclans';
+  const androidUrl = 'https://bit.ly/ClashAndroidSchola';
   return (
     <Container className={classes.root}>
       <img

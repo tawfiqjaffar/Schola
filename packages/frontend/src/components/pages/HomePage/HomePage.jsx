@@ -21,12 +21,15 @@ const useStyles = makeStyles((theme) => ({
   fixedHeight: {
       height: "240px",
   },
+  background: {
+      background: "white",  
+  },
 }));
 
 
 const Home = () => {
   const classes = useStyles();
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight, classes.background);
 
   return (
     <Container className={classes.root}>
@@ -34,27 +37,27 @@ const Home = () => {
       <Grid container spacing={3}>
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
-              
+                Profil_img
               </Paper>
             </Grid>
             <Grid item xs={12} md={4} lg={6}>
               <Paper className={fixedHeightPaper}>
-              
+                Infos_etudiant
               </Paper>
             </Grid>
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
-
+                graph_moyennes
               </Paper>
             </Grid>
             <Grid item xs={12} md={4} lg={9}>
               <Paper className={fixedHeightPaper}>
-           
+                ?
               </Paper>
             </Grid>
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
-
+                notifications
               </Paper>
             </Grid>
         </Grid>

@@ -1,15 +1,15 @@
 import React from 'react';
 import { ThemeProvider } from '@material-ui/core';
-import Router from './components/common/Router';
 
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { createStore, applyMiddleware, compose } from 'redux';
-import rootReducer from './rootReducer';
 
 import jwtDecode from 'jwt-decode';
 import { setCurrentUser } from './actions/authActions';
 
+import rootReducer from './rootReducer';
+import Router from './components/common/Router';
 import theme from './theme';
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
     rootReducer,
     compose(
       applyMiddleware(thunk),
-      window.devToolsExtension ? window.devToolsExtension() : f => f
+      window.devToolsExtension ? window.devToolsExtension() : (f) => f
     )
   );
 

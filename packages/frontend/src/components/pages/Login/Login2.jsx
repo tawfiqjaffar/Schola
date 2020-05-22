@@ -21,10 +21,12 @@ class Login extends React.Component {
   }
 
   onSubmit(e) {
+    const { login: loginLocal } = this.props;
+    const { history } = this.props;
     e.preventDefault();
     if (this.isValid()) {
       this.setState({ errors: {}, isLoading: true });
-      this.props.login(this.state).then(() => this.props.history.push('/home'));
+      loginLocal(this.state).then(() => history.push('/home'));
     }
   }
 
@@ -90,6 +92,7 @@ class Login extends React.Component {
 
 Login.propTypes = {
   login: PropTypes.func.isRequired,
+  history: PropTypes.func.isRequired,
 };
 
 Login.contextTypes = {

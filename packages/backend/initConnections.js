@@ -11,6 +11,8 @@ const secret = process.env.SECRET;
 const dbUri = process.env.MONGODB_URI;
 const nodeEnv = process.env.NODE_ENV || 'dev';
 
+const app = express();
+
 const checkPrerequisites = () => {
   let returnValue = true;
   if (!secret) {
@@ -57,8 +59,6 @@ const connectMongodb = () => {
 };
 
 const connectExpress = () => {
-  const app = express();
-
   app.use(bodyParser.json());
   app.use(
     cors({
@@ -76,9 +76,6 @@ const connectExpress = () => {
     app.use(routePrefix, route);
   });
   app.use('/thumb', express.static(`${__dirname}/public`));
-  app.listen(port, () => {
-    console.log(`Server started on port ${port}`);
-  });
 };
 
 const runServer = () => {
@@ -89,4 +86,4 @@ const runServer = () => {
   connectExpress();
 };
 
-module.exports = { runServer };
+module.exports = { runServer, app };

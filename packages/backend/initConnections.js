@@ -6,7 +6,6 @@ const mockgoose = require('mockgoose');
 const cors = require('cors');
 const routes = require('./src/routes/routes');
 
-const port = process.env.PORT || 8080;
 const secret = process.env.SECRET;
 const dbUri = process.env.MONGODB_URI;
 const nodeEnv = process.env.NODE_ENV || 'dev';

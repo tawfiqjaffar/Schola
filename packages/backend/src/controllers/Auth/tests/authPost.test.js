@@ -1,5 +1,5 @@
 const axios = require('axios');
-const { runServer, closeServer } = require('../../../../initConnections');
+const { runServer } = require('../../../../initConnections');
 
 beforeEach(() => {
   process.env.NODE_ENV = 'test';
@@ -42,8 +42,4 @@ describe('Authentication', () => {
     expect(auth).toBeDefined();
     expect(auth.data.code).toEqual(200);
   });
-});
-
-afterEach(() => {
-  closeServer();
 });

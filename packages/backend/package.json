@@ -9,7 +9,6 @@
     "start": "node index.js",
     "dev": "nodemon index.js --exec 'yarn lint && node'",
     "lint": "eslint ./*.js src/encryption/*.js src/models/*.js src/routes/*.js",
-    "test": "jest --detectOpenHandles",
     "test:watch": "jest --detectOpenHandles --watchAll"
   },
   "devDependencies": {

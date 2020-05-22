@@ -11,6 +11,8 @@ const secret = process.env.SECRET;
 const dbUri = process.env.MONGODB_URI;
 const nodeEnv = process.env.NODE_ENV || 'dev';
 
+let server;
+
 const checkPrerequisites = () => {
   let returnValue = true;
   if (!secret) {
@@ -76,7 +78,7 @@ const connectExpress = () => {
     app.use(routePrefix, route);
   });
   app.use('/thumb', express.static(`${__dirname}/public`));
-  app.listen(port, () => {
+  server = app.listen(port, () => {
     console.log(`Server started on port ${port}`);
   });
 };
@@ -88,4 +90,10 @@ const runServer = () => {
   connectExpress();
 };
 
-module.exports = runServer;
+const closeServer = () => {
+  if (server) {
+    server.close();
+  }
+};
+
+module.exports = { runServer, closeServer };

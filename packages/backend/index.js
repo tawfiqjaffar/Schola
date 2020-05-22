@@ -1,4 +1,4 @@
-const runServer = require('./initConnections');
+const { runServer, closeServer } = require('./initConnections');
 
 try {
   runServer();

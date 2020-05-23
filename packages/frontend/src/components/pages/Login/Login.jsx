@@ -24,6 +24,7 @@ class Login extends React.Component {
     const res = await LoginRequest(email, password);
     if (res.code === 200) {
       this.setState({ redirect: true });
+      sessionStorage.setItem('token', res.data.accessToken);
     }
   }
 

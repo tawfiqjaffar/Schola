@@ -1,79 +1,81 @@
 import React from 'react';
-import { Container, Grid, Paper, Button } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
-import CustomTextFieldFilled from '../../common/CustomTextFieldFilled';
+import { TextField, Button } from '@material-ui/core';
+import { Redirect } from 'react-router-dom';
+import LoginRequest from '../../../api/methods/auth';
+import './LoginPage.css';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: '100%',
-    textAlign: 'center',
-  },
-  paper: {
-    marginTop: theme.spacing(8),
-    paddingTop: theme.spacing(3),
-    paddingBottom: theme.spacing(3),
-    paddingLeft: theme.spacing(3),
-    paddingRight: theme.spacing(3),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  passwordContainer: {
-    marginTop: theme.spacing(3),
-  },
-  textField: {
-    width: '100%',
-  },
-  submitButton: {
-    background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
-    color: 'white',
-  },
-}));
+class Login extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+      password: '',
+      redirect: false,
+    };
 
-const Login = () => {
-  const classes = useStyles();
+    this.onSubmit = this.onSubmit.bind(this);
+    this.onChange = this.onChange.bind(this);
+  }
 
-  return (
-    <Container className={classes.root}>
-      <Paper className={classes.paper}>
-        <Grid container alignItems="center" justify="center" spacing={1}>
-          <Grid item xs={12} sm={6}>
-            <CustomTextFieldFilled label="Enter your email address" />
-          </Grid>
-        </Grid>
-        <Grid
-          container
-          alignItems="center"
-          justify="center"
-          className={classes.passwordContainer}
-        >
-          <Grid item xs={12} sm={6}>
-            <CustomTextFieldFilled
-              label="Enter your password"
-              type="password"
-            />
-          </Grid>
-        </Grid>
-        <Grid
-          container
-          alignItems="center"
-          justify="center"
-          className={classes.passwordContainer}
-        >
-          <Grid item xs={12} sm={3} md={1}>
-            <Button
-              variant="contained"
-              size="large"
-              className={classes.submitButton}
-              fullWidth
-            >
-              Go
-            </Button>
-          </Grid>
-        </Grid>
-      </Paper>
-    </Container>
-  );
-};
+  onSubmit(e) {
+    const { email, password } = this.state;
+    e.preventDefault();
+    if (LoginRequest(email, password).code === 200) {
+      this.setState({ redirect: true });
+    }
+  }
+
+  onChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
+  render() {
+    const { redirect, email, password } = this.state;
+    if (redirect) {
+      return <Redirect to="/home" />;
+    }
+    return (
+      <div className="container">
+        <div className="top" />
+        <div className="bottom" />
+        <div className="center">
+          <p className="bold">Bienvenue sur SCHOLA</p>
+          <TextField
+            name="email"
+            id="standard-required"
+            label="Email"
+            variant="outlined"
+            InputLabelProps={{
+              style: { color: '#333' },
+            }}
+            className="padbot-20"
+            value={email}
+            onChange={this.onChange}
+          />
+          <TextField
+            id="outlined-password-input"
+            label="Password"
+            type="password"
+            name="password"
+            autoComplete="current-password"
+            InputLabelProps={{
+              style: { color: '#333' },
+            }}
+            variant="outlined"
+            value={password}
+            onChange={this.onChange}
+          />
+          <Button
+            onClick={this.onSubmit}
+            variant="contained"
+            className="margtop-20"
+          >
+            Connexion
+          </Button>
+        </div>
+      </div>
+    );
+  }
+}
 
 export default Login;

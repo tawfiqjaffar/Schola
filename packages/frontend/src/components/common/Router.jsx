@@ -5,10 +5,9 @@ import PageNotFound from '../pages/PageNotFound';
 import Login from '../pages/Login';
 import Home from '../pages/HomePage/HomePage';
 import NavigationBar from './NavigationBar';
-import history from '../../utils/history';
 
 const Router = () => (
-  <BrowserRouter history={history}>
+  <BrowserRouter>
     <NavigationBar />
     <Switch>
       <Route exact path="/" component={LandingPage} />

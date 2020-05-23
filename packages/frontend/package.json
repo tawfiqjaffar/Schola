@@ -13,6 +13,8 @@
     "history": "^4.10.1",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.15",
+    "clsx": "^1.1.0",
+    "dotenv": "^8.2.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
@@ -61,7 +63,7 @@
     "eslint-plugin-react-hooks": "^2.5.1",
     "eslint-watch": "^6.0.1",
     "prettier": "2.0.5",
-    "react-test-renderer": "^16.13.0"
+    "react-test-renderer": "^16.13.1"
   },
   "engines": {
     "node": "12.x",

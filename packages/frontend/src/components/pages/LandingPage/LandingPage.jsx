@@ -6,12 +6,13 @@ import {
   Typography,
 } from '@material-ui/core';
 import React from 'react';
-import MobileStoreButton from 'react-mobile-store-button';
 import backgroundPageTurner from '../../../assets/backgroundPageTurner.svg';
 import logo from '../../../assets/logo.png';
 import CustomTextFieldFilled from '../../common/CustomTextFieldFilled';
 import Cards from './Cards';
 import Showcase from './Showcase';
+import Background from './android.png';
+import ios from './ios.png';
 
 const backgroundColor = (theme) => {
   const { primary } = theme.palette;
@@ -67,8 +68,6 @@ const useStyles = makeStyles((theme) => ({
 
 const LandingPage = () => {
   const classes = useStyles();
-  const iOSUrl = 'https://itunes.apple.com/us/app/clash-of-clans/id529479190';
-  const androidUrl = 'https://bit.ly/ClashAndroidSchola';
   return (
     <Container className={classes.root}>
       <img
@@ -132,16 +131,16 @@ const LandingPage = () => {
           </Typography>
         </Grid>
         <Cards className={classes.cards} />
-        <MobileStoreButton
-          store="ios"
-          url={iOSUrl}
-          linkProps={{ title: 'iOS Store Button' }}
-        />
-        <MobileStoreButton
-          store="android"
-          url={androidUrl}
-          linkProps={{ title: 'android Store Button' }}
-        />
+        <a href="https://github.com/Joeyryanbridges">
+          <img
+            src={Background}
+            className="githubIcon"
+            style={{ width: '50%' }}
+          />
+        </a>
+        <a href="https://github.com/Joeyryanbridges">
+          <img src={ios} className="githubIcon" style={{ width: '23%' }} />
+        </a>
       </Grid>
     </Container>
   );

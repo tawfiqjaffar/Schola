@@ -25,4 +25,4 @@ const postLoginUser = async (email, password) => {
   return res;
 };
 
-module.exports = postLoginUser;
+module.exports = { postLoginUser };

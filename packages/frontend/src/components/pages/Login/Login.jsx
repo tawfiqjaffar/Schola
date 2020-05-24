@@ -1,5 +1,7 @@
 import React from 'react';
-import { Button } from '@material-ui/core';
+import Spinner from 'react-loader-spinner';
+import { Alert } from '@material-ui/lab';
+import { Button, Snackbar } from '@material-ui/core';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { Redirect } from 'react-router-dom';
 import LoginRequest from '../../../api/methods/auth';
@@ -12,6 +14,9 @@ class Login extends React.Component {
       email: '',
       password: '',
       redirect: false,
+      loading: false,
+      open: false,
+      success: false,
     };
 
     this.onSubmit = this.onSubmit.bind(this);
@@ -21,10 +26,18 @@ class Login extends React.Component {
   async onSubmit(e) {
     e.preventDefault();
     const { email, password } = this.state;
+    this.setState({ loading: true });
     const res = await LoginRequest(email, password);
     if (res.code === 200) {
-      this.setState({ redirect: true });
+      this.setState({
+        loading: false,
+        success: true,
+        open: true,
+        redirect: true,
+      });
       sessionStorage.setItem('token', res.data.accessToken);
+    } else {
+      this.setState({ loading: false, success: false, open: true });
     }
   }
 
@@ -33,7 +46,7 @@ class Login extends React.Component {
   }
 
   render() {
-    const { redirect, email, password } = this.state;
+    const { redirect, email, password, loading, open, success } = this.state;
     if (redirect) {
       return <Redirect to="/home" />;
     }
@@ -43,6 +56,8 @@ class Login extends React.Component {
           <div className="top" />
           <div className="bottom" />
           <div className="center">
+            {loading && <Spinner type="Puff" />}
+
             <p className="bold">Bienvenue sur SCHOLA</p>
             <TextValidator
               name="email"
@@ -81,6 +96,22 @@ class Login extends React.Component {
               Connexion
             </Button>
           </div>
+          <Snackbar
+            open={open}
+            autoHideDuration={3000}
+            onClose={() => {
+              this.setState({ open: false });
+            }}
+          >
+            <Alert
+              onClose={() => {
+                this.setState({ open: false });
+              }}
+              severity={success ? 'success' : 'error'}
+            >
+              {success ? 'Authentifié' : 'Mot de passe incorrect'}
+            </Alert>
+          </Snackbar>
         </div>
       </ValidatorForm>
     );

@@ -25,8 +25,4 @@ const postLoginUser = async (email, password) => {
   return res;
 };
 
-<<<<<<< HEAD
-module.exports = postLoginUser;
-=======
 module.exports = { postLoginUser };
->>>>>>> feature/prou/t11/LoginPage

@@ -4,7 +4,11 @@ import { Alert } from '@material-ui/lab';
 import { Button, Snackbar } from '@material-ui/core';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { Redirect } from 'react-router-dom';
+<<<<<<< HEAD
 import LoginRequest from '../../../api/methods/auth';
+=======
+import { postLoginUser } from '../../../api/methods/auth';
+>>>>>>> feature/prou/t11/LoginPage
 import './LoginPage.css';
 
 class Login extends React.Component {
@@ -27,7 +31,11 @@ class Login extends React.Component {
     e.preventDefault();
     const { email, password } = this.state;
     this.setState({ loading: true });
+<<<<<<< HEAD
     const res = await LoginRequest(email, password);
+=======
+    const res = await postLoginUser(email, password);
+>>>>>>> feature/prou/t11/LoginPage
     if (res.code === 200) {
       this.setState({
         loading: false,

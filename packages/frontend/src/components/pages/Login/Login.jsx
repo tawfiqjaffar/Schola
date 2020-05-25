@@ -4,7 +4,7 @@ import { Alert } from '@material-ui/lab';
 import { Button, Snackbar } from '@material-ui/core';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { Redirect } from 'react-router-dom';
-import { postLoginUser } from '../../../api/methods/auth';
+import postLoginUser from '../../../api/methods/auth';
 import './LoginPage.css';
 
 class Login extends React.Component {

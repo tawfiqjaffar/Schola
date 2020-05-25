@@ -1,5 +1,5 @@
-const axios = require('../config');
-const uri = require('../uri/user');
+import axios from '../config';
+import uri from '../uri/user';
 
 /**
  * Get all users if role == admin / only my user if role != admin
@@ -115,4 +115,4 @@ const putChangeRole = async (userId, newRole, accessToken) => {
   return res;
 };
 
-module.exports = { getAllUsers, getMe, postCreateUser, putChangeRole };
+export { getAllUsers, getMe, postCreateUser, putChangeRole };

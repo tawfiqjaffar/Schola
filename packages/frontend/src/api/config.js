@@ -1,5 +1,5 @@
-require('dotenv');
-const axios = require('axios');
+import 'dotenv';
+import axios from 'axios';
 
 const serverUrl = process.env.SERVER_URI || 'http://localhost:8080/api';
 
@@ -8,4 +8,4 @@ const axiosInstance = axios.create({
   timeout: 10000,
 });
 
-module.exports = axiosInstance;
+export default axiosInstance;

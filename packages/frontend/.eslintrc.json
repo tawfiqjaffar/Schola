@@ -24,6 +24,6 @@
     "consistent-return": "off",
     "implicit-arrow-linebreak": "off",
     "no-console": "off",
-    "max-len": ["error", { "ignoreUrls": true }]
+    "max-len": ["error", { "ignoreUrls": true, "ignoreStrings": true }]
   }
 }

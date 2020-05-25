@@ -25,6 +25,7 @@ class Login extends React.Component {
 
   async onSubmit(e) {
     e.preventDefault();
+    console.log('ENV', process.env.SERVER_URI);
     const { email, password } = this.state;
     this.setState({ loading: true });
     const res = await postLoginUser(email, password);

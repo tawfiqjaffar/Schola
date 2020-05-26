@@ -48,6 +48,9 @@ class Login extends React.Component {
 
   render() {
     const { redirect, email, password, loading, open, success } = this.state;
+    if (sessionStorage.getItem('token')) {
+      this.setState({ redirect: true });
+    }
     if (redirect) {
       return <Redirect to="/home" />;
     }

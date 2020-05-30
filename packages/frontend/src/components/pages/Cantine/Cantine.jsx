@@ -16,9 +16,11 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     height: 280,
     width: 280,
+    textAlign: 'center',
   },
   param: {
-    width: 1000,
+    height: 300,
+    width: 1300,
   },
   form: {
     '& > *': {
@@ -33,6 +35,18 @@ const Cantine = () => {
   const classes = useStyles();
   const [day, setDay] = React.useState('');
   const [hour, setHour] = React.useState('');
+  const [starter, setStarter] = React.useState('');
+  const [meal, setMeal] = React.useState('');
+  const [dessert, setDessert] = React.useState('');
+  const handleChangeStarter = (event) => {
+    setStarter(event.target.value);
+  };
+  const handleChangeMeal = (event) => {
+    setMeal(event.target.value);
+  };
+  const handleChangeDessert = (event) => {
+    setDessert(event.target.value);
+  };
   const handleChangeHour = (event) => {
     setHour(event.target.value);
   };
@@ -46,6 +60,7 @@ const Cantine = () => {
         <Grid container justify="center">
           <Grid item>
             <Paper className={classes.paper}>
+              <p>test</p>
               <form className={classes.form} noValidate autoComplete="off">
                 <FormControl>
                   <InputLabel>Heure d'ouverture</InputLabel>
@@ -87,9 +102,24 @@ const Cantine = () => {
                   <option value={80}>Vendre</option>
                 </NativeSelect>
               </FormControl>
-              <TextField id="filled-basic" label="Entrée" variant="filled" />
-              <TextField id="filled-basic" label="Plat" variant="filled" />
-              <TextField id="filled-basic" label="Dessert" variant="filled" />
+              <TextField
+                id="filled-basic"
+                label="Entrée"
+                variant="filled"
+                onChange={handleChangeStarter}
+              />
+              <TextField
+                id="filled-basic"
+                label="Plat"
+                variant="filled"
+                onChange={handleChangeMeal}
+              />
+              <TextField
+                id="filled-basic"
+                label="Dessert"
+                variant="filled"
+                onChange={handleChangeDessert}
+              />
               <Button variant="outlined" startIcon={<CloudUploadIcon />}>
                 Appliquer
               </Button>

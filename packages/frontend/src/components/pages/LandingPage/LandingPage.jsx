@@ -12,6 +12,10 @@ import CustomTextFieldFilled from '../../common/CustomTextFieldFilled';
 import Cards from './Cards';
 import Showcase from './Showcase';
 
+const primary = (theme) => theme.palette.primary.main;
+
+const secondary = (theme) => theme.palette.secondary.main;
+
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -36,7 +40,9 @@ const useStyles = makeStyles((theme) => ({
     top: 0,
   },
   submitButton: {
-    background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+    background: `linear-gradient(90deg, ${primary(theme)}, ${secondary(
+      theme
+    )})`,
   },
   textfield: {
     width: '100%',

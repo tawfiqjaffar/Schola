@@ -4,7 +4,7 @@ import { Alert } from '@material-ui/lab';
 import { Button, Snackbar } from '@material-ui/core';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { Redirect } from 'react-router-dom';
-import LoginRequest from '../../../api/methods/auth';
+import postLoginUser from '../../../api/methods/auth';
 import './LoginPage.css';
 
 class Login extends React.Component {
@@ -25,9 +25,10 @@ class Login extends React.Component {
 
   async onSubmit(e) {
     e.preventDefault();
+    console.log('ENV', process.env.SERVER_URI);
     const { email, password } = this.state;
     this.setState({ loading: true });
-    const res = await LoginRequest(email, password);
+    const res = await postLoginUser(email, password);
     if (res.code === 200) {
       this.setState({
         loading: false,
@@ -47,6 +48,9 @@ class Login extends React.Component {
 
   render() {
     const { redirect, email, password, loading, open, success } = this.state;
+    if (sessionStorage.getItem('token')) {
+      this.setState({ redirect: true });
+    }
     if (redirect) {
       return <Redirect to="/home" />;
     }

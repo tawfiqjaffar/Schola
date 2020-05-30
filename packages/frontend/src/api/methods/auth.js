@@ -1,5 +1,7 @@
-const axiosInstance = require('../config');
-const uri = require('../uri/auth');
+// const axiosInstance = require('../config');
+// const uri = require('../uri/auth');
+import axiosInstance from '../config';
+import uri from '../uri/auth';
 
 /**
  * Logs into the platform, returns an accessToken if login successful
@@ -25,4 +27,4 @@ const postLoginUser = async (email, password) => {
   return res;
 };
 
-module.exports = postLoginUser;
+export default postLoginUser;

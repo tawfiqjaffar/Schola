@@ -5,4 +5,4 @@ const uri = {
   },
 };
 
-module.exports = uri;
+export default uri;

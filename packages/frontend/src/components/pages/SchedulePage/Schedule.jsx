@@ -1,7 +1,7 @@
 import React from 'react';
-import clsx from 'clsx';
 import { Container, Grid, Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
+import Schedulecomp from './ScheduleComp';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,17 +28,11 @@ const useStyles = makeStyles((theme) => ({
 
 const Schedule = () => {
   const classes = useStyles();
-  /*const fixedHeightPaper = clsx(
-    classes.paper,
-    classes.fixedHeight,
-    classes.background
-  );*/
-
   return (
     <Container className={classes.root}>
       <Paper className={classes.paper}>
         <Grid container spacing={3}>
-          ke
+          <Schedulecomp />
         </Grid>
       </Paper>
     </Container>

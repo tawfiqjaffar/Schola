@@ -9,7 +9,6 @@ router.get(
   '/',
   [check('authorization', 'you must provide a bearer access token').notEmpty()],
   checkFields,
-  authenticateJwt,
   getAllTasks
 );
 

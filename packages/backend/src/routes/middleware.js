@@ -9,7 +9,10 @@ const checkFields = (req, res, next) => {
     return res
       .status(responseBody.responseCode.BADREQ)
       .send(
-        responseBody.buildResponseBody(errors, responseBody.responseCode.BADREQ)
+        responseBody.buildResponseBody(
+          JSON.stringify(errors),
+          responseBody.responseCode.BADREQ
+        )
       );
   }
   return next();

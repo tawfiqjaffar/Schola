@@ -19,4 +19,4 @@ const getAllSchedule = (req, res) => {
 
 module.exports = {
     getAllSchedule,
-};  
+};

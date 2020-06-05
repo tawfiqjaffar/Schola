@@ -1,8 +1,8 @@
-const Diary = require('../../models/diary');
+const Task = require('../../models/task');
 const responseBody = require('../../routes/responseBody');
 
-const getAllDiaries = (req, res) => {
-    Diary.find({}, (err, data) => {
+const getAllTasks = (req, res) => {
+    Task.find({}, (err, data) => {
         if (err) {
             return res.status(responseBody.responseCode.INTSERVERR)
             .send(
@@ -18,5 +18,5 @@ const getAllDiaries = (req, res) => {
 }
 
 module.exports = {
-    getAllDiaries,
+    getAllTasks,
 };  

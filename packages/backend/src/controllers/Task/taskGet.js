@@ -1,8 +1,8 @@
-const Schedule = require('../../models/schedule');
+const Task = require('../../models/task');
 const responseBody = require('../../routes/responseBody');
 
-const getAllSchedule = (req, res) => {
-    Schedule.find({}, (err, data) => {
+const getAllTasks = (req, res) => {
+    Task.find({}, (err, data) => {
         if (err) {
             return res.status(responseBody.responseCode.INTSERVERR)
             .send(
@@ -18,5 +18,5 @@ const getAllSchedule = (req, res) => {
 }
 
 module.exports = {
-    getAllSchedule,
-};
+    getAllTasks,
+};  

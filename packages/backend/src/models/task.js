@@ -5,6 +5,10 @@ const taskSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     required: true,
   },
+  teacherId: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+  },
   dueDate: {
     type: Date,
     required: true,

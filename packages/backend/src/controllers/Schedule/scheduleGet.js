@@ -1,7 +1,7 @@
 const Schedule = require('../../models/schedule');
 const responseBody = require('../../routes/responseBody');
-const { getStartDay, getEndDay } = require('./scheduleFunction');
-const { getStartWeek, getEndWeek } = require('./scheduleFunction');
+const { getStartDay, getEndDay } = require('../dateFunction');
+const { getStartWeek, getEndWeek } = require('../dateFunction');
 
 const getAllSchedule = (req, res) => {
     Schedule.find({ usersId: req.user._id }, (err, data) => {
@@ -64,5 +64,5 @@ const getWeekSchedule = (req, res) => {
 module.exports = {
     getAllSchedule,
     getDaySchedule,
-    getWeekSchedule,
+    getWeekSchedule
 };

@@ -1,8 +1,8 @@
 function getStartDay() {
     var startDay = new Date();
-    startDay.setSeconds(0);
     startDay.setHours(0);
     startDay.setMinutes(0);
+    startDay.setSeconds(0);
 
     return startDay;
 }

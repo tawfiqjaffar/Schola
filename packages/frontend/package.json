@@ -16,7 +16,11 @@
     "react-material-ui-carousel": "^1.1.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
-    "react-uuid": "^1.0.2"
+    "react-uuid": "^1.0.2",
+    "@devexpress/dx-react-scheduler": "^2.6.3",
+    "@devexpress/dx-react-scheduler-material-ui": "^2.6.3",
+    "@devexpress/dx-core": "^2.6.3",
+    "@devexpress/dx-react-core": "^2.6.3"
   },
   "scripts": {
     "lint": "eslint 'src/**'",

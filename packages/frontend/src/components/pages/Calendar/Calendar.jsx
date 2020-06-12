@@ -106,16 +106,18 @@ const resources = [
   },
 ];
 
-const getBorder = (theme) =>
-  `1px solid ${
+const varOne = (theme) =>
+  `${
     theme.palette.type === 'light'
       ? lighten(fade(theme.palette.divider, 1), 0.88)
       : darken(fade(theme.palette.divider, 1), 0.68)
   }`;
 
-const DayScaleCell = (props) => (
+const getBorder = () => `1px solid ${varOne}`;
+
+const DayScaleCell = ({ formatDate }) => (
   <MonthView.DayScaleCell
-    startDate={props.startDate}
+    formatDate={formatDate}
     style={{ textAlign: 'center', fontWeight: 'bold' }}
   />
 );
@@ -396,4 +398,8 @@ CellBase.propTypes = {
 WeatherIcon.propTypes = {
   id: PropTypes.string.isRequired,
   classes: PropTypes.isRequired,
+};
+
+DayScaleCell.propTypes = {
+  formatDate: PropTypes.isRequired,
 };

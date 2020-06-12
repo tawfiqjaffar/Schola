@@ -255,15 +255,13 @@ const WeatherIcon = (props) => {
 
 // #FOLD_BLOCK
 const CellBase = React.memo(
-  (
-    props,
-    {
-      startDate,
-      formatDate,
-      otherMonth,
-      // #FOLD_BLOCK
-    }
-  ) => {
+  ({
+    classes,
+    startDate,
+    formatDate,
+    otherMonth,
+    // #FOLD_BLOCK
+  }) => {
     const iconId = Math.abs(Math.floor(Math.sin(startDate.getDate()) * 10) % 3);
     const isFirstMonthDay = startDate.getDate() === 1;
     const formatOptions = isFirstMonthDay
@@ -273,17 +271,17 @@ const CellBase = React.memo(
       <TableCell
         tabIndex={0}
         className={classNames({
-          [props.classes.cell]: true,
-          [props.classes.rainBack]: iconId === 0,
-          [props.classes.sunBack]: iconId === 1,
-          [props.classes.cloudBack]: iconId === 2,
-          [props.classes.opacity]: otherMonth,
+          [classes.cell]: true,
+          [classes.rainBack]: iconId === 0,
+          [classes.sunBack]: iconId === 1,
+          [classes.cloudBack]: iconId === 2,
+          [classes.opacity]: otherMonth,
         })}
       >
-        <div className={props.classes.content}>
-          <WeatherIcon classes={props.classes} id={iconId} />
+        <div className={classes.content}>
+          <WeatherIcon classes={classes} id={iconId} />
         </div>
-        <div className={props.classes.text}>
+        <div className={classes.text}>
           {formatDate(startDate, formatOptions)}
         </div>
       </TableCell>
@@ -338,16 +336,15 @@ export default class Demo extends React.PureComponent {
     this.setState((state) => {
       let { data } = state;
       if (added) {
-        const startingAddedId =
-          data.length > 0 ? data[data.length - 1].id + 1 : 0;
-        data = [...data, { id: startingAddedId, ...added }];
+        const AddedId = data.length > 0 ? data[data.length - 1].id + 1 : 0;
+        data = [...data, { id: AddedId, ...added }];
       }
       if (changed) {
-        data = data.map((appointment) => {
-          return changed[appointment.id]
+        data = data.map((appointment) =>
+          changed[appointment.id]
             ? { ...appointment, ...changed[appointment.id] }
-            : appointment;
-        });
+            : appointment
+        );
       }
       if (deleted !== undefined) {
         data = data.filter((appointment) => appointment.id !== deleted);
@@ -391,6 +388,9 @@ export default class Demo extends React.PureComponent {
 
 CellBase.propTypes = {
   classes: PropTypes.isRequired,
+  startDate: PropTypes.isRequired,
+  formatDate: PropTypes.isRequired,
+  otherMonth: PropTypes.isRequired,
 };
 
 WeatherIcon.propTypes = {

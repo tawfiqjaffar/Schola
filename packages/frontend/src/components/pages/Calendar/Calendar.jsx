@@ -21,11 +21,9 @@ import {
   Resources,
   DragDropProvider,
 } from '@devexpress/dx-react-scheduler-material-ui';
-import WbSunny from '@material-ui/icons/WbSunny';
-import FilterDrama from '@material-ui/icons/FilterDrama';
-import Opacity from '@material-ui/icons/Opacity';
-import ColorLens from '@material-ui/icons/ColorLens';
+import { WbSunny, FilterDrama, Opacity, ColorLens } from '@material-ui/icons';
 import { withStyles } from '@material-ui/core/styles';
+import { PropTypes } from 'prop-types';
 import { owners } from './data';
 
 const appointments = [
@@ -117,7 +115,7 @@ const getBorder = (theme) =>
 
 const DayScaleCell = (props) => (
   <MonthView.DayScaleCell
-  {...props}
+    startDate={props.startDate}
     style={{ textAlign: 'center', fontWeight: 'bold' }}
   />
 );
@@ -242,14 +240,14 @@ const styles = (theme) => ({
   },
 });
 
-const WeatherIcon = ({ classes, id }) => {
-  switch (id) {
+const WeatherIcon = (props) => {
+  switch (props.id) {
     case 0:
-      return <Opacity className={classes.rain} fontSize="large" />;
+      return <Opacity className={props.classes.rain} fontSize="large" />;
     case 1:
-      return <WbSunny className={classes.sun} fontSize="large" />;
+      return <WbSunny className={props.classes.sun} fontSize="large" />;
     case 2:
-      return <FilterDrama className={classes.cloud} fontSize="large" />;
+      return <FilterDrama className={props.classes.cloud} fontSize="large" />;
     default:
       return null;
   }
@@ -257,13 +255,15 @@ const WeatherIcon = ({ classes, id }) => {
 
 // #FOLD_BLOCK
 const CellBase = React.memo(
-  ({
-    classes,
-    startDate,
-    formatDate,
-    otherMonth,
-    // #FOLD_BLOCK
-  }) => {
+  (
+    props,
+    {
+      startDate,
+      formatDate,
+      otherMonth,
+      // #FOLD_BLOCK
+    }
+  ) => {
     const iconId = Math.abs(Math.floor(Math.sin(startDate.getDate()) * 10) % 3);
     const isFirstMonthDay = startDate.getDate() === 1;
     const formatOptions = isFirstMonthDay
@@ -273,17 +273,17 @@ const CellBase = React.memo(
       <TableCell
         tabIndex={0}
         className={classNames({
-          [classes.cell]: true,
-          [classes.rainBack]: iconId === 0,
-          [classes.sunBack]: iconId === 1,
-          [classes.cloudBack]: iconId === 2,
-          [classes.opacity]: otherMonth,
+          [props.classes.cell]: true,
+          [props.classes.rainBack]: iconId === 0,
+          [props.classes.sunBack]: iconId === 1,
+          [props.classes.cloudBack]: iconId === 2,
+          [props.classes.opacity]: otherMonth,
         })}
       >
-        <div className={classes.content}>
-          <WeatherIcon classes={classes} id={iconId} />
+        <div className={props.classes.content}>
+          <WeatherIcon classes={props.classes} id={iconId} />
         </div>
-        <div className={classes.text}>
+        <div className={props.classes.text}>
           {formatDate(startDate, formatOptions)}
         </div>
       </TableCell>
@@ -343,11 +343,11 @@ export default class Demo extends React.PureComponent {
         data = [...data, { id: startingAddedId, ...added }];
       }
       if (changed) {
-        data = data.map((appointment) =>
-          changed[appointment.id]
+        data = data.map((appointment) => {
+          return changed[appointment.id]
             ? { ...appointment, ...changed[appointment.id] }
-            : appointment
-        );
+            : appointment;
+        });
       }
       if (deleted !== undefined) {
         data = data.filter((appointment) => appointment.id !== deleted);
@@ -388,3 +388,12 @@ export default class Demo extends React.PureComponent {
     );
   }
 }
+
+CellBase.propTypes = {
+  classes: PropTypes.isRequired,
+};
+
+WeatherIcon.propTypes = {
+  id: PropTypes.string.isRequired,
+  classes: PropTypes.isRequired,
+};

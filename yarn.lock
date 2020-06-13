@@ -11849,11 +11849,7 @@ promzard@^0.3.0:
   dependencies:
     read "1"
 
-<<<<<<< HEAD
-prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2:
-=======
-prop-types@^15.0.0, prop-types@^15.6.2, prop-types@^15.7.2:
->>>>>>> develop
+prop-types@^15.0.0, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -12150,15 +12146,6 @@ react-material-ui-carousel@^1.1.1:
     node-sass "^4.14.0"
     react-scripts "^3.4.0"
 
-<<<<<<< HEAD
-react-mobile-store-button@0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/react-mobile-store-button/-/react-mobile-store-button-0.0.6.tgz#81ff197285169e132f000bb35e92b2f25440bc8b"
-  integrity sha512-TJuQXXcyVpf4XPvql0X2yqSrnsM4KBkwRNzn74hbe+ykfAS31dNZa9DxUjU9aey+X+MXs/q3ewRw2O5XSJgwHg==
-  dependencies:
-    prop-types "^15.6.0"
-    react "^16.2.0"
-=======
 react-material-ui-form-validator@^2.0.10:
   version "2.0.10"
   resolved "https://registry.yarnpkg.com/react-material-ui-form-validator/-/react-material-ui-form-validator-2.0.10.tgz#3ea4d2759f6c50e140bd346efc4a2e84b8e02683"
@@ -12166,6 +12153,14 @@ react-material-ui-form-validator@^2.0.10:
   dependencies:
     prop-types "^15.0.0"
     react-form-validator-core "0.6.4"
+
+react-mobile-store-button@0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/react-mobile-store-button/-/react-mobile-store-button-0.0.6.tgz#81ff197285169e132f000bb35e92b2f25440bc8b"
+  integrity sha512-TJuQXXcyVpf4XPvql0X2yqSrnsM4KBkwRNzn74hbe+ykfAS31dNZa9DxUjU9aey+X+MXs/q3ewRw2O5XSJgwHg==
+  dependencies:
+    prop-types "^15.6.0"
+    react "^16.2.0"
 
 react-redux@^7.2.0:
   version "7.2.0"
@@ -12177,7 +12172,6 @@ react-redux@^7.2.0:
     loose-envify "^1.4.0"
     prop-types "^15.7.2"
     react-is "^16.9.0"
->>>>>>> develop
 
 react-router-dom@^5.1.2:
   version "5.1.2"

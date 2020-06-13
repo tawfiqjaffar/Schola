@@ -132,17 +132,12 @@ const LandingPage = () => {
         </Grid>
         <Cards className={classes.cards} />
         <a href="https://github.com/Joeyryanbridges">
-          <img
-            alt="GitHub button"
-            src={Background}
-            className="githubIcon"
-            style={{ width: '50%' }}
-          />
+          <img alt="android" src={Background} style={{ width: '50%' }} />
         </a>
         <a href="https://github.com/Joeyryanbridges">
           <img
-            alt="GitHub button"
             src={ios}
+            alt="ios"
             className="githubIcon"
             style={{ width: '23%' }}
           />

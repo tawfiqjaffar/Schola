@@ -1,10 +1,10 @@
-var chromedriver = require('chromedriver');
+var chromedriver = require("chromedriver");
 
 var identifiers = {
-    good_username: 'GoodUsername',
-    good_password: 'BadPassword',
-    bad_username: 'BadUsername',
-    bad_password: 'BadPassword'
+    good_username: "GoodUsername",
+    good_password: "BadPassword",
+    bad_username: "BadUsername",
+    bad_password: "BadPassword",
 };
 
 module.exports = {
@@ -31,7 +31,7 @@ module.exports = {
         done();
     },
 
-    // arrête l’exécution des tests en cas d'erreur
+    // arrête l’exécution des tests en cas d'erreureslin
     abortOnAssertionFailure: true,
 
     // temps d’attente entre chaque condition de test
@@ -47,5 +47,5 @@ module.exports = {
      * défini si le test doit échouer lorsque plusieurs élément HTML sont trouvé alors
      * que nous n’en n’attendons qu’un.
      */
-    throwOnMultipleElementsReturned: true
+    throwOnMultipleElementsReturned: true,
 };

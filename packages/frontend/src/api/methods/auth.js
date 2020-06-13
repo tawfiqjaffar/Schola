@@ -22,7 +22,11 @@ const postLoginUser = async (email, password) => {
     });
     res = response.data;
   } catch (axiosErr) {
+    console.log(axiosErr);
     res = axiosErr.response && axiosErr.response.data;
+    if (!res) {
+      res = { code: 500, message: 'connection error' };
+    }
   }
   return res;
 };

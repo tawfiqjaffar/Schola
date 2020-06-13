@@ -2,7 +2,7 @@ module.exports = {
     '@tags': ['login', 'schola'],
     'Login success': function (browser) {
         var settings = browser.globals,
-        identifiers = browser.globals.identifiers;
+            identifiers = browser.globals.identifiers;
 
         browser
             .url('http://localhost:3000/Login')
@@ -17,7 +17,7 @@ module.exports = {
     },
     'Login failure': function (browser) {
         var settings = browser.globals,
-        identifiers = browser.globals.identifiers;
+            identifiers = browser.globals.identifiers;
 
         browser
             .url('http://localhost:3000/Login')

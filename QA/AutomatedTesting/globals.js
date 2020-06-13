@@ -11,21 +11,21 @@ module.exports = {
     identifiers: identifiers,
 
     // lance le driver avant les tests
-    before: function(done) {
+    before: function (done) {
         chromedriver.start();
 
         done();
     },
 
     // arrête le driver une fois les tests terminé
-    after: function(done) {
+    after: function (done) {
         chromedriver.stop();
 
         done();
     },
 
     // ferme le navigateur après chaque scenario
-    afterEach: function(browser, done) {
+    afterEach: function (browser, done) {
         browser.end();
 
         done();

@@ -60,7 +60,7 @@ const Cantine = () => {
         <Grid container justify="center">
           <Grid item>
             <Paper className={classes.paper}>
-              <p>test</p>
+              <p>Horaire de Cantine</p>
               <form className={classes.form} noValidate autoComplete="off">
                 <FormControl>
                   <InputLabel>Heure d'ouverture</InputLabel>
@@ -78,7 +78,7 @@ const Cantine = () => {
       </Grid>
       <Grid item xs={10}>
         <Grid container justify="center" spacing={spacing}>
-          {['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi'].map((value) => (
+          {['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi'].map((value) => (
             <Grid key={value} item>
               <Paper className={classes.paper}>
                 <p>{value}</p>

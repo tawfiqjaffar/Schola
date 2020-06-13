@@ -4,7 +4,6 @@ import LandingPage from '../pages/LandingPage';
 import PageNotFound from '../pages/PageNotFound';
 import Login from '../pages/Login';
 import Home from '../pages/HomePage/HomePage';
-import NavigationBar from './NavigationBar';
 
 const Router = () => (
   <BrowserRouter>

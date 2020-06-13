@@ -133,13 +133,19 @@ const LandingPage = () => {
         <Cards className={classes.cards} />
         <a href="https://github.com/Joeyryanbridges">
           <img
+            alt="GitHub button"
             src={Background}
             className="githubIcon"
             style={{ width: '50%' }}
           />
         </a>
         <a href="https://github.com/Joeyryanbridges">
-          <img src={ios} className="githubIcon" style={{ width: '23%' }} />
+          <img
+            alt="GitHub button"
+            src={ios}
+            className="githubIcon"
+            style={{ width: '23%' }}
+          />
         </a>
       </Grid>
     </Container>

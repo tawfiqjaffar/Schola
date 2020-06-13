@@ -1,17 +1,15 @@
 const mongoose = require('mongoose');
 
-const scheduleSchema = new mongoose.Schema({
+const taskSchema = new mongoose.Schema({
   subjectId: {
     type: mongoose.Schema.Types.ObjectId,
+    required: true,
   },
   teacherId: {
     type: mongoose.Schema.Types.ObjectId,
-  },
-  start: {
-    type: Date,
     required: true,
   },
-  end: {
+  dueDate: {
     type: Date,
     required: true,
   },
@@ -20,9 +18,9 @@ const scheduleSchema = new mongoose.Schema({
     required: true,
   },
   usersId: {
-    type: [mongoose.Schema.Types.ObjectId],
+    type: mongoose.Schema.Types.ObjectId,
     required: true,
   },
 });
 
-module.exports = mongoose.model('Schedule', scheduleSchema);
+module.exports = mongoose.model('Task', taskSchema);

@@ -1,10 +1,9 @@
-const Schedule = require('../../models/schedule');
+const Task = require('../../models/task');
 const responseBody = require('../../routes/responseBody');
-const { getStartDay, getEndDay } = require('../dateFunction');
 const { getStartWeek, getEndWeek } = require('../dateFunction');
 
-const getAllSchedule = (req, res) => {
-    Schedule.find({ usersId: req.user._id }, (err, data) => {
+const getAllTask = (req, res) => {
+    Task.find({ usersId: req.user._id }, (err, data) => {
         if (err) {
             return res.status(responseBody.responseCode.INTSERVERR)
             .send(
@@ -19,12 +18,14 @@ const getAllSchedule = (req, res) => {
     })
 }
 
-const getDaySchedule = (req, res) => {
-    var startDay = getStartDay();
-    var endDay = getEndDay();
-    Schedule.find({ $and: [
+const getDayTask = (req, res) => {
+    var date = new Date();
+    date.setHours(0);
+    date.setMinutes(0);
+    date.setSeconds(0);
+    Task.find({ $and: [
         { usersId: req.user._id },
-        { start: { $gte: startDay, $lte: endDay } }
+        { dueDate: date }
     ] }, (err, data) => {
         if (err) {
             return res.status(responseBody.responseCode.INTSERVERR)
@@ -40,12 +41,12 @@ const getDaySchedule = (req, res) => {
     })
 }
 
-const getWeekSchedule = (req, res) => {
+const getWeekTask = (req, res) => {
     var monday = getStartWeek();
     var sunday = getEndWeek();
-    Schedule.find({ $and: [
+    Task.find({ $and: [
         { usersId: req.user._id },
-        { start: { $gte: monday, $lte: sunday } }
+        { dueDate: {$gte: monday, $lte: sunday} }
     ] }, (err, data) => {
         if (err) {
             return res.status(responseBody.responseCode.INTSERVERR)
@@ -62,7 +63,7 @@ const getWeekSchedule = (req, res) => {
 }
 
 module.exports = {
-    getAllSchedule,
-    getDaySchedule,
-    getWeekSchedule
-};
+    getAllTask,
+    getDayTask,
+    getWeekTask
+};  

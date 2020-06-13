@@ -6,10 +6,11 @@ const mockgoose = require('mockgoose');
 const cors = require('cors');
 const routes = require('./src/routes/routes');
 
-const port = process.env.PORT || 8080;
 const secret = process.env.SECRET;
 const dbUri = process.env.MONGODB_URI;
 const nodeEnv = process.env.NODE_ENV || 'dev';
+
+const app = express();
 
 const checkPrerequisites = () => {
   let returnValue = true;
@@ -57,8 +58,6 @@ const connectMongodb = () => {
 };
 
 const connectExpress = () => {
-  const app = express();
-
   app.use(bodyParser.json());
   app.use(
     cors({
@@ -76,16 +75,14 @@ const connectExpress = () => {
     app.use(routePrefix, route);
   });
   app.use('/thumb', express.static(`${__dirname}/public`));
-  app.listen(port, () => {
-    console.log(`Server started on port ${port}`);
-  });
 };
 
 const runServer = () => {
+  process.title = 'schola-server';
   if (!checkPrerequisites())
     throw new Error('Prerequisites check unsuccessful');
   connectMongodb();
   connectExpress();
 };
 
-module.exports = runServer;
+module.exports = { runServer, app };

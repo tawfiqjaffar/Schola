@@ -14,11 +14,9 @@ import Showcase from './Showcase';
 import Background from './android.png';
 import ios from './ios.png';
 
-const backgroundColor = (theme) => {
-  const { primary } = theme.palette;
-  const { secondary } = theme.palette;
-  return `linear-gradient(90deg, ${primary.main}, ${secondary.main})`;
-};
+const primary = (theme) => theme.palette.primary.main;
+
+const secondary = (theme) => theme.palette.secondary.main;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,7 +42,9 @@ const useStyles = makeStyles((theme) => ({
     top: 0,
   },
   submitButton: {
-    background: backgroundColor(theme),
+    background: `linear-gradient(90deg, ${primary(theme)}, ${secondary(
+      theme
+    )})`,
   },
   textfield: {
     width: '100%',

@@ -48,6 +48,10 @@ export default function NavigationBar() {
   const redirectToLogin = () => {
     history.push('/login');
   };
+  const redirectToLandingPage = () => {
+    history.push('/');
+    sessionStorage.removeItem('token');
+  };
 
   return (
     <AppBar position="sticky" className={classes.root}>
@@ -58,19 +62,32 @@ export default function NavigationBar() {
         <Typography className={classes.title} variant="h5">
           Schola
         </Typography>
-        <Button
-          className={[classes.menuButton, classes.buttonLogin].join(' ')}
-          variant="contained"
-          onClick={redirectToLogin}
-        >
-          <Typography>Log in</Typography>
-        </Button>
-        <Button
-          className={[classes.menuButton, classes.buttonRegister].join(' ')}
-          variant="contained"
-        >
-          <Typography>Register</Typography>
-        </Button>
+        {!sessionStorage.getItem('token') && (
+          <Button
+            className={[classes.menuButton, classes.buttonLogin].join(' ')}
+            variant="contained"
+            onClick={redirectToLogin}
+          >
+            <Typography>Log in</Typography>
+          </Button>
+        )}
+        {!sessionStorage.getItem('token') && (
+          <Button
+            className={[classes.menuButton, classes.buttonRegister].join(' ')}
+            variant="contained"
+          >
+            <Typography>Register</Typography>
+          </Button>
+        )}
+        {sessionStorage.getItem('token') && (
+          <Button
+            className={[classes.menuButton, classes.buttonRegister].join(' ')}
+            variant="contained"
+            onClick={redirectToLandingPage}
+          >
+            <Typography>Log out</Typography>
+          </Button>
+        )}
       </Toolbar>
     </AppBar>
   );

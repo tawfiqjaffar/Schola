@@ -51,7 +51,7 @@ const updateRole = (req, res) => {
           .status(responseBody.responseCode.FORBID)
           .send(
             responseBody.buildResponseBody(
-              'You do not have the access right to make such a modification',
+              'You do not have the access right to perform such a modification',
               responseBody.responseCode.FORBID
             )
           );

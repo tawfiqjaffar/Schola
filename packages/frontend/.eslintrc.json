@@ -21,6 +21,9 @@
     "comma-dangle": "off",
     "react/forbid-prop-types": 0,
     "object-curly-newline": "off",
-    "consistent-return": "off"
+    "consistent-return": "off",
+    "implicit-arrow-linebreak": "off",
+    "no-console": "off",
+    "max-len": ["error", { "ignoreUrls": true, "ignoreStrings": true }]
   }
 }

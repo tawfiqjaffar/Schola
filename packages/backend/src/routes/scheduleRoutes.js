@@ -8,7 +8,7 @@ const {
 } = require('../controllers/Schedule/scheduleGet');
 const { createSchedule } = require('../controllers/Schedule/schedulePost');
 const { deleteSchedule } = require('../controllers/Schedule/scheduleDelete');
-const { updateSchedule } = require('../controllers/Schedule/schedulePut');
+const { updateDateSchedule } = require('../controllers/Schedule/schedulePut');
 
 const router = express.Router();
 
@@ -53,11 +53,11 @@ router.delete(
 );
 
 router.put(
-  '/update',
+  '/updateDate',
   [check('authorization', 'you must provide a bearer access token').notEmpty()],
   checkFields,
   authenticateJwt,
-  updateSchedule
+  updateDateSchedule
 );
 
 module.exports = router;

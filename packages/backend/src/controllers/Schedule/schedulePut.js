@@ -1,14 +1,14 @@
 const Schedule = require('../../models/schedule');
 const responseBody = require('../../routes/responseBody');
 
-const updateSchedule = (req, res) => {
-    delete req.body._id;
+const updateDateSchedule = (req, res) => {
+    const id = req.body.id;
+    const newStart = req.body.start;
+    const newEnd = req.body.end;
 
-    const schedule = new Schedule({
-        ...req.body
-    })
-
-    schedule.save((err, data) => {
+    Schedule.updateOne( { _id: id },
+        { $set: {start: newStart, end: newEnd} },
+        (err, data) => {
         if (err) {
             console.log(err);
             return res.status(responseBody.responseCode.INTSERVERR)
@@ -25,5 +25,5 @@ const updateSchedule = (req, res) => {
 }
 
 module.exports = {
-    updateSchedule
+    updateDateSchedule
 };

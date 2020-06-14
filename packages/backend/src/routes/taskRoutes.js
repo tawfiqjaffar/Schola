@@ -8,7 +8,7 @@ const {
 } = require('../controllers/Task/taskGet');
 const { createTask } = require('../controllers/Task/taskPost');
 const { deleteTask } = require('../controllers/Task/taskDelete');
-const { updateTask } = require('../controllers/Task/taskPut');
+const { updateTask, updateDateTask } = require('../controllers/Task/taskPut');
 
 const router = express.Router();
 
@@ -58,6 +58,14 @@ router.put(
   checkFields,
   authenticateJwt,
   updateTask
+);
+
+router.put(
+  '/updateDate',
+  [check('authorization', 'you must provide a bearer access token').notEmpty()],
+  checkFields,
+  authenticateJwt,
+  updateDateTask
 );
 
 module.exports = router;

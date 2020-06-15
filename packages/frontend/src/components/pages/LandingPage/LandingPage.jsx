@@ -11,6 +11,8 @@ import logo from '../../../assets/logo.png';
 import CustomTextFieldFilled from '../../common/CustomTextFieldFilled';
 import Cards from './Cards';
 import Showcase from './Showcase';
+import Background from './android.png';
+import ios from './ios.png';
 
 const primary = (theme) => theme.palette.primary.main;
 
@@ -129,6 +131,17 @@ const LandingPage = () => {
           </Typography>
         </Grid>
         <Cards className={classes.cards} />
+        <a href="https://github.com/Joeyryanbridges">
+          <img alt="android" src={Background} style={{ width: '50%' }} />
+        </a>
+        <a href="https://github.com/Joeyryanbridges">
+          <img
+            src={ios}
+            alt="ios"
+            className="githubIcon"
+            style={{ width: '23%' }}
+          />
+        </a>
       </Grid>
     </Container>
   );

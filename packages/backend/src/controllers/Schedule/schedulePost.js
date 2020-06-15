@@ -2,7 +2,7 @@ const Schedule = require('../../models/schedule');
 const responseBody = require('../../routes/responseBody');
 
 const createSchedule = (req, res) => {
-    if (req.user.role === 'teacher' || req.user.role === 'viesco' || req.user.role == 'admin') {
+    if (req.user.role === 'viesco' || req.user.role == 'admin') {
         delete req.body._id;
 
         const schedule = new Schedule({

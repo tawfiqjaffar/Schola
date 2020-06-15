@@ -2,7 +2,7 @@ const Task = require('../../models/task');
 const responseBody = require('../../routes/responseBody');
 
 const createTask = (req, res) => {
-    if (req.user.role === 'teacher' || req.user.role === 'viesco' || req.user.role == 'admin') {
+    if (req.user.role === 'viesco' || req.user.role == 'admin') {
         delete req.body._id;
 
         const task = new Task({

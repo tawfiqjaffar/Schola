@@ -2,7 +2,7 @@ const Schedule = require('../../models/schedule');
 const responseBody = require('../../routes/responseBody');
 
 const updateDateSchedule = (req, res) => {
-    if (req.user.role === 'teacher' || req.user.role === 'viesco' || req.user.role == 'admin') {
+    if (req.user.role === 'viesco' || req.user.role == 'admin') {
         const id = req.body.id;
         const newStart = req.body.start;
         const newEnd = req.body.end;

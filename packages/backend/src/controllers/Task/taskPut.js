@@ -2,7 +2,7 @@ const Task = require('../../models/task');
 const responseBody = require('../../routes/responseBody');
 
 const updateTask = (req, res) => {
-    if (req.user.role === 'teacher' || req.user.role === 'viesco' || req.user.role == 'admin') {
+    if (req.user.role === 'viesco' || req.user.role == 'admin') {
         const id = req.body.id;
         const newLabel = req.body.label;
 
@@ -34,7 +34,7 @@ const updateTask = (req, res) => {
 }
 
 const updateDateTask = (req, res) => {
-    if (req.user.role === 'teacher' || req.user.role === 'viesco' || req.user.role == 'admin') {
+    if (req.user.role === 'viesco' || req.user.role == 'admin') {
         const id = req.body.id;
         const newDueDate = req.body.dueDate;
 

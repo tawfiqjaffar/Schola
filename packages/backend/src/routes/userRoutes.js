@@ -2,7 +2,10 @@ const express = require('express');
 const { check } = require('express-validator');
 const { checkFields, authenticateJwt } = require('./middleware');
 const { getAllUsersAdmin, getMe } = require('../controllers/User/userGet');
-const { postCreateUser } = require('../controllers/User/userPost');
+const {
+  postCreateUser,
+  postSendPasswordResetCode,
+} = require('../controllers/User/userPost');
 const { updateRole } = require('../controllers/User/userPut');
 
 const router = express.Router();
@@ -31,6 +34,13 @@ router.put(
   checkFields,
   authenticateJwt,
   updateRole
+);
+
+router.post(
+  '/reset-password-request',
+  [check('email', 'you must provide an email address').notEmpty()],
+  checkFields,
+  postSendPasswordResetCode
 );
 
 module.exports = router;

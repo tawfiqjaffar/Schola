@@ -8,7 +8,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js --exec 'yarn lint && node'",
-    "lint": "eslint ./*.js src/encryption/*.js src/models/*.js src/routes/*.js",
+    "lint": "eslint ./*.js src/encryption/*.js src/models/*.js src/routes/*.js src/controllers/*.js",
     "test:watch": "jest --detectOpenHandles --watchAll"
   },
   "devDependencies": {
@@ -31,14 +31,15 @@
     "axios": "^0.19.2",
     "bcrypt": "^4.0.1",
     "body-parser": "^1.19.0",
-    "mockgoose": "^8.0.4",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-validator": "^6.4.0",
     "form-data": "^3.0.0",
     "jsonwebtoken": "^8.5.1",
+    "mockgoose": "^8.0.4",
     "mongoose": "^5.9.7",
+    "nodemailer": "^6.4.8",
     "react": "^16.13.1"
   },
   "nodemonConfig": {

@@ -3,6 +3,7 @@
 const User = require('../../models/user');
 const responseBody = require('../../routes/responseBody');
 const { hashPassword } = require('../../encryption/hash');
+const mailer = require('../../config/mailer');
 
 const postCreateUser = (req, res) => {
   const { password, firstname, lastname, email, dateofbirth, role } = req.body;
@@ -64,6 +65,44 @@ const postCreateUser = (req, res) => {
   });
 };
 
+const postSendPasswordResetCode = (req, res) => {
+  const { email } = req;
+  User.find({ email }, (err, user) => {
+    if (err) {
+      return res
+        .status(responseBody.responseCode.INTSERVERR)
+        .send(
+          responseBody.buildResponseBody(
+            err,
+            responseBody.responseCode.INTSERVERR
+          )
+        );
+    } else if (user.length === 0) {
+      console.log(user);
+      return res
+        .status(responseBody.responseCode.NOTFOUND)
+        .send(
+          responseBody.buildResponseBody(
+            err,
+            responseBody.responseCode.NOTFOUND
+          )
+        );
+    } else {
+      const mailRes = mailer(email, 123);
+      console.log(mailRes);
+      return res
+        .status(responseBody.responseCode.SUCCESS)
+        .send(
+          responseBody.buildResponseBody(
+            'sent mail',
+            responseBody.responseCode.SUCCESS
+          )
+        );
+    }
+  });
+};
+
 module.exports = {
   postCreateUser,
+  postSendPasswordResetCode,
 };

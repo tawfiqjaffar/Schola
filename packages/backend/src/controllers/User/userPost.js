@@ -4,6 +4,7 @@ const User = require('../../models/user');
 const responseBody = require('../../routes/responseBody');
 const { hashPassword } = require('../../encryption/hash');
 const mailer = require('../../config/mailer');
+const randstring = require('randomstring');
 
 const postCreateUser = (req, res) => {
   const { password, firstname, lastname, email, dateofbirth, role } = req.body;
@@ -66,7 +67,8 @@ const postCreateUser = (req, res) => {
 };
 
 const postSendPasswordResetCode = (req, res) => {
-  const { email } = req;
+  const { email } = req.body;
+  console.log(email);
   User.find({ email }, (err, user) => {
     if (err) {
       return res
@@ -78,7 +80,6 @@ const postSendPasswordResetCode = (req, res) => {
           )
         );
     } else if (user.length === 0) {
-      console.log(user);
       return res
         .status(responseBody.responseCode.NOTFOUND)
         .send(
@@ -88,16 +89,122 @@ const postSendPasswordResetCode = (req, res) => {
           )
         );
     } else {
-      const mailRes = mailer(email, 123);
-      console.log(mailRes);
+      const key = randstring.generate();
+      return mailer(email, `Your verification key: ${key}`, (errMail, info) => {
+        if (errMail) {
+          console.error(errMail);
+          return res
+            .status(responseBody.responseCode.INTSERVERR)
+            .send(
+              responseBody.buildResponseBody(
+                errMail,
+                responseBody.responseCode.INTSERVERR
+              )
+            );
+        } else {
+          return User.findByIdAndUpdate(
+            { _id: user[0]._id },
+            { passwordRecoveryToken: key },
+            (errFind, product) => {
+              if (errFind) {
+                return res
+                  .status(responseBody.responseCode.INTSERVERR)
+                  .send(
+                    responseBody.buildResponseBody(
+                      errFind,
+                      responseBody.responseCode.INTSERVERR
+                    )
+                  );
+              } else {
+                return res
+                  .status(responseBody.responseCode.SUCCESS)
+                  .send(
+                    responseBody.buildResponseBody(
+                      info,
+                      responseBody.responseCode.SUCCESS
+                    )
+                  );
+              }
+            }
+          );
+        }
+      });
+    }
+  });
+};
+
+const postResetUserPassword = (req, res) => {
+  const { recoveryToken, email, password } = req.body;
+
+  User.findOne({ email }, async (err, found) => {
+    if (err) {
       return res
-        .status(responseBody.responseCode.SUCCESS)
+        .status(responseBody.responseCode.INTSERVERR)
         .send(
           responseBody.buildResponseBody(
-            'sent mail',
-            responseBody.responseCode.SUCCESS
+            err,
+            responseBody.responseCode.INTSERVERR
           )
         );
+    } else if (!found) {
+      return res
+        .status(responseBody.responseCode.NOTFOUND)
+        .send(
+          responseBody.buildResponseBody(
+            'not found',
+            responseBody.responseCode.NOTFOUND
+          )
+        );
+    } else if (found.passwordRecoveryToken !== recoveryToken) {
+      return res
+        .status(responseBody.responseCode.FORBID)
+        .send(
+          responseBody.buildResponseBody(
+            'invalid recovery token',
+            responseBody.responseCode.FORBID
+          )
+        );
+    } else {
+      try {
+        const hashed = await hashPassword(password);
+        return User.findOneAndUpdate(
+          { email },
+          {
+            password: hashed,
+            passwordRecoveryToken: '',
+          },
+          (errProd, prod) => {
+            if (errProd) {
+              return res
+                .status(responseBody.responseCode.INTSERVERR)
+                .send(
+                  responseBody.buildResponseBody(
+                    errProd,
+                    responseBody.responseCode.INTSERVERR
+                  )
+                );
+            } else {
+              return res
+                .status(responseBody.responseCode.SUCCESS)
+                .send(
+                  responseBody.buildResponseBody(
+                    prod,
+                    responseBody.responseCode.SUCCESS
+                  )
+                );
+            }
+          }
+        );
+      } catch (bcryptErr) {
+        return res
+          .status(responseBody.responseCode.INTSERVERR)
+          .send(
+            responseBody.buildResponseBody(
+              bcryptErr,
+              responseBody.responseCode.INTSERVERR
+            )
+          );
+      }
     }
   });
 };
@@ -105,4 +212,5 @@ const postSendPasswordResetCode = (req, res) => {
 module.exports = {
   postCreateUser,
   postSendPasswordResetCode,
+  postResetUserPassword,
 };

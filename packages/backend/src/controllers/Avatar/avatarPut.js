@@ -3,9 +3,9 @@ const User = require('../../models/user');
 const responseBody = require('../../routes/responseBody');
 
 const updateUserAvatar = (req, res) => {
-  const { avatarLabel } = req.body;
+  const { avatarPath } = req.body;
 
-  return Avatar.findOne({ label: avatarLabel }, (err, data) => {
+  return Avatar.findOne({ path: avatarPath }, (err, data) => {
     if (err) {
       return res
         .status(responseBody.responseCode.INTSERVERR)

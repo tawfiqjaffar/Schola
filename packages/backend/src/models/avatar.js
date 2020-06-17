@@ -4,10 +4,12 @@ const avatarSchema = new mongoose.Schema({
   label: {
     type: String,
     required: true,
+    unique: true,
   },
   path: {
     type: String,
     required: true,
+    unique: true,
   },
 });
 

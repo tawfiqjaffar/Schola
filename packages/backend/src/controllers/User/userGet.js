@@ -7,7 +7,7 @@ const getAllUsersAdmin = (req, res) => {
   const { user } = req;
   console.log(user);
 
-  User.findById(user._id, (error, foundSingle) => {
+  return User.findById(user._id, (error, foundSingle) => {
     if (error) {
       return res
         .status(responseBody.responseCode.NOTFOUND)
@@ -20,7 +20,7 @@ const getAllUsersAdmin = (req, res) => {
     }
     const { role } = foundSingle;
     if (role === 'admin') {
-      User.find({}, (err, users) => {
+      return User.find({}, (err, users) => {
         if (err) {
           return res
             .status(responseBody.responseCode.INTSERVERR)
@@ -41,7 +41,7 @@ const getAllUsersAdmin = (req, res) => {
           );
       });
     } else {
-      User.findOne({ _id: user._id }, (err, found) => {
+      return User.findOne({ _id: user._id }, (err, found) => {
         if (err) {
           return res
             .status(responseBody.responseCode.INTSERVERR)

@@ -8,7 +8,7 @@ const updateRole = (req, res) => {
   const { role } = req.body;
   const { user } = req;
 
-  User.findById(user._id, (error, foundSignle) => {
+  return User.findById(user._id, (error, foundSignle) => {
     if (error) {
       return res
         .status(responseBody.responseCode.NOTFOUND)
@@ -21,7 +21,7 @@ const updateRole = (req, res) => {
     } else {
       const roleFound = foundSignle.role;
       if (roleFound === 'admin') {
-        User.findOneAndUpdate(
+        return User.findOneAndUpdate(
           { _id: id },
           { role },
           { new: true },

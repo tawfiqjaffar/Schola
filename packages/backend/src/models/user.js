@@ -21,6 +21,10 @@ const schema = new mongoose.Schema({
   dateOfBirth: {
     type: Date,
   },
+  avatar: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+  },
   role: {
     type: String,
     enum: ['student', 'teacher', 'parent', 'viesco', 'admin'],

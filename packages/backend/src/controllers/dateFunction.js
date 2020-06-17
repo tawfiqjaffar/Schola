@@ -1,57 +1,55 @@
 function getStartDay() {
-    var startDay = new Date();
-    startDay.setHours(0);
-    startDay.setMinutes(0);
-    startDay.setSeconds(0);
+  const startDay = new Date();
+  startDay.setHours(0);
+  startDay.setMinutes(0);
+  startDay.setSeconds(0);
 
-    return startDay;
+  return startDay;
 }
 
 function getEndDay() {
-    var endDay = new Date();
-    endDay.setHours(23);
-    endDay.setMinutes(59);
-    endDay.setSeconds(59);
+  const endDay = new Date();
+  endDay.setHours(23);
+  endDay.setMinutes(59);
+  endDay.setSeconds(59);
 
-    return endDay;
+  return endDay;
 }
 
 function getStartWeek() {
-    var today = new Date();
-    
-    var day = today.getDay()-1; // L'index commence à 0 pour Dimanche
-    if (day < 0)
-        day = 6;
-    var date = today.getDate();
-    var month = today.getMonth() + 1; // L'index commence à 0 pour Janvier
-    var year = today.getFullYear();
+  const today = new Date();
 
-    var fromStr = year + "-" + month;
-    var from = new Date(fromStr);
-    from.setDate(date-day);
+  let day = today.getDay() - 1; // L'index commence à 0 pour Dimanche
+  if (day < 0) day = 6;
+  const date = today.getDate();
+  const month = today.getMonth() + 1; // L'index commence à 0 pour Janvier
+  const year = today.getFullYear();
 
-    return from;
+  const fromStr = `${year}-${month}`;
+  const from = new Date(fromStr);
+  from.setDate(date - day);
+
+  return from;
 }
 
 function getEndWeek() {
-    var today = new Date();
-    
-    var day = today.getDay()-1;
-    if (day < 0)
-        day = 6;
-    var date = today.getDate();
-    var month = today.getMonth() + 1;
-    var year = today.getFullYear();
+  const today = new Date();
 
-    var toStr = year + "-" + month;
-    var to = new Date(toStr);
-    to.setDate(date+(6-day));
-    return to;
+  let day = today.getDay() - 1;
+  if (day < 0) day = 6;
+  const date = today.getDate();
+  const month = today.getMonth() + 1;
+  const year = today.getFullYear();
+
+  const toStr = `${year}-${month}`;
+  const to = new Date(toStr);
+  to.setDate(date + (6 - day));
+  return to;
 }
 
 module.exports = {
-    getStartDay,
-    getEndDay,
-    getStartWeek,
-    getEndWeek,
+  getStartDay,
+  getEndDay,
+  getStartWeek,
+  getEndWeek,
 };

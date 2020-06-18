@@ -24,61 +24,63 @@ exports[`NavigationBar should render NavigationBar and match snapshot 1`] = `
     >
       Schola
     </h5>
-    <button
-      className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-menuButton-6 makeStyles-buttonLogin-8"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <span
-        className="MuiButton-label"
+    <div>
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-menuButton-6 makeStyles-buttonLogin-8"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
       >
-        <p
-          className="MuiTypography-root MuiTypography-body1"
+        <span
+          className="MuiButton-label"
         >
-          Log in
-        </p>
-      </span>
-    </button>
-    <button
-      className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-menuButton-6 makeStyles-buttonRegister-7"
-      disabled={false}
-      onBlur={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <span
-        className="MuiButton-label"
+          <p
+            className="MuiTypography-root MuiTypography-body1"
+          >
+            Log in
+          </p>
+        </span>
+      </button>
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-menuButton-6 makeStyles-buttonRegister-7"
+        disabled={false}
+        onBlur={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
       >
-        <p
-          className="MuiTypography-root MuiTypography-body1"
+        <span
+          className="MuiButton-label"
         >
-          Register
-        </p>
-      </span>
-    </button>
+          <p
+            className="MuiTypography-root MuiTypography-body1"
+          >
+            Register
+          </p>
+        </span>
+      </button>
+    </div>
   </div>
 </header>
 `;

@@ -22,7 +22,8 @@ module.exports = {
             desiredCapabilities: {
                 browserName: "chrome",
                 chromeOptions: {
-                    args: ["--headless"],
+                    args: ["--headless", "--disable-gpu", "--no-sandbox"],
+                    binary: "/usr/bin/google-chrome",
                 },
                 acceptSslCerts: true,
             },

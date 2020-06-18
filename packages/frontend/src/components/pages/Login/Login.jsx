@@ -37,6 +37,7 @@ class Login extends React.Component {
         redirect: true,
       });
       sessionStorage.setItem('token', res.data.accessToken);
+      window.location.reload();
     } else {
       this.setState({ loading: false, success: false, open: true });
     }

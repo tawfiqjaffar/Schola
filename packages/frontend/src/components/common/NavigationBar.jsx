@@ -133,7 +133,7 @@ function Logout(props) {
         </StyledMenuItem>
         <StyledMenuItem
           onClick={() => {
-            redirection('/quizz');
+            redirection('/quiz');
           }}
         >
           <ListItemText primary="Quizz" />

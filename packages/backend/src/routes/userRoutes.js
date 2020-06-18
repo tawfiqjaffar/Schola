@@ -4,7 +4,10 @@ const { checkFields, authenticateJwt } = require('./middleware');
 const { getAllUsersAdmin, getMe } = require('../controllers/User/userGet');
 const { postCreateUser } = require('../controllers/User/userPost');
 const { updateRole } = require('../controllers/User/userPut');
-const { getUserAvatar } = require('../controllers/Avatar/avatarGet');
+const {
+  getUserAvatar,
+  getAllAvatar,
+} = require('../controllers/Avatar/avatarGet');
 const { updateUserAvatar } = require('../controllers/Avatar/avatarPut');
 
 const router = express.Router();
@@ -26,11 +29,19 @@ router.get(
 );
 
 router.get(
-  '/avatar',
+  '/myAvatar',
   [check('authorization', 'you must provide a bearer access token').notEmpty()],
   checkFields,
   authenticateJwt,
   getUserAvatar
+);
+
+router.get(
+  '/allAvatar',
+  [check('authorization', 'you must provide a bearer access token').notEmpty()],
+  checkFields,
+  authenticateJwt,
+  getAllAvatar
 );
 
 router.put(

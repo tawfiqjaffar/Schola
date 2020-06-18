@@ -3,7 +3,7 @@ const randstring = require('randomstring');
 const User = require('../../models/user');
 const responseBody = require('../../routes/responseBody');
 const { hashPassword } = require('../../encryption/hash');
-const mailer = require('../../config/mailer');
+const { sendEmail } = require('../../config/mailer');
 
 const postCreateUser = (req, res) => {
   const { password, firstname, lastname, email, dateofbirth, role } = req.body;
@@ -89,45 +89,49 @@ const postSendPasswordResetCode = (req, res) => {
         );
     } else {
       const key = randstring.generate();
-      return mailer(email, `Your verification key: ${key}`, (errMail, info) => {
-        if (errMail) {
-          console.error(errMail);
-          return res
-            .status(responseBody.responseCode.INTSERVERR)
-            .send(
-              responseBody.buildResponseBody(
-                errMail,
-                responseBody.responseCode.INTSERVERR
-              )
-            );
-        } else {
-          return User.findByIdAndUpdate(
-            { _id: user[0]._id },
-            { passwordRecoveryToken: key },
-            (errFind, product) => {
-              if (errFind) {
-                return res
-                  .status(responseBody.responseCode.INTSERVERR)
-                  .send(
-                    responseBody.buildResponseBody(
-                      errFind,
-                      responseBody.responseCode.INTSERVERR
-                    )
-                  );
-              } else {
-                return res
-                  .status(responseBody.responseCode.SUCCESS)
-                  .send(
-                    responseBody.buildResponseBody(
-                      { user: product, mail: info },
-                      responseBody.responseCode.SUCCESS
-                    )
-                  );
+      return sendEmail(
+        email,
+        `Your verification key: ${key}`,
+        (errMail, info) => {
+          if (errMail) {
+            console.error(errMail);
+            return res
+              .status(responseBody.responseCode.INTSERVERR)
+              .send(
+                responseBody.buildResponseBody(
+                  errMail,
+                  responseBody.responseCode.INTSERVERR
+                )
+              );
+          } else {
+            return User.findByIdAndUpdate(
+              { _id: user[0]._id },
+              { passwordRecoveryToken: key },
+              (errFind, product) => {
+                if (errFind) {
+                  return res
+                    .status(responseBody.responseCode.INTSERVERR)
+                    .send(
+                      responseBody.buildResponseBody(
+                        errFind,
+                        responseBody.responseCode.INTSERVERR
+                      )
+                    );
+                } else {
+                  return res
+                    .status(responseBody.responseCode.SUCCESS)
+                    .send(
+                      responseBody.buildResponseBody(
+                        { user: product, mail: info },
+                        responseBody.responseCode.SUCCESS
+                      )
+                    );
+                }
               }
-            }
-          );
+            );
+          }
         }
-      });
+      );
     }
   });
 };

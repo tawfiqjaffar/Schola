@@ -26,4 +26,17 @@ const sendEmail = (toEmail, code, callback) => {
   });
 };
 
-module.exports = sendEmail;
+const sendEmailContact = (toEmail, code, callback) => {
+  const mailOptions = {
+    from: email,
+    to: toEmail,
+    subject: '[Schola] - Email de contact',
+    text: code,
+  };
+
+  transporter.sendMail(mailOptions, (err, info) => {
+    callback(err, info);
+  });
+};
+
+module.exports = { sendEmail, sendEmailContact };

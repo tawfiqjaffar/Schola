@@ -12,7 +12,7 @@ const items = [
 ];
 
 const Showcase = () => (
-  <Caroussel indicators={false} animation="fade">
+  <Caroussel indicators={false} animation="fade" autoPlay={false}>
     {items.map((el) => (
       <ShowcaseItem key={el.label} asset={el.image} />
     ))}

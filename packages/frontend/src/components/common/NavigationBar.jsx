@@ -8,6 +8,7 @@ import {
   Typography,
 } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import logo from '../../assets/logo.png';
 
 const useStyles = makeStyles((theme) => ({
@@ -42,6 +43,51 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+function LoginLogoutDisplay(props) {
+  const { isLogged, redirect, disconnect } = props;
+  console.log(isLogged);
+  if (!isLogged) {
+    return <LoginRegister redirect={redirect} />;
+  }
+  return <Logout disconnect={disconnect} />;
+}
+
+function Logout(props) {
+  const { disconnect } = props;
+  const classes = useStyles();
+  return (
+    <Button
+      className={[classes.menuButton, classes.buttonRegister].join(' ')}
+      variant="contained"
+      onClick={disconnect}
+    >
+      <Typography>Log out</Typography>
+    </Button>
+  );
+}
+
+function LoginRegister(props) {
+  const { redirect } = props;
+  const classes = useStyles();
+  return (
+    <div>
+      <Button
+        className={[classes.menuButton, classes.buttonLogin].join(' ')}
+        variant="contained"
+        onClick={redirect}
+      >
+        <Typography>Log in</Typography>
+      </Button>
+      <Button
+        className={[classes.menuButton, classes.buttonRegister].join(' ')}
+        variant="contained"
+      >
+        <Typography>Register</Typography>
+      </Button>
+    </div>
+  );
+}
+
 export default function NavigationBar() {
   const classes = useStyles();
   const history = useHistory();
@@ -51,7 +97,10 @@ export default function NavigationBar() {
   const redirectToLandingPage = () => {
     history.push('/');
     sessionStorage.removeItem('token');
+    window.location.reload();
   };
+  let isLogged = true;
+  if (!sessionStorage.getItem('token')) isLogged = false;
 
   return (
     <AppBar position="sticky" className={classes.root}>
@@ -62,33 +111,26 @@ export default function NavigationBar() {
         <Typography className={classes.title} variant="h5">
           Schola
         </Typography>
-        {!sessionStorage.getItem('token') && (
-          <Button
-            className={[classes.menuButton, classes.buttonLogin].join(' ')}
-            variant="contained"
-            onClick={redirectToLogin}
-          >
-            <Typography>Log in</Typography>
-          </Button>
-        )}
-        {!sessionStorage.getItem('token') && (
-          <Button
-            className={[classes.menuButton, classes.buttonRegister].join(' ')}
-            variant="contained"
-          >
-            <Typography>Register</Typography>
-          </Button>
-        )}
-        {sessionStorage.getItem('token') && (
-          <Button
-            className={[classes.menuButton, classes.buttonRegister].join(' ')}
-            variant="contained"
-            onClick={redirectToLandingPage}
-          >
-            <Typography>Log out</Typography>
-          </Button>
-        )}
+        <LoginLogoutDisplay
+          isLogged={isLogged}
+          redirect={redirectToLogin}
+          disconnect={redirectToLandingPage}
+        />
       </Toolbar>
     </AppBar>
   );
 }
+
+LoginRegister.propTypes = {
+  redirect: PropTypes.func.isRequired,
+};
+
+Logout.propTypes = {
+  disconnect: PropTypes.func.isRequired,
+};
+
+LoginLogoutDisplay.propTypes = {
+  disconnect: PropTypes.func.isRequired,
+  redirect: PropTypes.func.isRequired,
+  isLogged: PropTypes.bool.isRequired,
+};

@@ -1,5 +1,5 @@
 function getStartDay() {
-  var startDay = new Date();
+  const startDay = new Date();
   startDay.setHours(0);
   startDay.setMinutes(0);
   startDay.setSeconds(0);
@@ -8,7 +8,7 @@ function getStartDay() {
 }
 
 function getEndDay() {
-  var endDay = new Date();
+  const endDay = new Date();
   endDay.setHours(23);
   endDay.setMinutes(59);
   endDay.setSeconds(59);
@@ -17,32 +17,32 @@ function getEndDay() {
 }
 
 function getStartWeek() {
-  var today = new Date();
+  const today = new Date();
 
-  var day = today.getDay() - 1; // L'index commence à 0 pour Dimanche
+  let day = today.getDay() - 1; // L'index commence à 0 pour Dimanche
   if (day < 0) day = 6;
-  var date = today.getDate();
-  var month = today.getMonth() + 1; // L'index commence à 0 pour Janvier
-  var year = today.getFullYear();
+  const date = today.getDate();
+  const month = today.getMonth() + 1; // L'index commence à 0 pour Janvier
+  const year = today.getFullYear();
 
-  var fromStr = year + '-' + month;
-  var from = new Date(fromStr);
+  const fromStr = `${year}-${month}`;
+  const from = new Date(fromStr);
   from.setDate(date - day);
 
   return from;
 }
 
 function getEndWeek() {
-  var today = new Date();
+  const today = new Date();
 
-  var day = today.getDay() - 1;
+  let day = today.getDay() - 1;
   if (day < 0) day = 6;
-  var date = today.getDate();
-  var month = today.getMonth() + 1;
-  var year = today.getFullYear();
+  const date = today.getDate();
+  const month = today.getMonth() + 1;
+  const year = today.getFullYear();
 
-  var toStr = year + '-' + month;
-  var to = new Date(toStr);
+  const toStr = `${year}-${month}`;
+  const to = new Date(toStr);
   to.setDate(date + (6 - day));
   return to;
 }

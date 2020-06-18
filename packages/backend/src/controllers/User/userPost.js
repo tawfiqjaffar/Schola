@@ -1,10 +1,9 @@
 // request creating some docs in db about user
-
+const randstring = require('randomstring');
 const User = require('../../models/user');
 const responseBody = require('../../routes/responseBody');
 const { hashPassword } = require('../../encryption/hash');
 const mailer = require('../../config/mailer');
-const randstring = require('randomstring');
 
 const postCreateUser = (req, res) => {
   const { password, firstname, lastname, email, dateofbirth, role } = req.body;
@@ -120,7 +119,7 @@ const postSendPasswordResetCode = (req, res) => {
                   .status(responseBody.responseCode.SUCCESS)
                   .send(
                     responseBody.buildResponseBody(
-                      info,
+                      { user: product, mail: info },
                       responseBody.responseCode.SUCCESS
                     )
                   );

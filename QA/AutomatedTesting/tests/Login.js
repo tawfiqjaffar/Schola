@@ -1,6 +1,6 @@
 module.exports = {
     "@tags": ["login", "schola"],
-    "Login success": function (browser) {
+    "Login component success": function (browser) {
         var settings = browser.globals,
             identifiers = browser.globals.identifiers;
 
@@ -12,10 +12,11 @@ module.exports = {
             .assert.visible("input[type=password]")
             .setValue('input[type="text"]', identifiers.good_username)
             .setValue('input[type="password"]', identifiers.good_password)
-            .pause(1000)
+            .click("#root>form>div>div.center>button")
+            .assert.urlContains("home")
             .end();
     },
-    "Login failure": function (browser) {
+    "Login component failure": function (browser) {
         var settings = browser.globals,
             identifiers = browser.globals.identifiers;
 
@@ -27,7 +28,8 @@ module.exports = {
             .assert.visible("input[type=password]")
             .setValue('input[type="text"]', identifiers.bad_username)
             .setValue('input[type="password"]', identifiers.bad_password)
-            .pause(1000)
+            .click("#root>form>div>div.center>button")
+            .assert.urlContains("Login")
             .end();
     },
 };

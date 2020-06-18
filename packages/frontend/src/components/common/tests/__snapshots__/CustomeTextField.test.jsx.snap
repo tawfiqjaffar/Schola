@@ -23,7 +23,7 @@ exports[`CustomTextField should render CustomTextField and match snapshot 1`] = 
     />
     <fieldset
       aria-hidden={true}
-      className="PrivateNotchedOutline-root-42 MuiOutlinedInput-notchedOutline"
+      className="PrivateNotchedOutline-root-4 MuiOutlinedInput-notchedOutline"
       style={
         Object {
           "paddingLeft": 8,
@@ -31,7 +31,7 @@ exports[`CustomTextField should render CustomTextField and match snapshot 1`] = 
       }
     >
       <legend
-        className="PrivateNotchedOutline-legend-43"
+        className="PrivateNotchedOutline-legend-5"
         style={
           Object {
             "width": 0.01,

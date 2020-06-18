@@ -58,15 +58,9 @@ function LoginLogoutDisplay(props) {
   return <Logout disconnect={disconnect} redirection={redirection} />;
 }
 
-const StyledMenu = withStyles({
-  root: {
-    height: '20px',
-    border: '1px solid #d3d4d5',
-    background: '#333333',
-  },
-})((props) => (
+const StyledMenu = withStyles()((props) => (
   <Menu
-    elevation={0}
+    elevation={3}
     getContentAnchorEl={null}
     anchorOrigin={{
       vertical: 'bottom',
@@ -84,7 +78,7 @@ const StyledMenu = withStyles({
 const StyledMenuItem = withStyles((theme) => ({
   root: {
     '&:focus': {
-      backgroundColor: '#666',
+      backgroundColor: '#2a8081',
       '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
         color: theme.palette.common.white,
       },

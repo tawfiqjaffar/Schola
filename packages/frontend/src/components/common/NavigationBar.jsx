@@ -6,9 +6,15 @@ import {
   makeStyles,
   Toolbar,
   Typography,
+  ListItemText,
+  Menu,
+  MenuItem,
+  IconButton,
 } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
+import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
+import MenuIcon from '@material-ui/icons/Menu';
 import logo from '../../assets/logo.png';
 
 const useStyles = makeStyles((theme) => ({
@@ -44,37 +50,117 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function LoginLogoutDisplay(props) {
-  const { isLogged, redirect, disconnect } = props;
+  const { isLogged, redirection, disconnect } = props;
   console.log(isLogged);
   if (!isLogged) {
-    return <LoginRegister redirect={redirect} />;
+    return <LoginRegister redirection={redirection} />;
   }
-  return <Logout disconnect={disconnect} />;
+  return <Logout disconnect={disconnect} redirection={redirection} />;
 }
 
+const StyledMenu = withStyles({
+  root: {
+    height: '20px',
+    border: '1px solid #d3d4d5',
+    background: '#333333',
+  },
+})((props) => (
+  <Menu
+    elevation={0}
+    getContentAnchorEl={null}
+    anchorOrigin={{
+      vertical: 'bottom',
+      horizontal: 'center',
+    }}
+    transformOrigin={{
+      vertical: 'top',
+      horizontal: 'center',
+    }}
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    {...props}
+  />
+));
+
+const StyledMenuItem = withStyles((theme) => ({
+  root: {
+    '&:focus': {
+      backgroundColor: '#666',
+      '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
+        color: theme.palette.common.white,
+      },
+    },
+  },
+}))(MenuItem);
+
 function Logout(props) {
-  const { disconnect } = props;
-  const classes = useStyles();
+  const { disconnect, redirection } = props;
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
-    <Button
-      className={[classes.menuButton, classes.buttonRegister].join(' ')}
-      variant="contained"
-      onClick={disconnect}
-    >
-      <Typography>Log out</Typography>
-    </Button>
+    <div>
+      <IconButton onClick={handleClick}>
+        <MenuIcon />
+      </IconButton>
+      <StyledMenu
+        id="customized-menu"
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+      >
+        <StyledMenuItem
+          onClick={() => {
+            redirection('/home');
+          }}
+        >
+          <ListItemText primary="Home" />
+        </StyledMenuItem>
+        <StyledMenuItem
+          onClick={() => {
+            redirection('/schedule');
+          }}
+        >
+          <ListItemText primary="Emploi du temps" />
+        </StyledMenuItem>
+        <StyledMenuItem
+          onClick={() => {
+            redirection('/canteen');
+          }}
+        >
+          <ListItemText primary="Cantine" />
+        </StyledMenuItem>
+        <StyledMenuItem
+          onClick={() => {
+            redirection('/quizz');
+          }}
+        >
+          <ListItemText primary="Quizz" />
+        </StyledMenuItem>
+        <StyledMenuItem onClick={() => disconnect()}>
+          <ListItemText primary="Disconnect" />
+        </StyledMenuItem>
+      </StyledMenu>
+    </div>
   );
 }
 
 function LoginRegister(props) {
-  const { redirect } = props;
+  const { redirection } = props;
   const classes = useStyles();
   return (
     <div>
       <Button
         className={[classes.menuButton, classes.buttonLogin].join(' ')}
         variant="contained"
-        onClick={redirect}
+        onClick={() => redirection('/login')}
       >
         <Typography>Log in</Typography>
       </Button>
@@ -91,8 +177,8 @@ function LoginRegister(props) {
 export default function NavigationBar() {
   const classes = useStyles();
   const history = useHistory();
-  const redirectToLogin = () => {
-    history.push('/login');
+  const redirectTo = (path) => {
+    history.push(path);
   };
   const redirectToLandingPage = () => {
     history.push('/');
@@ -113,8 +199,8 @@ export default function NavigationBar() {
         </Typography>
         <LoginLogoutDisplay
           isLogged={isLogged}
-          redirect={redirectToLogin}
           disconnect={redirectToLandingPage}
+          redirection={redirectTo}
         />
       </Toolbar>
     </AppBar>
@@ -122,15 +208,16 @@ export default function NavigationBar() {
 }
 
 LoginRegister.propTypes = {
-  redirect: PropTypes.func.isRequired,
+  redirection: PropTypes.func.isRequired,
 };
 
 Logout.propTypes = {
   disconnect: PropTypes.func.isRequired,
+  redirection: PropTypes.func.isRequired,
 };
 
 LoginLogoutDisplay.propTypes = {
   disconnect: PropTypes.func.isRequired,
-  redirect: PropTypes.func.isRequired,
+  redirection: PropTypes.func.isRequired,
   isLogged: PropTypes.bool.isRequired,
 };

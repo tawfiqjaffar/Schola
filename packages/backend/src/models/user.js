@@ -23,6 +23,7 @@ const schema = new mongoose.Schema({
   },
   avatar: {
     type: mongoose.Schema.Types.ObjectId,
+    required: true,
   },
   role: {
     type: String,

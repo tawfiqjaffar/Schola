@@ -34,6 +34,10 @@ const schema = new mongoose.Schema({
     enum: ['basic', 'google'],
     default: 'basic',
   },
+  passwordRecoveryToken: {
+    type: String,
+    default: '',
+  },
 });
 
 module.exports = mongoose.model('User', schema);

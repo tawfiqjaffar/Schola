@@ -1,9 +1,9 @@
 import React from 'react';
 import Spinner from 'react-loader-spinner';
 import { Alert } from '@material-ui/lab';
-import { Button, Snackbar } from '@material-ui/core';
+import { Button, Snackbar, Typography } from '@material-ui/core';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import postLoginUser from '../../../api/methods/auth';
 import './LoginPage.css';
 
@@ -37,6 +37,7 @@ class Login extends React.Component {
         redirect: true,
       });
       sessionStorage.setItem('token', res.data.accessToken);
+      window.location.reload();
     } else {
       this.setState({ loading: false, success: false, open: true });
     }
@@ -96,10 +97,20 @@ class Login extends React.Component {
               errorMessages={['Veuillez remplir ce champ']}
             />
             <br />
-            <Button variant="contained" className="margtop-20" type="submit">
+            <Button
+              variant="contained"
+              className="margtop-20 margbot-20"
+              type="submit"
+            >
               Connexion
             </Button>
+            <Typography>
+              <Link href="#" variant="body2" className="forgot-password">
+                Avez-vous oublié votre mot de passe ?
+              </Link>
+            </Typography>
           </div>
+
           <Snackbar
             open={open}
             autoHideDuration={3000}

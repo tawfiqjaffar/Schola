@@ -5,6 +5,7 @@ import { Button, Snackbar } from '@material-ui/core';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { Redirect } from 'react-router-dom';
 import postLoginUser from '../../../api/methods/auth';
+import ForgotPassword from './ForgotPassword';
 import './LoginPage.css';
 
 class Login extends React.Component {
@@ -17,10 +18,12 @@ class Login extends React.Component {
       loading: false,
       open: false,
       success: false,
+      forgetPassword: false,
     };
 
     this.onSubmit = this.onSubmit.bind(this);
     this.onChange = this.onChange.bind(this);
+    this.RedirectPasswordForgot = this.RedirectPasswordForgot.bind(this);
   }
 
   async onSubmit(e) {
@@ -47,13 +50,28 @@ class Login extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
+  RedirectPasswordForgot() {
+    this.setState({ forgetPassword: true });
+  }
+
   render() {
-    const { redirect, email, password, loading, open, success } = this.state;
+    const {
+      redirect,
+      email,
+      password,
+      loading,
+      open,
+      success,
+      forgetPassword,
+    } = this.state;
     if (sessionStorage.getItem('token')) {
       this.setState({ redirect: true });
     }
     if (redirect) {
       return <Redirect to="/home" />;
+    }
+    if (forgetPassword) {
+      return <ForgotPassword onChange={this.onChange} email={email} />;
     }
     return (
       <ValidatorForm onSubmit={this.onSubmit}>
@@ -100,6 +118,13 @@ class Login extends React.Component {
             <Button variant="contained" className="margtop-20" type="submit">
               Connexion
             </Button>
+            <div
+              role="button"
+              onClick={this.RedirectPasswordForgot}
+              aria-hidden="true"
+            >
+              mot de passe oublié ?
+            </div>
           </div>
           <Snackbar
             open={open}

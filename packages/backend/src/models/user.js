@@ -23,7 +23,6 @@ const schema = new mongoose.Schema({
   },
   avatar: {
     type: mongoose.Schema.Types.ObjectId,
-    required: true,
   },
   role: {
     type: String,
@@ -34,6 +33,10 @@ const schema = new mongoose.Schema({
     type: String,
     enum: ['basic', 'google'],
     default: 'basic',
+  },
+  passwordRecoveryToken: {
+    type: String,
+    default: '',
   },
 });
 

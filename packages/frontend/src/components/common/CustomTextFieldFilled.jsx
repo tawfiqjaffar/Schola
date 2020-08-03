@@ -35,14 +35,19 @@ const CssTextField = withStyles((theme) => ({
   },
 }))(TextField);
 
-export default function CustomTextFieldFilled({ label, type }) {
+export default function CustomTextFieldFilled(props) {
+  const { label, type, value, onChange, multiline, rows } = props;
   const classes = useStyles();
   return (
     <CssTextField
       className={classes.root}
       label={label}
       type={type}
+      onChange={onChange}
+      value={value}
       variant="filled"
+      rows={rows}
+      multiline={multiline}
       InputLabelProps={{
         className: classes.inputHint,
       }}
@@ -59,9 +64,17 @@ export default function CustomTextFieldFilled({ label, type }) {
 CustomTextFieldFilled.propTypes = {
   label: PropTypes.string,
   type: PropTypes.string,
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+  multiline: PropTypes.bool,
+  rows: PropTypes.number,
 };
 
 CustomTextFieldFilled.defaultProps = {
   label: '',
   type: '',
+  value: '',
+  onChange: () => {},
+  multiline: false,
+  rows: 1,
 };

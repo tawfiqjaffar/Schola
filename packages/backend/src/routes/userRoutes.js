@@ -2,7 +2,11 @@ const express = require('express');
 const { check } = require('express-validator');
 const { checkFields, authenticateJwt } = require('./middleware');
 const { getAllUsersAdmin, getMe } = require('../controllers/User/userGet');
-const { postCreateUser } = require('../controllers/User/userPost');
+const {
+  postCreateUser,
+  postSendPasswordResetCode,
+  postResetUserPassword,
+} = require('../controllers/User/userPost');
 const { updateRole } = require('../controllers/User/userPut');
 const {
   getUserAvatar,
@@ -60,6 +64,24 @@ router.put(
   checkFields,
   authenticateJwt,
   updateRole
+);
+
+router.post(
+  '/reset-password-request',
+  [check('email', 'you must provide an email address').notEmpty()],
+  checkFields,
+  postSendPasswordResetCode
+);
+
+router.post(
+  '/reset-password',
+  [
+    check('email', 'you must provide an email address').notEmpty(),
+    check('recoveryToken', 'you must provide a recovery token').notEmpty(),
+    check('password', 'you must provide a new password').notEmpty(),
+  ],
+  checkFields,
+  postResetUserPassword
 );
 
 module.exports = router;

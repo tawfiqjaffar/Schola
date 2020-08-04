@@ -19,6 +19,8 @@ class Login extends React.Component {
       open: false,
       success: false,
       forgetPassword: false,
+      code: '',
+      newPassword: '',
     };
 
     this.onSubmit = this.onSubmit.bind(this);
@@ -28,7 +30,6 @@ class Login extends React.Component {
 
   async onSubmit(e) {
     e.preventDefault();
-    console.log('ENV', process.env.SERVER_URI);
     const { email, password } = this.state;
     this.setState({ loading: true });
     const res = await postLoginUser(email, password);
@@ -63,6 +64,8 @@ class Login extends React.Component {
       open,
       success,
       forgetPassword,
+      code,
+      newPassword,
     } = this.state;
     if (sessionStorage.getItem('token')) {
       this.setState({ redirect: true });
@@ -71,7 +74,15 @@ class Login extends React.Component {
       return <Redirect to="/home" />;
     }
     if (forgetPassword) {
-      return <ForgotPassword onChange={this.onChange} email={email} />;
+      return (
+        <ForgotPassword
+          onChange={this.onChange}
+          email={email}
+          code={code}
+          newPassword={newPassword}
+          redirect={redirect}
+        />
+      );
     }
     return (
       <ValidatorForm onSubmit={this.onSubmit}>

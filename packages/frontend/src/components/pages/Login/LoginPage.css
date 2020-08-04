@@ -23,6 +23,19 @@
   transition-delay: 0.2s;
 }
 
+.all_center {
+  margin: 0 !important;
+  position: absolute;
+  padding: 2px 4px;
+  display: block;
+  align-items: center;
+  width: 400;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
 .top:before,
 .top:after,
 .bottom:before,

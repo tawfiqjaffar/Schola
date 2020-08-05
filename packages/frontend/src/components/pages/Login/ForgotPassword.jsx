@@ -4,10 +4,9 @@ import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Button, Snackbar } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
-import {
-  postResetPasswordRequest,
-  postResetPassword,
-} from '../../../api/methods/user';
+import SendCode from './SendCode';
+import { postResetPasswordRequest } from '../../../api/methods/user';
+import backgroundPageTurner from '../../../assets/backgroundPageTurner.svg';
 
 const ForgotPassword = (props) => {
   const { onChange, email, code, newPassword } = props;
@@ -27,53 +26,54 @@ const ForgotPassword = (props) => {
       isOpen(true);
     }
   }
-  async function onSubmitNewPassword() {
-    const res = await postResetPassword(email, newPassword, code);
-    if (res.code === 200) {
-      isSuccess(true);
-      isOpen(true);
-      isReceived(true);
-      isFinished(true);
-    } else {
-      isSuccess(false);
-      isOpen(true);
-    }
-  }
   if (finished) return <Redirect to="/" />;
   if (Received) {
     return (
-      <ValidatorForm onSubmit={onSubmitNewPassword} className="all_center">
+      <div>
+        <img src={backgroundPageTurner} alt="background" className="bg-cover" />
+        <SendCode
+          onChange={onChange}
+          isFinished={isFinished}
+          isOpen={isOpen}
+          open={open}
+          isSuccess={isSuccess}
+          success={success}
+          isReceived={isReceived}
+          email={email}
+          code={code}
+          newPassword={newPassword}
+        />
+      </div>
+    );
+  }
+  return (
+    <div>
+      <img src={backgroundPageTurner} alt="background" className="bg-cover" />
+      <ValidatorForm onSubmit={onSubmit} className="all_center">
         <TextValidator
-          name="code"
+          name="email"
           id="standard-required"
-          label="Code"
+          label="Email"
           variant="outlined"
           InputLabelProps={{
             style: { color: '#333' },
           }}
-          className="padbot-20"
-          value={code}
+          className="input-passw"
+          value={email}
           onChange={onChange}
+          validators={['required', 'isEmail']}
+          errorMessages={[
+            'Veuillez remplir ce champ',
+            "L'email rentré n'est pas valide.",
+          ]}
         />
         <br />
-        <TextValidator
-          id="outlined-password-input"
-          label="Nouveau mot de passe"
-          type="password"
-          name="newPassword"
-          autoComplete="current-password"
-          InputLabelProps={{
-            style: { color: '#333' },
-          }}
-          variant="outlined"
-          value={newPassword}
-          onChange={onChange}
-          validators={['required']}
-          errorMessages={['Veuillez remplir ce champ']}
-        />
-        <br />
-        <Button variant="contained" className="margtop-20" type="submit">
-          Terminez
+        <Button
+          variant="contained"
+          className="margtop-20 btn-centered"
+          type="submit"
+        >
+          Recevoir code
         </Button>
         <Snackbar
           open={open}
@@ -83,57 +83,17 @@ const ForgotPassword = (props) => {
           }}
         >
           <Alert
+            className="alert-pos"
             onClose={() => {
               isOpen(false);
             }}
             severity={success ? 'success' : 'error'}
           >
-            {success ? 'Code reçu' : 'Code incorrect'}
+            {success ? 'Code envoyé' : 'Compte inexistant'}
           </Alert>
         </Snackbar>
       </ValidatorForm>
-    );
-  }
-  return (
-    <ValidatorForm onSubmit={onSubmit} className="all_center">
-      <TextValidator
-        name="email"
-        id="standard-required"
-        label="Email"
-        variant="outlined"
-        InputLabelProps={{
-          style: { color: '#333' },
-        }}
-        className="padbot-20"
-        value={email}
-        onChange={onChange}
-        validators={['required', 'isEmail']}
-        errorMessages={[
-          'Veuillez remplir ce champ',
-          "L'email rentré n'est pas valide.",
-        ]}
-      />
-      <br />
-      <Button variant="contained" className="margtop-20" type="submit">
-        Recevoir code
-      </Button>
-      <Snackbar
-        open={open}
-        autoHideDuration={3000}
-        onClose={() => {
-          isOpen(false);
-        }}
-      >
-        <Alert
-          onClose={() => {
-            isOpen(false);
-          }}
-          severity={success ? 'success' : 'error'}
-        >
-          {success ? 'Code envoyé' : 'Compte inexistant'}
-        </Alert>
-      </Snackbar>
-    </ValidatorForm>
+    </div>
   );
 };
 

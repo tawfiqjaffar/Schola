@@ -1,6 +1,6 @@
 module.exports = {
-    "@tags": ["schedule", "schola"],
-    "Schedule component": function (browser) {
+    "@tags": ["messaging", "schola"],
+    "Messaging component": function (browser) {
         var settings = browser.globals,
             identifiers = browser.globals.identifiers;
 

@@ -1,6 +1,6 @@
 module.exports = {
-    "@tags": ["student", "schola"],
-    "Student component": function (browser) {
+    "@tags": ["canteen", "schola"],
+    "Canteen menu component": function (browser) {
         var settings = browser.globals,
             identifiers = browser.globals.identifiers;
 

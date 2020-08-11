@@ -1,6 +1,6 @@
 module.exports = {
-    "@tags": ["quiz", "schola"],
-    "Quiz componenet": function (browser) {
+    "@tags": ["exercises", "schola"],
+    "Online exercises component": function (browser) {
         var settings = browser.globals,
             identifiers = browser.globals.identifiers;
 

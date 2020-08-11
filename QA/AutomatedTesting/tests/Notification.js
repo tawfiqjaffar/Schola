@@ -1,5 +1,5 @@
 module.exports = {
-    "@tags": ["notification", "schola"],
+    "@tags": ["notif", "schola"],
     "Notification component": function (browser) {
         var settings = browser.globals,
             identifiers = browser.globals.identifiers;

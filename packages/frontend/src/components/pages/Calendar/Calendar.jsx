@@ -7,7 +7,7 @@ import {
   lighten,
 } from '@material-ui/core/styles/colorManipulator';
 import Typography from '@material-ui/core/Typography';
-import { ViewState, EditingState } from '@devexpress/dx-react-scheduler';
+import { ViewState, EditingState } from '@devexpress/dx-react-scheduler'; // EditingState
 import classNames from 'clsx';
 import {
   Scheduler,
@@ -29,42 +29,42 @@ import { owners } from './data';
 const appointments = [
   {
     id: 0,
-    title: 'Watercolor Landscape',
+    title: 'Cours Special',
     startDate: new Date(2020, 6, 23, 9, 30),
     endDate: new Date(2020, 6, 23, 11, 30),
     ownerId: 1,
   },
   {
     id: 1,
-    title: 'Monthly Planning',
+    title: 'Cours de test',
     startDate: new Date(2020, 5, 28, 9, 30),
     endDate: new Date(2020, 5, 28, 11, 30),
     ownerId: 1,
   },
   {
     id: 2,
-    title: 'Recruiting students',
+    title: '',
     startDate: new Date(2020, 6, 9, 12, 0),
     endDate: new Date(2020, 6, 9, 13, 0),
     ownerId: 2,
   },
   {
     id: 3,
-    title: 'Oil Painting',
+    title: 'Cours anglais',
     startDate: new Date(2020, 6, 18, 14, 30),
     endDate: new Date(2020, 6, 18, 15, 30),
     ownerId: 2,
   },
   {
     id: 4,
-    title: 'Open Day',
+    title: 'Cours de Techno',
     startDate: new Date(2020, 6, 20, 12, 0),
     endDate: new Date(2020, 6, 20, 13, 35),
     ownerId: 6,
   },
   {
     id: 5,
-    title: 'Watercolor Landscape',
+    title: 'Cours de peinture',
     startDate: new Date(2020, 6, 6, 13, 0),
     endDate: new Date(2020, 6, 6, 14, 0),
     rRule: 'FREQ=WEEKLY;BYDAY=FR;UNTIL=20200816',
@@ -73,7 +73,7 @@ const appointments = [
   },
   {
     id: 6,
-    title: 'Meeting of Instructors',
+    title: 'Cours de SVT',
     startDate: new Date(2020, 5, 28, 12, 0),
     endDate: new Date(2020, 5, 28, 12, 30),
     rRule: 'FREQ=WEEKLY;BYDAY=TH;UNTIL=20200727',
@@ -82,7 +82,7 @@ const appointments = [
   },
   {
     id: 7,
-    title: 'Oil Painting for Beginners',
+    title: 'Cours de Phisique',
     startDate: new Date(2020, 6, 3, 11, 0),
     endDate: new Date(2020, 6, 3, 12, 0),
     rRule: 'FREQ=WEEKLY;BYDAY=TU;UNTIL=20200801',
@@ -91,7 +91,7 @@ const appointments = [
   },
   {
     id: 8,
-    title: 'Watercolor Workshop',
+    title: 'Un Cours Lambda',
     startDate: new Date(2020, 6, 9, 11, 0),
     endDate: new Date(2020, 6, 9, 12, 0),
     ownerId: 3,
@@ -106,12 +106,11 @@ const resources = [
   },
 ];
 
-const varOne = (theme) =>
-  `${
-    theme.palette.type === 'light'
-      ? lighten(fade(theme.palette.divider, 1), 0.88)
-      : darken(fade(theme.palette.divider, 1), 0.68)
-  }`;
+const varOne = (theme) => `${
+  theme.palette.type === 'light'
+    ? lighten(fade(theme.palette.divider, 1), 0.88)
+    : darken(fade(theme.palette.divider, 1), 0.68)
+}`;
 
 const getBorder = () => `1px solid ${varOne}`;
 
@@ -255,14 +254,13 @@ const WeatherIcon = (props) => {
   }
 };
 
-// #FOLD_BLOCK
 const CellBase = React.memo(
   ({
     classes,
     startDate,
     formatDate,
     otherMonth,
-    // #FOLD_BLOCK
+
   }) => {
     const iconId = Math.abs(Math.floor(Math.sin(startDate.getDate()) * 10) % 3);
     const isFirstMonthDay = startDate.getDate() === 1;
@@ -309,8 +307,8 @@ const AppointmentContent = withStyles(styles, {
 ));
 
 const FlexibleSpace = withStyles(styles, { name: 'ToolbarRoot' })(
-  ({ classes, ...restProps }) => (
-    <Toolbar.FlexibleSpace {...restProps} className={classes.flexibleSpace}>
+  ({ classes }) => (
+    <Toolbar.FlexibleSpace className={classes.flexibleSpace}>
       <div className={classes.flexContainer}>
         <ColorLens fontSize="large" htmlColor="#FF7043" />
         <Typography variant="h5" style={{ marginLeft: '10px' }}>
@@ -321,8 +319,7 @@ const FlexibleSpace = withStyles(styles, { name: 'ToolbarRoot' })(
   )
 );
 
-export default class Demo extends React.PureComponent {
-  // #FOLD_BLOCK
+export default class Schedule extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -333,7 +330,6 @@ export default class Demo extends React.PureComponent {
     this.commitChanges = this.commitChanges.bind(this);
   }
 
-  // #FOLD_BLOCK
   commitChanges({ added, changed, deleted }) {
     this.setState((state) => {
       let { data } = state;
@@ -342,11 +338,9 @@ export default class Demo extends React.PureComponent {
         data = [...data, { id: AddedId, ...added }];
       }
       if (changed) {
-        data = data.map((appointment) =>
-          changed[appointment.id]
-            ? { ...appointment, ...changed[appointment.id] }
-            : appointment
-        );
+        data = data.map((appointment) => (changed[appointment.id]
+          ? { ...appointment, ...changed[appointment.id] }
+          : appointment));
       }
       if (deleted !== undefined) {
         data = data.filter((appointment) => appointment.id !== deleted);
@@ -362,7 +356,7 @@ export default class Demo extends React.PureComponent {
       <Paper>
         <Scheduler data={data}>
           <EditingState onCommitChanges={this.commitChanges} />
-          <ViewState defaultCurrentDate="2020-07-17" />
+          <ViewState defaultCurrentDate="2020-06-19" />
 
           <MonthView
             timeTableCellComponent={TimeTableCell}

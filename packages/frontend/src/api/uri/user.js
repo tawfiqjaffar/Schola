@@ -15,6 +15,14 @@ const uri = {
     path: '/user/role',
     method: 'put',
   },
+  resetPasswordRequest: {
+    path: '/user/reset-password-request',
+    method: 'post',
+  },
+  resetPassword: {
+    path: '/user/reset-password',
+    method: 'post',
+  },
 };
 
 export default uri;

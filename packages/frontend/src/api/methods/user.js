@@ -115,4 +115,47 @@ const putChangeRole = async (userId, newRole, accessToken) => {
   return res;
 };
 
-export { getAllUsers, getMe, postCreateUser, putChangeRole };
+const postResetPasswordRequest = async (email) => {
+  let res;
+  try {
+    const response = await axios({
+      method: uri.resetPasswordRequest.method,
+      url: uri.resetPasswordRequest.path,
+      data: {
+        email,
+      },
+    });
+    res = response.data;
+  } catch (axiosErr) {
+    res = axiosErr.response && axiosErr.response.data;
+  }
+  return res;
+};
+
+const postResetPassword = async (email, newPassword, code) => {
+  let res;
+  try {
+    const response = await axios({
+      method: uri.resetPassword.method,
+      url: uri.resetPassword.path,
+      data: {
+        email,
+        password: newPassword,
+        recoveryToken: code,
+      },
+    });
+    res = response.data;
+  } catch (axiosErr) {
+    res = axiosErr.response && axiosErr.response.data;
+  }
+  return res;
+};
+
+export {
+  getAllUsers,
+  getMe,
+  postCreateUser,
+  putChangeRole,
+  postResetPasswordRequest,
+  postResetPassword,
+};

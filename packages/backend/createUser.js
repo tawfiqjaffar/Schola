@@ -29,9 +29,9 @@ const createUser = async (user) => {
 
 createUser({
   username: 'Toto',
-  password: 'toto',
+  password: 'hamza',
   firstname: 'Thomas',
   lastname: 'Daullé',
-  email: 'thomasd@schola.fr',
+  email: 'tktroh2f@hotmail.fr',
   role: 'student',
 });

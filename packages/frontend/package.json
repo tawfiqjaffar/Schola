@@ -16,6 +16,7 @@
     "history": "^4.10.1",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.15",
+    "moment": "^2.27.0",
     "node-gyp": "^6.1.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.0",
@@ -30,6 +31,7 @@
     "react-uuid": "^1.0.2",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
+    "shave": "^2.5.9",
     "validator": "^13.0.0",
     "yarn": "^1.22.4"
   },

@@ -9875,6 +9875,11 @@ modify-values@^1.0.0:
   resolved "https://registry.yarnpkg.com/modify-values/-/modify-values-1.0.1.tgz#b3939fa605546474e3e3e3c63d64bd43b4ee6022"
   integrity sha512-xV2bxeN6F7oYjZWTe/YPAy6MN2M+sL4u/Rlm2AHCIVGfo2p1yGmBHQ6vHehl4bRTZBdHu3TSkWdYgkwpYzAGSw==
 
+moment@^2.27.0:
+  version "2.27.0"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.27.0.tgz#8bff4e3e26a236220dfe3e36de756b6ebaa0105d"
+  integrity sha512-al0MUK7cpIcglMv3YF13qSgdAIqxHTO7brRtaz3DlSULbqfazqkc5kEjNrLDOM7fsjshoFIihnU8snrP7zUvhQ==
+
 mongodb-download@^2.2.7:
   version "2.2.7"
   resolved "https://registry.yarnpkg.com/mongodb-download/-/mongodb-download-2.2.7.tgz#6bb4937e1a2bbd9756560c8dab0923253828ee98"
@@ -13359,6 +13364,11 @@ shallow-clone@^3.0.0:
   integrity sha512-/6KqX+GVUdqPuPPd2LxDDxzX6CAbjJehAAOKlNpqqUpAqPM6HeL8f+o3a+JsyGjn2lv0WY8UsTgUJjU9Ok55NA==
   dependencies:
     kind-of "^6.0.2"
+
+shave@^2.5.9:
+  version "2.5.9"
+  resolved "https://registry.yarnpkg.com/shave/-/shave-2.5.9.tgz#a44f00b217d370723c885c8d5c299c993046d247"
+  integrity sha512-n9/DU7UL0cor8vRAWC2SaMpCor+Ukd3U3QGTLq5d74D7fMFouzrGT1aeeFnEfjiNwIfdNrhtpWjAEc3d7bMOMg==
 
 shebang-command@^1.2.0:
   version "1.2.0"

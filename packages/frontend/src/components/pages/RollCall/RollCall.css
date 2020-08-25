@@ -1,0 +1,58 @@
+.card-list {
+  z-index: 0;
+  width: 100%;
+  display: flex !important;
+  justify-content: space-around !important;
+  flex-wrap: wrap !important;
+  margin-top: 5vh !important;
+}
+
+.card {
+  margin: 1vw;
+  width: 10vw;
+  height: 8vw;
+  border-radius: 40px;
+  box-shadow: 5px 5px 30px 7px rgba(0, 0, 0, 0.25),
+    -5px -5px 20px 7px rgba(0, 0, 0, 0.22);
+  cursor: pointer;
+  transition: 0.4s;
+  z-index: 4;
+}
+
+.card:hover {
+  transform: scale(0.9, 0.9);
+  box-shadow: 5px 5px 20px 1px rgba(0, 0, 0, 0.25),
+    -5px -5px 20px 1px rgba(0, 0, 0, 0.22);
+  z-index: 3;
+}
+
+.card .card_image div {
+  width: inherit;
+  height: inherit;
+  border-radius: 40px;
+}
+
+.card .card_title {
+  text-align: center;
+  border-radius: 0px 0px 40px 40px;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 1.8em;
+  height: 40px;
+}
+
+.title-white {
+  color: white;
+  text-shadow: 0.08em 0 black, 0 0.08em black, -0.08em 0 black, 0 -0.08em black;
+}
+
+.title-black {
+  color: black;
+  text-shadow: 0.08em 0 white, 0 0.08em white, -0.08em 0 white, 0 -0.08em white;
+}
+
+@media all and (max-width: 500px) {
+  .card-list {
+    flex-direction: column;
+  }
+}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -10,13 +10,37 @@ import Button from '@material-ui/core/Button';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import './Cantine.css';
 
+const MealList = {
+  lundi: {
+    entree: '',
+    plat: '',
+    dessert: '',
+  },
+  mardi: {
+    entree: '',
+    plat: '',
+    dessert: '',
+  },
+  mercredi: {
+    entree: '',
+    plat: '',
+    dessert: '',
+  },
+  jeudi: {
+    entree: '',
+    plat: '',
+    dessert: '',
+  },
+  vendredi: {
+    entree: '',
+    plat: '',
+    dessert: '',
+  },
+};
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-  },
-  param: {
-    height: 300,
-    width: 1300,
   },
   form: {
     '& > *': {
@@ -27,13 +51,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Cantine = () => {
-  const [spacing] = React.useState(3);
+  const [spacing] = useState(3);
   const classes = useStyles();
-  const [day, setDay] = React.useState('');
-  const [hour, setHour] = React.useState('');
-  const [starter, setStarter] = React.useState('');
-  const [meal, setMeal] = React.useState('');
-  const [dessert, setDessert] = React.useState('');
+  const [day, setDay] = useState('');
+  const [hour, setHour] = useState('');
+  const [starter, setStarter] = useState('');
+  const [meal, setMeal] = useState('');
+  const [dessert, setDessert] = useState('');
   const handleChangeStarter = (event) => {
     setStarter(event.target.value);
   };
@@ -50,6 +74,10 @@ const Cantine = () => {
     setDay(event.target.value);
   };
 
+  const Apply = () => {
+    MealList.mercredi.plat = meal;
+  };
+
   return (
     <Grid container className={classes.root}>
       <Grid item xs={2}>
@@ -59,7 +87,7 @@ const Cantine = () => {
               <p>Horaire de Cantine</p>
               <form className={classes.form} noValidate autoComplete="off">
                 <FormControl>
-                  <InputLabel>Heure d'ouverture</InputLabel>
+                  <InputLabel>Heure d&apos;ouverture</InputLabel>
                   <NativeSelect value={hour} onChange={handleChangeHour}>
                     <option aria-label="None" value="" />
                     <option value={10}>11h</option>
@@ -78,6 +106,7 @@ const Cantine = () => {
             <Grid key={value} item>
               <Paper className="dayCard">
                 <p>{value}</p>
+                <p>{MealList.mercredi.plat}</p>
               </Paper>
             </Grid>
           ))}
@@ -85,7 +114,7 @@ const Cantine = () => {
       </Grid>
       <Grid item xs={12}>
         <Grid container justify="center">
-          <Paper elevation={3} className={classes.param}>
+          <Paper elevation={3} className="paramCard">
             <form className={classes.form} noValidate autoComplete="off">
               <FormControl>
                 <InputLabel>Jours</InputLabel>
@@ -116,7 +145,11 @@ const Cantine = () => {
                 variant="filled"
                 onChange={handleChangeDessert}
               />
-              <Button variant="outlined" startIcon={<CloudUploadIcon />}>
+              <Button
+                variant="outlined"
+                startIcon={<CloudUploadIcon />}
+                onClick={() => Apply()}
+              >
                 Appliquer
               </Button>
             </form>

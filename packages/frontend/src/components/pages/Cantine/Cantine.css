@@ -1,0 +1,17 @@
+.dayCard {
+  width: 20vw;
+  height: 15vw;
+  text-align: center;
+  margin-right: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.hourCard {
+  width: 25vw;
+  height: 15vw;
+  text-align: center;
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

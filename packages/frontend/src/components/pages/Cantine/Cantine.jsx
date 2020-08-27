@@ -8,15 +8,11 @@ import FormControl from '@material-ui/core/FormControl';
 import NativeSelect from '@material-ui/core/NativeSelect';
 import Button from '@material-ui/core/Button';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import './Cantine.css';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-  },
-  paper: {
-    height: 280,
-    width: 280,
-    textAlign: 'center',
   },
   param: {
     height: 300,
@@ -59,7 +55,7 @@ const Cantine = () => {
       <Grid item xs={2}>
         <Grid container justify="center">
           <Grid item>
-            <Paper className={classes.paper}>
+            <Paper className="hourCard">
               <p>Horaire de Cantine</p>
               <form className={classes.form} noValidate autoComplete="off">
                 <FormControl>
@@ -80,7 +76,7 @@ const Cantine = () => {
         <Grid container justify="center" spacing={spacing}>
           {['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi'].map((value) => (
             <Grid key={value} item>
-              <Paper className={classes.paper}>
+              <Paper className="dayCard">
                 <p>{value}</p>
               </Paper>
             </Grid>

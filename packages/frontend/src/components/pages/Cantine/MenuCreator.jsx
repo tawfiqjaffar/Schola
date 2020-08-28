@@ -26,11 +26,11 @@ const MenuCreator = (props) => {
         <InputLabel>Jours</InputLabel>
         <NativeSelect value={day} onChange={handleChangeDay}>
           <option aria-label="None" value="" />
-          <option value="Lundi">Lundi</option>
-          <option value="Mardi">Mardi</option>
-          <option value="Mercredi">Mercredi</option>
-          <option value="Jeudi">Jeudi</option>
-          <option value="Vendredi">Vendredi</option>
+          <option value={0}>Lundi</option>
+          <option value={1}>Mardi</option>
+          <option value={2}>Mercredi</option>
+          <option value={3}>Jeudi</option>
+          <option value={4}>Vendredi</option>
         </NativeSelect>
       </FormControl>
       <TextField

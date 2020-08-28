@@ -8,6 +8,40 @@ import {
 import MenuCreator from './MenuCreator';
 
 const Cantine = () => {
+  const MealList = useState({
+    day: [
+      {
+        day: 'lundi',
+        entree: '',
+        plat: '',
+        dessert: '',
+      },
+      {
+        day: 'mardi',
+        entree: '',
+        plat: '',
+        dessert: '',
+      },
+      {
+        day: 'mercredi',
+        entree: '',
+        plat: '',
+        dessert: '',
+      },
+      {
+        day: 'jeudi',
+        entree: '',
+        plat: '',
+        dessert: '',
+      },
+      {
+        day: 'vendredi',
+        entree: '',
+        plat: '',
+        dessert: '',
+      },
+    ],
+  });
   const [hour, setHour] = useState(11);
   const [day, setDay] = useState('Lundi');
   const [starter, setStarter] = useState('');
@@ -32,19 +66,10 @@ const Cantine = () => {
   };
 
   const Apply = () => {
-    console.log(
-      'Day = ' +
-        day +
-        '\nHour = ' +
-        hour +
-        '\nStarter = ' +
-        starter +
-        '\nMeal = ' +
-        meal +
-        '\nDessert = ' +
-        dessert +
-        '\n'
-    );
+    console.log('Mard = ' + MealList[0].day[day].day);
+    MealList[0].day[day].entree = starter;
+    MealList[0].day[day].meal = meal;
+    MealList[0].day[day].dessert = dessert;
   };
 
   return (
@@ -65,9 +90,12 @@ const Cantine = () => {
             </FormControl>
           </form>
         </Paper>
-        {['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi'].map((value) => (
-          <Paper className="dayCard">
-            <p>{value}</p>
+        {MealList[0].day.map((value) => (
+          <Paper key={value.day} className="dayCard">
+            <p>{value.day}</p>
+            <p>{value.entree}</p>
+            <p>{value.meal}</p>
+            <p>{value.dessert}</p>
           </Paper>
         ))}
       </div>

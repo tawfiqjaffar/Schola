@@ -5,11 +5,46 @@ import {
   InputLabel,
   NativeSelect,
 } from '@material-ui/core';
+import MenuCreator from './MenuCreator';
 
 const Cantine = () => {
   const [hour, setHour] = useState(11);
+  const [day, setDay] = useState('Lundi');
+  const [starter, setStarter] = useState('');
+  const [meal, setMeal] = useState('');
+  const [dessert, setDessert] = useState('');
+
+  const handleChangeStarter = (event) => {
+    setStarter(event.target.value);
+  };
+  const handleChangeMeal = (event) => {
+    setMeal(event.target.value);
+  };
+  const handleChangeDessert = (event) => {
+    setDessert(event.target.value);
+  };
   const handleChangeHour = (event) => {
     setHour(event.target.value);
+  };
+
+  const handleChangeDay = (event) => {
+    setDay(event.target.value);
+  };
+
+  const Apply = () => {
+    console.log(
+      'Day = ' +
+        day +
+        '\nHour = ' +
+        hour +
+        '\nStarter = ' +
+        starter +
+        '\nMeal = ' +
+        meal +
+        '\nDessert = ' +
+        dessert +
+        '\n'
+    );
   };
 
   return (
@@ -37,7 +72,16 @@ const Cantine = () => {
         ))}
       </div>
       <div>
-        <Paper className="paramCard">Createur Menu</Paper>
+        <Paper className="paramCard">
+          <MenuCreator
+            day={day}
+            handleChangeDay={handleChangeDay}
+            handleChangeStarter={handleChangeStarter}
+            handleChangeMeal={handleChangeMeal}
+            handleChangeDessert={handleChangeDessert}
+            Apply={Apply}
+          />
+        </Paper>
       </div>
     </div>
   );

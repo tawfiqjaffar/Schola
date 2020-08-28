@@ -11,31 +11,31 @@ const Cantine = () => {
   const MealList = useState({
     day: [
       {
-        day: 'lundi',
+        day: 'Lundi',
         entree: '',
         plat: '',
         dessert: '',
       },
       {
-        day: 'mardi',
+        day: 'Mardi',
         entree: '',
         plat: '',
         dessert: '',
       },
       {
-        day: 'mercredi',
+        day: 'Mercredi',
         entree: '',
         plat: '',
         dessert: '',
       },
       {
-        day: 'jeudi',
+        day: 'Jeudi',
         entree: '',
         plat: '',
         dessert: '',
       },
       {
-        day: 'vendredi',
+        day: 'Vendredi',
         entree: '',
         plat: '',
         dessert: '',
@@ -43,7 +43,7 @@ const Cantine = () => {
     ],
   });
   const [hour, setHour] = useState(11);
-  const [day, setDay] = useState('Lundi');
+  const [day, setDay] = useState('');
   const [starter, setStarter] = useState('');
   const [meal, setMeal] = useState('');
   const [dessert, setDessert] = useState('');
@@ -66,10 +66,11 @@ const Cantine = () => {
   };
 
   const Apply = () => {
-    console.log('Mard = ' + MealList[0].day[day].day);
-    MealList[0].day[day].entree = starter;
-    MealList[0].day[day].meal = meal;
-    MealList[0].day[day].dessert = dessert;
+    if (day) {
+      MealList[0].day[day].entree = starter;
+      MealList[0].day[day].meal = meal;
+      MealList[0].day[day].dessert = dessert;
+    }
   };
 
   return (

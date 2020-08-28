@@ -50,6 +50,32 @@
   padding: 10px;
 }
 
+.ButtonDay {
+  margin-top: 90px !important;
+  margin-left: 100px !important;
+}
+
+.ButtonStarter {
+  margin-top: 90px !important;
+  margin-left: 60px !important;
+}
+
+.ButtonMeal {
+  margin-top: 90px !important;
+  margin-left: 60px !important;
+}
+
+.ButtonDessert {
+  margin-top: 90px !important;
+  margin-left: 60px !important;
+}
+
+.ButtonApply {
+  margin-top: 90px !important;
+  margin-left: 60px !important;
+  padding: 15px !important;
+}
+
 @media all and (max-width: 500px) {
   .PageTitle {
     font-size: 2.5em;

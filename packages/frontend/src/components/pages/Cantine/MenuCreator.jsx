@@ -22,7 +22,7 @@ const MenuCreator = (props) => {
 
   return (
     <form className="hourForm" noValidate autoComplete="off">
-      <FormControl>
+      <FormControl className="ButtonDay">
         <InputLabel>Jours</InputLabel>
         <NativeSelect value={day} onChange={handleChangeDay}>
           <option aria-label="None" value="" />
@@ -38,23 +38,27 @@ const MenuCreator = (props) => {
         label="Entrée"
         variant="filled"
         onChange={handleChangeStarter}
+        className="ButtonStarter"
       />
       <TextField
         id="filled-basic"
         label="Plat"
         variant="filled"
         onChange={handleChangeMeal}
+        className="ButtonMeal"
       />
       <TextField
         id="filled-basic"
         label="Dessert"
         variant="filled"
         onChange={handleChangeDessert}
+        className="ButtonDessert"
       />
       <Button
         variant="outlined"
         startIcon={<CloudUploadIcon />}
         onClick={() => Apply()}
+        className="ButtonApply"
       >
         Appliquer
       </Button>

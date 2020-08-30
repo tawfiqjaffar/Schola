@@ -5,7 +5,8 @@ import PageNotFound from '../pages/PageNotFound';
 import Login from '../pages/Login';
 import Home from '../pages/HomePage/HomePage';
 import NavigationBar from './NavigationBar';
-import Message from '../pages/Message/Messenger/index';
+import Join from '../pages/Chatbox/Join/Join';
+import Chatbox from '../pages/Chatbox/Chat/Chat';
 
 const Router = () => (
   <BrowserRouter>
@@ -14,7 +15,8 @@ const Router = () => (
       <Route exact path="/" component={LandingPage} />
       <Route path="/login" component={Login} />
       <Route path="/home" component={Home} />
-      <Route path="/chatting" component={Message} />
+      <Route path="/join" component={Join} />
+      <Route path="/chat" component={Chatbox} />
       <Route component={PageNotFound} />
     </Switch>
   </BrowserRouter>

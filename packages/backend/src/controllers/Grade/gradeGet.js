@@ -25,6 +25,35 @@ const getAllGrade = (req, res) => {
   });
 };
 
+const getSubjectGrade = (req, res) => {
+  console.log(req.body.subjectId);
+  return Grade.find(
+    { $and: [{ studentId: req.user._id }, { subjectId: req.body.subjectId }] },
+    (err, data) => {
+      if (err) {
+        return res
+          .status(responseBody.responseCode.INTSERVERR)
+          .send(
+            responseBody.buildResponseBody(
+              err,
+              responseBody.responseCode.INTSERVERR
+            )
+          );
+      } else {
+        return res
+          .status(responseBody.responseCode.SUCCESS)
+          .send(
+            responseBody.buildResponseBody(
+              data,
+              responseBody.responseCode.SUCCESS
+            )
+          );
+      }
+    }
+  );
+};
+
 module.exports = {
   getAllGrade,
+  getSubjectGrade,
 };

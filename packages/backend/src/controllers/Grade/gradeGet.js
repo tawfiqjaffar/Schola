@@ -26,7 +26,6 @@ const getAllGrade = (req, res) => {
 };
 
 const getSubjectGrade = (req, res) => {
-  console.log(req.body.subjectId);
   return Grade.find(
     { $and: [{ studentId: req.user._id }, { subjectId: req.body.subjectId }] },
     (err, data) => {

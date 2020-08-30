@@ -1,4 +1,3 @@
-/* eslint-disable no-use-before-define */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ConversationSearch from '../ConversationSearch';

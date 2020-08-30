@@ -3,6 +3,7 @@ const infoRoutes = require('./infoRoutes');
 const authRoutes = require('./authRoutes');
 const taskRoutes = require('./taskRoutes');
 const scheduleRoutes = require('./scheduleRoutes');
+const gradeRoutes = require('./gradeRoutes');
 const mailRoutes = require('./mailRoutes');
 
 const routes = [
@@ -11,6 +12,7 @@ const routes = [
   ['auth', authRoutes],
   ['task', taskRoutes],
   ['schedule', scheduleRoutes],
+  ['grade', gradeRoutes],
   ['mail', mailRoutes],
 ];
 

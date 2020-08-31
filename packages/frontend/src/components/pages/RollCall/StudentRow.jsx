@@ -13,14 +13,14 @@ function changeStatut(color, setColor) {
 
 const StatutRow = (props) => {
   const { student, statut } = props;
-  const [color, setColor] = useState('#77dd77');
+  const colorlist = ['#77dd77', '#FDFD98', '#FF9E0F', '#FE6B64'];
+  const [color, setColor] = useState(colorlist[statut]);
   // const { name } = student;
   return (
     <div
       className="card"
       style={{ backgroundColor: color }}
       onClick={() => {
-        console.log(color);
         changeStatut(color, setColor);
       }}
     >

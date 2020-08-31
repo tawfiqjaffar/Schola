@@ -5,6 +5,8 @@ const taskRoutes = require('./taskRoutes');
 const scheduleRoutes = require('./scheduleRoutes');
 const gradeRoutes = require('./gradeRoutes');
 const mailRoutes = require('./mailRoutes');
+const schoolRoutes = require('./schoolRoutes');
+const subjectRoutes = require('./subjectRoutes');
 
 const routes = [
   ['info', infoRoutes],
@@ -14,6 +16,8 @@ const routes = [
   ['schedule', scheduleRoutes],
   ['grade', gradeRoutes],
   ['mail', mailRoutes],
+  ['school', schoolRoutes],
+  ['subject', subjectRoutes],
 ];
 
 module.exports = routes;

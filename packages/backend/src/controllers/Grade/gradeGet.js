@@ -1,3 +1,5 @@
+const mongoose = require('mongoose');
+
 const Grade = require('../../models/grade');
 const responseBody = require('../../routes/responseBody');
 
@@ -52,7 +54,77 @@ const getSubjectGrade = (req, res) => {
   );
 };
 
+const getUserAverage = (req, res) => {
+  const { user } = req;
+
+  Grade.find({ studentId: user._id }, (err, data) => {
+    if (err) {
+      return res
+        .status(responseBody.responseCode.INTSERVERR)
+        .send(
+          responseBody.buildResponseBody(
+            err,
+            responseBody.responseCode.INTSERVERR
+          )
+        );
+    } else {
+      const grades = [];
+      let total = 0;
+      data.forEach((el) => {
+        grades.push(el.grade);
+        total += el.grade;
+      });
+      return res
+        .status(responseBody.responseCode.SUCCESS)
+        .send(
+          responseBody.buildResponseBody(
+            { average: total / grades.length, grades: data },
+            responseBody.responseCode.SUCCESS
+          )
+        );
+    }
+  });
+};
+
+const getUserAverageBySubjectId = (req, res) => {
+  const { user } = req;
+  const { subjectId } = req.query;
+  console.log(subjectId);
+  Grade.find(
+    { studentId: user._id, subjectId: mongoose.Types.ObjectId(subjectId) },
+    (err, data) => {
+      if (err) {
+        return res
+          .status(responseBody.responseCode.INTSERVERR)
+          .send(
+            responseBody.buildResponseBody(
+              err,
+              responseBody.responseCode.INTSERVERR
+            )
+          );
+      } else {
+        const grades = [];
+        let total = 0;
+        data.forEach((el) => {
+          grades.push(el.grade);
+          total += el.grade;
+        });
+        return res
+          .status(responseBody.responseCode.SUCCESS)
+          .send(
+            responseBody.buildResponseBody(
+              { average: total / grades.length, grades: data },
+              responseBody.responseCode.SUCCESS
+            )
+          );
+      }
+    }
+  );
+};
+
 module.exports = {
   getAllGrade,
   getSubjectGrade,
+  getUserAverage,
+  getUserAverageBySubjectId,
 };

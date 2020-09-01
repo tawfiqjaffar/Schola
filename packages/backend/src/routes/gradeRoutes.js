@@ -10,6 +10,10 @@ const {
 
 const { createGrade } = require('../controllers/Grade/gradePost');
 
+const { updateGrade } = require('../controllers/Grade/gradePut');
+
+const { deleteGrade } = require('../controllers/Grade/gradeDelete');
+
 const router = express.Router();
 
 router.get(
@@ -51,4 +55,21 @@ router.get(
   authenticateJwt,
   getUserAverageBySubjectId
 );
+
+router.put(
+  '/updateGrade',
+  [check('authorization', 'you must provide a bearer access token').notEmpty()],
+  checkFields,
+  authenticateJwt,
+  updateGrade
+);
+
+router.delete(
+  '/deleteGrade',
+  [check('authorization', 'you must provide a bearer access token').notEmpty()],
+  checkFields,
+  authenticateJwt,
+  deleteGrade
+);
+
 module.exports = router;

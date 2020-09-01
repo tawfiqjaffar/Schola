@@ -40,7 +40,7 @@ const createAllSubjects = async (accessToken) => {
     console.error('unable to create school');
   } else {
     for (const el of subjects) {
-      const sub = await createSubject(
+      const sub = createSubject(
         { label: el, schoolId: school.data._id },
         accessToken
       );

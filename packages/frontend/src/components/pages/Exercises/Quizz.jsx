@@ -177,8 +177,6 @@ function App() {
 
   return (
     <Grid container spacing={3} className="quizz-container">
-      {/* call form with config in props */}
-
       {quizz2.map(
         (el) =>
           quizzNb === el.index && (

@@ -28,10 +28,10 @@ const createUser = async (user) => {
 };
 
 createUser({
-  username: 'Toto',
-  password: 'hamza',
+  username: 'Thomas',
+  password: 'thomasdaulle',
   firstname: 'Thomas',
   lastname: 'Daullé',
-  email: 'tktroh2f@hotmail.fr',
+  email: 'thomas.daulle@epitech.eu',
   role: 'student',
 });

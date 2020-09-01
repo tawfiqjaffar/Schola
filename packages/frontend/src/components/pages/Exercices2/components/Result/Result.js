@@ -23,25 +23,33 @@ class Result extends React.Component {
         const { classes } = this.props;
         console.log(this.props);
         return (
-                    <div className={classes.svgContainer}>
-                        <img
-                            src={this.props.result.pass ? successSvg : failureSvg}
-                            className={classes.resultSVG}
-                            alt="logo"
-                        />
-                        <pre className={classes.resultParagraph}>ß
+            <div className={classes.svgContainer}>
+                <img
+                    src={this.props.result.pass ? successSvg : failureSvg}
+                    className={classes.resultSVG}
+                    alt="logo"
+                />
+                <pre className={classes.resultParagraph}>ß
                             {this.props.result.pass ? this.getSuccessMessage() : this.getFailMessage()}
-                        </pre>
+                </pre>
 
-                        <Button
-                            variant="contained"
-                            className={classes.resetButton}
-                            onClick={this.props.tryAgainPressed}
-                            color="secondary"
-                        >
-                            Try Again
+                <Button
+                    variant="contained"
+                    className={classes.resetButton}
+                    onClick={this.props.tryAgainPressed}
+                    color="secondary"
+                >
+                    Try Again
                         </Button>
-                    </div>
+
+                <Button
+                    variant="contained"
+                    className={classes.resetButton}
+                    onClick={()=> document.location.reload(true)}
+                    color="secondary">
+                    Home
+                        </Button>
+            </div>
         );
     }
 }

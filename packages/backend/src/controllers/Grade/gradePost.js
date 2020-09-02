@@ -7,13 +7,16 @@ const createGrade = (req, res) => {
   if (req.user.role === 'viesco' || req.user.role === 'admin') {
     delete req.body._id;
 
-    const { studentId, subjectId, grade, label } = req.body;
+    const publisherId = req.user._id;
+    const { studentId, subjectId, grade, label, readable } = req.body;
 
     const gradeDoc = new Grade({
+      publisherId: mongoose.Types.ObjectId(publisherId),
       studentId: mongoose.Types.ObjectId(studentId),
       subjectId: mongoose.Types.ObjectId(subjectId),
       grade,
       label,
+      readable,
     });
 
     return gradeDoc.save((err, data) => {

@@ -3,33 +3,120 @@ const mongoose = require('mongoose');
 const Grade = require('../../models/grade');
 const responseBody = require('../../routes/responseBody');
 
-const getAllGrade = (req, res) => {
-  return Grade.find({ studentId: req.user._id }, (err, data) => {
-    if (err) {
-      return res
-        .status(responseBody.responseCode.INTSERVERR)
-        .send(
-          responseBody.buildResponseBody(
-            err,
-            responseBody.responseCode.INTSERVERR
-          )
-        );
-    } else {
-      return res
-        .status(responseBody.responseCode.SUCCESS)
-        .send(
-          responseBody.buildResponseBody(
-            data,
-            responseBody.responseCode.SUCCESS
-          )
-        );
-    }
-  });
+const getAllStudentGrades = (req, res) => {
+  if (req.user.role === 'viesco' || req.user.role === 'admin') {
+    return Grade.find({ studentId: req.body.studentId }, (err, data) => {
+      if (err) {
+        return res
+          .status(responseBody.responseCode.INTSERVERR)
+          .send(
+            responseBody.buildResponseBody(
+              err,
+              responseBody.responseCode.INTSERVERR
+            )
+          );
+      } else {
+        return res
+          .status(responseBody.responseCode.SUCCESS)
+          .send(
+            responseBody.buildResponseBody(
+              data,
+              responseBody.responseCode.SUCCESS
+            )
+          );
+      }
+    });
+  } else {
+    return res
+      .status(responseBody.responseCode.FORBID)
+      .send(
+        responseBody.buildResponseBody(
+          'You do not have the access right to get these informations',
+          responseBody.responseCode.FORBID
+        )
+      );
+  }
 };
 
-const getSubjectGrade = (req, res) => {
+const getReadableGrades = (req, res) => {
   return Grade.find(
-    { $and: [{ studentId: req.user._id }, { subjectId: req.body.subjectId }] },
+    { $and: [{ studentId: req.user._id }, { readable: true }] },
+    (err, data) => {
+      if (err) {
+        return res
+          .status(responseBody.responseCode.INTSERVERR)
+          .send(
+            responseBody.buildResponseBody(
+              err,
+              responseBody.responseCode.INTSERVERR
+            )
+          );
+      } else {
+        return res
+          .status(responseBody.responseCode.SUCCESS)
+          .send(
+            responseBody.buildResponseBody(
+              data,
+              responseBody.responseCode.SUCCESS
+            )
+          );
+      }
+    }
+  );
+};
+
+const getSubjectStudentGrades = (req, res) => {
+  if (req.user.role === 'viesco' || req.user.role === 'admin') {
+    return Grade.find(
+      {
+        $and: [
+          { studentId: req.body.studentId },
+          { subjectId: req.body.subjectId },
+        ],
+      },
+      (err, data) => {
+        if (err) {
+          return res
+            .status(responseBody.responseCode.INTSERVERR)
+            .send(
+              responseBody.buildResponseBody(
+                err,
+                responseBody.responseCode.INTSERVERR
+              )
+            );
+        } else {
+          return res
+            .status(responseBody.responseCode.SUCCESS)
+            .send(
+              responseBody.buildResponseBody(
+                data,
+                responseBody.responseCode.SUCCESS
+              )
+            );
+        }
+      }
+    );
+  } else {
+    return res
+      .status(responseBody.responseCode.FORBID)
+      .send(
+        responseBody.buildResponseBody(
+          'You do not have the access right to get these informations',
+          responseBody.responseCode.FORBID
+        )
+      );
+  }
+};
+
+const getReadableSubjectGrades = (req, res) => {
+  return Grade.find(
+    {
+      $and: [
+        { studentId: req.user._id },
+        { subjectId: req.body.subjectId },
+        { readable: true },
+      ],
+    },
     (err, data) => {
       if (err) {
         return res
@@ -123,8 +210,10 @@ const getUserAverageBySubjectId = (req, res) => {
 };
 
 module.exports = {
-  getAllGrade,
-  getSubjectGrade,
+  getAllStudentGrades,
+  getReadableGrades,
+  getSubjectStudentGrades,
+  getReadableSubjectGrades,
   getUserAverage,
   getUserAverageBySubjectId,
 };

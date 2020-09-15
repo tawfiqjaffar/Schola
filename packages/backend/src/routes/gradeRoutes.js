@@ -2,30 +2,52 @@ const express = require('express');
 const { check } = require('express-validator');
 const { checkFields, authenticateJwt } = require('./middleware');
 const {
-  getAllGrade,
-  getSubjectGrade,
+  getAllStudentGrades,
+  getReadableGrades,
+  getSubjectStudentGrades,
+  getReadableSubjectGrades,
   getUserAverage,
   getUserAverageBySubjectId,
 } = require('../controllers/Grade/gradeGet');
 
 const { createGrade } = require('../controllers/Grade/gradePost');
 
+const { updateGrade } = require('../controllers/Grade/gradePut');
+
+const { deleteGrade } = require('../controllers/Grade/gradeDelete');
+
 const router = express.Router();
 
 router.get(
-  '/studentGrade',
+  '/allStudentGrades',
   [check('authorization', 'you must provide a bearer access token').notEmpty()],
   checkFields,
   authenticateJwt,
-  getAllGrade
+  getAllStudentGrades
 );
 
 router.get(
-  '/subjectGrade',
+  '/readableGrades',
   [check('authorization', 'you must provide a bearer access token').notEmpty()],
   checkFields,
   authenticateJwt,
-  getSubjectGrade
+  getReadableGrades
+);
+
+router.get(
+  '/subjectStudentGrades',
+  [check('authorization', 'you must provide a bearer access token').notEmpty()],
+  checkFields,
+  authenticateJwt,
+  getSubjectStudentGrades
+);
+
+router.get(
+  '/readableSubjectGrades',
+  [check('authorization', 'you must provide a bearer access token').notEmpty()],
+  checkFields,
+  authenticateJwt,
+  getReadableSubjectGrades
 );
 
 router.post(
@@ -51,4 +73,21 @@ router.get(
   authenticateJwt,
   getUserAverageBySubjectId
 );
+
+router.put(
+  '/updateGrade',
+  [check('authorization', 'you must provide a bearer access token').notEmpty()],
+  checkFields,
+  authenticateJwt,
+  updateGrade
+);
+
+router.delete(
+  '/deleteGrade',
+  [check('authorization', 'you must provide a bearer access token').notEmpty()],
+  checkFields,
+  authenticateJwt,
+  deleteGrade
+);
+
 module.exports = router;

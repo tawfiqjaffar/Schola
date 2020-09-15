@@ -1,25 +1,9 @@
-const mongoose = require('mongoose');
-
 const Grade = require('../../models/grade');
 const responseBody = require('../../routes/responseBody');
 
-const createGrade = (req, res) => {
+const deleteGrade = (req, res) => {
   if (req.user.role === 'viesco' || req.user.role === 'admin') {
-    delete req.body._id;
-
-    const publisherId = req.user._id;
-    const { studentId, subjectId, grade, label, readable } = req.body;
-
-    const gradeDoc = new Grade({
-      publisherId: mongoose.Types.ObjectId(publisherId),
-      studentId: mongoose.Types.ObjectId(studentId),
-      subjectId: mongoose.Types.ObjectId(subjectId),
-      grade,
-      label,
-      readable,
-    });
-
-    return gradeDoc.save((err, data) => {
+    return Grade.deleteOne({ _id: req.body.id }, (err, data) => {
       if (err) {
         console.log(err);
         return res
@@ -54,5 +38,5 @@ const createGrade = (req, res) => {
 };
 
 module.exports = {
-  createGrade,
+  deleteGrade,
 };

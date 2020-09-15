@@ -13,7 +13,6 @@
     "object-shorthand": "error",
     "class-methods-use-this": "off",
     "no-underscore-dangle": "off",
-    "no-restricted-syntax": "warn",
     "no-else-return": "off",
     "import/no-extraneous-dependencies": [
       "error",
@@ -32,6 +31,8 @@
       {
         "allowModules": ["mockgoose", "cors"]
       }
-    ]
+    ],
+    "no-restricted-syntax": "off",
+    "no-await-in-loop": "off"
   }
 }

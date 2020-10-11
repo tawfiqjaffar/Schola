@@ -1,55 +1,36 @@
-function getStartDay() {
-  const startDay = new Date();
-  startDay.setHours(0);
-  startDay.setMinutes(0);
-  startDay.setSeconds(0);
+const moment = require('moment-timezone');
 
-  return startDay;
+function getDayBefore() {
+  var dayBefore = moment().subtract('1', 'd').format();
+  dayBefore = dayBefore.slice(0, 10);
+
+  return (dayBefore);
 }
 
-function getEndDay() {
-  const endDay = new Date();
-  endDay.setHours(23);
-  endDay.setMinutes(59);
-  endDay.setSeconds(59);
+function getDayAfter() {
+  var dayAfter = moment().add('1', 'd').format();
+  dayAfter = dayAfter.slice(0, 10);
 
-  return endDay;
+  return (dayAfter);
 }
 
 function getStartWeek() {
-  const today = new Date();
+  var startWeek = moment().startOf('week').subtract('1', 'd',).format();
+  startWeek = startWeek.slice(0, 10);
 
-  let day = today.getDay() - 1; // L'index commence à 0 pour Dimanche
-  if (day < 0) day = 6;
-  const date = today.getDate();
-  const month = today.getMonth() + 1; // L'index commence à 0 pour Janvier
-  const year = today.getFullYear();
-
-  const fromStr = `${year}-${month}`;
-  const from = new Date(fromStr);
-  from.setDate(date - day);
-
-  return from;
+  return (startWeek);
 }
 
 function getEndWeek() {
-  const today = new Date();
+  var endWeek = moment().endOf('week').add('1', 'd',).format();
+  endWeek = endWeek.slice(0, 10);
 
-  let day = today.getDay() - 1;
-  if (day < 0) day = 6;
-  const date = today.getDate();
-  const month = today.getMonth() + 1;
-  const year = today.getFullYear();
-
-  const toStr = `${year}-${month}`;
-  const to = new Date(toStr);
-  to.setDate(date + (6 - day));
-  return to;
+  return (endWeek);
 }
 
 module.exports = {
-  getStartDay,
-  getEndDay,
+  getDayBefore,
+  getDayAfter,
   getStartWeek,
   getEndWeek,
 };

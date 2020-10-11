@@ -1,5 +1,3 @@
-const mongoose = require('mongoose');
-
 const Grade = require('../../models/grade');
 const responseBody = require('../../routes/responseBody');
 

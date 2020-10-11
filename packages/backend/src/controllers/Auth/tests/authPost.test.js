@@ -45,7 +45,7 @@ const authTestUser = async () => {
 describe('Authentication', () => {
   it('should authenticate a user and return an access token', async () => {
     await createTestUser();
-    let auth = await authTestUser();
+    const auth = await authTestUser();
 
     expect(auth).toBeDefined();
     expect(auth.data.code).toEqual(200);

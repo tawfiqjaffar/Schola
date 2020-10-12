@@ -8,6 +8,7 @@ const {
   getReadableSubjectGrades,
   getUserAverage,
   getUserAverageBySubjectId,
+  groupBySubject,
 } = require('../controllers/Grade/gradeGet');
 
 const { createGrade } = require('../controllers/Grade/gradePost');
@@ -72,6 +73,14 @@ router.get(
   checkFields,
   authenticateJwt,
   getUserAverageBySubjectId
+);
+
+router.get(
+  '/stats/average/student/subject/group',
+  [check('authorization', 'you must provide a bearer access token').notEmpty()],
+  checkFields,
+  authenticateJwt,
+  groupBySubject
 );
 
 router.put(

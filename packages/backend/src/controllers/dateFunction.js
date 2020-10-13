@@ -1,7 +1,7 @@
 const moment = require('moment-timezone');
 
-function getDayBefore() {
-  var dayBefore = moment().subtract('1', 'd').format();
+function getToday() {
+  var dayBefore = moment().format();
   dayBefore = dayBefore.slice(0, 10);
 
   return (dayBefore);
@@ -15,7 +15,7 @@ function getDayAfter() {
 }
 
 function getStartWeek() {
-  var startWeek = moment().startOf('week').subtract('1', 'd',).format();
+  var startWeek = moment().startOf('week').format();
   startWeek = startWeek.slice(0, 10);
 
   return (startWeek);
@@ -29,7 +29,7 @@ function getEndWeek() {
 }
 
 module.exports = {
-  getDayBefore,
+  getToday,
   getDayAfter,
   getStartWeek,
   getEndWeek,

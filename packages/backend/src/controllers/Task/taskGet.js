@@ -1,6 +1,11 @@
 const Task = require('../../models/task');
 const responseBody = require('../../routes/responseBody');
-const { getStartWeek, getEndWeek } = require('../dateFunction');
+const {
+  getToday,
+  getDayAfter,
+  getStartWeek,
+  getEndWeek,
+} = require('../dateFunction');
 
 const getAllTask = (req, res) => {
   return Task.find({ usersId: req.user._id }, (err, data) => {
@@ -27,14 +32,16 @@ const getAllTask = (req, res) => {
 };
 
 const getDayTask = (req, res) => {
-  const date = new Date();
-
-  date.setHours(0);
-  date.setMinutes(0);
-  date.setSeconds(0);
+  const today = getToday();
+  const dayAfter = getDayAfter();
 
   return Task.find(
-    { $and: [{ usersId: req.user._id }, { dueDate: date }] },
+    {
+      $and: [
+        { usersId: req.user._id },
+        { dueDate: { $gte: today, $lt: dayAfter } },
+      ],
+    },
     (err, data) => {
       if (err) {
         return res
@@ -60,14 +67,16 @@ const getDayTask = (req, res) => {
 };
 
 const getWeekTask = (req, res) => {
-  const monday = getStartWeek();
-  const sunday = getEndWeek();
+  const startWeek = getStartWeek();
+  const endWeek = getEndWeek();
+  console.log(startWeek);
+  console.log(endWeek);
 
   return Task.find(
     {
       $and: [
         { usersId: req.user._id },
-        { dueDate: { $gte: monday, $lte: sunday } },
+        { dueDate: { $gt: startWeek, $lt: endWeek } },
       ],
     },
     (err, data) => {

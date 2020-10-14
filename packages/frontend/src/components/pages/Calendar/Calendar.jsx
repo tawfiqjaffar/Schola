@@ -21,7 +21,7 @@ import {
   Resources,
   DragDropProvider,
 } from '@devexpress/dx-react-scheduler-material-ui';
-import { WbSunny, FilterDrama, Opacity, ColorLens } from '@material-ui/icons';
+import { WbSunny, FilterDrama, Opacity } from '@material-ui/icons';
 import { withStyles } from '@material-ui/core/styles';
 import { PropTypes } from 'prop-types';
 import { owners } from './data';
@@ -36,7 +36,7 @@ const appointments = [
   },
   {
     id: 1,
-    title: 'Cours de test',
+    title: 'Cours test',
     startDate: new Date(2020, 5, 28, 9, 30),
     endDate: new Date(2020, 5, 28, 11, 30),
     ownerId: 1,
@@ -310,7 +310,6 @@ const FlexibleSpace = withStyles(styles, { name: 'ToolbarRoot' })(
   ({ classes }) => (
     <Toolbar.FlexibleSpace className={classes.flexibleSpace}>
       <div className={classes.flexContainer}>
-        <ColorLens fontSize="large" htmlColor="#FF7043" />
         <Typography variant="h5" style={{ marginLeft: '10px' }}>
           Schedule
         </Typography>

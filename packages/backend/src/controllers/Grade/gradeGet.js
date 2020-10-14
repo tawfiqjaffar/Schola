@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+const Subject = require('../../models/subject');
 const Grade = require('../../models/grade');
 const responseBody = require('../../routes/responseBody');
 
@@ -196,19 +197,66 @@ const getUserAverageBySubjectId = (req, res) => {
           grades.push(el.grade);
           total += el.grade;
         });
-        return res
-          .status(responseBody.responseCode.SUCCESS)
-          .send(
-            responseBody.buildResponseBody(
-              { average: total / grades.length, grades: data },
-              responseBody.responseCode.SUCCESS
-            )
-          );
+        return Subject.findOne(
+          { _id: mongoose.Types.ObjectId(subjectId) },
+          (errSub, sub) => {
+            if (errSub) {
+              return res
+                .status(responseBody.responseCode.INTSERVERR)
+                .send(
+                  responseBody.buildResponseBody(
+                    err,
+                    responseBody.responseCode.INTSERVERR
+                  )
+                );
+            } else {
+              return res.status(responseBody.responseCode.SUCCESS).send(
+                responseBody.buildResponseBody(
+                  {
+                    average: total / grades.length,
+                    grades: data,
+                    subject: sub,
+                  },
+                  responseBody.responseCode.SUCCESS
+                )
+              );
+            }
+          }
+        );
       }
     }
   );
 };
 
+const groupBySubject = (req, res) => {
+  const { user } = req;
+  Grade.find(
+    { studentId: mongoose.Types.ObjectId(user._id) },
+    (err, grades) => {
+      const subjs = {};
+
+      let i = 0;
+
+      for (i; i < grades.length; i += 1) {
+        const el = grades[i];
+        if (!subjs[el.subjectId]) {
+          subjs[el.subjectId] = [el];
+        } else {
+          subjs[el.subjectId].push(el);
+        }
+      }
+
+      Object.keys(subjs).forEach((key) => {
+        let total = 0;
+        subjs[key].forEach((s) => {
+          total += s.grade;
+        });
+        subjs[key] = { average: total / subjs[key].length, grades: subjs[key] };
+      });
+      return res.status(200).send(subjs);
+    }
+  );
+};
 module.exports = {
   getAllStudentGrades,
   getReadableGrades,
@@ -216,4 +264,5 @@ module.exports = {
   getReadableSubjectGrades,
   getUserAverage,
   getUserAverageBySubjectId,
+  groupBySubject,
 };

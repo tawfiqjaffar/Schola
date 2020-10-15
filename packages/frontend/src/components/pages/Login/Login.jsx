@@ -1,79 +1,162 @@
 import React from 'react';
-import { Container, Grid, Paper, Button } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
-import CustomTextFieldFilled from '../../common/CustomTextFieldFilled';
+import Spinner from 'react-loader-spinner';
+import { Alert } from '@material-ui/lab';
+import { Button, Snackbar } from '@material-ui/core';
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+import { Redirect } from 'react-router-dom';
+import postLoginUser from '../../../api/methods/auth';
+import ForgotPassword from './ForgotPassword';
+import './LoginPage.css';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: '100%',
-    textAlign: 'center',
-  },
-  paper: {
-    marginTop: theme.spacing(8),
-    paddingTop: theme.spacing(3),
-    paddingBottom: theme.spacing(3),
-    paddingLeft: theme.spacing(3),
-    paddingRight: theme.spacing(3),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  passwordContainer: {
-    marginTop: theme.spacing(3),
-  },
-  textField: {
-    width: '100%',
-  },
-  submitButton: {
-    background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
-    color: 'white',
-  },
-}));
+class Login extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+      password: '',
+      redirect: false,
+      loading: false,
+      open: false,
+      success: false,
+      forgetPassword: false,
+      code: '',
+      newPassword: '',
+    };
 
-const Login = () => {
-  const classes = useStyles();
+    this.onSubmit = this.onSubmit.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.RedirectPasswordForgot = this.RedirectPasswordForgot.bind(this);
+  }
 
-  return (
-    <Container className={classes.root}>
-      <Paper className={classes.paper}>
-        <Grid container alignItems="center" justify="center" spacing={1}>
-          <Grid item xs={12} sm={6}>
-            <CustomTextFieldFilled label="Enter your email address" />
-          </Grid>
-        </Grid>
-        <Grid
-          container
-          alignItems="center"
-          justify="center"
-          className={classes.passwordContainer}
-        >
-          <Grid item xs={12} sm={6}>
-            <CustomTextFieldFilled
-              label="Enter your password"
-              type="password"
+  async onSubmit(e) {
+    e.preventDefault();
+    const { email, password } = this.state;
+    this.setState({ loading: true });
+    const res = await postLoginUser(email, password);
+    if (res.code === 200) {
+      this.setState({
+        loading: false,
+        success: true,
+        open: true,
+        redirect: true,
+      });
+      sessionStorage.setItem('token', res.data.accessToken);
+      window.location.reload();
+    } else {
+      this.setState({ loading: false, success: false, open: true });
+    }
+  }
+
+  onChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
+  RedirectPasswordForgot() {
+    this.setState({ forgetPassword: true });
+  }
+
+  render() {
+    const {
+      redirect,
+      email,
+      password,
+      loading,
+      open,
+      success,
+      forgetPassword,
+      code,
+      newPassword,
+    } = this.state;
+    if (sessionStorage.getItem('token')) {
+      this.setState({ redirect: true });
+    }
+    if (redirect) {
+      return <Redirect to="/home" />;
+    }
+    if (forgetPassword) {
+      return (
+        <ForgotPassword
+          onChange={this.onChange}
+          email={email}
+          code={code}
+          newPassword={newPassword}
+          redirect={redirect}
+        />
+      );
+    }
+    return (
+      <ValidatorForm onSubmit={this.onSubmit}>
+        <div className="container">
+          <div className="top" />
+          <div className="bottom" />
+          <div className="center">
+            {loading && <Spinner type="Puff" />}
+
+            <p className="bold">Bienvenue sur SCHOLA</p>
+            <TextValidator
+              name="email"
+              id="standard-required"
+              label="Email"
+              variant="outlined"
+              InputLabelProps={{
+                style: { color: '#333' },
+              }}
+              className="padbot-20"
+              value={email}
+              onChange={this.onChange}
+              validators={['required', 'isEmail']}
+              errorMessages={[
+                'Veuillez remplir ce champ',
+                "L'email rentré n'est pas valide.",
+              ]}
             />
-          </Grid>
-        </Grid>
-        <Grid
-          container
-          alignItems="center"
-          justify="center"
-          className={classes.passwordContainer}
-        >
-          <Grid item xs={12} sm={3} md={1}>
-            <Button
-              variant="contained"
-              size="large"
-              className={classes.submitButton}
-              fullWidth
-            >
-              Go
+            <TextValidator
+              id="outlined-password-input"
+              label="Password"
+              type="password"
+              name="password"
+              autoComplete="current-password"
+              InputLabelProps={{
+                style: { color: '#333' },
+              }}
+              variant="outlined"
+              value={password}
+              onChange={this.onChange}
+              validators={['required']}
+              errorMessages={['Veuillez remplir ce champ']}
+            />
+            <br />
+            <Button variant="contained" className="margtop-20" type="submit">
+              Connexion
             </Button>
-          </Grid>
-        </Grid>
-      </Paper>
-    </Container>
-  );
-};
+            <div
+              role="button"
+              onClick={this.RedirectPasswordForgot}
+              aria-hidden="true"
+            >
+              mot de passe oublié ?
+            </div>
+          </div>
+          <Snackbar
+            open={open}
+            autoHideDuration={3000}
+            onClose={() => {
+              this.setState({ open: false });
+            }}
+          >
+            <Alert
+              onClose={() => {
+                this.setState({ open: false });
+              }}
+              severity={success ? 'success' : 'error'}
+            >
+              {success ? 'Authentifié' : 'Mot de passe incorrect'}
+            </Alert>
+          </Snackbar>
+        </div>
+      </ValidatorForm>
+    );
+  }
+}
 
 export default Login;

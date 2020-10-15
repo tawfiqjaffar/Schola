@@ -21,6 +21,9 @@ const schema = new mongoose.Schema({
   dateOfBirth: {
     type: Date,
   },
+  avatar: {
+    type: mongoose.Schema.Types.ObjectId,
+  },
   role: {
     type: String,
     enum: ['student', 'teacher', 'parent', 'viesco', 'admin'],
@@ -30,6 +33,10 @@ const schema = new mongoose.Schema({
     type: String,
     enum: ['basic', 'google'],
     default: 'basic',
+  },
+  passwordRecoveryToken: {
+    type: String,
+    default: '',
   },
 });
 

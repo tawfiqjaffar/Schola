@@ -1,6 +1,9 @@
 {
   "extends": ["airbnb", "prettier", "plugin:node/recommended"],
   "plugins": ["prettier"],
+  "env": {
+    "jest": true
+  },
   "rules": {
     "prettier/prettier": "error",
     "no-unused-vars": "warn",
@@ -10,7 +13,6 @@
     "object-shorthand": "error",
     "class-methods-use-this": "off",
     "no-underscore-dangle": "off",
-    "no-restricted-syntax": "warn",
     "no-else-return": "off",
     "import/no-extraneous-dependencies": [
       "error",
@@ -29,6 +31,8 @@
       {
         "allowModules": ["mockgoose", "cors"]
       }
-    ]
+    ],
+    "no-restricted-syntax": "off",
+    "no-await-in-loop": "off"
   }
 }

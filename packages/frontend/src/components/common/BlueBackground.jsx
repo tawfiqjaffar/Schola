@@ -21,6 +21,7 @@ const BlueBackground = (props) => {
   return (
     <div style={theme.back}>
       <div style={theme.front}>
+        {}
       </div>
     </div>
   );

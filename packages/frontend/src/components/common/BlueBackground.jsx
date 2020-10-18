@@ -13,7 +13,7 @@ const BlueBackground = (props) => {
     front: {
       width: `${width}px`,
       height: `${height}px`,
-      backgroundColor: '#ffc6c7',
+      backgroundColor: '#70c6c7',
       transform: `rotate(${frontRota}deg)`,
     },
   };

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const BlueBackground = (props) => {
-  const { width, height, backRota, frontRota } = props;
+  const { width, height, backRota, frontRota, children } = props;
   const theme = {
     back: {
       width: `${width}px`,
@@ -13,7 +13,7 @@ const BlueBackground = (props) => {
     front: {
       width: `${width}px`,
       height: `${height}px`,
-      backgroundColor: '#70c6c7',
+      backgroundColor: '#ffc6c7',
       transform: `rotate(${frontRota}deg)`,
     },
   };
@@ -21,7 +21,7 @@ const BlueBackground = (props) => {
   return (
     <div style={theme.back}>
       <div style={theme.front}>
-        {}
+        {children}
       </div>
     </div>
   );
@@ -30,6 +30,7 @@ const BlueBackground = (props) => {
 export default BlueBackground;
 
 BlueBackground.propTypes = {
+  children: PropTypes.node.isRequired,
   width: PropTypes.string,
   height: PropTypes.string,
   backRota: PropTypes.string,

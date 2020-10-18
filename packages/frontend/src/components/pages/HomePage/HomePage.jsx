@@ -3,6 +3,8 @@ import clsx from 'clsx';
 import { Container, Grid, Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 
+import BlueBackground from '../../common/BlueBackground';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -39,7 +41,9 @@ const Home = () => {
       <Paper className={classes.paper}>
         <Grid container spacing={3}>
           <Grid item xs={12} md={4} lg={3}>
-            <Paper className={fixedHeightPaper}>Profil_img</Paper>
+            <BlueBackground backRota='-6' width="300" frontRota='10'>
+              <Paper className={fixedHeightPaper}>Profil_img</Paper>
+            </BlueBackground>
           </Grid>
           <Grid item xs={12} md={4} lg={6}>
             <Paper className={fixedHeightPaper}>Infos_etudiant</Paper>

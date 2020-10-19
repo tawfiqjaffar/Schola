@@ -3,8 +3,6 @@ import clsx from 'clsx';
 import { Container, Grid, Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 
-import BlueBackground from '../../common/BlueBackground';
-
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -19,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    transform: `rotate(none)`,
   },
   fixedHeight: {
     height: '240px',

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 const BlueBackground = (props) => {
   const { width, height, backRota, frontRota, children } = props;
+  const resetRota = (Number(frontRota) + Number(backRota)) * -1;
   const theme = {
     back: {
       width: `${width}px`,
@@ -16,12 +17,16 @@ const BlueBackground = (props) => {
       backgroundColor: '#70c6c7',
       transform: `rotate(${frontRota}deg)`,
     },
+    reset: {
+      transform: `rotate(${resetRota}deg)`,
+    }
   };
-
   return (
     <div style={theme.back}>
       <div style={theme.front}>
-        {children}
+        <div style={theme.reset}>
+          {children}
+        </div>
       </div>
     </div>
   );

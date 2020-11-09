@@ -1,4 +1,3 @@
-const mongoose = require('mongoose');
 const Ticket = require('../../models/ticket');
 const rb = require('../../routes/responseBody');
 

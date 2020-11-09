@@ -1,4 +1,4 @@
-const { Mongoose, Types } = require('mongoose');
+const { Types } = require('mongoose');
 const Ticket = require('../../models/ticket');
 const responseBody = require('../../routes/responseBody');
 

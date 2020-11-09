@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const BlueBackground = (props) => {
-  const { Fwidth, Fheight, Bwidth, Bheight, BRota, FRota, Bcolor, Fcolor, children } = props;
+  const { Fwidth, Fheight, Bwidth, Bheight, BRota,
+    FRota, Bcolor, Fcolor, children } = props;
   const resetRota = (Number(FRota) + Number(BRota)) * -1;
   const theme = {
     back: {

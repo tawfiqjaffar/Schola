@@ -7,7 +7,7 @@ module.exports = {
         browser
             .url("http://localhost:3000/Login")
             .waitForElementVisible("body")
-            .moveToElement("#root > form > div", 100, 100)
+            .moveToElement("#root>form>div>div.bottom", 2, 2)
             .assert.titleContains("Schola")
             .assert.visible("input[type=text]")
             .assert.visible("input[type=password]")

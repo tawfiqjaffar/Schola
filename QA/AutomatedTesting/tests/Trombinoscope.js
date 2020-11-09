@@ -8,6 +8,7 @@ module.exports = {
             .url("http://localhost:3000/Login")
             .waitForElementVisible("body")
             .assert.titleContains("Schola")
+            .moveToElement("#root > form > div", 100, 100)
             .assert.visible("input[type=text]")
             .assert.visible("input[type=password]")
             .setValue('input[type="text"]', identifiers.good_username)

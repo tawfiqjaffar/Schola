@@ -13,7 +13,9 @@
     "author": "",
     "license": "ISC",
     "devDependencies": {
-        "chromedriver": "^83",
         "nightwatch": "^1.3.5"
+    },
+    "dependencies": {
+        "chromedriver": "^86.0.0"
     }
 }

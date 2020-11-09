@@ -33,5 +33,5 @@ createUser({
   firstname: 'Thomas',
   lastname: 'Daullé',
   email: 'thomas.daulle@epitech.eu',
-  role: 'student',
+  role: 'admin',
 });

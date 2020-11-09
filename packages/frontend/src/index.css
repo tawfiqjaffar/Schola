@@ -41,3 +41,15 @@ code {
 .history{
 
 }
+
+.quizzForm{
+  padding: 15px;
+}
+
+.quizzForm, div{
+  padding-bottom: 15px;
+}
+
+.quizzInput {
+padding: 5px;
+}

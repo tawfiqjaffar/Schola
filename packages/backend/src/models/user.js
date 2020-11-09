@@ -26,7 +26,7 @@ const schema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ['student', 'teacher', 'parent', 'viesco', 'admin'],
+    enum: ['student', 'teacher', 'parent', 'viesco', 'admin', 'superadmin'],
     default: 'student',
   },
   accountType: {

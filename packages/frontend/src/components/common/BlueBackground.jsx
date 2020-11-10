@@ -29,15 +29,13 @@ const BlueBackground = (props) => {
     }
   };
   return (
-    <>
-    <div style={Object.assign({}, style, theme.back)}>
+    <div style={({ ...style, ...theme.back })}>
       <div style={theme.front}>
         <div style={theme.reset}>
           {children}
         </div>
       </div>
     </div>
-    </>
   );
 };
 

@@ -5,6 +5,9 @@ var identifiers = {
     good_password: "test",
     bad_username: "personne@schola.fr",
     bad_password: "test",
+    good_email: "alan@schola.fr",
+    bad_email: "alan.cataldo@yahoo.fr",
+    not_email: "bonjour",
 };
 
 module.exports = {

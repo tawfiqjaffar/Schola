@@ -8,6 +8,8 @@ const {
   getSubjectLevelExercices,
 } = require('../controllers/Exercice/exerciceGet');
 
+const { createExercice } = require('../controllers/Exercice/exercicePost');
+
 const router = express.Router();
 
 router.get(
@@ -40,6 +42,14 @@ router.get(
   checkFields,
   authenticateJwt,
   getSubjectLevelExercices
+);
+
+router.post(
+  '/create',
+  [check('authorization', 'you must provide a bearer access token').notEmpty()],
+  checkFields,
+  authenticateJwt,
+  createExercice
 );
 
 module.exports = router;

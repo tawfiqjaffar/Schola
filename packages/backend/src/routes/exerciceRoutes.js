@@ -10,6 +10,8 @@ const {
 
 const { createExercice } = require('../controllers/Exercice/exercicePost');
 
+const { deleteExercice } = require('../controllers/Exercice/exerciceDelete');
+
 const router = express.Router();
 
 router.get(
@@ -50,6 +52,14 @@ router.post(
   checkFields,
   authenticateJwt,
   createExercice
+);
+
+router.delete(
+  '/delete',
+  [check('authorization', 'you must provide a bearer access token').notEmpty()],
+  checkFields,
+  authenticateJwt,
+  deleteExercice
 );
 
 module.exports = router;

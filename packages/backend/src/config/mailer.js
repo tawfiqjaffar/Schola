@@ -13,13 +13,22 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const sendEmail = (toEmail, code, callback) => {
+const getMailOptions = (toEmail, subject, text) => {
   const mailOptions = {
-    from: email,
+    from: `Schola <${email}>`,
     to: toEmail,
-    subject: '[Schola] - Récupération de votre mot de passe',
-    text: code,
+    subject,
+    text,
   };
+  return mailOptions;
+};
+
+const sendEmail = (toEmail, code, callback) => {
+  const mailOptions = getMailOptions(
+    toEmail,
+    '[Schola] - Récupération de votre mot de passe',
+    code
+  );
 
   transporter.sendMail(mailOptions, (err, info) => {
     callback(err, info);
@@ -27,16 +36,26 @@ const sendEmail = (toEmail, code, callback) => {
 };
 
 const sendEmailContact = (toEmail, code, callback) => {
-  const mailOptions = {
-    from: email,
-    to: toEmail,
-    subject: '[Schola] - Email de contact',
-    text: code,
-  };
+  const mailOptions = getMailOptions(
+    toEmail,
+    '[Schola] - Email de contact',
+    code
+  );
 
   transporter.sendMail(mailOptions, (err, info) => {
     callback(err, info);
   });
 };
 
-module.exports = { sendEmail, sendEmailContact };
+const sendRecievedNotification = (toEmail, data, callback) => {
+  const mailOptions = getMailOptions(
+    toEmail,
+    '[Schola] - Email de contact',
+    data
+  );
+  transporter.sendMail(mailOptions, (err, info) => {
+    callback();
+  });
+};
+
+module.exports = { sendEmail, sendEmailContact, sendRecievedNotification };

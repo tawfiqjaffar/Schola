@@ -1,9 +1,18 @@
 require('dotenv');
 
-const { sendEmailContact } = require('../../config/mailer');
+const {
+  sendEmailContact,
+  sendRecievedNotification,
+} = require('../../config/mailer');
 const responseBody = require('../../routes/responseBody');
 
 const emailUs = process.env.EMAIL;
+
+const sentRecievedNotification = async (toEmail, data, callback) => {
+  sendRecievedNotification(toEmail, data, () => {
+    callback();
+  });
+};
 
 const contactUs = (req, res) => {
   const { email, message } = req.body;
@@ -23,9 +32,12 @@ const contactUs = (req, res) => {
             )
           );
       } else {
-        return res
-          .status(200)
-          .send(responseBody.buildResponseBody({ info, message }, 200));
+        const text = `Votre message a bien été envoyé aux administrateurs de Schola. Vous pouvez consulter son contenu ci-dessous:\n\n${message}`;
+        return sentRecievedNotification(email, text, () => {
+          return res
+            .status(200)
+            .send(responseBody.buildResponseBody({ info, message }, 200));
+        });
       }
     }
   );

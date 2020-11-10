@@ -9,6 +9,11 @@ import Calendar from '../pages/Calendar/Calendar';
 import Join from '../pages/Chatbox/Join/Join';
 import Chatbox from '../pages/Chatbox/Chat/Chat';
 
+const redirectToLogin = (Component) => {
+  if (!sessionStorage.getItem('token')) return <Login />;
+  return <Component />;
+};
+
 const Router = () => (
   <BrowserRouter>
     <NavigationBar />
@@ -16,7 +21,7 @@ const Router = () => (
       <Route exact path="/" component={LandingPage} />
       <Route path="/login" component={Login} />
       <Route path="/Calendar" component={Calendar} />
-      <Route path="/home" component={Home} />
+      <Route path="/home" render={() => redirectToLogin(Home)} />
       <Route path="/join" component={Join} />
       <Route path="/chat" component={Chatbox} />
       <Route component={PageNotFound} />

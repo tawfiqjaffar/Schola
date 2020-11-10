@@ -38,6 +38,7 @@
     "form-data": "^3.0.0",
     "jsonwebtoken": "^8.5.1",
     "mockgoose": "^8.0.4",
+    "moment": "^2.27.0",
     "mongoose": "^5.9.7",
     "nodemailer": "^6.4.8",
     "nodemon": "^2.0.4",

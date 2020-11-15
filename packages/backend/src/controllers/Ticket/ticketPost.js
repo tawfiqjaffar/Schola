@@ -1,25 +1,37 @@
 const { Types } = require('mongoose');
 const Ticket = require('../../models/ticket');
+const { responseCode } = require('../../routes/responseBody');
 const responseBody = require('../../routes/responseBody');
 
 const createTicket = (req, res) => {
   const { user } = req;
   const { role } = user;
-  const { label, subject, content, school } = req.body;
+  const { label, content } = req.body;
   let assignedTo = '';
-  if (role === 'admin' || role === 'superadmin') assignedTo = 'superadmin';
-  else assignedTo = 'admin';
+
+  if (role === 'student') {
+    return res
+      .status(responseBody.responseCode.FORBID)
+      .send(
+        responseBody.buildResponseBody(
+          'you do not have the required rights to do that',
+          responseCode.FORBID
+        )
+      );
+  } else if (role === 'admin' || role === 'superadmin') {
+    assignedTo = 'superadmin';
+  } else {
+    assignedTo = 'admin';
+  }
 
   const newTicket = new Ticket({
     label,
-    subject,
     content,
-    school: !school ? null : Types.ObjectId(school),
-    creator: Types.ObjectId(user._id),
+    creator: user._id,
     assignedTo,
   });
 
-  newTicket.save((err, ticket) => {
+  return newTicket.save((err, ticket) => {
     if (err) {
       return res
         .status(responseBody.responseCode.INTSERVERR)

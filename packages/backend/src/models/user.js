@@ -38,6 +38,12 @@ const schema = new mongoose.Schema({
     type: String,
     default: '',
   },
+  school: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'School',
+    required: false,
+    default: null,
+  },
 });
 
 module.exports = mongoose.model('User', schema);

@@ -21,17 +21,21 @@ const getAllTickets = (req, res) => {
       query.school = school;
     }
     query.assignedTo = role;
-    return Ticket.find(query, (err, tickets) => {
-      if (err) {
-        return res
-          .status(rb.responseCode.INTSERVERR)
-          .send(rb.buildResponseBody(err, rb.responseCode.INTSERVERR));
-      } else {
+    return Ticket.find(query)
+      .populate({
+        path: 'creator',
+        populate: { path: 'school', model: 'School' },
+      })
+      .then((tickets) => {
         return res
           .status(rb.responseCode.SUCCESS)
           .send(rb.buildResponseBody(tickets, rb.responseCode.SUCCESS));
-      }
-    });
+      })
+      .catch((err) => {
+        return res
+          .status(rb.responseCode.INTSERVERR)
+          .send(rb.buildResponseBody(err, rb.responseCode.INTSERVERR));
+      });
   }
 };
 

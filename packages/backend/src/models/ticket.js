@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const AutoIncrement = require('mongoose-sequence')(mongoose);
+const User = require('./user');
 
 const schema = new mongoose.Schema(
   {
@@ -7,12 +9,9 @@ const schema = new mongoose.Schema(
       required: true,
     },
     creator: {
-      type: mongoose.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
       required: true,
-    },
-    subject: {
-      type: String,
-      required: false,
     },
     content: {
       type: String,
@@ -23,12 +22,9 @@ const schema = new mongoose.Schema(
       enum: ['admin', 'superadmin'],
       default: 'admin',
     },
-    school: {
-      type: mongoose.Types.ObjectId,
-      required: false,
-    },
   },
   { timestamps: { createdAt: 'created_at' } }
 );
 
+schema.plugin(AutoIncrement, { inc_field: 'index' });
 module.exports = mongoose.model('Ticket', schema);

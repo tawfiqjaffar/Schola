@@ -6,7 +6,7 @@
   "author": "tawfiq.jaffar@epitech.eu",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "yarn nodemon index.js",
     "dev": "nodemon index.js --exec 'yarn lint && node'",
     "lint": "eslint ./*.js src/encryption/*.js src/models/*.js src/routes/*.js src/controllers/**/*.js",
     "test:watch": "jest --detectOpenHandles --watchAll",

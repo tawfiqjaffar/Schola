@@ -1,4 +1,3 @@
-const { Types } = require('mongoose');
 const Ticket = require('../../models/ticket');
 const { responseCode } = require('../../routes/responseBody');
 const responseBody = require('../../routes/responseBody');

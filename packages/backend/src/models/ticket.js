@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const AutoIncrement = require('mongoose-sequence')(mongoose);
-const User = require('./user');
 
 const schema = new mongoose.Schema(
   {

@@ -1,5 +1,0 @@
-PORT=8080
-SECRET=sewuCxdD8GCXVq4K4VoN
-MONGODB_URI=mongodb+srv://Maciintosh:*****@cluster0-62g3z.mongodb.net/Schola?authSource=admin&replicaSet=Cluster0-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true
-EMAIL=schola.eip@gmail.com
-EMAIL_PWD=|6?Fxqcb5+L5

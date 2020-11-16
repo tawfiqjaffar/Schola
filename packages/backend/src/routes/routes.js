@@ -11,6 +11,7 @@ const subjectRoutes = require('./subjectRoutes');
 const canteenRoutes = require('./canteenRoutes');
 const parentRoutes = require('./parentRoutes');
 const teacherRoutes = require('./teacherRoutes');
+const ticketRoutes = require('./ticketRoutes');
 
 const routes = [
   ['info', infoRoutes],
@@ -26,6 +27,7 @@ const routes = [
   ['canteen', canteenRoutes],
   ['parent', parentRoutes],
   ['teacher', teacherRoutes],
+  ['ticket', ticketRoutes],
 ];
 
 module.exports = routes;

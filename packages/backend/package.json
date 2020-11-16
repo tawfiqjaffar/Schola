@@ -10,8 +10,7 @@
     "dev": "nodemon index.js --exec 'yarn lint && node'",
     "lint": "eslint ./*.js src/encryption/*.js src/models/*.js src/routes/*.js src/controllers/**/*.js",
     "test:watch": "jest --detectOpenHandles --watchAll",
-    "build": "yarn install",
-    "nodemon": "^2.0.2"
+    "build": "yarn install"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
@@ -23,7 +22,8 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.19.0",
-    "prettier": "^2.0.4"
+    "prettier": "^2.0.4",
+    "nodemon": "^2.0.2"
   },
   "engines": {
     "node": ">=12.x"

@@ -28,10 +28,10 @@ const createUser = async (user) => {
 };
 
 createUser({
-  username: 'Toto',
-  password: 'toto',
-  firstname: 'Thomas',
-  lastname: 'Daullé',
-  email: 'thomasd@schola.fr',
-  role: 'student',
+  username: 'parent',
+  password: 'parent',
+  firstname: 'parent',
+  lastname: 'parent',
+  email: 'parent@parent.parent',
+  role: 'parent',
 });

@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const AutoIncrement = require('mongoose-sequence')(mongoose);
 
+const STATUS = ['open', 'inProgress', 'resolved'];
+
 const schema = new mongoose.Schema(
   {
     label: {
@@ -20,9 +22,17 @@ const schema = new mongoose.Schema(
       type: String,
       enum: ['admin', 'superadmin'],
       default: 'admin',
+      required: true,
+    },
+    status: {
+      type: String,
+      enum: STATUS,
+      required: true,
+      default: 'open',
     },
   },
-  { timestamps: { createdAt: 'created_at' } }
+
+  { timestamps: { createdAt: 'created_at' }, strict: 'throw' }
 );
 
 schema.plugin(AutoIncrement, { inc_field: 'index' });

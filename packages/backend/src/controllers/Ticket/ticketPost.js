@@ -5,7 +5,7 @@ const responseBody = require('../../routes/responseBody');
 const createTicket = (req, res) => {
   const { user } = req;
   const { role } = user;
-  const { label, content } = req.body;
+  const { label, content, status } = req.body;
   let assignedTo = '';
 
   if (role === 'student') {
@@ -28,6 +28,7 @@ const createTicket = (req, res) => {
     content,
     creator: user._id,
     assignedTo,
+    status: status || 'open',
   });
 
   return newTicket.save((err, ticket) => {

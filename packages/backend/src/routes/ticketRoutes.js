@@ -1,6 +1,9 @@
 const express = require('express');
 const { check } = require('express-validator');
-const { getAllTickets } = require('../controllers/Ticket/ticketGet');
+const {
+  getAllTickets,
+  getSingleTicket,
+} = require('../controllers/Ticket/ticketGet');
 const { createTicket } = require('../controllers/Ticket/ticketPost');
 const { updateTicketStatus } = require('../controllers/Ticket/ticketUpdate');
 const { checkFields, authenticateJwt } = require('./middleware');
@@ -51,4 +54,16 @@ router.post(
   updateTicketStatus
 );
 
+router.get(
+  '/:id',
+  [
+    check(
+      'authorization',
+      'you must provided a bearer access token'
+    ).notEmpty(),
+  ],
+  checkFields,
+  authenticateJwt,
+  getSingleTicket
+);
 module.exports = router;

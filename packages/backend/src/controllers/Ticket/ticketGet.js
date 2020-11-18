@@ -39,4 +39,33 @@ const getAllTickets = (req, res) => {
   }
 };
 
-module.exports = { getAllTickets };
+const getSingleTicket = (req, res) => {
+  const { user } = req;
+  const { id } = req.params;
+
+  return Ticket.findById(id)
+    .populate('creator')
+    .then((ticket) => {
+      if (!ticket) {
+        return res
+          .status(404)
+          .send(
+            rb.buildResponseBody(`the ticket ${id} could not be found`, 404)
+          );
+      } else {
+        if (ticket.assignedTo !== user.role && user.role !== 'superadmin') {
+          return res
+            .status(403)
+            .send(
+              rb.buildResponseBody(
+                "you do not have enough rights to view that ticket's information",
+                403
+              )
+            );
+        }
+        return res.status(200).send(rb.buildResponseBody(ticket, 200));
+      }
+    });
+};
+
+module.exports = { getAllTickets, getSingleTicket };

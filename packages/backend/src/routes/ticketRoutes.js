@@ -5,19 +5,17 @@ const {
   getSingleTicket,
 } = require('../controllers/Ticket/ticketGet');
 const { createTicket } = require('../controllers/Ticket/ticketPost');
-const { updateTicketStatus } = require('../controllers/Ticket/ticketUpdate');
+const {
+  updateTicketStatus,
+  addCommentToTicket,
+} = require('../controllers/Ticket/ticketUpdate');
 const { checkFields, authenticateJwt } = require('./middleware');
 
 const router = express.Router();
 
 router.post(
   '/create',
-  [
-    check(
-      'authorization',
-      'you must provided a bearer access token'
-    ).notEmpty(),
-  ],
+  [check('authorization', 'you must provide a bearer access token').notEmpty()],
   checkFields,
   authenticateJwt,
   createTicket
@@ -25,12 +23,7 @@ router.post(
 
 router.get(
   '/all',
-  [
-    check(
-      'authorization',
-      'you must provided a bearer access token'
-    ).notEmpty(),
-  ],
+  [check('authorization', 'you must provide a bearer access token').notEmpty()],
   checkFields,
   authenticateJwt,
   getAllTickets
@@ -66,4 +59,17 @@ router.get(
   authenticateJwt,
   getSingleTicket
 );
+
+router.post(
+  '/comment',
+  [
+    check('authorization', 'you must provide a bearer access token').notEmpty(),
+    check('ticketId', 'you must provide a valid ticket ID').notEmpty(),
+    check('content', 'you must provide content').notEmpty(),
+  ],
+  checkFields,
+  authenticateJwt,
+  addCommentToTicket
+);
+
 module.exports = router;

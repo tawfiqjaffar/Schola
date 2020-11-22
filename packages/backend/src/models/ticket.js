@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const AutoIncrement = require('mongoose-sequence')(mongoose);
+const comment = require('./comment');
 
 const STATUS = ['open', 'inProgress', 'resolved'];
 
@@ -29,6 +30,11 @@ const schema = new mongoose.Schema(
       enum: STATUS,
       required: true,
       default: 'open',
+    },
+    comments: {
+      type: [comment.schema],
+      required: true,
+      default: [],
     },
   },
 

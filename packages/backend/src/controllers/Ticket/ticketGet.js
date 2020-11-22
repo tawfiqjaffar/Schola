@@ -21,7 +21,8 @@ const getAllTickets = (req, res) => {
       query.school = school;
     }
     query.assignedTo = role;
-    return Ticket.find(query)
+
+    return Ticket.find({ $or: [{ ...query }, { creator: user._id }] })
       .populate({
         path: 'creator',
         populate: { path: 'school', model: 'School' },
@@ -45,6 +46,9 @@ const getSingleTicket = (req, res) => {
 
   return Ticket.findById(id)
     .populate('creator')
+    .populate({
+      path: 'comments.creator',
+    })
     .then((ticket) => {
       if (!ticket) {
         return res
@@ -52,18 +56,34 @@ const getSingleTicket = (req, res) => {
           .send(
             rb.buildResponseBody(`the ticket ${id} could not be found`, 404)
           );
-      } else {
-        if (ticket.assignedTo !== user.role && user.role !== 'superadmin') {
-          return res
-            .status(403)
-            .send(
-              rb.buildResponseBody(
-                "you do not have enough rights to view that ticket's information",
-                403
-              )
-            );
-        }
+      } else if (
+        ticket.creator._id.toString() === user._id.toString() ||
+        ticket.assignedTo === user.role
+      ) {
         return res.status(200).send(rb.buildResponseBody(ticket, 200));
+      } else {
+        return res
+          .status(403)
+          .send(
+            rb.buildResponseBody(
+              "you do not have enough rights to view that ticket's information",
+              403
+            )
+          );
+        // if (
+        //   ticket.creator._id !== user._id ||
+        //   (ticket.assignedTo !== user.role && user.role !== 'superadmin')
+        // ) {
+        //   return res
+        //     .status(403)
+        //     .send(
+        //       rb.buildResponseBody(
+        //         "you do not have enough rights to view that ticket's information",
+        //         403
+        //       )
+        //     );
+        // }
+        // return res.status(200).send(rb.buildResponseBody(ticket, 200));
       }
     });
 };

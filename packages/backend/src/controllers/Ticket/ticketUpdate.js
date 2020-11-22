@@ -63,7 +63,7 @@ const addCommentToTicket = (req, res) => {
         creator: user,
       });
       ticket.comments.push(comment);
-      ticket.save((errPush, done) => {
+      return ticket.save((errPush, done) => {
         if (errPush) {
           return res.status(500).send(rb.buildResponseBody(errPush, 500));
         } else {

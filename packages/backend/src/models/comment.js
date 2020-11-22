@@ -8,7 +8,7 @@ const schema = mongoose.Schema(
     },
     creator: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Ticket',
+      ref: 'User',
       required: true,
     },
   },

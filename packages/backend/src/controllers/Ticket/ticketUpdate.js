@@ -20,7 +20,7 @@ const updateTicketStatus = (req, res) => {
   }
   return Ticket.findOne({
     _id: Types.ObjectId(ticketId),
-    assignedTo: user.role,
+    $or: [{ assignedTo: user.role }, { creator: user._id }],
   })
     .populate('creator')
     .then((ticket) => {

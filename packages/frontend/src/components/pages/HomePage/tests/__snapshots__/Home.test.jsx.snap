@@ -5,6 +5,7 @@ exports[`Home should render Home Page 1`] = `
   className="MuiContainer-root makeStyles-root-1 MuiContainer-maxWidthLg"
 >
   <div
+    className=""
     style={
       Object {
         "backgroundColor": "#fff0a5",
@@ -47,6 +48,7 @@ exports[`Home should render Home Page 1`] = `
     </div>
   </div>
   <div
+    className=""
     style={
       Object {
         "backgroundColor": "#fff0a5",
@@ -93,6 +95,7 @@ exports[`Home should render Home Page 1`] = `
     </div>
   </div>
   <div
+    className="test"
     style={
       Object {
         "backgroundColor": "#a1ff85",
@@ -135,6 +138,7 @@ exports[`Home should render Home Page 1`] = `
     </div>
   </div>
   <div
+    className=""
     style={
       Object {
         "backgroundColor": "#9ed1cc",

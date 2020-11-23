@@ -52,7 +52,6 @@ const useStyles = makeStyles((theme) => ({
 
 function LoginLogoutDisplay(props) {
   const { isLogged, redirection, disconnect } = props;
-  console.log(isLogged);
   if (!isLogged) {
     return <LoginRegister redirection={redirection} />;
   }

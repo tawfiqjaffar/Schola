@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const BlueBackground = (props) => {
   const { Fwidth, Fheight, Bwidth, Bheight, BRota,
-    FRota, Bcolor, Fcolor, children, style } = props;
+    FRota, Bcolor, Fcolor, children, style, className } = props;
   const resetRota = (Number(FRota) + Number(BRota)) * -1;
   const theme = {
     back: {
@@ -29,7 +29,7 @@ const BlueBackground = (props) => {
     }
   };
   return (
-    <div style={({ ...style, ...theme.back })}>
+    <div style={({ ...style, ...theme.back })} className={className}>
       <div style={theme.front}>
         <div style={theme.reset}>
           {children}
@@ -44,6 +44,7 @@ export default BlueBackground;
 BlueBackground.propTypes = {
   children: PropTypes.node.isRequired,
   style: PropTypes.object,
+  className: PropTypes.string,
   Fwidth: PropTypes.string,
   Fheight: PropTypes.string,
   Bwidth: PropTypes.string,
@@ -56,6 +57,7 @@ BlueBackground.propTypes = {
 
 BlueBackground.defaultProps = {
   style: {},
+  className: '',
   Bwidth: '200',
   Bheight: '280',
   Fwidth: '180',

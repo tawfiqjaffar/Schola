@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 const BlueBackground = (props) => {
   const { Fwidth, Fheight, Bwidth, Bheight, BRota,
     FRota, Bcolor, Fcolor, children, style, className } = props;
+
   const resetRota = (Number(FRota) + Number(BRota)) * -1;
   const theme = {
     back: {

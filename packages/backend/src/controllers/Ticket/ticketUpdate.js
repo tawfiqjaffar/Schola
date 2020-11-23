@@ -1,5 +1,6 @@
 const { Types } = require('mongoose');
 const Ticket = require('../../models/ticket');
+const Comment = require('../../models/comment');
 const rb = require('../../routes/responseBody');
 
 const STATUS = ['open', 'inProgress', 'resolved'];
@@ -19,7 +20,7 @@ const updateTicketStatus = (req, res) => {
   }
   return Ticket.findOne({
     _id: Types.ObjectId(ticketId),
-    assignedTo: user.role,
+    $or: [{ assignedTo: user.role }, { creator: user._id }],
   })
     .populate('creator')
     .then((ticket) => {
@@ -48,4 +49,29 @@ const updateTicketStatus = (req, res) => {
     });
 };
 
-module.exports = { updateTicketStatus };
+const addCommentToTicket = (req, res) => {
+  const { user } = req;
+
+  const { content, ticketId } = req.body;
+
+  Ticket.findById(ticketId, (err, ticket) => {
+    if (err) {
+      return res.status(404).send(rb.buildResponseBody(err, 404));
+    } else {
+      const comment = new Comment({
+        content,
+        creator: user,
+      });
+      ticket.comments.push(comment);
+      return ticket.save((errPush, done) => {
+        if (errPush) {
+          return res.status(500).send(rb.buildResponseBody(errPush, 500));
+        } else {
+          return res.status(200).send(rb.buildResponseBody(done, 200));
+        }
+      });
+    }
+  });
+};
+
+module.exports = { updateTicketStatus, addCommentToTicket };

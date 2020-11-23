@@ -5,6 +5,7 @@ import PageNotFound from '../pages/PageNotFound';
 import Login from '../pages/Login';
 import Home from '../pages/HomePage/HomePage';
 import NavigationBar from './NavigationBar';
+import Dashboard from '../pages/DashboardProfesor/Dashboard';
 
 const redirectToLogin = (Component) => {
   if (!sessionStorage.getItem('token')) return <Login />;
@@ -18,6 +19,7 @@ const Router = () => (
       <Route exact path="/" component={LandingPage} />
       <Route path="/login" component={Login} />
       <Route path="/home" render={() => redirectToLogin(Home)} />
+      <Route parth="/dashboard" component={Dashboard} />
       <Route component={PageNotFound} />
     </Switch>
   </BrowserRouter>

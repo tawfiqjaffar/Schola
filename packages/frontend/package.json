@@ -20,6 +20,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
+    "react-functional-select": "^2.9.3",
     "react-loader-spinner": "^3.1.14",
     "react-material-ui-carousel": "^1.1.1",
     "react-material-ui-form-validator": "^2.0.10",
@@ -28,8 +29,10 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
     "react-uuid": "^1.0.2",
+    "react-window": "^1.8.6",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
+    "styled-components": "^5.2.1",
     "validator": "^13.0.0",
     "yarn": "^1.22.4"
   },

@@ -3,6 +3,7 @@ import Protected from './Protected';
 import Login from '../pages/Login';
 import Home from '../pages/HomePage/HomePage';
 import LandingPage from '../pages/LandingPage';
+import Schedule from '../pages/Schedule/index';
 
 const routes = [
   {
@@ -23,6 +24,12 @@ const routes = [
     route: '/login',
     component: (
       <Login />
+    ),
+  },
+  {
+    route: '/schedule',
+    component: (
+      <Schedule/>
     ),
   },
 ];

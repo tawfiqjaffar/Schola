@@ -1,12 +1,21 @@
 // request creating some docs in db about user
 const randstring = require('randomstring');
+const { Types } = require('mongoose');
 const User = require('../../models/user');
 const responseBody = require('../../routes/responseBody');
 const { hashPassword } = require('../../encryption/hash');
 const { sendEmail } = require('../../config/mailer');
 
 const postCreateUser = (req, res) => {
-  const { password, firstname, lastname, email, dateofbirth, role } = req.body;
+  const {
+    password,
+    firstname,
+    lastname,
+    email,
+    dateofbirth,
+    role,
+    schoolId,
+  } = req.body;
 
   const createUser = async () => {
     let newUser;
@@ -19,6 +28,7 @@ const postCreateUser = (req, res) => {
         email,
         dateOfBirth: dateofbirth,
         role,
+        school: schoolId ? Types.ObjectId(schoolId) : null,
       });
       newUser.save((err, user) => {
         if (err) {

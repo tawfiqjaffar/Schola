@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import PropTypes from 'prop-types';
 import { Button, Snackbar } from '@material-ui/core';
@@ -7,7 +7,6 @@ import { postResetPassword } from '../../../api/methods/user';
 
 const SendCode = (props) => {
   const {
-    onChange,
     isFinished,
     isOpen,
     open,
@@ -15,9 +14,10 @@ const SendCode = (props) => {
     success,
     isReceived,
     email,
-    code,
-    newPassword,
   } = props;
+  const [code, setCode] = useState('');
+  const [newPassword, setnewPassword] = useState('');
+
   async function onSubmitNewPassword() {
     const res = await postResetPassword(email, newPassword, code);
     if (res.code === 200) {
@@ -44,7 +44,7 @@ const SendCode = (props) => {
           }}
           className="input-passw"
           value={code}
-          onChange={onChange}
+          onChange={(e) => { setCode(e.target.value); }}
         />
         <br />
         <TextValidator
@@ -59,7 +59,7 @@ const SendCode = (props) => {
           }}
           variant="outlined"
           value={newPassword}
-          onChange={onChange}
+          onChange={(e) => { setnewPassword(e.target.value); }}
           validators={['required']}
           errorMessages={['Veuillez remplir ce champ']}
         />
@@ -94,7 +94,6 @@ const SendCode = (props) => {
 };
 
 SendCode.propTypes = {
-  onChange: PropTypes.func.isRequired,
   isFinished: PropTypes.func.isRequired,
   isOpen: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
@@ -102,8 +101,6 @@ SendCode.propTypes = {
   success: PropTypes.bool.isRequired,
   isReceived: PropTypes.func.isRequired,
   email: PropTypes.string.isRequired,
-  code: PropTypes.string.isRequired,
-  newPassword: PropTypes.string.isRequired,
 };
 
 export default SendCode;

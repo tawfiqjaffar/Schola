@@ -17,6 +17,7 @@
     "clsx": "^1.1.0",
     "dotenv": "^8.2.0",
     "history": "^4.10.1",
+    "js-cookies": "^1.0.4",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.15",
     "node-gyp": "^6.1.0",

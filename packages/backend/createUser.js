@@ -34,6 +34,7 @@ const createUser = async (user) => {
 };
 
 createUser({
+<<<<<<< HEAD
   username: 'ninho',
   password: 'valdo',
   firstname: 'Tatouin',
@@ -43,4 +44,12 @@ createUser({
   nextMail: '0',
   nextMailGrade: '0',
   classId: '5faa1bccad70be34ddafebeb'
+=======
+  username: 'parent',
+  password: 'parent',
+  firstname: 'parent',
+  lastname: 'parent',
+  email: 'parent@parent.parent',
+  role: 'parent',
+>>>>>>> 7aa1d856d06c616952b4c501325e079e318ecece
 });

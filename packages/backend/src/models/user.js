@@ -29,7 +29,7 @@ const schema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ['student', 'teacher', 'parent', 'viesco', 'admin'],
+    enum: ['student', 'teacher', 'parent', 'viesco', 'admin', 'superadmin'],
     default: 'student',
   },
   absence : [{ type : mongoose.Schema.Types.ObjectId, ref: 'Absence' }],
@@ -48,6 +48,12 @@ const schema = new mongoose.Schema({
   passwordRecoveryToken: {
     type: String,
     default: '',
+  },
+  school: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'School',
+    required: false,
+    default: null,
   },
 });
 

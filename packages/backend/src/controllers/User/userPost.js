@@ -1,5 +1,6 @@
 // request creating some docs in db about user
 const randstring = require('randomstring');
+const { Types } = require('mongoose');
 const User = require('../../models/user');
 const Absence = require('../../models/absence');
 const Class = require('../../models/class');
@@ -8,7 +9,15 @@ const { hashPassword } = require('../../encryption/hash');
 const { sendEmail } = require('../../config/mailer');
 
 const postCreateUser = (req, res) => {
-  const { password, firstname, lastname, email, dateofbirth, role } = req.body;
+  const {
+    password,
+    firstname,
+    lastname,
+    email,
+    dateofbirth,
+    role,
+    schoolId,
+  } = req.body;
 
   const createUser = async () => {
     let newUser;
@@ -16,14 +25,15 @@ const postCreateUser = (req, res) => {
       const hashed = await hashPassword(password);
       newUser = new User({
         password: hashed,
-        firstName: req.body.firstname,
-        lastName: req.body.lastname,
-        email: req.body.email,
         classId: req.body.classId,
-        dateOfBirth: req.body.dateofbirth,
         nextMail: req.body.nextMail,
         nextMailGrade : req.body.nextMailGrade,
-        role: req.body.role
+        firstName: firstname,
+        lastName: lastname,
+        email,
+        dateOfBirth: dateofbirth,
+        role,
+        school: schoolId ? Types.ObjectId(schoolId) : null,
       });
       newUser.save((err, user) => {
         if (err) {

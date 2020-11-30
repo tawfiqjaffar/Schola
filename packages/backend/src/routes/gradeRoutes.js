@@ -1,17 +1,4 @@
 const express = require('express');
-<<<<<<< HEAD
-const { checkFields} = require('./middleware');
-
-const {
-	postCreateGrade,
-  } = require('../controllers/Grade/gradePost');
-
-const router = express.Router();
-
-router.post('/create', checkFields, postCreateGrade);
-
-module.exports = router;
-=======
 const { check } = require('express-validator');
 const { checkFields, authenticateJwt } = require('./middleware');
 const {
@@ -113,4 +100,3 @@ router.delete(
 );
 
 module.exports = router;
->>>>>>> 7aa1d856d06c616952b4c501325e079e318ecece

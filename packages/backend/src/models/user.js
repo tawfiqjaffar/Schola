@@ -18,6 +18,9 @@ const schema = new mongoose.Schema({
     unique: true,
     required: true,
   },
+  classId: {
+    type: mongoose.Schema.Types.ObjectId,
+  },
   dateOfBirth: {
     type: Date,
   },
@@ -28,6 +31,14 @@ const schema = new mongoose.Schema({
     type: String,
     enum: ['student', 'teacher', 'parent', 'viesco', 'admin'],
     default: 'student',
+  },
+  absence : [{ type : mongoose.Schema.Types.ObjectId, ref: 'Absence' }],
+  grade : [{ type : mongoose.Schema.Types.ObjectId, ref: 'Grade' }],
+  nextMail: {
+    type: Number,
+  },
+  nextMailGrade: {
+    type: Number,
   },
   accountType: {
     type: String,

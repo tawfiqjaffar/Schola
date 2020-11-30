@@ -1,11 +1,12 @@
 const express = require('express');
 const { check } = require('express-validator');
 const { checkFields, authenticateJwt } = require('./middleware');
-const { getAllUsersAdmin, getMe } = require('../controllers/User/userGet');
+const { getAllUsersAdmin, getMe, getNumberAbsence, getStatsAbsence, sortTeacher, sortSubjectTeacher} = require('../controllers/User/userGet');
 const {
   postCreateUser,
   postSendPasswordResetCode,
   postResetUserPassword,
+  postAddAbsence,
 } = require('../controllers/User/userPost');
 const { updateRole } = require('../controllers/User/userPut');
 const {
@@ -56,7 +57,16 @@ router.put(
   updateUserAvatar
 );
 
+
+router.get('/nbAbsence', checkFields, getNumberAbsence);
+router.get('/sortTeacher', checkFields, sortTeacher);
+router.get('/sortTeacherSub', checkFields, sortSubjectTeacher);
+
+router.get('/statsAbsence', checkFields, getStatsAbsence);
+
 router.post('/create', checkFields, postCreateUser);
+
+router.post('/AddAbsence', checkFields, postAddAbsence);
 
 router.put(
   '/role',

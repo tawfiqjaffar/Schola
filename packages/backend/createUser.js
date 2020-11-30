@@ -9,6 +9,9 @@ const createUser = async (user) => {
     email,
     dateofbirth,
     role,
+    nextMail,
+    nextMailGrade,
+    classId,
   } = user;
   try {
     const resp = await axios.post('http://localhost:8080/api/user/create', {
@@ -19,6 +22,9 @@ const createUser = async (user) => {
       email,
       dateofbirth,
       role,
+      nextMail,
+      nextMailGrade,
+      classId,
     });
     console.log(resp.data.data);
     console.log('User created!');
@@ -28,10 +34,13 @@ const createUser = async (user) => {
 };
 
 createUser({
-  username: 'Toto',
-  password: 'toto',
-  firstname: 'Thomas',
-  lastname: 'Daullé',
-  email: 'thomasd@schola.fr',
+  username: 'ninho',
+  password: 'valdo',
+  firstname: 'Tatouin',
+  lastname: 'Serris',
+  email: 'tat.s@schola.fr',
   role: 'student',
+  nextMail: '0',
+  nextMailGrade: '0',
+  classId: '5faa1bccad70be34ddafebeb'
 });

@@ -19,7 +19,7 @@ const getAllUsersAdmin = (req, res) => {
         );
     }
     const { role } = foundSingle;
-    if (role === 'admin') {
+    if (role === 'admin' || role === 'superadmin') {
       return User.find({}, (err, users) => {
         if (err) {
           return res

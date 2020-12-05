@@ -21,7 +21,9 @@ module.exports = {
 
             desiredCapabilities: {
                 browserName: "chrome",
-                chromeOptions: {},
+                chromeOptions: {
+                    args: ["--headless"],
+                },
                 acceptSslCerts: true,
             },
         },

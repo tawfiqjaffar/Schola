@@ -7,7 +7,7 @@ var identifiers = {
     bad_password: "test",
     good_email: "alan@schola.fr",
     bad_email: "alan.cataldo@yahoo.fr",
-    not_email: "bonjour",
+    not_email: "pas un email",
 };
 
 module.exports = {

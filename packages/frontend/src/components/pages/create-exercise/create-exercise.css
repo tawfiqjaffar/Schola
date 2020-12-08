@@ -1,0 +1,31 @@
+.container{
+ display: flex;
+ justify-content: center;
+}
+
+.create-exercise{
+  background-color: rgb(112, 198, 199);
+ width: 440px;
+ height: 160px;
+ padding: 60px;
+ margin-top: 200px;
+}
+
+.ligne1{
+  display : flex;
+  justify-content: space-between;
+
+}
+ .select{
+   width: 200px;
+   height: 30px;
+ }
+
+ .btn-valider{
+   background-color: white;
+border-radius: 8px;
+padding: 8px;
+width: 100px;
+margin-top: 50px;
+margin-left: 285px;
+ }

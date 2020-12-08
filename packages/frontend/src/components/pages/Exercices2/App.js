@@ -215,7 +215,7 @@ class App extends React.Component {
                     <>
                         <div className="text-center">Bienvenue sur le quizz bg</div>
                         <div className="">
-                            <Link to={'/create-quizz'}>
+                            <Link to={'/create-quizz'}style={{textDecoration:"none"}}>
                                 <div
                                     className="quizz1"
                                 >

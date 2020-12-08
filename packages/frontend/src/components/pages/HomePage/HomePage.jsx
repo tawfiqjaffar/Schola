@@ -1,7 +1,11 @@
 import React from 'react';
-import { Container } from '@material-ui/core';
+import { Container, Grid, Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
+import { useSelector } from 'react-redux';
+import clsx from 'clsx';
 import BlueBackground from '../../common/BlueBackground';
+import trombi from './avatar.png';
+import Chart from '../../common/Chart';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,6 +33,9 @@ const useStyles = makeStyles((theme) => ({
   paperinfos: {
     height: '270px',
     width: '200px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
   },
   papernotifs: {
     height: '310px',
@@ -60,17 +67,32 @@ const Home = () => {
 
   const Moyennes = clsx(classes.papergrades, classes.background);
 
+  const user = useSelector((state) => state.user);
+
+  // useEffect(() => {
+
+  // }, []);
+
   return (
     <Container className={classes.root}>
       <Paper className={classes.paper}>
         <Grid container spacing={3}>
           <BlueBackground Bheight="350" Bwidth="260" Fheight="350" Fwidth="260">
             <Paper className={IdPhoto}>
-              <img src={require('./avatar.png')} />
+              <img alt="trombi" src={trombi} />
             </Paper>
           </BlueBackground>
           <BlueBackground Bheight="350" Bwidth="260" Fheight="350" Fwidth="260">
-            <Paper className={Personal}>Infos_etudiant</Paper>
+            <Paper className={Personal}>
+              <h3>Mes infos</h3>
+              {`${user.firstName} ${user.lastName}`}
+              <br />
+              <br />
+              {user.school ? user.school : 'École non renseignée'}
+              <br />
+              <br />
+              {user.email}
+            </Paper>
           </BlueBackground>
           <BlueBackground Bheight="350" Bwidth="490" Fheight="350" Fwidth="490">
             <Paper className={Notifications}>wsh les bougres</Paper>
@@ -79,7 +101,9 @@ const Home = () => {
             <Paper className={Calendar}> Encore là les bourguignons ?</Paper>
           </BlueBackground>
           <BlueBackground Bheight="350" Bwidth="400" Fheight="350" Fwidth="400">
-            <Paper className={Moyennes}>Va falloir y aller les nuggets</Paper>
+            <Paper className={Moyennes}>
+              <Chart />
+            </Paper>
           </BlueBackground>
         </Grid>
       </Paper>

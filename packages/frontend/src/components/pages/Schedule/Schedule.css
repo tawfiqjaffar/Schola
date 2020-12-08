@@ -1,0 +1,15 @@
+.backBook{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background: url(./iconfinder_Book.svg) center;
+    background-size: 100%;
+}
+
+.tittleOne {
+    padding-top: 1cm;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: underline;
+}

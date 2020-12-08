@@ -9,7 +9,7 @@ import uri from '../uri/calendar';
  * @param {String} password retrieved after login
  * @returns {{code: Number, data: Object, message: String}}
  */
-const getScheduleWeek = async (accessToken) => {
+const getWeekSchedule = async (accessToken) => {
   let res;
 
   try {
@@ -28,7 +28,7 @@ const getScheduleWeek = async (accessToken) => {
   return res;
 };
 
-const getScheduleDay = async (accessToken) => {
+const getDaySchedule = async (accessToken) => {
   let res;
 
   try {
@@ -142,8 +142,8 @@ const deleteSchedule = async (objectID, accessToken) => {
 };
 
 export {
-  getScheduleWeek,
-  getScheduleDay,
+  getWeekSchedule,
+  getDaySchedule,
   getAllSchedule,
   postCreateSchedule,
   updateSchedule,

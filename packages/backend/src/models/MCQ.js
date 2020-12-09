@@ -1,15 +1,27 @@
 const mongoose = require('mongoose');
 
-const exerciceSchema = new mongoose.Schema({
+const MCQSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
   subjectId: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
   },
-  classLevel: {
+  classesLevel: {
     type: String,
     required: true,
   },
   serieNumber: {
+    type: Number,
+    required: true,
+  },
+  timeTrial: {
+    type: Boolean,
+    required: true,
+  },
+  timer: {
     type: Number,
     required: true,
   },
@@ -35,4 +47,4 @@ const exerciceSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('Exercice', exerciceSchema);
+module.exports = mongoose.model('MCQ', MCQSchema);

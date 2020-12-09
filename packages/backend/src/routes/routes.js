@@ -4,7 +4,7 @@ const authRoutes = require('./authRoutes');
 const taskRoutes = require('./taskRoutes');
 const scheduleRoutes = require('./scheduleRoutes');
 const gradeRoutes = require('./gradeRoutes');
-const exerciceRoutes = require('./exerciceRoutes');
+const MCQRoutes = require('./MCQRoutes');
 const mailRoutes = require('./mailRoutes');
 const schoolRoutes = require('./schoolRoutes');
 const subjectRoutes = require('./subjectRoutes');
@@ -20,7 +20,7 @@ const routes = [
   ['task', taskRoutes],
   ['schedule', scheduleRoutes],
   ['grade', gradeRoutes],
-  ['exercice', exerciceRoutes],
+  ['MCQ', MCQRoutes],
   ['mail', mailRoutes],
   ['school', schoolRoutes],
   ['subject', subjectRoutes],

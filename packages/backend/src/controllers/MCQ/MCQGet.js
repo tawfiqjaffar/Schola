@@ -1,9 +1,9 @@
-const Exercice = require('../../models/exercice');
+const MCQ = require('../../models/MCQ');
 const responseBody = require('../../routes/responseBody');
 
-const getAllExercices = (req, res) => {
+const getAllMCQ = (req, res) => {
   if (req.user.role === 'viesco' || req.user.role === 'admin') {
-    return Exercice.find({}, (err, data) => {
+    return MCQ.find({}, (err, data) => {
       if (err) {
         return res
           .status(responseBody.responseCode.INTSERVERR)
@@ -36,9 +36,9 @@ const getAllExercices = (req, res) => {
   }
 };
 
-const getSubjectExercices = (req, res) => {
+const getSubjectMCQ = (req, res) => {
   if (req.user.role === 'viesco' || req.user.role === 'admin') {
-    return Exercice.find({ subjectId: req.body.subjectId }, (err, data) => {
+    return MCQ.find({ subjectId: req.body.subjectId }, (err, data) => {
       if (err) {
         return res
           .status(responseBody.responseCode.INTSERVERR)
@@ -71,8 +71,87 @@ const getSubjectExercices = (req, res) => {
   }
 };
 
-const getLevelExercices = (req, res) => {
-  return Exercice.find({ classLevel: req.body.classLevel }, (err, data) => {
+const getLevelMCQ = (req, res) => {
+  if (req.user.role === 'viesco' || req.user.role === 'admin') {
+    return MCQ.find({ classLevel: req.body.classLevel }, (err, data) => {
+      if (err) {
+        return res
+          .status(responseBody.responseCode.INTSERVERR)
+          .send(
+            responseBody.buildResponseBody(
+              err,
+              responseBody.responseCode.INTSERVERR
+            )
+          );
+      } else {
+        return res
+          .status(responseBody.responseCode.SUCCESS)
+          .send(
+            responseBody.buildResponseBody(
+              data,
+              responseBody.responseCode.SUCCESS
+            )
+          );
+      }
+    });
+  } else {
+    return res
+      .status(responseBody.responseCode.FORBID)
+      .send(
+        responseBody.buildResponseBody(
+          'You do not have the access right to get these informations',
+          responseBody.responseCode.FORBID
+        )
+      );
+  }
+};
+
+const getSubjectLevelMCQ = (req, res) => {
+  if (req.user.role === 'viesco' || req.user.role === 'admin') {
+    return MCQ.find(
+      {
+        $and: [
+          { classLevel: req.body.classLevel },
+          { subjectId: req.body.subjectId },
+        ],
+      },
+      (err, data) => {
+        if (err) {
+          return res
+            .status(responseBody.responseCode.INTSERVERR)
+            .send(
+              responseBody.buildResponseBody(
+                err,
+                responseBody.responseCode.INTSERVERR
+              )
+            );
+        } else {
+          return res
+            .status(responseBody.responseCode.SUCCESS)
+            .send(
+              responseBody.buildResponseBody(
+                data,
+                responseBody.responseCode.SUCCESS
+              )
+            );
+        }
+      }
+    );
+  } else {
+    return res
+      .status(responseBody.responseCode.FORBID)
+      .send(
+        responseBody.buildResponseBody(
+          'You do not have the access right to get these informations',
+          responseBody.responseCode.FORBID
+        )
+      );
+  }
+};
+
+const getStudentMCQ = (req, res) => {
+  const studentClassLevel = 'CM2';
+  return MCQ.find({ classLevel: studentClassLevel }, (err, data) => {
     if (err) {
       return res
         .status(responseBody.responseCode.INTSERVERR)
@@ -95,12 +174,13 @@ const getLevelExercices = (req, res) => {
   });
 };
 
-const getSubjectLevelExercices = (req, res) => {
-  return Exercice.find(
+const getStudentSubjectMCQ = (req, res) => {
+  const studentClassLevel = 'CM2';
+  return MCQ.find(
     {
       $and: [
+        { classLevel: studentClassLevel },
         { subjectId: req.body.subjectId },
-        { classLevel: req.body.classLevel },
       ],
     },
     (err, data) => {
@@ -128,8 +208,10 @@ const getSubjectLevelExercices = (req, res) => {
 };
 
 module.exports = {
-  getAllExercices,
-  getSubjectExercices,
-  getLevelExercices,
-  getSubjectLevelExercices,
+  getAllMCQ,
+  getSubjectMCQ,
+  getLevelMCQ,
+  getSubjectLevelMCQ,
+  getStudentMCQ,
+  getStudentSubjectMCQ,
 };

@@ -32,6 +32,7 @@ const Login = () => {
   const loginReq = async () => {
     setLoading(true);
     const res = await postLoginUser(email, password);
+
     if (res.code === 200) {
       setLoading(false);
       setSuccess(true);

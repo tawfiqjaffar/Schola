@@ -1,15 +1,58 @@
 .backBook{
+    padding-top: 1cm;
     height: 100%;
     width: 100%;
     position: absolute;
     background: url(./iconfinder_Book.svg) center;
     background-size: 100%;
+    display: grid;
+    grid-template-areas: 
+    "head head"
+    "nav main"
+    "foot foot";
+    justify-items: center;
+    align-items: center;
 }
 
 .tittleOne {
-    padding-top: 1cm;
+    grid-area: head;
+    /* border: solid; */
+    padding-top: 5%;
+    /* padding-top: 3cm;
     display:flex;
-    align-items: center;
-    justify-content: center;
+    text-decoration: underline; */
+}
+
+.WeekDay {
+    grid-area: nav;
+    /* border: solid; */
+    position: relative;
+    align-self: stretch;
+    /* width: 30%; */
+    padding-left: 5cm;
+    padding-bottom: 5cm;
+}
+
+.DayDescription {
+    grid-area: main;
+    position: relative;
+    /* border: solid; */
+    align-self: stretch;
+    padding-right: 10cm;
+}
+
+.footer {
+    grid-area: foot;
+    /* border: solid; */
+    padding-bottom: 1cm;
+}
+
+h1 {
     text-decoration: underline;
+}
+
+.spaceDiv {
+    width: 5px;
+    height: auto;
+    display: inline-block;
 }

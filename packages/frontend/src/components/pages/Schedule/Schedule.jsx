@@ -49,7 +49,31 @@ const main = () => {
   // state.post = Schedule()
     return (
         <div className="backBook">
-          <h2 className="tittleOne">Cahier de texte</h2>
+          <h1 className="tittleOne">Cahier de texte</h1>
+          <div className="WeekDay">
+            <h1>WeekDay</h1>
+            <h2>Lundi 7 decembre</h2>
+            <p>Pas de texte.</p>
+            <h2>Mardi 8 decembre</h2>
+            <p>exemple de texte.</p>
+            <h2>Mercredi 9 decembre</h2>
+            <p>A faire: Preparer le rendez-vous EIP.</p>
+            <h2>Jeudi 10 decembre</h2>
+            <p>Pas de texte.</p>
+            <h2>Vendredi 11 decembre</h2>
+            <p>Pas de texte.</p>
+          </div>
+          <div className="DayDescription">
+            <h1>DayDescription</h1>
+            <h2>Mercredi 9 decembre</h2>
+            <p>Preparer sa presentation pour l'EIP.</p>
+            <button>precedent</button>
+            <div className="spaceDiv"/> 
+            <button>suivant</button>
+          </div>          
+          <div className="footer">
+            By Schola.
+          </div>
     {/* <div>{DisplayPost(state.post)}</div> */}
         </div>
     )

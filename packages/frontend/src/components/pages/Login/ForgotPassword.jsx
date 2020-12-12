@@ -9,13 +9,14 @@ import { postResetPasswordRequest } from '../../../api/methods/user';
 import backgroundPageTurner from '../../../assets/backgroundPageTurner.svg';
 
 const ForgotPassword = (props) => {
-  const { onChange, email, code, newPassword } = props;
+  const { mail } = props;
   const [Received, isReceived] = useState(false);
   const [open, isOpen] = useState(false);
   const [success, isSuccess] = useState(true);
   const [finished, isFinished] = useState(false);
+  const [email, setEmail] = useState(mail);
 
-  async function onSubmit() {
+  const onSubmit = async () => {
     const res = await postResetPasswordRequest(email);
     if (res.code === 200) {
       isSuccess(true);
@@ -25,14 +26,13 @@ const ForgotPassword = (props) => {
       isSuccess(false);
       isOpen(true);
     }
-  }
+  };
   if (finished) return <Redirect to="/" />;
   if (Received) {
     return (
       <div>
         <img src={backgroundPageTurner} alt="background" className="bg-cover" />
         <SendCode
-          onChange={onChange}
           isFinished={isFinished}
           isOpen={isOpen}
           open={open}
@@ -40,8 +40,6 @@ const ForgotPassword = (props) => {
           success={success}
           isReceived={isReceived}
           email={email}
-          code={code}
-          newPassword={newPassword}
         />
       </div>
     );
@@ -60,7 +58,7 @@ const ForgotPassword = (props) => {
           }}
           className="input-passw"
           value={email}
-          onChange={onChange}
+          onChange={(e) => { setEmail(e.target.value); }}
           validators={['required', 'isEmail']}
           errorMessages={[
             'Veuillez remplir ce champ',
@@ -98,10 +96,7 @@ const ForgotPassword = (props) => {
 };
 
 ForgotPassword.propTypes = {
-  onChange: PropTypes.func.isRequired,
-  email: PropTypes.string.isRequired,
-  code: PropTypes.string.isRequired,
-  newPassword: PropTypes.string.isRequired,
+  mail: PropTypes.string.isRequired,
 };
 
 export default ForgotPassword;

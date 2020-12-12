@@ -12,5 +12,8 @@
   },
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "moment-timezone": "^0.5.31"
+  }
 }

@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const exerciceSchema = new mongoose.Schema({
   subjectId: {
@@ -35,4 +35,4 @@ const exerciceSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('Exercice', exerciceSchema);
+module.exports = mongoose.model("Exercice", exerciceSchema);

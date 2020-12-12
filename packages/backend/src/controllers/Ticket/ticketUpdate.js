@@ -1,9 +1,9 @@
-const { Types } = require('mongoose');
-const Ticket = require('../../models/ticket');
-const Comment = require('../../models/comment');
-const rb = require('../../routes/responseBody');
+const { Types } = require("mongoose");
+const Ticket = require("../../models/ticket");
+const Comment = require("../../models/comment");
+const rb = require("../../routes/responseBody");
 
-const STATUS = ['open', 'inProgress', 'resolved'];
+const STATUS = ["open", "inProgress", "resolved"];
 
 const updateTicketStatus = (req, res) => {
   const { user } = req;
@@ -22,7 +22,7 @@ const updateTicketStatus = (req, res) => {
     _id: Types.ObjectId(ticketId),
     $or: [{ assignedTo: user.role }, { creator: user._id }],
   })
-    .populate('creator')
+    .populate("creator")
     .then((ticket) => {
       if (!ticket) {
         return res

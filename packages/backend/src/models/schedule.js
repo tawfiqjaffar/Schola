@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const scheduleSchema = new mongoose.Schema({
   subjectId: {
@@ -25,4 +25,4 @@ const scheduleSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('Schedule', scheduleSchema);
+module.exports = mongoose.model("Schedule", scheduleSchema);

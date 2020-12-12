@@ -1,9 +1,9 @@
 // get user info
 
-const User = require('../../models/user');
-const Class = require('../../models/class');
-const Absence = require('../../models/absence');
-const responseBody = require('../../routes/responseBody');
+const User = require("../../models/user");
+const Class = require("../../models/class");
+const Absence = require("../../models/absence");
+const responseBody = require("../../routes/responseBody");
 
 const getAllUsersAdmin = (req, res) => {
   const { user } = req;
@@ -21,7 +21,7 @@ const getAllUsersAdmin = (req, res) => {
         );
     }
     const { role } = foundSingle;
-    if (role === 'admin' || role === 'superadmin') {
+    if (role === "admin" || role === "superadmin") {
       return User.find({}, (err, users) => {
         if (err) {
           return res
@@ -67,8 +67,7 @@ const getAllUsersAdmin = (req, res) => {
   });
 };
 
-
-var nbAbs = 0
+let nbAbs = 0;
 
 const getStatsAbsence = (req, res) => {
   User.findOne({ _id: req.body.id }, (err, found) => {
@@ -82,53 +81,66 @@ const getStatsAbsence = (req, res) => {
           )
         );
     }
-    Absence.find({ _id: found.absence, mois: req.body.mois}, (error, abs) => {
-        if (error) {
+    Absence.find({ _id: found.absence, mois: req.body.mois }, (error, abs) => {
+      if (error) {
+        return res
+          .status(responseBody.responseCode.INTSERVERR)
+          .send(
+            responseBody.buildResponseBody(
+              error,
+              responseBody.responseCode.INTSERVERR
+            )
+          );
+      }
+      nbAbs = abs.length;
+      Class.findOne({ _id: found.classId }, (erre, cls) => {
+        if (erre) {
           return res
             .status(responseBody.responseCode.INTSERVERR)
             .send(
               responseBody.buildResponseBody(
-                error,
+                erre,
                 responseBody.responseCode.INTSERVERR
               )
             );
         }
-        nbAbs = abs.length
-      Class.findOne({ _id: found.classId }, (error, cls) => {
-        if (error) {
-          return res
-            .status(responseBody.responseCode.INTSERVERR)
-            .send(
-              responseBody.buildResponseBody(
-                error,
-                responseBody.responseCode.INTSERVERR
-              )
+        Absence.find(
+          { _id: cls.absence, mois: req.body.mois },
+          (erreur, abs2) => {
+            if (erreur) {
+              return res
+                .status(responseBody.responseCode.INTSERVERR)
+                .send(
+                  responseBody.buildResponseBody(
+                    erreur,
+                    responseBody.responseCode.INTSERVERR
+                  )
+                );
+            }
+            const nbAbs2 = abs2.length;
+            console.log(
+              `${found.firstName} ${
+                found.lastName
+              } a totalisé ${nbAbs} absence(s) au mois de ${
+                req.body.mois
+              } soit ${Math.round(
+                (100 * nbAbs) / nbAbs2
+              )}% des absences de sa classe`
             );
-        }
-        Absence.find({ _id: cls.absence , mois: req.body.mois}, (error, abs2) => {
-          if (error) {
             return res
-              .status(responseBody.responseCode.INTSERVERR)
+              .status(responseBody.responseCode.SUCCESS)
               .send(
                 responseBody.buildResponseBody(
-                  error,
-                  responseBody.responseCode.INTSERVERR
+                  Math.round((100 * nbAbs) / nbAbs2),
+                  responseBody.responseCode.SUCCESS
                 )
               );
           }
-          var nbAbs2 = abs2.length
-        console.log(found.firstName + " " + found.lastName + " a totalisé " + nbAbs + " absence(s) au mois de " + req.body.mois + " soit " +
-        Math.round((100 * nbAbs) / nbAbs2) + "% des absences de sa classe")
-    return res
-    .status(responseBody.responseCode.SUCCESS)
-    .send(
-      responseBody.buildResponseBody(Math.round((100 * nbAbs) / nbAbs2), responseBody.responseCode.SUCCESS)
-    );
-        });
-    });
+        );
       });
+    });
   });
-}
+};
 
 const getNumberAbsence = (req, res) => {
   User.findOne({ _id: req.body.id }, (err, found) => {
@@ -153,16 +165,24 @@ const getNumberAbsence = (req, res) => {
             )
           );
       }
-      console.log(found.firstName + " " + found.lastName + " a totalisé " + found.absence.length + " absence(s) soit " +
-      Math.round((100 * found.absence.length) / cls.absence.length) + "% des absences de sa classe")
+      console.log(
+        `${found.firstName} ${found.lastName} a totalisé ${
+          found.absence.length
+        } absence(s) soit ${Math.round(
+          (100 * found.absence.length) / cls.absence.length
+        )}% des absences de sa classe`
+      );
     });
     return res
       .status(responseBody.responseCode.SUCCESS)
       .send(
-        responseBody.buildResponseBody(found.absence.length, responseBody.responseCode.SUCCESS)
+        responseBody.buildResponseBody(
+          found.absence.length,
+          responseBody.responseCode.SUCCESS
+        )
       );
   });
-}
+};
 
 const getMe = (req, res) => {
   const { user } = req;
@@ -186,44 +206,52 @@ const getMe = (req, res) => {
 };
 
 const sortTeacher = (req, res) => {
-	User.find({role: "teacher"}, null , {sort: {lastName: req.body.sort}} ,  (err, abs) => {
-		if (err) {
-			return res
-			  .status(responseBody.responseCode.INTSERVERR)
-			  .send(
-				responseBody.buildResponseBody(
-				  error,
-				  responseBody.responseCode.INTSERVERR
-				)
-			  );
-		  }
-		  return res
-    		.status(responseBody.responseCode.SUCCESS)
-    		.send(
-      		responseBody.buildResponseBody(abs, responseBody.responseCode.SUCCESS)
-    		);
-	})
-  }
-
-    const sortSubjectTeacher = (req, res) => {
-      User.find({teacherSubject: req.body.teacherSubject, role: "teacher"},  (err, abs) => {
-        if (err) {
-          return res
-            .status(responseBody.responseCode.INTSERVERR)
-            .send(
+  User.find(
+    { role: "teacher" },
+    null,
+    { sort: { lastName: req.body.sort } },
+    (err, abs) => {
+      if (err) {
+        return res
+          .status(responseBody.responseCode.INTSERVERR)
+          .send(
             responseBody.buildResponseBody(
-              error,
+              err,
               responseBody.responseCode.INTSERVERR
             )
-            );
-          }
-          return res
-            .status(responseBody.responseCode.SUCCESS)
-            .send(
-              responseBody.buildResponseBody(abs, responseBody.responseCode.SUCCESS)
-            );
-      })
+          );
       }
+      return res
+        .status(responseBody.responseCode.SUCCESS)
+        .send(
+          responseBody.buildResponseBody(abs, responseBody.responseCode.SUCCESS)
+        );
+    }
+  );
+};
+
+const sortSubjectTeacher = (req, res) => {
+  User.find(
+    { teacherSubject: req.body.teacherSubject, role: "teacher" },
+    (err, abs) => {
+      if (err) {
+        return res
+          .status(responseBody.responseCode.INTSERVERR)
+          .send(
+            responseBody.buildResponseBody(
+              err,
+              responseBody.responseCode.INTSERVERR
+            )
+          );
+      }
+      return res
+        .status(responseBody.responseCode.SUCCESS)
+        .send(
+          responseBody.buildResponseBody(abs, responseBody.responseCode.SUCCESS)
+        );
+    }
+  );
+};
 
 module.exports = {
   getAllUsersAdmin,

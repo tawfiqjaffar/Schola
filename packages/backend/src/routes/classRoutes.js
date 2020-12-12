@@ -1,24 +1,18 @@
-const express = require('express');
-const { checkFields} = require('./middleware');
+const express = require("express");
+const { checkFields } = require("./middleware");
 
-const {
-	postCreateClass,
-  } = require('../controllers/Class/classPost');
+const { postCreateClass } = require("../controllers/Class/classPost");
 
-  const {
-	sortStudentClass,
-	} = require('../controllers/Class/classGet');
+const { sortStudentClass } = require("../controllers/Class/classGet");
 
-const {
-	deleteClass,
-  } = require('../controllers/Class/classDelete');
+const { deleteClass } = require("../controllers/Class/classDelete");
 
 const router = express.Router();
 
-router.post('/create', checkFields, postCreateClass);
+router.post("/create", checkFields, postCreateClass);
 
-router.get('/sortStudent', checkFields, sortStudentClass);
+router.get("/sortStudent", checkFields, sortStudentClass);
 
-router.delete('/deleteClass', checkFields, deleteClass)
+router.delete("/deleteClass", checkFields, deleteClass);
 
 module.exports = router;

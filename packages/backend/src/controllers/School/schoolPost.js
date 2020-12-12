@@ -1,8 +1,8 @@
-const School = require('../../models/school');
-const responseBody = require('../../routes/responseBody');
+const School = require("../../models/school");
+const responseBody = require("../../routes/responseBody");
 
 const createSchool = (req, res) => {
-  if (req.user.role === 'viesco' || req.user.role === 'admin') {
+  if (req.user.role === "viesco" || req.user.role === "admin") {
     delete req.body._id;
 
     const { name, address } = req.body;
@@ -39,7 +39,7 @@ const createSchool = (req, res) => {
       .status(responseBody.responseCode.FORBID)
       .send(
         responseBody.buildResponseBody(
-          'You do not have the access right to perform such a modification',
+          "You do not have the access right to perform such a modification",
           responseBody.responseCode.FORBID
         )
       );

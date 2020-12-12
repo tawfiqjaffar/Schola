@@ -1,31 +1,31 @@
-const Ticket = require('../../models/ticket');
-const rb = require('../../routes/responseBody');
+const Ticket = require("../../models/ticket");
+const rb = require("../../routes/responseBody");
 
 const getAllTickets = (req, res) => {
   const { user } = req;
   const { role, school } = user;
 
-  if (role !== 'admin' && role !== 'superadmin') {
+  if (role !== "admin" && role !== "superadmin") {
     return res
       .status(rb.responseCode.FORBID)
       .send(
         rb.buildResponseBody(
-          'You do not have enough rights to view this information',
+          "You do not have enough rights to view this information",
           rb.responseCode.FORBID
         )
       );
   } else {
     const query = {};
 
-    if (role === 'admin') {
+    if (role === "admin") {
       query.school = school;
     }
     query.assignedTo = role;
 
     return Ticket.find({ $or: [{ ...query }, { creator: user._id }] })
       .populate({
-        path: 'creator',
-        populate: { path: 'school', model: 'School' },
+        path: "creator",
+        populate: { path: "school", model: "School" },
       })
       .then((tickets) => {
         return res
@@ -45,9 +45,9 @@ const getSingleTicket = (req, res) => {
   const { id } = req.params;
 
   return Ticket.findById(id)
-    .populate('creator')
+    .populate("creator")
     .populate({
-      path: 'comments.creator',
+      path: "comments.creator",
     })
     .then((ticket) => {
       if (!ticket) {

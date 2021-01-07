@@ -41,8 +41,10 @@
     "moment": "^2.27.0",
     "mongoose": "^5.9.7",
     "nodemailer": "^6.4.8",
+    "nodemon": "^2.0.4",
     "randomstring": "^1.1.5",
-    "react": "^16.13.1"
+    "react": "^16.13.1",
+    "socket.io": "^2.3.0"
   },
   "nodemonConfig": {
     "ignore": []

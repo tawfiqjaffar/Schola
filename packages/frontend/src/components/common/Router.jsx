@@ -4,6 +4,7 @@ import LandingPage from '../pages/LandingPage';
 import PageNotFound from '../pages/PageNotFound';
 import Login from '../pages/Login';
 import Home from '../pages/HomePage/HomePage';
+import Calendar from '../pages/Calendar/CalendarPage';
 import NavigationBar from './NavigationBar';
 
 const redirectToLogin = (Component) => {
@@ -18,6 +19,7 @@ const Router = () => (
       <Route exact path="/" component={LandingPage} />
       <Route path="/login" component={Login} />
       <Route path="/home" render={() => redirectToLogin(Home)} />
+      <Route path="/calendar" render={() => redirectToLogin(Calendar)} />
       <Route component={PageNotFound} />
     </Switch>
   </BrowserRouter>

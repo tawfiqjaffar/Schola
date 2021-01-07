@@ -138,6 +138,13 @@ function Logout(props) {
         >
           <ListItemText primary="Quizz" />
         </StyledMenuItem>
+        <StyledMenuItem
+          onClick={() => {
+            redirection('/calendar');
+          }}
+        >
+          <ListItemText primary="Calendar" />
+        </StyledMenuItem>
         <StyledMenuItem onClick={() => disconnect()}>
           <ListItemText primary="Disconnect" />
         </StyledMenuItem>

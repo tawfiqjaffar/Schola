@@ -115,29 +115,41 @@ function Logout(props) {
             redirection('/home');
           }}
         >
-          <ListItemText primary="Home" />
+        <ListItemText primary="Home" />
         </StyledMenuItem>
+
         <StyledMenuItem
           onClick={() => {
             redirection('/schedule');
           }}
         >
-          <ListItemText primary="Cahier de texte" />
+        <ListItemText primary="Cahier de texte" />
         </StyledMenuItem>
+
+        <StyledMenuItem
+          onClick={() => {
+            redirection('/join');
+          }}
+        >
+        <ListItemText primary="Messagerie" />
+        </StyledMenuItem>
+
         <StyledMenuItem
           onClick={() => {
             redirection('/canteen');
           }}
         >
-          <ListItemText primary="Cantine" />
+        <ListItemText primary="Cantine" />
         </StyledMenuItem>
+
         <StyledMenuItem
           onClick={() => {
             redirection('/quizz');
           }}
         >
-          <ListItemText primary="Quizz" />
+        <ListItemText primary="Quizz" />
         </StyledMenuItem>
+
         <StyledMenuItem onClick={() => disconnect()}>
           <ListItemText primary="Disconnect" />
         </StyledMenuItem>

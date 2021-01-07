@@ -45,7 +45,7 @@
     "socket.io-client": "^3.0.3",
     "styled-components": "^5.2.1",
     "validator": "^13.0.0",
-    "shave": "^2.5.9",
+    "shave": "^2.5.9"
   },
   "scripts": {
     "lint": "eslint 'src/**'",

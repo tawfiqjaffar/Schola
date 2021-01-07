@@ -16,19 +16,13 @@
 
 .tittleOne {
     grid-area: head;
-    /* border: solid; */
     padding-top: 5%;
-    /* padding-top: 3cm;
-    display:flex;
-    text-decoration: underline; */
 }
 
 .WeekDay {
     grid-area: nav;
-    /* border: solid; */
     position: relative;
     align-self: stretch;
-    /* width: 30%; */
     padding-left: 5cm;
     padding-bottom: 5cm;
 }
@@ -36,14 +30,12 @@
 .DayDescription {
     grid-area: main;
     position: relative;
-    /* border: solid; */
     align-self: stretch;
     padding-right: 10cm;
 }
 
 .footer {
     grid-area: foot;
-    /* border: solid; */
     padding-bottom: 1cm;
 }
 

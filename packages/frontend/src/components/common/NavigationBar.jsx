@@ -122,7 +122,7 @@ function Logout(props) {
             redirection('/schedule');
           }}
         >
-          <ListItemText primary="Emploi du temps" />
+          <ListItemText primary="Cahier de texte" />
         </StyledMenuItem>
         <StyledMenuItem
           onClick={() => {

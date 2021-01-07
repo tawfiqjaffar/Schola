@@ -1,7 +1,7 @@
 import React from 'react';
-import clsx from 'clsx';
-import { Container, Grid, Paper } from '@material-ui/core';
+import { Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
+import BlueBackground from '../../common/BlueBackground';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,33 +28,22 @@ const useStyles = makeStyles((theme) => ({
 
 const Home = () => {
   const classes = useStyles();
-  const fixedHeightPaper = clsx(
-    classes.paper,
-    classes.fixedHeight,
-    classes.background
-  );
 
   return (
     <Container className={classes.root}>
-      <Paper className={classes.paper}>
-        <Grid container spacing={3}>
-          <Grid item xs={12} md={4} lg={3}>
-            <Paper className={fixedHeightPaper}>Profil_img</Paper>
-          </Grid>
-          <Grid item xs={12} md={4} lg={6}>
-            <Paper className={fixedHeightPaper}>Infos_etudiant</Paper>
-          </Grid>
-          <Grid item xs={12} md={4} lg={3}>
-            <Paper className={fixedHeightPaper}>graph_moyennes</Paper>
-          </Grid>
-          <Grid item xs={12} md={4} lg={9}>
-            <Paper className={fixedHeightPaper}>?</Paper>
-          </Grid>
-          <Grid item xs={12} md={4} lg={3}>
-            <Paper className={fixedHeightPaper}>notifications</Paper>
-          </Grid>
-        </Grid>
-      </Paper>
+      <BlueBackground BRota="8" FRota="-10" Fcolor="#ffe352" Bcolor="#fff0a5">
+        <img src="https://icon-library.com/images/default-profile-icon/default-profile-icon-16.jpg" width="160px" height="160px" alt="oui" />
+      </BlueBackground>
+      <BlueBackground BRota="6" FRota="-7" Bwidth="500" Fwidth="450" Fheight="280" Fcolor="#ffe352" Bcolor="#fff0a5" style={{ margin: '100px' }}>
+        <img src="https://icon-library.com/images/default-profile-icon/default-profile-icon-16.jpg" width="160px" height="160px" alt="oui" />
+        <p>Philippe ROUDAUT</p>
+      </BlueBackground>
+      <BlueBackground BRota="-10" FRota="-10" Fwidth="220" Fcolor="#b2ff12" Bcolor="#a1ff85" className="test">
+        <img src="https://icon-library.com/images/default-profile-icon/default-profile-icon-16.jpg" width="140px" height="140px" alt="oui" />
+      </BlueBackground>
+      <BlueBackground>
+        <img src="https://icon-library.com/images/default-profile-icon/default-profile-icon-16.jpg" width="140px" height="140px" alt="oui" />
+      </BlueBackground>
     </Container>
   );
 };

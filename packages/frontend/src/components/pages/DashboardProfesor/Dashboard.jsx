@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import { Container, Grid, Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import BlueBackground from '../../common/BlueBackground';
+//import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -76,27 +77,43 @@ const Dashboard = () => {
     classes.background
   );
 
+  //const user = useSelector((state) => state.user);
+
+
   return (
     <Container className={classes.root}>
       <Paper className={classes.paper}>
         <Grid container spacing={3}>
-          <BlueBackground Bheight="350" Bwidth="260" Fheight="350" Fwidth="260">
+
+          <BlueBackground Bheight="315" Bwidth="260" Fheight="315" Fwidth="260">
             <Paper className={IdPhoto}>
-              Profil
+              <h3>Profil</h3>
             </Paper>
           </BlueBackground>
-          <BlueBackground Bheight="350" Bwidth="260" Fheight="350" Fwidth="260">
-            <Paper className={Personal}>Bloc-note</Paper>
+
+          <BlueBackground Bheight="315" Bwidth="260" Fheight="315" Fwidth="260" style={{ marginLeft: "80px"}}>
+            <Paper className={Personal}>
+              <h3>Bloc-note</h3>
+              </Paper>
           </BlueBackground>
-          <BlueBackground Bheight="350" Bwidth="490" Fheight="350" Fwidth="490">
-            <Paper className={Notifications} >Messagerie</Paper>
+
+          <BlueBackground Bheight="315" Bwidth="490" Fheight="315" Fwidth="490" style={{ marginLeft: "80px"}}>
+            <Paper className={Notifications}>
+              <h3>Messagerie</h3></Paper>
           </BlueBackground>
-          <BlueBackground Bheight="350" Bwidth="690" Fheight="350" Fwidth="680">
-            <Paper className={Calendar}> Création évenments </Paper>
+
+          <BlueBackground Bheight="340" Bwidth="690" Fheight="340" Fwidth="680" style={{ marginTop: "60px"}}>
+            <Paper className={Calendar}>
+              <h3>Création évenments</h3>
+              </Paper>
           </BlueBackground>
-          <BlueBackground Bheight="350" Bwidth="400" Fheight="350" Fwidth="400">
-            <Paper className={Moyennes}>Création exercices</Paper>
+
+          <BlueBackground Bheight="350" Bwidth="400" Fheight="350" Fwidth="400" style={{ marginLeft: "100px", marginTop: "40px"}}>
+            <Paper className={Moyennes}>
+              <h3>Création exercices</h3>
+              </Paper>
           </BlueBackground>
+
         </Grid>
       </Paper>
     </Container>

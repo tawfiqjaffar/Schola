@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
   paperinfos: {
     height: '270px',
-    width: '200px',
+    width: '220px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
     width: '420px',
   },
   papercalendar: {
-    height: '340px',
+    height: '300px',
     width: '600px',
   },
   papergrades: {
@@ -77,12 +77,12 @@ const Home = () => {
     <Container className={classes.root}>
       <Paper className={classes.paper}>
         <Grid container spacing={3}>
-          <BlueBackground Bheight="350" Bwidth="260" Fheight="350" Fwidth="260">
+          <BlueBackground Bheight="315" Bwidth="260" Fheight="315" Fwidth="260">
             <Paper className={IdPhoto}>
               <img alt="trombi" src={trombi} />
             </Paper>
           </BlueBackground>
-          <BlueBackground Bheight="350" Bwidth="260" Fheight="350" Fwidth="260">
+          <BlueBackground Bheight="315" Bwidth="260" Fheight="315" Fwidth="260" style={{ marginLeft: "80px"}}>
             <Paper className={Personal}>
               <h3>Mes infos</h3>
               {`${user.firstName} ${user.lastName}`}
@@ -91,16 +91,19 @@ const Home = () => {
               {user.school ? user.school : 'École non renseignée'}
               <br />
               <br />
+              {`${user.role} `}
+              <br />
+              <br />
               {user.email}
             </Paper>
           </BlueBackground>
-          <BlueBackground Bheight="350" Bwidth="490" Fheight="350" Fwidth="490">
-            <Paper className={Notifications}>wsh les bougres</Paper>
+          <BlueBackground Bheight="315" Bwidth="490" Fheight="315" Fwidth="490" style={{ marginLeft: "80px"}}>
+            <Paper className={Notifications}>Notifications</Paper>
           </BlueBackground>
-          <BlueBackground Bheight="350" Bwidth="690" Fheight="350" Fwidth="680">
-            <Paper className={Calendar}> Encore là les bourguignons ?</Paper>
+          <BlueBackground Bheight="320" Bwidth="690" Fheight="320" Fwidth="680" style={{ marginTop: "60px"}}>
+            <Paper className={Calendar}> Calendrier</Paper>
           </BlueBackground>
-          <BlueBackground Bheight="350" Bwidth="400" Fheight="350" Fwidth="400">
+          <BlueBackground Bheight="350" Bwidth="400" Fheight="350" Fwidth="400" style={{ marginLeft: "100px", marginTop: "40px"}}>
             <Paper className={Moyennes}>
               <Chart />
             </Paper>

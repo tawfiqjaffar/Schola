@@ -1,8 +1,8 @@
-const Canteen = require('../../models/canteen');
-const responseBody = require('../../routes/responseBody');
+const Canteen = require("../../models/canteen");
+const responseBody = require("../../routes/responseBody");
 
 const updateDateLunch = (req, res) => {
-  if (req.user.role === 'viesco' || req.user.role === 'admin') {
+  if (req.user.role === "viesco" || req.user.role === "admin") {
     const { body } = req;
     const newDate = req.body.date;
 
@@ -37,7 +37,7 @@ const updateDateLunch = (req, res) => {
       .status(responseBody.responseCode.FORBID)
       .send(
         responseBody.buildResponseBody(
-          'You do not have the access right to perform such a modification',
+          "You do not have the access right to perform such a modification",
           responseBody.responseCode.FORBID
         )
       );
@@ -45,7 +45,7 @@ const updateDateLunch = (req, res) => {
 };
 
 const updateStarterLunch = (req, res) => {
-  if (req.user.role === 'viesco' || req.user.role === 'admin') {
+  if (req.user.role === "viesco" || req.user.role === "admin") {
     const { body } = req;
     const newStarter = req.body.starter;
 
@@ -80,7 +80,7 @@ const updateStarterLunch = (req, res) => {
       .status(responseBody.responseCode.FORBID)
       .send(
         responseBody.buildResponseBody(
-          'You do not have the access right to perform such a modification',
+          "You do not have the access right to perform such a modification",
           responseBody.responseCode.FORBID
         )
       );
@@ -88,7 +88,7 @@ const updateStarterLunch = (req, res) => {
 };
 
 const updateMealLunch = (req, res) => {
-  if (req.user.role === 'viesco' || req.user.role === 'admin') {
+  if (req.user.role === "viesco" || req.user.role === "admin") {
     const { body } = req;
     const newMeal = req.body.meal;
 
@@ -123,7 +123,7 @@ const updateMealLunch = (req, res) => {
       .status(responseBody.responseCode.FORBID)
       .send(
         responseBody.buildResponseBody(
-          'You do not have the access right to perform such a modification',
+          "You do not have the access right to perform such a modification",
           responseBody.responseCode.FORBID
         )
       );
@@ -131,7 +131,7 @@ const updateMealLunch = (req, res) => {
 };
 
 const updateDessertLunch = (req, res) => {
-  if (req.user.role === 'viesco' || req.user.role === 'admin') {
+  if (req.user.role === "viesco" || req.user.role === "admin") {
     const { body } = req;
     const newDessert = req.body.dessert;
 
@@ -166,7 +166,7 @@ const updateDessertLunch = (req, res) => {
       .status(responseBody.responseCode.FORBID)
       .send(
         responseBody.buildResponseBody(
-          'You do not have the access right to perform such a modification',
+          "You do not have the access right to perform such a modification",
           responseBody.responseCode.FORBID
         )
       );

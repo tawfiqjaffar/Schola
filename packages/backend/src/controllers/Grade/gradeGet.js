@@ -1,11 +1,11 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const Subject = require('../../models/subject');
-const Grade = require('../../models/grade');
-const responseBody = require('../../routes/responseBody');
+const Subject = require("../../models/subject");
+const Grade = require("../../models/grade");
+const responseBody = require("../../routes/responseBody");
 
 const getAllStudentGrades = (req, res) => {
-  if (req.user.role === 'viesco' || req.user.role === 'admin') {
+  if (req.user.role === "viesco" || req.user.role === "admin") {
     return Grade.find({ studentId: req.body.studentId }, (err, data) => {
       if (err) {
         return res
@@ -32,7 +32,7 @@ const getAllStudentGrades = (req, res) => {
       .status(responseBody.responseCode.FORBID)
       .send(
         responseBody.buildResponseBody(
-          'You do not have the access right to get these informations',
+          "You do not have the access right to get these informations",
           responseBody.responseCode.FORBID
         )
       );
@@ -67,7 +67,7 @@ const getReadableGrades = (req, res) => {
 };
 
 const getSubjectStudentGrades = (req, res) => {
-  if (req.user.role === 'viesco' || req.user.role === 'admin') {
+  if (req.user.role === "viesco" || req.user.role === "admin") {
     return Grade.find(
       {
         $and: [
@@ -102,7 +102,7 @@ const getSubjectStudentGrades = (req, res) => {
       .status(responseBody.responseCode.FORBID)
       .send(
         responseBody.buildResponseBody(
-          'You do not have the access right to get these informations',
+          "You do not have the access right to get these informations",
           responseBody.responseCode.FORBID
         )
       );

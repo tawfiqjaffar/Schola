@@ -1,8 +1,8 @@
-const Exercice = require('../../models/exercice');
-const responseBody = require('../../routes/responseBody');
+const Exercice = require("../../models/exercice");
+const responseBody = require("../../routes/responseBody");
 
 const deleteExercice = (req, res) => {
-  if (req.user.role === 'viesco' || req.user.role === 'admin') {
+  if (req.user.role === "viesco" || req.user.role === "admin") {
     return Exercice.deleteOne({ _id: req.body.id }, (err, data) => {
       if (err) {
         console.log(err);
@@ -30,7 +30,7 @@ const deleteExercice = (req, res) => {
       .status(responseBody.responseCode.FORBID)
       .send(
         responseBody.buildResponseBody(
-          'You do not have the access right to perform such a modification',
+          "You do not have the access right to perform such a modification",
           responseBody.responseCode.FORBID
         )
       );

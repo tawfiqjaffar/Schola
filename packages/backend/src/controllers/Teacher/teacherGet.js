@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const Teacher = require('../../models/teacher');
+const mongoose = require("mongoose");
+const Teacher = require("../../models/teacher");
 
 const getAllTeachers = (req, res) => {
   return Teacher.find({}, (err, docs) => {

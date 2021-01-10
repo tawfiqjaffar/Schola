@@ -1,62 +1,62 @@
-const express = require('express');
-const { check } = require('express-validator');
-const { checkFields, authenticateJwt } = require('./middleware');
+const express = require("express");
+const { check } = require("express-validator");
+const { checkFields, authenticateJwt } = require("./middleware");
 const {
   getAllExercices,
   getSubjectExercices,
   getLevelExercices,
   getSubjectLevelExercices,
-} = require('../controllers/Exercice/exerciceGet');
+} = require("../controllers/Exercice/exerciceGet");
 
-const { createExercice } = require('../controllers/Exercice/exercicePost');
+const { createExercice } = require("../controllers/Exercice/exercicePost");
 
-const { deleteExercice } = require('../controllers/Exercice/exerciceDelete');
+const { deleteExercice } = require("../controllers/Exercice/exerciceDelete");
 
 const router = express.Router();
 
 router.get(
-  '/all',
-  [check('authorization', 'you must provide a bearer access token').notEmpty()],
+  "/all",
+  [check("authorization", "you must provide a bearer access token").notEmpty()],
   checkFields,
   authenticateJwt,
   getAllExercices
 );
 
 router.get(
-  '/subject',
-  [check('authorization', 'you must provide a bearer access token').notEmpty()],
+  "/subject",
+  [check("authorization", "you must provide a bearer access token").notEmpty()],
   checkFields,
   authenticateJwt,
   getSubjectExercices
 );
 
 router.get(
-  '/level',
-  [check('authorization', 'you must provide a bearer access token').notEmpty()],
+  "/level",
+  [check("authorization", "you must provide a bearer access token").notEmpty()],
   checkFields,
   authenticateJwt,
   getLevelExercices
 );
 
 router.get(
-  '/subjectLevel',
-  [check('authorization', 'you must provide a bearer access token').notEmpty()],
+  "/subjectLevel",
+  [check("authorization", "you must provide a bearer access token").notEmpty()],
   checkFields,
   authenticateJwt,
   getSubjectLevelExercices
 );
 
 router.post(
-  '/create',
-  [check('authorization', 'you must provide a bearer access token').notEmpty()],
+  "/create",
+  [check("authorization", "you must provide a bearer access token").notEmpty()],
   checkFields,
   authenticateJwt,
   createExercice
 );
 
 router.delete(
-  '/delete',
-  [check('authorization', 'you must provide a bearer access token').notEmpty()],
+  "/delete",
+  [check("authorization", "you must provide a bearer access token").notEmpty()],
   checkFields,
   authenticateJwt,
   deleteExercice

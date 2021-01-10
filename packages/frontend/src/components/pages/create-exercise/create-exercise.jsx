@@ -8,7 +8,6 @@ const CreateExercise = (props) => {
     const levels = ['Facile', 'Moyen'];
     const sousMatieres = ['Grammaire', 'Vocabulaire'];
     const types = [
-        'CRÉER UN EXERCICE',
         'GÉNÉRER UN TEXTE A TROUS',
         'GÉNÉRER UN QCM',
         'GÉNÉRER UN RELIER LES MOTS',
@@ -20,10 +19,12 @@ const CreateExercise = (props) => {
     const [type, setType] = useState('');
     let history = useHistory();
     const handleClick = () => {
-        if (type === 'CRÉER UN EXERCICE') {
-            history.push('/quizz');
-        } else if (type === 'GÉNÉRER UN TEXTE A TROUS') {
+        if (type === 'GÉNÉRER UN QCM') {
+            history.push('/quiz/create/qcm');
+        } if (type === 'GÉNÉRER UN TEXTE A TROUS') {
             history.push('/text-trous');
+        }if (type === 'GÉNÉRER UN RELIER LES MOTS') {
+            history.push('/quiz/create/match-word');
         }
     };
 

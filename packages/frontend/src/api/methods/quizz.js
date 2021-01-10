@@ -10,12 +10,28 @@ import uri from '../uri/auth';
  * @returns {{code: Number, data: Object, message: String}}
  */
 const postQuizz = async (state) => {
-        const response = await axiosInstance({
-            method: uri.quizz.method,
-            url: uri.quizz.path,
-            data: state,
-        });
-        return response.data;
+    const response = await axiosInstance({
+        method: uri.quizz.post.method,
+        url: uri.quizz.post.path,
+        data: state,
+    });
+    return response.data;
 };
 
-export default postQuizz;
+const getQuizs = async (state) => {
+    const response = await axiosInstance({
+        method: uri.quizz.all.method,
+        url: uri.quizz.all.path,
+    });
+    return response.data;
+};
+
+const getQuiz = async (id) => {
+    const response = await axiosInstance({
+        method: uri.quizz.get.method,
+        url: uri.quizz.get.path + id,
+    });
+    return response.data;
+};
+
+export { postQuizz, getQuizs, getQuiz };

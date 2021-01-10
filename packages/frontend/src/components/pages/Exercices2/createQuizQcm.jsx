@@ -1,10 +1,10 @@
 import React from 'react';
 
 import Paper from '@material-ui/core/Paper';
-import {withStyles} from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import styles from './app-style';
-import postQuizz from '../../../api/methods/quizz';
-import {Button} from "@material-ui/core";
+import { postQuizz } from '../../../api/methods/quizz';
+import { Button } from "@material-ui/core";
 
 class App extends React.Component {
     lastTimeButtonClicked = new Date().getTime();
@@ -20,7 +20,8 @@ class App extends React.Component {
         question8: {},
         question9: {},
         question10: {},
-        quizzname: ''
+        quizzName: '',
+        type: "match-word"
     };
 
 
@@ -30,40 +31,40 @@ class App extends React.Component {
 
     setField = (question, val, choix) => {
         if (!choix) {
-            this.setState({[question]: {...this.state[question], label: val}})
+            this.setState({ [question]: { ...this.state[question], label: val } })
         } else {
-            this.setState({[question]: {...this.state[question], [choix]: val}})
+            this.setState({ [question]: { ...this.state[question], [choix]: val } })
         }
         console.log(this.state)
     }
 
     render() {
-        const {classes} = this.props;
+        const { classes } = this.props;
         return (
             <Paper id="mainContainer" className={classes.paper + ' quizzForm'} elevation={2}>
                 Creation de quizz
                 <div>
-                    <input type={'text'} onChange={(e) => this.setState({quizzName: e.target.value})}
-                           placeholder={'nom du quizz'} name={'quizzName'} className={'quizzInput'}/>
+                    <input type={'text'} onChange={(e) => this.setState({ quizzName: e.target.value })}
+                        placeholder={'nom du quizz'} name={'quizzName'} className={'quizzInput'} />
                 </div>
                 <div>
                     {[...Array(10)].map((el, index) =>
                         <>
                             <input type={'text'}
-                                   onChange={(e) => (this.setField('question' + (index + 1), e.target.value))}
-                                   placeholder={'Question' + (index + 1)} name={'question' + (index + 1)}
-                                   className={'quizzInput'}/>
+                                onChange={(e) => (this.setField('question' + (index + 1), e.target.value))}
+                                placeholder={'Question' + (index + 1)} name={'question' + (index + 1)}
+                                className={'quizzInput'} />
                             <input type={'text'}
-                                   onChange={(e) => (this.setField('question' + (index + 1), e.target.value, 'choix1'))}
-                                   placeholder={'choix1'} name={'answer1'} className={'quizzInput'}/>
+                                onChange={(e) => (this.setField('question' + (index + 1), e.target.value, 'choix1'))}
+                                placeholder={'choix1'} name={'answer1'} className={'quizzInput'} />
                             <input onChange={(e) => (this.setField('question' + (index + 1), e.target.value, 'choix2'))}
-                                   type={'text'} placeholder={'choix2'} name={'answer2'} className={'quizzInput'}/>
+                                type={'text'} placeholder={'choix2'} name={'answer2'} className={'quizzInput'} />
                             <input onChange={(e) => (this.setField('question' + (index + 1), e.target.value, 'choix3'))}
-                                   type={'text'} placeholder={'choix3'} name={'answer3'} className={'quizzInput'}/>
+                                type={'text'} placeholder={'choix3'} name={'answer3'} className={'quizzInput'} />
                             <input
                                 onChange={(e) => (this.setField('question' + (index + 1), e.target.value, 'correct'))}
                                 type={'number'} min={1} max={3} placeholder={'correct'} name={'correct'}
-                                className={'quizzInput'}/>
+                                className={'quizzInput'} />
                         </>)}
 
                     <Button onClick={this.submit}>GO</Button>

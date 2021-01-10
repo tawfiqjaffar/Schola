@@ -4,8 +4,18 @@ const uri = {
     method: 'post',
   },
   quizz: {
-    path: '/quizz',
-    method: 'post',
+    post: {
+      path: '/quizz',
+      method: 'post',
+    },
+    all: {
+      path: '/quizz',
+      method: 'get',
+    },
+    get: {
+      path: '/quizz/',
+      method: 'get',
+    }
   },
 };
 

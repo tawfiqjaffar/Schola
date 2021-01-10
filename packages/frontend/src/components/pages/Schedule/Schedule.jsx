@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import "./Schedule.css"
-import Cookies from 'js-cookies';
+import Cookies from 'js-cookie';
 // import Book from './iconfinder_Book.svg'
 // import Paper from '@material-ui/core/Paper';
 import {
@@ -19,56 +19,73 @@ const state = {
   body: ''
 };
 
-const Schedule = async (e) => {
+const Task = async (e) => {
   const [post , setPost] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
   // const res = 200;
-  const res = await getAllTask(Cookies.get("accessToken"))
+  const res = await getWeekTask(Cookies.get('accessToken'))
+  console.log(res)
   // const res = await getAllSchedule(Cookies.get("accessToken"))
-  if (res === 200) {
-    console.log(res);
+  if (res.code === 200) {
     setPost(res.data);
   } else {
-    console.log("error")
     setErrorMsg("Error: Schedule request Failed")
-    console.log({errorMsg})
   }
 }
 
-const DisplayPost = (posts) => {
+const dayName = ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"]
+const monthName = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"]
 
-  if (!posts.length) return null;
+const currentWeekDay = (day) => {
+  var date = new Date();
+  var currentDay = date.getDay();
+  var number = date.getDate();
+  var month = date.getMonth();
+  var diff = 0;
+  var monthDiff = 0;
 
-  return posts.map((post, index) => (
-    <div key={index}>
-      <h3>{post.title}</h3>
-      <p>{post.body}</p>
-    </div>
-  ));
+  // for (i = date.getDay() ; i != day; diff++) {
+  //   if (month = 0,2,4,6,8,10)
+  // };
+  var res = dayName[currentDay + diff] + " " + (number + diff);
 }
 
+
+// const DisplayPost = (posts) => {
+
+//   if (!posts.length) return null;
+
+//   return posts.map((post, index) => (
+//     <div key={index}>
+//       <h3>{post.title}</h3>
+//       <p>{post.body}</p>
+//     </div>
+//   ));
+// }
+
 const main = () => {
-  state.post = Schedule()
+  state.post = Task()
+  console.log('State = ' + state.post.data)
     return (
         <div className="backBook">
           <h1 className="tittleOne">Cahier de texte</h1>
           <div className="WeekDay">
             <h1>WeekDay</h1>
-            <h2>Lundi 7 decembre</h2>
+            <h2>{currentWeekDay("1")}</h2>
             <p>Pas de texte.</p>
-            <h2>Mardi 8 decembre</h2>
+            <h2>Mardi 13 janvier</h2>
             <p>exemple de texte.</p>
-            <h2>Mercredi 9 decembre</h2>
+            <h2>Mercredi 14 decembre</h2>
             <p>A faire: Preparer le rendez-vous EIP.</p>
-            <h2>Jeudi 10 decembre</h2>
+            <h2>Jeudi 15 janvier</h2>
             <p>Pas de texte.</p>
-            <h2>Vendredi 11 decembre</h2>
+            <h2>Vendredi 16 janvier</h2>
             <p>Pas de texte.</p>
           </div>
           <div className="DayDescription">
             <h1>DayDescription</h1>
-            <h2>Mercredi 9 decembre</h2>
-            <p>Preparer sa presentation pour l'EIP.</p>
+            <h2>mardi 13 janvier</h2>
+            <p>test</p> 
             <button>precedent</button>
             <div className="spaceDiv"/> 
             <button>suivant</button>

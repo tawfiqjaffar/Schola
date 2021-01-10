@@ -34,12 +34,12 @@ const createUser = async (user) => {
 };
 
 createUser({
-  username: 'ninho',
-  password: 'valdo',
-  firstname: 'Tatouin',
-  lastname: 'Serris',
-  email: 'partou.serris@schola.fr',
-  role: 'student',
+  username: 'teacherone',
+  password: 'teacherone',
+  firstname: 'philippe',
+  lastname: 'roudaut',
+  email: 'teacherone@teacher.fr',
+  role: 'teacher',
   nextMail: '0',
   nextMailGrade: '0',
   classId: '5faa1bccad70be34ddafebeb'

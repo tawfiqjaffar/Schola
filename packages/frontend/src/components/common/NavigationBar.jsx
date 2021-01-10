@@ -120,7 +120,7 @@ function Logout(props) {
 
         <StyledMenuItem
           onClick={() => {
-            redirection('/schedule');
+            redirection('/notebook');
           }}
         >
         <ListItemText primary="Cahier de texte" />
@@ -128,7 +128,7 @@ function Logout(props) {
 
         <StyledMenuItem
           onClick={() => {
-            redirection('/join');
+            redirection('/joinchat');
           }}
         >
         <ListItemText primary="Messagerie" />

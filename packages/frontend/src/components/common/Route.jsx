@@ -3,6 +3,7 @@ import Protected from './Protected';
 import Login from '../pages/Login';
 import Home from '../pages/HomePage/HomePage';
 import LandingPage from '../pages/LandingPage';
+import HomePageParent from '../pages/HomePageParent/HomePageParent';
 import Devoir from '../pages/Devoir/Devoir';
 
 const routes = [
@@ -21,9 +22,15 @@ const routes = [
     ),
   },
   {
+    route: '/HomePageParent',
+    component: (
+      <HomePageParent />
+    ),
+  },
+  {
     route: '/Devoir',
     component: (
-        <Devoir />
+      <Devoir />
     ),
   },
   {

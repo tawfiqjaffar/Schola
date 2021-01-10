@@ -2,41 +2,110 @@ import React from 'react';
 import axios from 'axios';
 import { Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
-import BlueBackground from '../../common/BlueBackground';
+import background from './ImgDevoir/backgroundFourni.jpg';
+import cahier from './ImgDevoir/Cahier.png';
+import titre from './ImgDevoir/Tittre.png';
+import './ImgDevoir/mysass.sass';
 
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
-    textAlign: 'center',
   },
-  paper: {
-    marginTop: theme.spacing(8),
-    paddingTop: theme.spacing(3),
-    paddingBottom: theme.spacing(3),
-    paddingLeft: theme.spacing(3),
-    paddingRight: theme.spacing(3),
+  backgroundImage: {
+    objectFit: 'cover',
+    width: '100%',
+    height: '100%',
+    left: 0,
+    top: 0,
+    zIndex: -1,
+    position: 'fixed',
+  },
+  CahierImage: {
+    width: '50%',
+    height: '50%',
+    left: '50%',
+    top: '50%',
+    zIndex: -1,
+    position: 'fixed',
+  },
+  Centered: {
     display: 'flex',
-    flexDirection: 'column',
+    top: '25%',
+    width: '80%',
+    height: '80%',
+    justifyContent: 'center',
     alignItems: 'center',
+    position: 'fixed'
   },
-  fixedHeight: {
-    height: '240px',
+  Titre: {
+    display: 'flex',
+    top: '15%',
+    left: '35%',
+    width: '25%',
+    height: '10%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'fixed'
   },
-  background: {
-    background: 'white',
+  Form: {
+    top: '40%',
+    left: '20%',
+    position: 'fixed',
+    transform: 'rotate(-1deg)'
   },
+  TextArea: {
+    display: 'block',
+    height: '120px',
+    width: '100%'
+  },
+  Button: {
+    marginTop: '5%',
+    right: '0',
+    position: 'absolute'
+  }
+
 }));
+
+const handleSubmit = function (e) {
+  e.preventDefault();
+  console.log("test");
+};
 
 const Devoir = () => {
   const classes = useStyles();
+  console.log(background);
 
   return (
     <Container className={classes.root}>
-      <BlueBackground BRota="6" FRota="-7" Bwidth="500" Fwidth="450" Fheight="280" Fcolor="#ffe352" Bcolor="#fff0a5" style={{ margin: '100px' }}>
-        <img src="https://icon-library.com/images/default-profile-icon/default-profile-icon-16.jpg" width="160px" height="160px" alt="oui" />
-      </BlueBackground>
+      <img className={classes.backgroundImage} src={background} />
+      <div>
+        <img className={classes.Titre} src={ titre}/>
+        <img className={classes.Centered} src={cahier} />
+      </div>
+      <div className={classes.Form}>
+        <form onSubmit={handleSubmit} className={classes.Form}>
+          <div>
+            <label>Date</label>
+            <input type="date"></input> 
+          </div>
+          <div>
+            <label>Matière</label>
+            <input type="input"></input> 
+          </div>
+          <div>
+            <label>Classe</label>
+            <input type="input"></input> 
+          </div>
+          <div>
+            <label>Devoir</label>
+            <textarea className={classes.TextArea} type="name"></textarea> 
+          </div>
+          <button className={classes.Button} type="submit">Valider</button>
+        </form>
+      </div>
     </Container>
+
   );
 };
 

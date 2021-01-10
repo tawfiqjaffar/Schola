@@ -1,9 +1,9 @@
-require('dotenv');
-const jwt = require('jsonwebtoken');
+require("dotenv");
+const jwt = require("jsonwebtoken");
 
-const userSchema = require('../../models/user');
-const responseBody = require('../../routes/responseBody');
-const { checkHash } = require('../../encryption/hash');
+const userSchema = require("../../models/user");
+const responseBody = require("../../routes/responseBody");
+const { checkHash } = require("../../encryption/hash");
 
 const postLoginUser = (req, res) => {
   const { email, password } = req.body;
@@ -25,7 +25,7 @@ const postLoginUser = (req, res) => {
           .status(responseBody.responseCode.UNAUTH)
           .send(
             responseBody.buildResponseBody(
-              'invalid username or password',
+              "invalid username or password",
               responseBody.responseCode.UNAUTH
             )
           );

@@ -1,8 +1,8 @@
-const Task = require('../../models/task');
-const responseBody = require('../../routes/responseBody');
+const Task = require("../../models/task");
+const responseBody = require("../../routes/responseBody");
 
 const updateTask = (req, res) => {
-  if (req.user.role === 'viesco' || req.user.role === 'admin') {
+  if (req.user.role === "viesco" || req.user.role === "admin") {
     const { body } = req;
     const newLabel = req.body.label;
 
@@ -37,7 +37,7 @@ const updateTask = (req, res) => {
       .status(responseBody.responseCode.FORBID)
       .send(
         responseBody.buildResponseBody(
-          'You do not have the access right to perform such a modification',
+          "You do not have the access right to perform such a modification",
           responseBody.responseCode.FORBID
         )
       );
@@ -45,7 +45,7 @@ const updateTask = (req, res) => {
 };
 
 const updateDateTask = (req, res) => {
-  if (req.user.role === 'viesco' || req.user.role === 'admin') {
+  if (req.user.role === "viesco" || req.user.role === "admin") {
     const { body } = req;
     const newDueDate = req.body.dueDate;
 
@@ -80,7 +80,7 @@ const updateDateTask = (req, res) => {
       .status(responseBody.responseCode.FORBID)
       .send(
         responseBody.buildResponseBody(
-          'You do not have the access right to perform such a modification',
+          "You do not have the access right to perform such a modification",
           responseBody.responseCode.FORBID
         )
       );

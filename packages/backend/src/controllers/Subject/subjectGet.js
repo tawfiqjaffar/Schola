@@ -1,5 +1,5 @@
-const responseBody = require('../../routes/responseBody');
-const Subject = require('../../models/subject');
+const responseBody = require("../../routes/responseBody");
+const Subject = require("../../models/subject");
 
 const getAllSubjects = (req, res) => {
   return Subject.find({}, (err, data) => {

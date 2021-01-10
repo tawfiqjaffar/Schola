@@ -11,16 +11,16 @@ const responseCode = {
 
 const getMessageFromCode = (code) => {
   const messages = [
-    [200, 'success'],
-    [201, 'created'],
-    [400, 'bad request'],
-    [401, 'unauthorized'],
-    [403, 'forbidden'],
-    [404, 'not found'],
-    [409, 'conflict'],
-    [500, 'internal server error'],
+    [200, "success"],
+    [201, "created"],
+    [400, "bad request"],
+    [401, "unauthorized"],
+    [403, "forbidden"],
+    [404, "not found"],
+    [409, "conflict"],
+    [500, "internal server error"],
   ];
-  let result = 'success';
+  let result = "success";
   messages.forEach((el) => {
     const [c, m] = el;
     if (c === code) {

@@ -1,5 +1,5 @@
-const responseBody = require('../../routes/responseBody');
-const School = require('../../models/school');
+const responseBody = require("../../routes/responseBody");
+const School = require("../../models/school");
 
 const getAllSchools = (req, res) => {
   return School.find({}, (err, data) => {

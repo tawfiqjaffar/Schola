@@ -112,7 +112,7 @@ const postAddAbsence = (req, res) => {
               { $push: { absence: data._id } },
               (error, success) => {
                 if (error);
-                else;
+                else console.log(success);
               }
             );
           }

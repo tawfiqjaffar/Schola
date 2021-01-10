@@ -1,4 +1,3 @@
-const User = require("../../models/user");
 const Class = require("../../models/class");
 const Absence = require("../../models/absence");
 const responseBody = require("../../routes/responseBody");
@@ -25,7 +24,7 @@ const getAbsenceStudent = (req, res) => {
 };
 
 const getAbsenceClass = (req, res) => {
-  Class.findOne({ _id: req.body.classId }, (error, cls) => {
+  return Class.findOne({ _id: req.body.classId }, (error, cls) => {
     if (error) {
       return res
         .status(responseBody.responseCode.INTSERVERR)
@@ -36,7 +35,7 @@ const getAbsenceClass = (req, res) => {
           )
         );
     }
-    Absence.find({ _id: cls.absence }, (err, abs) => {
+    return Absence.find({ _id: cls.absence }, (err, abs) => {
       if (err) {
         return res
           .status(responseBody.responseCode.INTSERVERR)

@@ -1,8 +1,6 @@
-const mongoose = require("mongoose");
-
-const Grade = require('../../models/grade');
-const User = require('../../models/user');
-const responseBody = require('../../routes/responseBody');
+const Grade = require("../../models/grade");
+const User = require("../../models/user");
+const responseBody = require("../../routes/responseBody");
 
 // const createGrade = (req, res) => {
 //   if (req.user.role === 'viesco' || req.user.role === 'admin') {
@@ -59,40 +57,39 @@ const responseBody = require('../../routes/responseBody');
 // };
 
 const postCreateGrade = (req, res) => {
-  let newGrade = new Grade({
-  grade: req.body.grade,
-  subject: req.body.subject,
-  studentId: req.body.studentId
+  const newGrade = new Grade({
+    grade: req.body.grade,
+    subject: req.body.subject,
+    studentId: req.body.studentId,
   });
-    return newGrade.save((err, data) => {
-      if (err) {
+  return newGrade.save((err, data) => {
+    if (err) {
       console.log(err);
       return res
         .status(responseBody.responseCode.INTSERVERR)
         .send(
-        responseBody.buildResponseBody(
-          err,
-          responseBody.responseCode.INTSERVERR
-        )
+          responseBody.buildResponseBody(
+            err,
+            responseBody.responseCode.INTSERVERR
+          )
         );
-      } else {
-    User.findOneAndUpdate(
-    { _id: data.studentId },
-    { $push: { grade: data._id  } },  (err, usr) => {
-    }
-   )
+    } else {
+      User.findOneAndUpdate(
+        { _id: data.studentId },
+        { $push: { grade: data._id } }
+      );
       return res
         .status(responseBody.responseCode.SUCCESS)
         .send(
-        responseBody.buildResponseBody(
-          data,
-          responseBody.responseCode.SUCCESS
-        )
+          responseBody.buildResponseBody(
+            data,
+            responseBody.responseCode.SUCCESS
+          )
         );
-      }
+    }
   });
 };
 
 module.exports = {
-postCreateGrade,
+  postCreateGrade,
 };

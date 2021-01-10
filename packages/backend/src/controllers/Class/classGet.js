@@ -1,5 +1,4 @@
 const User = require("../../models/user");
-const Class = require("../../models/class");
 
 const responseBody = require("../../routes/responseBody");
 

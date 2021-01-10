@@ -9,13 +9,13 @@ import uri from '../uri/calendar';
  * @param {String} password retrieved after login
  * @returns {{code: Number, data: Object, message: String}}
  */
-const getWeekSchedule = async (accessToken) => {
+const getWeekTask = async (accessToken) => {
   let res;
 
   try {
     const response = await axios({
-      method: uri.weekcourse.method,
-      url: uri.weekcourse.path,
+      method: uri.weekTask.method,
+      url: uri.weekTask.path,
       headers: {
         authorization: `Bearer ${accessToken}`,
       },
@@ -28,13 +28,13 @@ const getWeekSchedule = async (accessToken) => {
   return res;
 };
 
-const getDaySchedule = async (accessToken) => {
+const getDayTask = async (accessToken) => {
   let res;
 
   try {
     const response = await axios({
-      method: uri.daycourse.method,
-      url: uri.daycourse.path,
+      method: uri.dayTask.method,
+      url: uri.dayTask.path,
       headers: {
         authorization: `Bearer ${accessToken}`,
       },
@@ -47,13 +47,13 @@ const getDaySchedule = async (accessToken) => {
   return res;
 };
 
-const getAllSchedule = async (accessToken) => {
+const getAllTask = async (accessToken) => {
   let res;
 
   try {
     const response = await axios({
-      method: uri.allcourse.method,
-      url: uri.allcourse.path,
+      method: uri.allTask.method,
+      url: uri.allTask.path,
       headers: {
         authorization: `Bearer ${accessToken}`,
       },
@@ -66,11 +66,10 @@ const getAllSchedule = async (accessToken) => {
   return res;
 };
 
-const postCreateSchedule = async (
+const postCreateTask = async (
   subjectID,
   teacherID,
-  start,
-  end,
+  dueDate,
   label,
   userID,
   accessToken,
@@ -78,13 +77,12 @@ const postCreateSchedule = async (
   let res;
   try {
     const response = await axios({
-      method: uri.create.method,
-      url: uri.create.path,
+      method: uri.createTask.method,
+      url: uri.createTask.path,
       data: {
         subjectID,
         teacherID,
-        start,
-        end,
+        dueDate,
         label,
         userID,
       },
@@ -99,16 +97,15 @@ const postCreateSchedule = async (
   return res;
 };
 
-const updateSchedule = async (objectID, start, end, accessToken) => {
+const updateTask = async (id, label, accessToken) => {
   let res;
   try {
     const response = await axios({
-      method: uri.update.method,
-      url: uri.update.path,
+      method: uri.updateTask.method,
+      url: uri.updateTask.path,
       data: {
-        id: objectID,
-        start,
-        end,
+        id: id,
+        label,
       },
       headers: {
         authorization: `Bearer ${accessToken}`,
@@ -121,14 +118,34 @@ const updateSchedule = async (objectID, start, end, accessToken) => {
   return res;
 };
 
-const deleteSchedule = async (objectID, accessToken) => {
+const updateTaskDate = async (dueDate, accessToken) => {
   let res;
   try {
     const response = await axios({
-      method: uri.delete.method,
-      url: uri.update.path,
+      method: uri.updateDateTask.method,
+      url: uri.updateDateTask.path,
       data: {
-        id: objectID,
+        dueDate
+      },
+      headers: {
+        authorization: `Bearer ${accessToken}`,
+      },
+    });
+    res = response.data;
+  } catch (axiosErr) {
+    res = axiosErr.response && axiosErr.response.data;
+  }
+  return res;
+};
+
+const deleteTask = async (id, accessToken) => {
+  let res;
+  try {
+    const response = await axios({
+      method: uri.deleteTask.method,
+      url: uri.deleteTask.path,
+      data: {
+        id: id,
       },
       headers: {
         authorization: `Bearer ${accessToken}`,
@@ -142,9 +159,10 @@ const deleteSchedule = async (objectID, accessToken) => {
 };
 
 export {
-  getWeekSchedule,
-  getDaySchedule,
-  getAllSchedule,
-  postCreateSchedule,
-  updateSchedule,
-  deleteSchedule };
+  getWeekTask,
+  getDayTask,
+  getAllTask,
+  postCreateTask,
+  updateTask,
+  updateTaskDate,
+  deleteTask };

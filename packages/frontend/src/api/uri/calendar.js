@@ -1,26 +1,30 @@
 const uri = {
-  weekcourse: {
-    path: '/schedule/week/',
+  weekTask: {
+    path: '/task/week/',
     method: 'get',
   },
-  daycourse: {
-    path: '/schedule/day/',
+  dayTask: {
+    path: '/task/day/',
     method: 'get',
   },
-  allcourse: {
-    path: '/schedule/',
+  allTask: {
+    path: '/task/',
     method: 'get',
   },
-  create: {
-    path: '/schedule/create/',
+  createTask: {
+    path: '/task/create/',
     method: 'post',
   },
-  update: {
-    path: '/schedule/update/',
+  updateTask: {
+    path: '/task/update/',
     method: 'put',
   },
-  deleteSchedule: {
-    path: '/schedule/delete/',
+  updateDateTask: {
+    path: '/task/updateDate/',
+    method: 'put',
+  },
+  deleteTask: {
+    path: '/task/delete/',
     method: 'delete',
   }
 };

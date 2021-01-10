@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import "./Schedule.css"
-// import Cookies from 'js-cookies';
+import Cookies from 'js-cookies';
 // import Book from './iconfinder_Book.svg'
 // import Paper from '@material-ui/core/Paper';
 import {
-  // getScheduleWeek,
-  // getScheduleDay,
-  getAllSchedule,
-  // postCreateSchedule,
-  // updateSchedule,
-  // deleteSchedule
+  getWeekTask,
+  getDayTask,
+  getAllTask,
+  postCreateTask,
+  updateTask,
+  updateTaskDate,
+  deleteTask
 } from '../../../api/methods/calendar'
 
 const state = {
@@ -21,7 +22,8 @@ const state = {
 const Schedule = async (e) => {
   const [post , setPost] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
-  const res = 200;
+  // const res = 200;
+  const res = await getAllTask(Cookies.get("accessToken"))
   // const res = await getAllSchedule(Cookies.get("accessToken"))
   if (res === 200) {
     console.log(res);
@@ -46,7 +48,7 @@ const DisplayPost = (posts) => {
 }
 
 const main = () => {
-  // state.post = Schedule()
+  state.post = Schedule()
     return (
         <div className="backBook">
           <h1 className="tittleOne">Cahier de texte</h1>

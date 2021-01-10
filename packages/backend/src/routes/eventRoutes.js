@@ -1,14 +1,9 @@
-const express = require('express');
-const { checkFields} = require('./middleware');
+const express = require("express");
+const { checkFields } = require("./middleware");
 
-const {
-	postCreateEvent,
-} = require('../controllers/Event/eventPost');
+const { postCreateEvent } = require("../controllers/Event/eventPost");
 
-const {
-	deleteEvent,
-} = require('../controllers/Event/eventDelete');
-
+const { deleteEvent } = require("../controllers/Event/eventDelete");
 
 const {
 	getPublicHolidayList,
@@ -18,12 +13,12 @@ const {
 
 const router = express.Router();
 
-router.post('/create', checkFields, postCreateEvent);
+router.post("/create", checkFields, postCreateEvent);
 
 router.get('/PublicHolidayList', checkFields, getPublicHolidayList);
 router.get('/holidayList', checkFields, getHolidayList);
 router.get('/classEvents', checkFields, getEventsClass);
 
-router.delete('/deleteEvent', checkFields, deleteEvent);
+router.delete("/deleteEvent", checkFields, deleteEvent);
 
 module.exports = router;

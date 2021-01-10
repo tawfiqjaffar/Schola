@@ -38,7 +38,7 @@ createUser({
   password: 'valdo',
   firstname: 'Tatouin',
   lastname: 'Serris',
-  email: 'tat.s@schola.fr',
+  email: 'partou.serris@schola.fr',
   role: 'student',
   nextMail: '0',
   nextMailGrade: '0',

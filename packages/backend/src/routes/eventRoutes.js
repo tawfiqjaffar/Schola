@@ -11,6 +11,7 @@ const {
 
 
 const {
+	getPublicHolidayList,
 	  getHolidayList,
 	  getEventsClass,
 	} = require('../controllers/Event/eventGet');
@@ -19,6 +20,7 @@ const router = express.Router();
 
 router.post('/create', checkFields, postCreateEvent);
 
+router.get('/PublicHolidayList', checkFields, getPublicHolidayList);
 router.get('/holidayList', checkFields, getHolidayList);
 router.get('/classEvents', checkFields, getEventsClass);
 

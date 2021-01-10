@@ -1,8 +1,8 @@
-const Canteen = require('../../models/canteen');
-const responseBody = require('../../routes/responseBody');
+const Canteen = require("../../models/canteen");
+const responseBody = require("../../routes/responseBody");
 
 const deleteLunch = (req, res) => {
-  if (req.user.role === 'viesco' || req.user.role === 'admin') {
+  if (req.user.role === "viesco" || req.user.role === "admin") {
     return Canteen.deleteOne({ _id: req.body.id }, (err, data) => {
       if (err) {
         console.log(err);
@@ -30,7 +30,7 @@ const deleteLunch = (req, res) => {
       .status(responseBody.responseCode.FORBID)
       .send(
         responseBody.buildResponseBody(
-          'You do not have the access right to perform such a modification',
+          "You do not have the access right to perform such a modification",
           responseBody.responseCode.FORBID
         )
       );

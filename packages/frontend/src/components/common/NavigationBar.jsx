@@ -17,9 +17,11 @@ import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import MenuIcon from '@material-ui/icons/Menu';
 import logo from '../../assets/logo.png';
+import './NavBar.css'
 
 const useStyles = makeStyles((theme) => ({
-  root: {},
+  root: {
+  },
   homeButton: {
     marginRight: theme.spacing(1),
     color: theme.palette.text.secondary,
@@ -30,10 +32,6 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(1),
   },
   logoContainer: {},
-  title: {
-    flexGrow: 1,
-    color: theme.palette.secondary.contrastText,
-  },
   menuButton: {
     padding: theme.spacing(1),
     marginRight: theme.spacing(1),
@@ -78,7 +76,7 @@ const StyledMenu = withStyles()((props) => (
 const StyledMenuItem = withStyles((theme) => ({
   root: {
     '&:focus': {
-      backgroundColor: '#2a8081',
+      backgroundColor: '#70c6c7',
       '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
         color: theme.palette.common.white,
       },
@@ -157,7 +155,7 @@ function LoginRegister(props) {
   const { redirection } = props;
   const classes = useStyles();
   return (
-    <div>
+    <div className="ButtonRight">
       <Button
         className={[classes.menuButton, classes.buttonLogin].join(' ')}
         variant="contained"
@@ -191,11 +189,11 @@ export default function NavigationBar() {
 
   return (
     <AppBar position="sticky" className={classes.root}>
-      <Toolbar>
-        <Link href="/">
+      <Toolbar className="Container100">
+        <Link href="/" className="CenterImg">
           <img src={logo} className={classes.logo} alt="Schola logo" />
         </Link>
-        <Typography className={classes.title} variant="h5">
+        <Typography className="title" variant="h5">
           Schola
         </Typography>
         <LoginLogoutDisplay

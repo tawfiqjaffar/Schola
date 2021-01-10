@@ -1,7 +1,7 @@
 // request to update info in db about user
 
-const User = require('../../models/user');
-const responseBody = require('../../routes/responseBody');
+const User = require("../../models/user");
+const responseBody = require("../../routes/responseBody");
 
 const updateRole = (req, res) => {
   const { id } = req.body;
@@ -20,7 +20,7 @@ const updateRole = (req, res) => {
         );
     } else {
       const roleFound = foundSignle.role;
-      if (roleFound === 'admin') {
+      if (roleFound === "admin") {
         return User.findOneAndUpdate(
           { _id: id },
           { role },
@@ -51,7 +51,7 @@ const updateRole = (req, res) => {
           .status(responseBody.responseCode.FORBID)
           .send(
             responseBody.buildResponseBody(
-              'You do not have the access right to perform such a modification',
+              "You do not have the access right to perform such a modification",
               responseBody.responseCode.FORBID
             )
           );

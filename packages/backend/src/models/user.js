@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const schema = new mongoose.Schema({
   password: {
@@ -18,6 +18,9 @@ const schema = new mongoose.Schema({
     unique: true,
     required: true,
   },
+  classId: {
+    type: mongoose.Schema.Types.ObjectId,
+  },
   dateOfBirth: {
     type: Date,
   },
@@ -26,18 +29,32 @@ const schema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ['student', 'teacher', 'parent', 'viesco', 'admin'],
-    default: 'student',
+    enum: ["student", "teacher", "parent", "viesco", "admin", "superadmin"],
+    default: "student",
+  },
+  absence: [{ type: mongoose.Schema.Types.ObjectId, ref: "Absence" }],
+  grade: [{ type: mongoose.Schema.Types.ObjectId, ref: "Grade" }],
+  nextMail: {
+    type: Number,
+  },
+  nextMailGrade: {
+    type: Number,
   },
   accountType: {
     type: String,
-    enum: ['basic', 'google'],
-    default: 'basic',
+    enum: ["basic", "google"],
+    default: "basic",
   },
   passwordRecoveryToken: {
     type: String,
-    default: '',
+    default: "",
+  },
+  school: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "School",
+    required: false,
+    default: null,
   },
 });
 
-module.exports = mongoose.model('User', schema);
+module.exports = mongoose.model("User", schema);

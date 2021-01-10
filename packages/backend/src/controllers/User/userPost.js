@@ -1,12 +1,23 @@
 // request creating some docs in db about user
-const randstring = require('randomstring');
-const User = require('../../models/user');
-const responseBody = require('../../routes/responseBody');
-const { hashPassword } = require('../../encryption/hash');
-const { sendEmail } = require('../../config/mailer');
+const randstring = require("randomstring");
+const { Types } = require("mongoose");
+const User = require("../../models/user");
+const Absence = require("../../models/absence");
+const Class = require("../../models/class");
+const responseBody = require("../../routes/responseBody");
+const { hashPassword } = require("../../encryption/hash");
+const { sendEmail } = require("../../config/mailer");
 
 const postCreateUser = (req, res) => {
-  const { password, firstname, lastname, email, dateofbirth, role } = req.body;
+  const {
+    password,
+    firstname,
+    lastname,
+    email,
+    dateofbirth,
+    role,
+    schoolId,
+  } = req.body;
 
   const createUser = async () => {
     let newUser;
@@ -14,11 +25,15 @@ const postCreateUser = (req, res) => {
       const hashed = await hashPassword(password);
       newUser = new User({
         password: hashed,
+        classId: req.body.classId,
+        nextMail: req.body.nextMail,
+        nextMailGrade: req.body.nextMailGrade,
         firstName: firstname,
         lastName: lastname,
         email,
         dateOfBirth: dateofbirth,
         role,
+        school: schoolId ? Types.ObjectId(schoolId) : null,
       });
       newUser.save((err, user) => {
         if (err) {
@@ -62,6 +77,56 @@ const postCreateUser = (req, res) => {
     const newUser = await createUser();
 
     return newUser;
+  });
+};
+
+const postAddAbsence = (req, res) => {
+  console.log("test");
+  const newAbsence = new Absence({
+    date: req.body.date,
+    hour: req.body.hour,
+    typeAbs: req.body.typeAbs,
+    justified: req.body.justified,
+    studentId: req.body.studentId,
+  });
+  return newAbsence.save((err, data) => {
+    if (err) {
+      console.log(err);
+      return res
+        .status(responseBody.responseCode.INTSERVERR)
+        .send(
+          responseBody.buildResponseBody(
+            err,
+            responseBody.responseCode.INTSERVERR
+          )
+        );
+    } else {
+      User.findOneAndUpdate(
+        { _id: data.studentId },
+        { $push: { absence: data._id } },
+        (erre, usr) => {
+          if (erre);
+          else {
+            Class.findOneAndUpdate(
+              { _id: usr.classId },
+              { $push: { absence: data._id } },
+              (error, success) => {
+                if (error);
+                else console.log(success);
+              }
+            );
+          }
+        }
+      );
+      return res
+        .status(responseBody.responseCode.SUCCESS)
+        .send(
+          responseBody.buildResponseBody(
+            data,
+            responseBody.responseCode.SUCCESS
+          )
+        );
+    }
   });
 };
 
@@ -154,7 +219,7 @@ const postResetUserPassword = (req, res) => {
         .status(responseBody.responseCode.NOTFOUND)
         .send(
           responseBody.buildResponseBody(
-            'not found',
+            "not found",
             responseBody.responseCode.NOTFOUND
           )
         );
@@ -163,7 +228,7 @@ const postResetUserPassword = (req, res) => {
         .status(responseBody.responseCode.FORBID)
         .send(
           responseBody.buildResponseBody(
-            'invalid recovery token',
+            "invalid recovery token",
             responseBody.responseCode.FORBID
           )
         );
@@ -174,7 +239,7 @@ const postResetUserPassword = (req, res) => {
           { email },
           {
             password: hashed,
-            passwordRecoveryToken: '',
+            passwordRecoveryToken: "",
           },
           (errProd, prod) => {
             if (errProd) {
@@ -216,4 +281,5 @@ module.exports = {
   postCreateUser,
   postSendPasswordResetCode,
   postResetUserPassword,
+  postAddAbsence,
 };

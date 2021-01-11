@@ -2,7 +2,7 @@ import React from 'react';
 import { Radar } from 'react-chartjs-2';
 
 function Chart() {
-  let data = {
+  const data = {
     labels: ['French', 'History', 'Science', 'Maths', 'Sport', 'English'],
     datasets: [
       {

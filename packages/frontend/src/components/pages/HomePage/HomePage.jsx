@@ -82,8 +82,8 @@ const Home = () => {
               <img alt="trombi" src={trombi} />
             </Paper>
           </BlueBackground>
-          <BlueBackground Bheight="315" Bwidth="260" Fheight="315" Fwidth="260" style={{ marginLeft: "80px" }}>
-            <Paper className={ Personal}>
+          <BlueBackground Bheight="315" Bwidth="260" Fheight="315" Fwidth="260" style={{ marginLeft: '80px' }}>
+            <Paper className={Personal}>
               <h3>Mes infos</h3>
               {`${user.firstName} ${user.lastName}`}
               <br />
@@ -100,10 +100,10 @@ const Home = () => {
           <BlueBackground Bheight="315" Bwidth='490' Fheight='315' Fwidth='490' style={{ marginLeft: '80px' }}>
             <Paper className={Notifications}>Notifications</Paper>
           </BlueBackground>
-          <BlueBackground Bheight="320" Bwidth="690" Fheight="320" Fwidth="680" style={{ marginTop: "60px" }}>
+          <BlueBackground Bheight="320" Bwidth="690" Fheight="320" Fwidth="680" style={{ marginTop: '60px' }}>
             <Paper className={Calendar}> Calendrier</Paper>
           </BlueBackground>
-          <BlueBackground Bheight="350" Bwidth="400" Fheight="350" Fwidth="400" style={{ marginLeft: "100px", marginTop: "40px" }}>
+          <BlueBackground Bheight="350" Bwidth="400" Fheight="350" Fwidth="400" style={{ marginLeft: '100px', marginTop: '40px' }}>
             <Paper className={Moyennes}>
               <Chart />
             </Paper>

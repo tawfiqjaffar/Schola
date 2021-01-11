@@ -69,7 +69,6 @@ const Home = () => {
 
   const user = useSelector((state) => state.user);
 
-
   return (
     <Container className={classes.root}>
       <Paper className={classes.paper}>

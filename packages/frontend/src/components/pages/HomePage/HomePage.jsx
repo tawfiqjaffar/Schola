@@ -97,7 +97,7 @@ const Home = () => {
               {user.email}
             </Paper>
           </BlueBackground>
-          <BlueBackground Bheight="315" Bwidth="490" Fheight="315" Fwidth="490" style={{ marginLeft: "80px" }}>
+          <BlueBackground Bheight="315" Bwidth='490' Fheight='315' Fwidth='490' style={{ marginLeft: '80px' }}>
             <Paper className={Notifications}>Notifications</Paper>
           </BlueBackground>
           <BlueBackground Bheight="320" Bwidth="690" Fheight="320" Fwidth="680" style={{ marginTop: "60px" }}>

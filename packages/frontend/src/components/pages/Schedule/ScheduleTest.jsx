@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./Schedule.css"
 import Cookies from 'js-cookie';
 import {
@@ -11,27 +11,22 @@ import {
   deleteTask
 } from '../../../api/methods/calendar';
 
-const Task = async (e) => {
-    const res = await getWeekTask(Cookies.get('accessToken'))
-    if (res.code === 200) {
-      return(res.data);
-    } else {
-      // setErrorMsg("Error: Schedule request Failed")
-    }
-  }
-
-  // test
-
 const Main = () => {
-    const [post, setPost] = useState();
-    setPost(Task());
+  const [post, setPost] = useState({});
+    useEffect(async () => {
+        var result = await getWeekTask(Cookies.get('accessToken'))
+        setPost(result.data[0]);
+    }, []);
     return (
+      <div>
+
         <div className="backBook">
         <h1 className="tittleOne">Cahier de texte</h1>
         <div className="WeekDay">
           <h1>WeekDay</h1>
           {/* <h2>{currentWeekDay("1")}</h2> */}
           <p>Pas de texte.</p>
+          {/* <p>{post.label}</p> */}
           <h2>Mardi 13 janvier</h2>
           <p>exemple de texte.</p>
           <h2>Mercredi 14 decembre</h2>
@@ -53,6 +48,7 @@ const Main = () => {
           By Schola.
         </div>
         </div>
+      </div>
     )
 }
 

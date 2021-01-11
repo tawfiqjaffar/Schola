@@ -69,8 +69,6 @@ const getDayTask = (req, res) => {
 const getWeekTask = (req, res) => {
   const startWeek = getStartWeek();
   const endWeek = getEndWeek();
-  console.log(startWeek);
-  console.log(endWeek);
 
   return Task.find(
     {

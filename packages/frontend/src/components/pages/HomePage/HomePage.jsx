@@ -69,9 +69,6 @@ const Home = () => {
 
   const user = useSelector((state) => state.user);
 
-  // useEffect(() => {
-
-  // }, []);
 
   return (
     <Container className={classes.root}>

@@ -91,27 +91,28 @@ const Dashboard = () => {
             </Paper>
           </BlueBackground>
 
-          <BlueBackground Bheight="315" Bwidth="260" Fheight="315" Fwidth="260" style={{ marginLeft: '80px'}}>
+          <BlueBackground Bheight="315" Bwidth="260" Fheight="315" Fwidth="260" style={{ marginLeft: '80px' }}>
             <Paper className={Personal}>
               <h3>Bloc-note</h3>
-              </Paper>
+            </Paper>
           </BlueBackground>
 
-          <BlueBackground Bheight="315" Bwidth="490" Fheight="315" Fwidth="490" style={{ marginLeft: '80px'}}>
+          <BlueBackground Bheight="315" Bwidth="490" Fheight="315" Fwidth="490" style={{ marginLeft: '80px' }}>
             <Paper className={Notifications}>
-              <h3>Messagerie</h3></Paper>
+              <h3>Messagerie</h3>
+            </Paper>
           </BlueBackground>
 
-          <BlueBackground Bheight="340" Bwidth="690" Fheight="340" Fwidth="680" style={{ marginTop: '60px'}}>
+          <BlueBackground Bheight="340" Bwidth="690" Fheight="340" Fwidth="680" style={{ marginTop: '60px' }}>
             <Paper className={Calendar}>
               <h3>Création évenments</h3>
-              </Paper>
+            </Paper>
           </BlueBackground>
 
-          <BlueBackground Bheight="350" Bwidth="400" Fheight="350" Fwidth="400" style={{ marginLeft: '100px', marginTop: '40px'}}>
+          <BlueBackground Bheight="350" Bwidth="400" Fheight="350" Fwidth="400" style={{ marginLeft: '100px', marginTop: '40px' }}>
             <Paper className={Moyennes}>
               <h3>Création exercices</h3>
-              </Paper>
+            </Paper>
           </BlueBackground>
 
         </Grid>
@@ -119,5 +120,4 @@ const Dashboard = () => {
     </Container>
   );
 };
-
 export default Dashboard;

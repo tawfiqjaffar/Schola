@@ -86,7 +86,12 @@ const Dashboard = () => {
 
           <BlueBackground Bheight="315" Bwidth="260" Fheight="315" Fwidth="260">
             <Paper className={IdPhoto}>
-              <h3>Profil</h3>
+            <h3>Mes infos</h3>
+              <h4>Nom prénom</h4>
+              <h4>Classe: </h4>
+              <h4>lol</h4>
+              <h4>Nombre d'élèves:</h4>
+              <h4>Élève responsable de la classe: </h4>
             </Paper>
           </BlueBackground>
 

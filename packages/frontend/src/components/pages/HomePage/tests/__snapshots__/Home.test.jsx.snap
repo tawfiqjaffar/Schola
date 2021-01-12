@@ -5,55 +5,178 @@ exports[`Home should render Home Page 1`] = `
   className="MuiContainer-root makeStyles-root-1 MuiContainer-maxWidthLg"
 >
   <div
-    className="MuiPaper-root makeStyles-paper-2 MuiPaper-elevation1 MuiPaper-rounded"
+    className=""
+    style={
+      Object {
+        "backgroundColor": "#fff0a5",
+        "height": "280px",
+        "transform": "rotate(8deg)",
+        "width": "200px",
+      }
+    }
   >
     <div
-      className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3"
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#ffe352",
+          "display": "flex",
+          "height": "260px",
+          "justifyContent": "center",
+          "left": "50%",
+          "position": "absolute",
+          "top": "50%",
+          "transform": "translate(-50%, -50%) rotate(-10deg)",
+          "width": "180px",
+        }
+      }
     >
       <div
-        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-4 MuiGrid-grid-lg-3"
+        style={
+          Object {
+            "transform": "rotate(2deg)",
+          }
+        }
       >
-        <div
-          className="MuiPaper-root makeStyles-paper-2 makeStyles-fixedHeight-3 makeStyles-background-4 MuiPaper-elevation1 MuiPaper-rounded"
-        >
-          Profil_img
-        </div>
+        <img
+          alt="oui"
+          height="160px"
+          src="https://icon-library.com/images/default-profile-icon/default-profile-icon-16.jpg"
+          width="160px"
+        />
       </div>
+    </div>
+  </div>
+  <div
+    className=""
+    style={
+      Object {
+        "backgroundColor": "#fff0a5",
+        "height": "280px",
+        "margin": "100px",
+        "transform": "rotate(6deg)",
+        "width": "500px",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#ffe352",
+          "display": "flex",
+          "height": "280px",
+          "justifyContent": "center",
+          "left": "50%",
+          "position": "absolute",
+          "top": "50%",
+          "transform": "translate(-50%, -50%) rotate(-7deg)",
+          "width": "450px",
+        }
+      }
+    >
       <div
-        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-4 MuiGrid-grid-lg-6"
+        style={
+          Object {
+            "transform": "rotate(1deg)",
+          }
+        }
       >
-        <div
-          className="MuiPaper-root makeStyles-paper-2 makeStyles-fixedHeight-3 makeStyles-background-4 MuiPaper-elevation1 MuiPaper-rounded"
-        >
-          Infos_etudiant
-        </div>
+        <img
+          alt="oui"
+          height="160px"
+          src="https://icon-library.com/images/default-profile-icon/default-profile-icon-16.jpg"
+          width="160px"
+        />
+        <p>
+          Philippe ROUDAUT
+        </p>
       </div>
+    </div>
+  </div>
+  <div
+    className="test"
+    style={
+      Object {
+        "backgroundColor": "#a1ff85",
+        "height": "280px",
+        "transform": "rotate(-10deg)",
+        "width": "200px",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#b2ff12",
+          "display": "flex",
+          "height": "260px",
+          "justifyContent": "center",
+          "left": "50%",
+          "position": "absolute",
+          "top": "50%",
+          "transform": "translate(-50%, -50%) rotate(-10deg)",
+          "width": "220px",
+        }
+      }
+    >
       <div
-        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-4 MuiGrid-grid-lg-3"
+        style={
+          Object {
+            "transform": "rotate(20deg)",
+          }
+        }
       >
-        <div
-          className="MuiPaper-root makeStyles-paper-2 makeStyles-fixedHeight-3 makeStyles-background-4 MuiPaper-elevation1 MuiPaper-rounded"
-        >
-          graph_moyennes
-        </div>
+        <img
+          alt="oui"
+          height="140px"
+          src="https://icon-library.com/images/default-profile-icon/default-profile-icon-16.jpg"
+          width="140px"
+        />
       </div>
+    </div>
+  </div>
+  <div
+    className=""
+    style={
+      Object {
+        "backgroundColor": "#9ed1cc",
+        "height": "280px",
+        "transform": "rotate(3deg)",
+        "width": "200px",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#70c6c7",
+          "display": "flex",
+          "height": "260px",
+          "justifyContent": "center",
+          "left": "50%",
+          "position": "absolute",
+          "top": "50%",
+          "transform": "translate(-50%, -50%) rotate(-10deg)",
+          "width": "180px",
+        }
+      }
+    >
       <div
-        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-4 MuiGrid-grid-lg-9"
+        style={
+          Object {
+            "transform": "rotate(7deg)",
+          }
+        }
       >
-        <div
-          className="MuiPaper-root makeStyles-paper-2 makeStyles-fixedHeight-3 makeStyles-background-4 MuiPaper-elevation1 MuiPaper-rounded"
-        >
-          ?
-        </div>
-      </div>
-      <div
-        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-4 MuiGrid-grid-lg-3"
-      >
-        <div
-          className="MuiPaper-root makeStyles-paper-2 makeStyles-fixedHeight-3 makeStyles-background-4 MuiPaper-elevation1 MuiPaper-rounded"
-        >
-          notifications
-        </div>
+        <img
+          alt="oui"
+          height="140px"
+          src="https://icon-library.com/images/default-profile-icon/default-profile-icon-16.jpg"
+          width="140px"
+        />
       </div>
     </div>
   </div>

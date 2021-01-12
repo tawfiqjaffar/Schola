@@ -1,6 +1,6 @@
 const Schedule = require('../../models/schedule');
 const responseBody = require('../../routes/responseBody');
-const { getStartDay, getEndDay } = require('../dateFunction');
+const { getToday, getDayAfter } = require('../dateFunction');
 const { getStartWeek, getEndWeek } = require('../dateFunction');
 
 const getAllSchedule = (req, res) => {
@@ -28,8 +28,8 @@ const getAllSchedule = (req, res) => {
 };
 
 const getDaySchedule = (req, res) => {
-  const startDay = getStartDay();
-  const endDay = getEndDay();
+  const startDay = getToday();
+  const endDay = getDayAfter();
 
   return Schedule.find(
     {

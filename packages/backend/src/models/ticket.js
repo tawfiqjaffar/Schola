@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const AutoIncrement = require('mongoose-sequence')(mongoose);
+// const AutoIncrement = require('mongoose-sequence')(mongoose);
 const comment = require('./comment');
 
 const STATUS = ['open', 'inProgress', 'resolved'];
@@ -41,5 +41,5 @@ const schema = new mongoose.Schema(
   { timestamps: { createdAt: 'created_at' }, strict: 'throw' }
 );
 
-schema.plugin(AutoIncrement, { inc_field: 'index' });
+// schema.plugin(AutoIncrement, { inc_field: 'index' });
 module.exports = mongoose.model('Ticket', schema);

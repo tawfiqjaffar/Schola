@@ -2,15 +2,17 @@ const express = require('express');
 const { check } = require('express-validator');
 const { checkFields, authenticateJwt } = require('./middleware');
 const {
-  getAllExercices,
-  getSubjectExercices,
-  getLevelExercices,
-  getSubjectLevelExercices,
-} = require('../controllers/Exercice/exerciceGet');
+  getAllMCQ,
+  getSubjectMCQ,
+  getLevelMCQ,
+  getSubjectLevelMCQ,
+  getStudentMCQ,
+  getStudentSubjectMCQ,
+} = require('../controllers/MCQ/MCQGet');
 
-const { createExercice } = require('../controllers/Exercice/exercicePost');
+const { createMCQ } = require('../controllers/MCQ/MCQPost');
 
-const { deleteExercice } = require('../controllers/Exercice/exerciceDelete');
+const { deleteMCQ } = require('../controllers/MCQ/MCQDelete');
 
 const router = express.Router();
 
@@ -19,7 +21,7 @@ router.get(
   [check('authorization', 'you must provide a bearer access token').notEmpty()],
   checkFields,
   authenticateJwt,
-  getAllExercices
+  getAllMCQ
 );
 
 router.get(
@@ -27,7 +29,7 @@ router.get(
   [check('authorization', 'you must provide a bearer access token').notEmpty()],
   checkFields,
   authenticateJwt,
-  getSubjectExercices
+  getSubjectMCQ
 );
 
 router.get(
@@ -35,7 +37,7 @@ router.get(
   [check('authorization', 'you must provide a bearer access token').notEmpty()],
   checkFields,
   authenticateJwt,
-  getLevelExercices
+  getLevelMCQ
 );
 
 router.get(
@@ -43,7 +45,23 @@ router.get(
   [check('authorization', 'you must provide a bearer access token').notEmpty()],
   checkFields,
   authenticateJwt,
-  getSubjectLevelExercices
+  getSubjectLevelMCQ
+);
+
+router.get(
+  '/student/all',
+  [check('authorization', 'you must provide a bearer access token').notEmpty()],
+  checkFields,
+  authenticateJwt,
+  getStudentMCQ
+);
+
+router.get(
+  '/student/subject',
+  [check('authorization', 'you must provide a bearer access token').notEmpty()],
+  checkFields,
+  authenticateJwt,
+  getStudentSubjectMCQ
 );
 
 router.post(
@@ -51,7 +69,7 @@ router.post(
   [check('authorization', 'you must provide a bearer access token').notEmpty()],
   checkFields,
   authenticateJwt,
-  createExercice
+  createMCQ
 );
 
 router.delete(
@@ -59,7 +77,7 @@ router.delete(
   [check('authorization', 'you must provide a bearer access token').notEmpty()],
   checkFields,
   authenticateJwt,
-  deleteExercice
+  deleteMCQ
 );
 
 module.exports = router;

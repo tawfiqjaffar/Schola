@@ -44,6 +44,10 @@ const schema = new mongoose.Schema({
     required: false,
     default: null,
   },
+  classId: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+  },
 });
 
 module.exports = mongoose.model('User', schema);

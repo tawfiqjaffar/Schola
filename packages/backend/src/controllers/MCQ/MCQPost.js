@@ -1,9 +1,35 @@
-const Exercice = require('../../models/exercice');
+const mongoose = require('mongoose');
+
+const MCQ = require('../../models/MCQ');
 const responseBody = require('../../routes/responseBody');
 
-const deleteExercice = (req, res) => {
+const createMCQ = (req, res) => {
   if (req.user.role === 'viesco' || req.user.role === 'admin') {
-    return Exercice.deleteOne({ _id: req.body.id }, (err, data) => {
+    delete req.body._id;
+
+    const {
+      subjectId,
+      classLevel,
+      serieNumber,
+      question,
+      answerA,
+      answerB,
+      answerC,
+      answerD,
+    } = req.body;
+
+    const MCQDoc = new MCQ({
+      subjectId: mongoose.Types.ObjectId(subjectId),
+      classLevel,
+      serieNumber,
+      question,
+      answerA,
+      answerB,
+      answerC,
+      answerD,
+    });
+
+    return MCQDoc.save((err, data) => {
       if (err) {
         console.log(err);
         return res
@@ -38,5 +64,5 @@ const deleteExercice = (req, res) => {
 };
 
 module.exports = {
-  deleteExercice,
+  createMCQ,
 };

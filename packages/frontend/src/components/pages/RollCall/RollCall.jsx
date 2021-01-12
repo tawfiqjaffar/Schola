@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Button, Switch, Grid } from '@material-ui/core';
+import Cookies from 'js-cookie';
 import StatutRow from './StudentRow';
 import Legend from '../../../assets/RollCallLegend.PNG';
+import getClassStudent from '../../../api/methods/class';
 import './RollCall.css';
 
 function createData(name, statut) {
@@ -43,6 +45,17 @@ class RollCallPage extends Component {
       ],
     };
     this.changeStatut = this.changeStatut.bind(this);
+    this.getData = this.getData.bind(this);
+  }
+
+  componentWillMount() {
+    this.getData();
+  }
+
+  async getData() {
+    const res = await getClassStudent(Cookies.get('accessToken'), '5faa1bccad70be34ddafebeb');
+    console.log(res);
+    this.setState({ student: res });
   }
 
   changeStatut(index, statut) {
@@ -80,7 +93,7 @@ class RollCallPage extends Component {
             </Grid>
             <Grid item xs={1} />
             <Grid item xs={2}>
-              <div className="card-list">
+              <div className="card-list imgSize">
                 <img src={Legend} alt="Legende" />
               </div>
               <Button

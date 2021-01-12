@@ -3,6 +3,7 @@ import Protected from './Protected';
 import Login from '../pages/Login';
 import Home from '../pages/HomePage/HomePage';
 import LandingPage from '../pages/LandingPage';
+import RollCall from '../pages/RollCall';
 
 const routes = [
   {
@@ -16,6 +17,14 @@ const routes = [
     component: (
       <Protected>
         <Home />
+      </Protected>
+    ),
+  },
+  {
+    route: '/rollcall',
+    component: (
+      <Protected>
+        <RollCall />
       </Protected>
     ),
   },

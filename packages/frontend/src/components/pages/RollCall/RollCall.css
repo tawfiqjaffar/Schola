@@ -68,18 +68,22 @@
   font-weight: bold;
   margin-left: 2vw;
   margin-top: 20px;
-  margin-bottom: 20px;
 }
 
 .submitButton {
   width: 50%;
+  min-height: fit-content;
   height: 6vh;
   margin-top: 5vh !important;
   margin-left: auto !important;
   margin-right: auto !important;
   display: block !important;
   background: linear-gradient(90deg, #70c6c7, #60c07a) !important;
-  font-size: 1.4em !important;
+  font-size: 1.2em !important;
   font-weight: bold !important;
   /* color: #ffffff !important; */
+}
+
+.imgSize img {
+  width: 18vw;
 }

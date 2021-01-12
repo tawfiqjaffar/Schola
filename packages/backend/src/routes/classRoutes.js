@@ -1,5 +1,5 @@
 const express = require("express");
-const { checkFields } = require("./middleware");
+const { checkFields, authenticateJwt } = require("./middleware");
 
 const { postCreateClass } = require("../controllers/Class/classPost");
 
@@ -11,7 +11,7 @@ const router = express.Router();
 
 router.post("/create", checkFields, postCreateClass);
 
-router.get("/sortStudent", checkFields, sortStudentClass);
+router.get("/sortStudent", checkFields, authenticateJwt, sortStudentClass);
 
 router.delete("/deleteClass", checkFields, deleteClass);
 

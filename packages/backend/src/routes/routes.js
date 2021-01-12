@@ -5,6 +5,8 @@ const taskRoutes = require("./taskRoutes");
 const scheduleRoutes = require("./scheduleRoutes");
 const gradeRoutes = require("./gradeRoutes");
 const exerciceRoutes = require("./exerciceRoutes");
+const lweRoutes = require("./LWERoutes");
+const figeRoutes = require("./FIGERoutes");
 const mailRoutes = require("./mailRoutes");
 const classRoutes = require("./classRoutes");
 const absenceRoutes = require("./absenceRoutes");
@@ -23,6 +25,8 @@ const routes = [
   ["task", taskRoutes],
   ["schedule", scheduleRoutes],
   ["exercice", exerciceRoutes],
+  ["LWE", lweRoutes],
+  ["FIGE", figeRoutes],
   ["mail", mailRoutes],
   ["class", classRoutes],
   ["absence", absenceRoutes],

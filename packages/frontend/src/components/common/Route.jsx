@@ -30,9 +30,9 @@ const routes = [
   {
     route: '/create-hw',
     component: (
-      /*<Protected>*/
-      <Devoir />
-      /*</Protected>*/
+      <Protected>
+        <Devoir />
+      </Protected>
     ),
   },
   {

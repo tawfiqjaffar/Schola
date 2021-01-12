@@ -2,13 +2,17 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
+import Cookies from 'js-cookie';
 import background from './ImgDevoir/backgroundFourni.jpg';
 import cahier from './ImgDevoir/Cahier.png';
 import titre from './ImgDevoir/Tittre.png';
 import './ImgDevoir/mysass.sass';
-import Cookies from 'js-cookie';
 
-const useStyles = makeStyles((theme) => ({
+/* eslint-disable max-len */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable no-underscore-dangle */
+
+const useStyles = makeStyles(() => ({
   root: {
     width: '100%',
   },
@@ -67,7 +71,6 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-
 const Devoir = () => {
   const classes = useStyles();
   console.log(background);
@@ -81,16 +84,17 @@ const Devoir = () => {
   useEffect(() => {
     const accessToken = Cookies.get('accessToken');
     console.log(accessToken);
+    console.log(teacherId);
 
     axios({
       method: 'GET',
       url: 'http://localhost:8080/api/subject',
       headers: {
-        Authorization: 'Bearer ' + accessToken
+        Authorization: `Bearer ${accessToken}`
       }
     })
       .then((response) => {
-        const data = response.data;
+        const { data } = response.data;
         console.log(data);
         setSubjectList(data.data);
       });
@@ -99,11 +103,11 @@ const Devoir = () => {
       method: 'GET',
       url: 'http://localhost:8080/api/user/me',
       headers: {
-        Authorization: 'Bearer ' + accessToken
+        Authorization: `Bearer ${accessToken}`
       }
     })
       .then((response) => {
-        const data = response.data;
+        const { data } = response.data;
         console.log(data);
         setTeacherId(data.data._id);
       });
@@ -111,26 +115,7 @@ const Devoir = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const accessToken = Cookies.get('accessToken');
     console.log(date, matiere, devoir);
-
-    /*axios({
-      method: 'POST',
-      url: 'http://localhost:8080/api/create/task',
-      headers: {
-        Authorization: 'Bearer ' + accessToken
-      },
-      data: {
-        subjectId: matiere,
-        teacherId: teacherId,
-        dueDate: Date(date),
-        label: devoir,
-        usersId: ''
-      }
-    })
-      .then((response) => {
-        var data = response.data;
-      });*/
   };
 
   return (
@@ -149,9 +134,7 @@ const Devoir = () => {
           <div>
             <label>Matière</label>
             <select value={matiere} onChange={(e) => { setMatiere(e.target.value); }}>
-              {subjectList.map((e, key) => {
-                return <option key={e._id} value={e._id}>{e.subjectName}</option>;
-              })}
+              {subjectList.map((e) => <option key={e._id} value={e._id}>{e.subjectName}</option>)}
             </select>
           </div>
           <div>
@@ -160,13 +143,12 @@ const Devoir = () => {
           </div>
           <div>
             <label>Devoir</label>
-            <textarea className={classes.TextArea} type="name" value={devoir} onChange={(e) => { setDevoir(e.target.value); }} /> 
+            <textarea className={classes.TextArea} type="name" value={devoir} onChange={(e) => { setDevoir(e.target.value); }} />
           </div>
           <button className={classes.Button} type="submit">Valider</button>
         </form>
       </div>
     </Container>
-
   );
 };
 

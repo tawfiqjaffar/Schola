@@ -16,8 +16,9 @@ import { useHistory } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import MenuIcon from '@material-ui/icons/Menu';
-import logo from '../../assets/logo.png';
-import './NavBar.css'
+import logo from '../../../assets/logo.png';
+import './NavBar.css';
+import navRoutes from './NavBarRoute';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -98,8 +99,8 @@ function Logout(props) {
 
   return (
     <div>
-      <IconButton onClick={handleClick}>
-        <MenuIcon />
+      <IconButton onClick={handleClick} className="ButtonRight">
+        <MenuIcon style={{width: '50px', height: '50px'}} />
       </IconButton>
       <StyledMenu
         id="customized-menu"
@@ -108,41 +109,15 @@ function Logout(props) {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
+        {navRoutes.map((el) => (
         <StyledMenuItem
-          onClick={() => {
-            redirection('/home');
-          }}
-        >
-          <ListItemText primary="Home" />
-        </StyledMenuItem>
-        <StyledMenuItem
-          onClick={() => {
-            redirection('/schedule');
-          }}
-        >
-          <ListItemText primary="Emploi du temps" />
-        </StyledMenuItem>
-        <StyledMenuItem
-          onClick={() => {
-            redirection('/canteen');
-          }}
-        >
-          <ListItemText primary="Cantine" />
-        </StyledMenuItem>
-        <StyledMenuItem
-          onClick={() => {
-            redirection('/quizz');
-          }}
-        >
-          <ListItemText primary="Quizz" />
-        </StyledMenuItem>
-        <StyledMenuItem
-          onClick={() => {
-            redirection('/rollcall');
-          }}
-        >
-          <ListItemText primary="RollCall" />
-        </StyledMenuItem>
+        onClick={() => {
+          redirection(el.route);
+        }}
+      >
+        <ListItemText primary={el.label} />
+      </StyledMenuItem>
+      ))}
         <StyledMenuItem onClick={() => disconnect()}>
           <ListItemText primary="Disconnect" />
         </StyledMenuItem>
@@ -190,12 +165,14 @@ export default function NavigationBar() {
   return (
     <AppBar position="sticky" className={classes.root}>
       <Toolbar className="Container100">
+        <div className="wrapper">
         <Link href="/" className="CenterImg">
           <img src={logo} className={classes.logo} alt="Schola logo" />
         </Link>
         <Typography className="title" variant="h5">
           Schola
         </Typography>
+        </div>
         <LoginLogoutDisplay
           isLogged={isLogged}
           disconnect={redirectToLandingPage}

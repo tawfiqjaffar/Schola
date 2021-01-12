@@ -76,7 +76,6 @@ const Dashboard = () => {
     classes.background
   );
 
-
   return (
     <Container className={classes.root}>
       <Paper className={classes.paper}>
@@ -87,7 +86,6 @@ const Dashboard = () => {
               <h3>Mes infos</h3>
               <h4>Nom prénom</h4>
               <h4>Classe: </h4>
-              <h4>lol</h4>
               <h4>Nombre d'élèves: </h4>
               <h4>Élève responsable de la classe: </h4>
             </Paper>

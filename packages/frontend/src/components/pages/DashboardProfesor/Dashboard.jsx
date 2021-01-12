@@ -85,9 +85,9 @@ const Dashboard = () => {
             <Paper className={IdPhoto}>
               <h3>Mes infos</h3>
               <h4>Nom prénom</h4>
-              <h4>Classe:</h4>
-              <h4>Nombre d'élèves:</h4>
-              <h4>Élève responsable de la classe:</h4>
+              <h4>Classe</h4>
+              <h4>Nombre d'élèves</h4>
+              <h4>Élève responsable de la classe</h4>
             </Paper>
           </BlueBackground>
 

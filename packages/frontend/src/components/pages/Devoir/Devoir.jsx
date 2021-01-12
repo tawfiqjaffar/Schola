@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
@@ -6,7 +6,7 @@ import background from './ImgDevoir/backgroundFourni.jpg';
 import cahier from './ImgDevoir/Cahier.png';
 import titre from './ImgDevoir/Tittre.png';
 import './ImgDevoir/mysass.sass';
-
+import Cookies from 'js-cookie';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -67,39 +67,100 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-const handleSubmit = function (e) {
-  e.preventDefault();
-  console.log("test");
-};
 
 const Devoir = () => {
   const classes = useStyles();
   console.log(background);
 
+  const [date, setDate] = useState('');
+  const [matiere, setMatiere] = useState('');
+  const [devoir, setDevoir] = useState('');
+  const [subjectList, setSubjectList] = useState([]);
+  const [teacherId, setTeacherId] = useState('');
+
+  useEffect(() => {
+    const accessToken = Cookies.get('accessToken');
+    console.log(accessToken);
+
+    axios({
+      method: 'GET',
+      url: 'http://localhost:8080/api/subject',
+      headers: {
+        Authorization: 'Bearer ' + accessToken
+      }
+    })
+      .then((response) => {
+        const data = response.data;
+        console.log(data);
+        setSubjectList(data.data);
+      });
+
+    axios({
+      method: 'GET',
+      url: 'http://localhost:8080/api/user/me',
+      headers: {
+        Authorization: 'Bearer ' + accessToken
+      }
+    })
+      .then((response) => {
+        const data = response.data;
+        console.log(data);
+        setTeacherId(data.data._id);
+      });
+  }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const accessToken = Cookies.get('accessToken');
+    console.log(date, matiere, devoir);
+
+    /*axios({
+      method: 'POST',
+      url: 'http://localhost:8080/api/create/task',
+      headers: {
+        Authorization: 'Bearer ' + accessToken
+      },
+      data: {
+        subjectId: matiere,
+        teacherId: teacherId,
+        dueDate: Date(date),
+        label: devoir,
+        usersId: ''
+      }
+    })
+      .then((response) => {
+        var data = response.data;
+      });*/
+  };
+
   return (
     <Container className={classes.root}>
-      <img className={classes.backgroundImage} src={background} />
+      <img className={classes.backgroundImage} alt="" src={background} />
       <div>
-        <img className={classes.Titre} src={ titre}/>
-        <img className={classes.Centered} src={cahier} />
+        <img className={classes.Titre} alt="" src={titre} />
+        <img className={classes.Centered} alt="" src={cahier} />
       </div>
       <div className={classes.Form}>
         <form onSubmit={handleSubmit} className={classes.Form}>
           <div>
             <label>Date</label>
-            <input type="date"></input> 
+            <input type="date" value={date} onChange={(e) => { setDate(e.target.value); }} />
           </div>
           <div>
             <label>Matière</label>
-            <input type="input"></input> 
+            <select value={matiere} onChange={(e) => { setMatiere(e.target.value); }}>
+              {subjectList.map((e, key) => {
+                return <option key={e._id} value={e._id}>{e.subjectName}</option>;
+              })}
+            </select>
           </div>
           <div>
             <label>Classe</label>
-            <input type="input"></input> 
+            <input type="input" />
           </div>
           <div>
             <label>Devoir</label>
-            <textarea className={classes.TextArea} type="name"></textarea> 
+            <textarea className={classes.TextArea} type="name" value={devoir} onChange={(e) => { setDevoir(e.target.value); }} /> 
           </div>
           <button className={classes.Button} type="submit">Valider</button>
         </form>

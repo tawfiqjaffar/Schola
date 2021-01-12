@@ -28,9 +28,11 @@ const routes = [
     ),
   },
   {
-    route: '/Devoir',
+    route: '/create-hw',
     component: (
+      /*<Protected>*/
       <Devoir />
+      /*</Protected>*/
     ),
   },
   {

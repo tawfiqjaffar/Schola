@@ -138,6 +138,13 @@ function Logout(props) {
         >
           <ListItemText primary="Quizz" />
         </StyledMenuItem>
+        <StyledMenuItem
+          onClick={() => {
+            redirection('/create-hw');
+          }}
+        >
+          <ListItemText primary="Création de devoir" />
+        </StyledMenuItem>
         <StyledMenuItem onClick={() => disconnect()}>
           <ListItemText primary="Disconnect" />
         </StyledMenuItem>

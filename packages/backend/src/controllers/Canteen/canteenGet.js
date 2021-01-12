@@ -1,11 +1,11 @@
-const responseBody = require('../../routes/responseBody');
-const Canteen = require('../../models/canteen');
+const responseBody = require("../../routes/responseBody");
+const Canteen = require("../../models/canteen");
 const {
   getToday,
   getDayAfter,
   getStartWeek,
   getEndWeek,
-} = require('../dateFunction');
+} = require("../dateFunction");
 
 const getAllLunch = (req, res) => {
   return Canteen.find({}, (err, data) => {

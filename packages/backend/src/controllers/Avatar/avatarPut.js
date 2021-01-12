@@ -1,6 +1,6 @@
-const Avatar = require('../../models/avatar');
-const User = require('../../models/user');
-const responseBody = require('../../routes/responseBody');
+const Avatar = require("../../models/avatar");
+const User = require("../../models/user");
+const responseBody = require("../../routes/responseBody");
 
 const updateUserAvatar = (req, res) => {
   const { avatarPath } = req.body;

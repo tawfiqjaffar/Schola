@@ -7,8 +7,6 @@ const getClassStudent = async (accessToken, classId) => {
     const response = await axios({
       method: uri.class.method,
       url: uri.class.path,
-      withCredentials: true,
-      crossdomain: true,
       headers: {
         authorization: `Bearer ${accessToken}`,
       },

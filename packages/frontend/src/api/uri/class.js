@@ -1,7 +1,7 @@
 const uri = {
     class: {
       path: '/class/sortStudent',
-      method: 't',
+      method: 'get',
     },
   };
   

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useStore } from 'react-redux';
 import {
   AppBar,
   Button,
@@ -19,6 +20,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import logo from '../../../assets/logo.png';
 import './NavBar.css';
 import navRoutes from './NavBarRoute';
+import { getMe } from '../../../api/methods/user';
+import { logIn, setUser } from '../../../redux/actions/UserActions';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -88,6 +91,10 @@ const StyledMenuItem = withStyles((theme) => ({
 function Logout(props) {
   const { disconnect, redirection } = props;
   const [anchorEl, setAnchorEl] = React.useState(null);
+  // const [role, setRole] = React.useState('')
+  // const store = useStore();
+  // const res = store.getState()
+  // if (res.user) setRole(res.user.role);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -109,15 +116,22 @@ function Logout(props) {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        {navRoutes.map((el) => (
-        <StyledMenuItem
-        onClick={() => {
-          redirection(el.route);
-        }}
-      >
-        <ListItemText primary={el.label} />
-      </StyledMenuItem>
-      ))}
+        {navRoutes.map(function (el) {
+          // if (!el.access.includes(role)) {
+          //   return (<div></div>);
+          // }
+          // else {
+            return (
+              <StyledMenuItem
+            onClick={() => {
+              redirection(el.route);
+            }}
+            >
+          <ListItemText primary={el.label} />
+          </StyledMenuItem>
+          )
+        // }
+        })}
         <StyledMenuItem onClick={() => disconnect()}>
           <ListItemText primary="Disconnect" />
         </StyledMenuItem>

@@ -11,7 +11,7 @@ const router = express.Router();
 
 router.post("/create", checkFields, postCreateClass);
 
-router.get("/sortStudent", checkFields, authenticateJwt, sortStudentClass);
+router.get("/sortStudent", checkFields, sortStudentClass);
 
 router.delete("/deleteClass", checkFields, deleteClass);
 

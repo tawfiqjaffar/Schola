@@ -5,13 +5,21 @@ const classSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  classLevel: {
+    type: String,
+    required: true,
+  },
   classNumber: {
-    type: Number,
+    type: String,
+    required: true,
+  },
+  teacherId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
     required: true,
   },
   absence: [{ type: mongoose.Schema.Types.ObjectId, ref: "Absence" }],
   studentsId: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
-  teacherId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   events: [{ type: mongoose.Schema.Types.ObjectId, ref: "Event" }],
 });
 

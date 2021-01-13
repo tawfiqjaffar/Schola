@@ -3,7 +3,7 @@ const Ticket = require("../../models/ticket");
 const Comment = require("../../models/comment");
 const rb = require("../../routes/responseBody");
 
-const STATUS = ["open", "inProgress", "resolved"];
+const STATUS = ["open", "inProgress", "resolved", "archived"];
 
 const updateTicketStatus = (req, res) => {
   const { user } = req;

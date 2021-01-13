@@ -22,8 +22,19 @@ const getAllUsersAdmin = (req, res) => {
     }
     const { role } = foundSingle;
     if (role === "admin" || role === "superadmin") {
-      return User.find({}, (err, users) => {
-        if (err) {
+      return User.find({})
+        .populate({ path: "school", model: "School" })
+        .then((users) => {
+          return res
+            .status(responseBody.responseCode.SUCCESS)
+            .send(
+              responseBody.buildResponseBody(
+                users,
+                responseBody.responseCode.SUCCESS
+              )
+            );
+        })
+        .catch((err) => {
           return res
             .status(responseBody.responseCode.INTSERVERR)
             .send(
@@ -32,19 +43,21 @@ const getAllUsersAdmin = (req, res) => {
                 responseBody.responseCode.INTSERVERR
               )
             );
-        }
-        return res
-          .status(responseBody.responseCode.SUCCESS)
-          .send(
-            responseBody.buildResponseBody(
-              users,
-              responseBody.responseCode.SUCCESS
-            )
-          );
-      });
+        });
     } else {
-      return User.findOne({ _id: user._id }, (err, found) => {
-        if (err) {
+      return User.findOne({ _id: user._id })
+        .populate({ path: "school", model: "School" })
+        .then((users) => {
+          return res
+            .status(responseBody.responseCode.SUCCESS)
+            .send(
+              responseBody.buildResponseBody(
+                users,
+                responseBody.responseCode.SUCCESS
+              )
+            );
+        })
+        .catch((err) => {
           return res
             .status(responseBody.responseCode.INTSERVERR)
             .send(
@@ -53,16 +66,7 @@ const getAllUsersAdmin = (req, res) => {
                 responseBody.responseCode.INTSERVERR
               )
             );
-        }
-        return res
-          .status(responseBody.responseCode.SUCCESS)
-          .send(
-            responseBody.buildResponseBody(
-              found,
-              responseBody.responseCode.SUCCESS
-            )
-          );
-      });
+        });
     }
   });
 };

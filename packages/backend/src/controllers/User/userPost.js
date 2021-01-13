@@ -26,8 +26,8 @@ const postCreateUser = (req, res) => {
       newUser = new User({
         password: hashed,
         classId: req.body.classId,
-        nextMail: req.body.nextMail,
-        nextMailGrade: req.body.nextMailGrade,
+        nextMail: 2,
+        nextMailGrade: 2,
         firstName: firstname,
         lastName: lastname,
         email,
@@ -81,7 +81,6 @@ const postCreateUser = (req, res) => {
 };
 
 const postAddAbsence = (req, res) => {
-  console.log("test");
   const newAbsence = new Absence({
     date: req.body.date,
     hour: req.body.hour,
@@ -277,9 +276,45 @@ const postResetUserPassword = (req, res) => {
   });
 };
 
+const postCheckEmailExists = (req, res) => {
+  const { email } = req.body;
+
+  User.findOne({ email }, async (err, found) => {
+    if (err) {
+      return res
+        .status(responseBody.responseCode.INTSERVERR)
+        .send(
+          responseBody.buildResponseBody(
+            err,
+            responseBody.responseCode.INTSERVERR
+          )
+        );
+    } else if (!found) {
+      return res
+        .status(responseBody.responseCode.SUCCESS)
+        .send(
+          responseBody.buildResponseBody(
+            { exists: false },
+            responseBody.responseCode.SUCCESS
+          )
+        );
+    } else {
+      return res
+        .status(responseBody.responseCode.SUCCESS)
+        .send(
+          responseBody.buildResponseBody(
+            { exists: true },
+            responseBody.responseCode.SUCCESS
+          )
+        );
+    }
+  });
+};
+
 module.exports = {
   postCreateUser,
   postSendPasswordResetCode,
   postResetUserPassword,
   postAddAbsence,
+  postCheckEmailExists,
 };

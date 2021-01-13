@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const AutoIncrement = require("mongoose-sequence")(mongoose);
 const comment = require("./comment");
 
-const STATUS = ["open", "inProgress", "resolved"];
+const STATUS = ["open", "inProgress", "resolved", "archived"];
 
 const schema = new mongoose.Schema(
   {

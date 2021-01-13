@@ -4,7 +4,7 @@ const responseBody = require("../../routes/responseBody");
 
 const sortStudentClass = (req, res) => {
   User.find(
-    { classId: req.body.classId, role: "student" },
+    { classId: req.headers.classid, role: "student" },
     null,
     { sort: { lastName: req.body.sort } },
     (err, abs) => {

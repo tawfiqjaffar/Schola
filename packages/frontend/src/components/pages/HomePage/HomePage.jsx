@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Home = () => {
   const [nbNotif, setNbNotif] = useState(0);
-  const [lastAbs, setLastAbs] = useState('');
+  const [lastAbs, setLastAbs] = useState(false);
   const classes = useStyles();
 
   const IdPhoto = clsx(classes.paperphoto, classes.background);
@@ -77,10 +77,12 @@ const Home = () => {
     async function getAbsenceStudent() {
       // eslint-disable-next-line no-underscore-dangle
       const res = await getMyAbsence(Cookies.get('accessToken'), user._id);
-      let msg = `le ${res.data[res.data.length - 1].date} à `;
-      msg = msg.concat(`${res.data[res.data.length - 1].hour} heure.`);
-      setNbNotif(res.data.length);
-      setLastAbs(msg);
+      if (res.data.length > 0) {
+        let msg = `le ${res.data[res.data.length - 1].date} à `;
+        msg = msg.concat(`${res.data[res.data.length - 1].hour} heure.`);
+        setNbNotif(res.data.length);
+        setLastAbs(msg);
+      }
     }
     getAbsenceStudent();
   }, []);
@@ -119,11 +121,13 @@ const Home = () => {
                 {' '}
                 fois cette année.
               </p>
-              <p>
-                Votre dernière absence est
-                {' '}
-                {lastAbs}
-              </p>
+              { lastAbs
+                && (
+                <p>
+                  Votre dernière absence est
+                  {lastAbs}
+                </p>
+                )}
             </Paper>
           </BlueBackground>
           <BlueBackground Bheight="320" Bwidth="690" Fheight="320" Fwidth="680" style={{ marginTop: '60px' }}>

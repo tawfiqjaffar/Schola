@@ -277,9 +277,45 @@ const postResetUserPassword = (req, res) => {
   });
 };
 
+const postCheckEmailExists = (req, res) => {
+  const { email } = req.body;
+
+  User.findOne({ email }, async (err, found) => {
+    if (err) {
+      return res
+        .status(responseBody.responseCode.INTSERVERR)
+        .send(
+          responseBody.buildResponseBody(
+            err,
+            responseBody.responseCode.INTSERVERR
+          )
+        );
+    } else if (!found) {
+      return res
+        .status(responseBody.responseCode.SUCCESS)
+        .send(
+          responseBody.buildResponseBody(
+            { exists: false },
+            responseBody.responseCode.SUCCESS
+          )
+        );
+    } else {
+      return res
+        .status(responseBody.responseCode.SUCCESS)
+        .send(
+          responseBody.buildResponseBody(
+            { exists: true },
+            responseBody.responseCode.SUCCESS
+          )
+        );
+    }
+  });
+};
+
 module.exports = {
   postCreateUser,
   postSendPasswordResetCode,
   postResetUserPassword,
   postAddAbsence,
+  postCheckEmailExists,
 };

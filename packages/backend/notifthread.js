@@ -1,26 +1,27 @@
-/* eslint-disable no-unused-vars */
 const nodemailer = require("nodemailer");
+const Grade = require("./src/models/grade");
 const User = require("./src/models/user");
 
-const Abs = require("./src/models/absence");
-const Grade = require("./src/models/grade");
+const mail = process.env.EMAIL;
+const password = process.env.EMAIL_PWD;
 
 const sendMailStudentAbs = (firstName, lastName) => {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: "yassine78114@gmail.com",
-      pass: "yaswassof78114",
+      user: mail,
+      pass: password,
     },
   });
   const mailOptions = {
-    from: "yassine78114@gmail.com",
+    from: mail,
     to: "yassine.rachah@epitech.eu",
     subject: `Trop d'absences : ${firstName} ${lastName}`,
     text: "A rectifier",
   };
 
   transporter.sendMail(mailOptions, function (error, info) {
+    console.log(info);
     if (error) {
       console.log(error);
     } else {
@@ -44,6 +45,7 @@ const sendMailStudentGrade = (firstName, lastName) => {
   };
 
   transporter.sendMail(mailOptions, function (error, info) {
+    console.log(info);
     if (error) {
       console.log(error);
     } else {

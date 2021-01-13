@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
-const mongoose = require('mongoose');
-const Parent = require('../../models/parent');
-const User = require('../../models/user');
+const mongoose = require("mongoose");
+const Parent = require("../../models/parent");
+const User = require("../../models/user");
 
 const createParent = (req, res) => {
   const { studentId, parentId } = req.body;

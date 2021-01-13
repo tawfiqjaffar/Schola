@@ -11,6 +11,7 @@ import {
   MenuItem,
   IconButton,
 } from '@material-ui/core';
+import Cookies from 'js-cookie';
 import { useHistory } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
@@ -51,7 +52,6 @@ const useStyles = makeStyles((theme) => ({
 
 function LoginLogoutDisplay(props) {
   const { isLogged, redirection, disconnect } = props;
-  console.log(isLogged);
   if (!isLogged) {
     return <LoginRegister redirection={redirection} />;
   }
@@ -176,11 +176,11 @@ export default function NavigationBar() {
   };
   const redirectToLandingPage = () => {
     history.push('/');
-    sessionStorage.removeItem('token');
+    Cookies.remove('accessToken');
     window.location.reload();
   };
   let isLogged = true;
-  if (!sessionStorage.getItem('token')) isLogged = false;
+  if (!Cookies.get('accessToken')) isLogged = false;
 
   return (
     <AppBar position="sticky" className={classes.root}>

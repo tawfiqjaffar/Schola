@@ -1,4 +1,4 @@
-const axios = require('axios');
+const axios = require("axios");
 
 const createUser = async (user) => {
   const {
@@ -9,9 +9,12 @@ const createUser = async (user) => {
     email,
     dateofbirth,
     role,
+    nextMail,
+    nextMailGrade,
+    classId,
   } = user;
   try {
-    const resp = await axios.post('http://localhost:8080/api/user/create', {
+    const resp = await axios.post("http://localhost:8080/api/user/create", {
       username,
       password,
       firstname,
@@ -19,19 +22,25 @@ const createUser = async (user) => {
       email,
       dateofbirth,
       role,
+      nextMail,
+      nextMailGrade,
+      classId,
     });
     console.log(resp.data.data);
-    console.log('User created!');
+    console.log("User created!");
   } catch (err) {
     console.error(err);
   }
 };
 
 createUser({
-  username: 'parent',
-  password: 'parent',
-  firstname: 'parent',
-  lastname: 'parent',
-  email: 'parent@parent.parent',
-  role: 'parent',
+  username: "ninho",
+  password: "valdo",
+  firstname: "Tatouin",
+  lastname: "Serris",
+  email: "partou.serris@schola.fr",
+  role: "student",
+  nextMail: "0",
+  nextMailGrade: "0",
+  classId: "5faa1bccad70be34ddafebeb",
 });

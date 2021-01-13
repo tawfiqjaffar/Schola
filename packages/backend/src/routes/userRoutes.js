@@ -14,6 +14,7 @@ const {
   postSendPasswordResetCode,
   postResetUserPassword,
   postAddAbsence,
+  postCheckEmailExists,
 } = require("../controllers/User/userPost");
 const { updateRole } = require("../controllers/User/userPut");
 const {
@@ -98,6 +99,16 @@ router.post(
   ],
   checkFields,
   postResetUserPassword
+);
+
+router.post(
+  "/check-email",
+  [
+    check("email", "you must provide an email address").notEmpty(),
+    check("authorization", "you must provide a bearer access token").notEmpty(),
+  ],
+  checkFields,
+  postCheckEmailExists
 );
 
 module.exports = router;

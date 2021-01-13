@@ -26,8 +26,8 @@ const postCreateUser = (req, res) => {
       newUser = new User({
         password: hashed,
         classId: req.body.classId,
-        nextMail: req.body.nextMail,
-        nextMailGrade: req.body.nextMailGrade,
+        nextMail: 2,
+        nextMailGrade: 2,
         firstName: firstname,
         lastName: lastname,
         email,

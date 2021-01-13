@@ -80,7 +80,6 @@ const getStudentFIGE = (req, res) => {
   const { user } = req;
 
   return User.findOne({ _id: user._id }, (err, data) => {
-    console.log(data.lastName);
     if (err) {
       return res
         .status(responseBody.responseCode.INTSERVERR)
@@ -160,7 +159,6 @@ const getStudentSubjectFIGE = (req, res) => {
           return FIGE.find(
             { classLevel: classStudent, subjectId: req.body.subjectId },
             (errs, doc) => {
-              console.log(doc);
               if (errs) {
                 return res
                   .status(responseBody.responseCode.INTSERVERR)

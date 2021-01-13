@@ -1,0 +1,89 @@
+.card-list {
+  z-index: 0;
+  width: 100%;
+  display: flex !important;
+  justify-content: space-around !important;
+  flex-wrap: wrap !important;
+}
+
+.container-rollcall {
+  margin: 2vw;
+}
+
+.card {
+  margin: 0.7vw;
+  width: 8vw;
+  height: 8vw;
+  border-radius: 40px;
+  box-shadow: 3px 3px 15px 4px rgba(0, 0, 0, 0.25),
+    -3px -3px 15px 4px rgba(0, 0, 0, 0.22);
+  cursor: pointer;
+  transition: 0.4s;
+  z-index: 4;
+}
+
+.card:hover {
+  transform: scale(0.9, 0.9);
+  box-shadow: 1px 1px 15px 1px rgba(0, 0, 0, 0.25),
+    -1px -1px 15px 1px rgba(0, 0, 0, 0.22);
+  z-index: 3;
+}
+
+.card .card_image div {
+  width: inherit;
+  height: inherit;
+  border-radius: 40px;
+}
+
+.card .card_title p {
+  margin-right: 0.3vw;
+  margin-left: 0.3vw;
+  text-align: center;
+  border-radius: 0px 0px 40px 40px;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 1.4em;
+  height: 8vw;
+  overflow-y: hidden;
+}
+
+.title-white {
+  color: white;
+  text-shadow: 0.06em 0 black, 0 0.06em black, -0.06em 0 black, 0 -0.06em black;
+}
+
+.title-black {
+  color: black;
+  text-shadow: 0.06em 0 white, 0 0.06em white, -0.06em 0 white, 0 -0.06em white;
+}
+
+@media all and (max-width: 500px) {
+  .card-list {
+    flex-direction: column;
+  }
+}
+
+.PageTitle {
+  font-size: 4em;
+  font-weight: bold;
+  margin-left: 2vw;
+  margin-top: 20px;
+}
+
+.submitButton {
+  width: 50%;
+  min-height: fit-content;
+  height: 6vh;
+  margin-top: 5vh !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: block !important;
+  background: linear-gradient(90deg, #70c6c7, #60c07a) !important;
+  font-size: 1.2em !important;
+  font-weight: bold !important;
+  /* color: #ffffff !important; */
+}
+
+.imgSize img {
+  width: 18vw;
+}

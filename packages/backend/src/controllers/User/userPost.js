@@ -81,7 +81,6 @@ const postCreateUser = (req, res) => {
 };
 
 const postAddAbsence = (req, res) => {
-  console.log("test");
   const newAbsence = new Absence({
     date: req.body.date,
     hour: req.body.hour,

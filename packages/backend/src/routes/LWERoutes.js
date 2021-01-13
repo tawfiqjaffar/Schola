@@ -8,6 +8,12 @@ const {
   getStudentSubjectLWE,
 } = require("../controllers/LWE/LWEGet");
 
+const { createLWE } = require("../controllers/LWE/LWEPost");
+
+const { updateLWE } = require("../controllers/LWE/LWEPut");
+
+const { deleteLWE } = require("../controllers/LWE/LWEDelete");
+
 const router = express.Router();
 
 router.get(
@@ -40,6 +46,30 @@ router.get(
   checkFields,
   authenticateJwt,
   getStudentSubjectLWE
+);
+
+router.post(
+  "/create",
+  [check("authorization", "you must provide a bearer access token").notEmpty()],
+  checkFields,
+  authenticateJwt,
+  createLWE
+);
+
+router.put(
+  "/update",
+  [check("authorization", "you must provide a bearer access token").notEmpty()],
+  checkFields,
+  authenticateJwt,
+  updateLWE
+);
+
+router.delete(
+  "/delete",
+  [check("authorization", "you must provide a bearer access token").notEmpty()],
+  checkFields,
+  authenticateJwt,
+  deleteLWE
 );
 
 module.exports = router;

@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Grid, Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { useSelector } from 'react-redux';
+import Cookies from 'js-cookie';
 import clsx from 'clsx';
 import BlueBackground from '../../common/BlueBackground';
 import trombi from './avatar.png';
 import Chart from '../../common/Chart';
+import { getMyAbsence } from '../../../api/methods/user';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -55,6 +57,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Home = () => {
+  const [nbNotif, setNbNotif] = useState(0);
+  const [lastAbs, setLastAbs] = useState(false);
   const classes = useStyles();
 
   const IdPhoto = clsx(classes.paperphoto, classes.background);
@@ -68,6 +72,20 @@ const Home = () => {
   const Moyennes = clsx(classes.papergrades, classes.background);
 
   const user = useSelector((state) => state.user);
+
+  useEffect(() => {
+    async function getAbsenceStudent() {
+      // eslint-disable-next-line no-underscore-dangle
+      const res = await getMyAbsence(Cookies.get('accessToken'), user._id);
+      if (res.data.length > 0) {
+        let msg = `le ${res.data[res.data.length - 1].date} à `;
+        msg = msg.concat(`${res.data[res.data.length - 1].hour} heure.`);
+        setNbNotif(res.data.length);
+        setLastAbs(msg);
+      }
+    }
+    getAbsenceStudent();
+  }, []);
 
   return (
     <Container className={classes.root}>
@@ -94,7 +112,23 @@ const Home = () => {
             </Paper>
           </BlueBackground>
           <BlueBackground Bheight="315" Bwidth="490" Fheight="315" Fwidth="490" style={{ marginLeft: '80px' }}>
-            <Paper className={Notifications}>Notifications</Paper>
+            <Paper className={Notifications}>
+              Notifications
+              <p>
+                Vous avez été absent
+                {' '}
+                {nbNotif}
+                {' '}
+                fois cette année.
+              </p>
+              { lastAbs
+                && (
+                <p>
+                  Votre dernière absence est
+                  {lastAbs}
+                </p>
+                )}
+            </Paper>
           </BlueBackground>
           <BlueBackground Bheight="320" Bwidth="690" Fheight="320" Fwidth="680" style={{ marginTop: '60px' }}>
             <Paper className={Calendar}> Calendrier</Paper>

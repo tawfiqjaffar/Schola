@@ -27,6 +27,10 @@ const uri = {
     path: '/user/AddAbsence',
     method: 'post',
   },
+  getAbs: {
+    path: '/absence/studentAbsence',
+    method: 'get',
+  },
 };
 
 export default uri;

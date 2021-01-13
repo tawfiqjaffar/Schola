@@ -172,6 +172,23 @@ const postAddAbsence = async (date, hour, typeAbs, justified, id) => {
   return res;
 };
 
+const getMyAbsence = async (accessToken, id) => {
+  let res;
+  try {
+    const response = await axios({
+      method: uri.getAbs.method,
+      url: `${uri.getAbs.path}?studentId=${id}`,
+      headers: {
+        authorization: `Bearer ${accessToken}`,
+      },
+    });
+    res = response.data;
+  } catch (axiosErr) {
+    res = axiosErr.response && axiosErr.response.data;
+  }
+  return res;
+};
+
 export {
   getAllUsers,
   getMe,
@@ -180,4 +197,5 @@ export {
   postResetPasswordRequest,
   postResetPassword,
   postAddAbsence,
+  getMyAbsence,
 };

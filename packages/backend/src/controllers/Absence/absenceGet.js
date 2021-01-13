@@ -3,7 +3,7 @@ const Absence = require("../../models/absence");
 const responseBody = require("../../routes/responseBody");
 
 const getAbsenceStudent = (req, res) => {
-  Absence.find({ studentId: req.body.studentId }, (err, abs) => {
+  Absence.find({ studentId: req.query.studentId }, (err, abs) => {
     if (err) {
       return res
         .status(responseBody.responseCode.INTSERVERR)
@@ -14,7 +14,6 @@ const getAbsenceStudent = (req, res) => {
           )
         );
     }
-    console.log(abs);
     return res
       .status(responseBody.responseCode.SUCCESS)
       .send(

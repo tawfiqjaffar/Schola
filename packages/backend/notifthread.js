@@ -5,7 +5,7 @@ const User = require("./src/models/user");
 const mail = process.env.EMAIL;
 const password = process.env.EMAIL_PWD;
 
-const sendMailStudentAbs = (firstName, lastName) => {
+const sendMailStudentAbs = (firstName, lastName, email) => {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
@@ -15,7 +15,7 @@ const sendMailStudentAbs = (firstName, lastName) => {
   });
   const mailOptions = {
     from: mail,
-    to: "yassine.rachah@epitech.eu",
+    to: email,
     subject: `Trop d'absences : ${firstName} ${lastName}`,
     text: "A rectifier",
   };
@@ -29,18 +29,18 @@ const sendMailStudentAbs = (firstName, lastName) => {
     }
   });
 };
-const sendMailStudentGrade = (firstName, lastName) => {
+const sendMailStudentGrade = (firstName, lastName, email) => {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: "yassine78114@gmail.com",
-      pass: "yaswassof78114",
+      user: mail,
+      pass: password,
     },
   });
   const mailOptions = {
-    from: "yassine78114@gmail.com",
-    to: "yassine.rachah@epitech.eu",
-    subject: `Mauvais resulats  : ${firstName} ${lastName}`,
+    from: mail,
+    to: email,
+    subject: `Trop de mauvaises notes : ${firstName} ${lastName}`,
     text: "A rectifier",
   };
 
@@ -77,7 +77,7 @@ const checkStudent = () => {
           if (row.absence.length !== 0) {
             if (row.nextMail === row.absence.length) {
               console.log(row.firstName);
-              sendMailStudentAbs(row.firstName, row.lastName);
+              sendMailStudentAbs(row.firstName, row.lastName, row.email);
               User.findOneAndUpdate(
                 { _id: row._id },
                 { nextMail: row.nextMail + 2 }

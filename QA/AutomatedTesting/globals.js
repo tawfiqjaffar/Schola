@@ -1,8 +1,8 @@
 var chromedriver = require("chromedriver");
 
 var identifiers = {
-    good_username: "alan@schola.fr",
-    good_password: "test",
+    good_username: "philippe.roudaut@epitech.eu",
+    good_password: "test92",
     bad_username: "personne@schola.fr",
     bad_password: "test",
     good_email: "alan@schola.fr",

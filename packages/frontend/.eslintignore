@@ -4,3 +4,5 @@
 *.png
 *.zip
 *.svg
+*.otf
+./src/assets/*

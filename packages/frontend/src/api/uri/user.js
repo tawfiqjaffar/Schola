@@ -23,6 +23,10 @@ const uri = {
     path: '/user/reset-password',
     method: 'post',
   },
+  addAbs: {
+    path: '/user/AddAbsence',
+    method: 'post',
+  },
 };
 
 export default uri;

@@ -8,6 +8,10 @@ const {
   getStudentSubjectFIGE,
 } = require("../controllers/FIGE/FIGEGet");
 
+const { createFIGE } = require("../controllers/FIGE/FIGEPost");
+
+const { updateFIGE } = require("../controllers/FIGE/FIGEPut");
+
 const { deleteFIGE } = require("../controllers/FIGE/FIGEDelete");
 
 const router = express.Router();
@@ -42,6 +46,22 @@ router.get(
   checkFields,
   authenticateJwt,
   getStudentSubjectFIGE
+);
+
+router.post(
+  "/create",
+  [check("authorization", "you must provide a bearer access token").notEmpty()],
+  checkFields,
+  authenticateJwt,
+  createFIGE
+);
+
+router.put(
+  "/update",
+  [check("authorization", "you must provide a bearer access token").notEmpty()],
+  checkFields,
+  authenticateJwt,
+  updateFIGE
 );
 
 router.delete(

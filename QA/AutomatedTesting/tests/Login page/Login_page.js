@@ -13,7 +13,7 @@ module.exports = {
             .assert.visible("input[type=password]")
             .setValue('input[type="text"]', identifiers.good_username)
             .setValue('input[type="password"]', identifiers.good_password)
-            .click("#root>form>div>div.center>button")
+            .click(identifiers.login_button)
             .assert.urlContains("home")
             .end();
     },
@@ -30,7 +30,7 @@ module.exports = {
             .assert.visible("input[type=password]")
             .setValue('input[type="text"]', identifiers.bad_username)
             .setValue('input[type="password"]', identifiers.bad_password)
-            .click("#root>form>div>div.center>button")
+            .click(identifiers.login_button)
             .assert.urlContains("Login")
             .end();
     },

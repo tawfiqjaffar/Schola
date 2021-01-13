@@ -17,7 +17,7 @@ module.exports = {
             .assert.visible("#standard-required")
             .assert.visible("input[type=text]")
             .setValue('input[type="text"]', identifiers.good_email)
-            .click("#root>div>form>button>span.MuiButton-label")
+            .click(identifiers.forgot_password_button)
             .end();
     },
     "Login component Forgot password: non-existet account": function (browser) {
@@ -37,7 +37,7 @@ module.exports = {
             .assert.visible("#standard-required")
             .assert.visible("input[type=text]")
             .setValue('input[type="text"]', identifiers.bad_email)
-            .click("#root>div>form>button>span.MuiButton-label")
+            .click(identifiers.forgot_password_button)
             .assert.visible(
                 "#root>div>form>div.MuiSnackbar-root.MuiSnackbar-anchorOriginBottomCenter>div"
             )
@@ -60,7 +60,7 @@ module.exports = {
             .assert.visible("#standard-required")
             .assert.visible("input[type=text]")
             .setValue('input[type="text"]', identifiers.not_email)
-            .click("#root>div>form>button>span.MuiButton-label")
+            .click(identifiers.forgot_password_button)
             .assert.visible("#standard-required-helper-text")
             .end();
     },

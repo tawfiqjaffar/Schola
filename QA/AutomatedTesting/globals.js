@@ -8,6 +8,21 @@ var identifiers = {
     good_email: "alan@schola.fr",
     bad_email: "alan.cataldo@yahoo.fr",
     not_email: "pas un email",
+    navbar: "#root>header>div>div>button>span.MuiIconButton-label>svg>path",
+    login_button: "#root>form>div>div.center>button",
+    forgot_password_button: "#root>div>form>button>span.MuiButton-label",
+    home_button:
+        "#customized-menu>div.MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation3.MuiPaper-rounded>ul>li:nth-child(2)",
+    schedule_button:
+        "#customized-menu>div.MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation3.MuiPaper-rounded>ul>li:nth-child(3)",
+    canteen_button:
+        "#customized-menu>div.MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation3.MuiPaper-rounded>ul>li:nth-child(4)",
+    quizz_button:
+        "#customized-menu>div.MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation3.MuiPaper-rounded>ul>li:nth-child(5)",
+    disconnect_button:
+        "#customized-menu>div.MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation3.MuiPaper-rounded>ul>li:nth-child(7)",
+    landpage_email_field:
+        "#root>div>div>div.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-12.MuiGrid-grid-sm-6.MuiGrid-grid-md-3>div>div>input",
 };
 
 module.exports = {

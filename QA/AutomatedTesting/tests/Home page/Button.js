@@ -15,12 +15,8 @@ module.exports = {
             .setValue('input[type="password"]', identifiers.good_password)
             .click("#root>form>div>div.center>button")
             .assert.urlContains("home")
-            .click(
-                "#root>header>div>div>button>span.MuiIconButton-label>svg>path"
-            )
-            .assert.visible(
-                "#customized-menu>div.MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation3.MuiPaper-rounded>ul>li:nth-child(1)"
-            )
+            .click(identifiers.navbar)
+            .assert.visible(identifiers.home_button)
             .end();
     },
     "Home component: Button Schedule": function (browser) {
@@ -38,12 +34,8 @@ module.exports = {
             .setValue('input[type="password"]', identifiers.good_password)
             .click("#root>form>div>div.center>button")
             .assert.urlContains("home")
-            .click(
-                "#root>header>div>div>button>span.MuiIconButton-label>svg>path"
-            )
-            .assert.visible(
-                "#customized-menu>div.MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation3.MuiPaper-rounded>ul>li:nth-child(2)"
-            )
+            .click(identifiers.navbar)
+            .assert.visible(identifiers.schedule_button)
             .end();
     },
     "Home component: Button Canteen": function (browser) {
@@ -61,12 +53,8 @@ module.exports = {
             .setValue('input[type="password"]', identifiers.good_password)
             .click("#root>form>div>div.center>button")
             .assert.urlContains("home")
-            .click(
-                "#root>header>div>div>button>span.MuiIconButton-label>svg>path"
-            )
-            .assert.visible(
-                "#customized-menu>div.MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation3.MuiPaper-rounded>ul>li:nth-child(3)"
-            )
+            .click(identifiers.navbar)
+            .assert.visible(identifiers.canteen_button)
             .end();
     },
     "Home component: Button Quizz": function (browser) {
@@ -84,12 +72,8 @@ module.exports = {
             .setValue('input[type="password"]', identifiers.good_password)
             .click("#root>form>div>div.center>button")
             .assert.urlContains("home")
-            .click(
-                "#root>header>div>div>button>span.MuiIconButton-label>svg>path"
-            )
-            .assert.visible(
-                "#customized-menu>div.MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation3.MuiPaper-rounded>ul>li:nth-child(4)"
-            )
+            .click(identifiers.navbar)
+            .assert.visible(identifiers.quizz_button)
             .end();
     },
     "Home component: Button Disconnect": function (browser) {
@@ -107,12 +91,8 @@ module.exports = {
             .setValue('input[type="password"]', identifiers.good_password)
             .click("#root>form>div>div.center>button")
             .assert.urlContains("home")
-            .click(
-                "#root>header>div>div>button>span.MuiIconButton-label>svg>path"
-            )
-            .assert.visible(
-                "#customized-menu>div.MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation3.MuiPaper-rounded>ul>li:nth-child(5)"
-            )
+            .click(identifiers.navbar)
+            .assert.visible(identifiers.disconnect_button)
             .end();
     },
 };

@@ -4,15 +4,15 @@ import renderer from 'react-test-renderer';
 
 import { ThemeProvider } from '@material-ui/core';
 import { BrowserRouter } from 'react-router-dom';
-import Home from '../HomePage';
+import Dashboard from '../Dashboard';
 import theme from '../../../../theme';
 
-describe('Home', () => {
-  it('should render Home Page', () => {
+describe('Dashboard', () => {
+  it('should render Profesor Dashboard', () => {
     const component = renderer.create(
       <ThemeProvider theme={theme}>
         <BrowserRouter>
-          <Home />
+          <Dashboard />
         </BrowserRouter>
       </ThemeProvider>
     );

@@ -1,7 +1,7 @@
-const Schedule = require('../../models/schedule');
-const responseBody = require('../../routes/responseBody');
-const { getStartDay, getEndDay } = require('../dateFunction');
-const { getStartWeek, getEndWeek } = require('../dateFunction');
+const Schedule = require("../../models/schedule");
+const responseBody = require("../../routes/responseBody");
+const { getStartDay, getEndDay } = require("../dateFunction");
+const { getStartWeek, getEndWeek } = require("../dateFunction");
 
 const getAllSchedule = (req, res) => {
   return Schedule.find({ usersId: req.user._id }, (err, data) => {

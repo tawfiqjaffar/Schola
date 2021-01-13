@@ -1,8 +1,8 @@
-const mongoose = require('mongoose');
-const AutoIncrement = require('mongoose-sequence')(mongoose);
-const comment = require('./comment');
+const mongoose = require("mongoose");
+const AutoIncrement = require("mongoose-sequence")(mongoose);
+const comment = require("./comment");
 
-const STATUS = ['open', 'inProgress', 'resolved'];
+const STATUS = ["open", "inProgress", "resolved", "archived"];
 
 const schema = new mongoose.Schema(
   {
@@ -12,7 +12,7 @@ const schema = new mongoose.Schema(
     },
     creator: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
+      ref: "User",
       required: true,
     },
     content: {
@@ -21,15 +21,15 @@ const schema = new mongoose.Schema(
     },
     assignedTo: {
       type: String,
-      enum: ['admin', 'superadmin'],
-      default: 'admin',
+      enum: ["admin", "superadmin"],
+      default: "admin",
       required: true,
     },
     status: {
       type: String,
       enum: STATUS,
       required: true,
-      default: 'open',
+      default: "open",
     },
     comments: {
       type: [comment.schema],
@@ -38,8 +38,8 @@ const schema = new mongoose.Schema(
     },
   },
 
-  { timestamps: { createdAt: 'created_at' }, strict: 'throw' }
+  { timestamps: { createdAt: "created_at" }, strict: "throw" }
 );
 
-schema.plugin(AutoIncrement, { inc_field: 'index' });
-module.exports = mongoose.model('Ticket', schema);
+schema.plugin(AutoIncrement, { inc_field: "index" });
+module.exports = mongoose.model("Ticket", schema);

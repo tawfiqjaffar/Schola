@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const Parent = require('../../models/parent');
+const mongoose = require("mongoose");
+const Parent = require("../../models/parent");
 
 const getAllParents = (req, res) => {
   return Parent.find({}, (err, docs) => {

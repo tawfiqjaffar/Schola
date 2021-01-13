@@ -1,10 +1,10 @@
-require('dotenv');
+require("dotenv");
 
 const {
   sendEmailContact,
   sendRecievedNotification,
-} = require('../../config/mailer');
-const responseBody = require('../../routes/responseBody');
+} = require("../../config/mailer");
+const responseBody = require("../../routes/responseBody");
 
 const emailUs = process.env.EMAIL;
 

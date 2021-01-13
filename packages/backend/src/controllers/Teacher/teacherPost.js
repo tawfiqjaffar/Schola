@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
-const mongoose = require('mongoose');
-const Teacher = require('../../models/teacher');
-const User = require('../../models/user');
+const mongoose = require("mongoose");
+const Teacher = require("../../models/teacher");
+const User = require("../../models/user");
 
 const createTeacher = (req, res) => {
   const { studentId, teacherId } = req.body;

@@ -1,5 +1,5 @@
 const express = require("express");
-const { checkFields, authenticateJwt } = require("./middleware");
+const { checkFields } = require("./middleware");
 
 const { postCreateClass } = require("../controllers/Class/classPost");
 

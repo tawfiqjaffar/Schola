@@ -4,17 +4,19 @@ const User = require('./src/models/user');
 const Abs = require('./src/models/absence');
 const Grade = require('./src/models/grade');
 const nodemailer = require('nodemailer');
+const mail = process.env.EMAIL
+const password = process.env.EMAIL_PWD
 
 const sendMailStudentAbs = (firstName, lastName) => {
 	var transporter = nodemailer.createTransport({
 		service: 'gmail',
 		auth: {
-		  user: 'yassine78114@gmail.com',
-		  pass: 'yaswassof78114'
+		  user:  mail,
+		  pass: password
 		}
 	  });
 	  var mailOptions = {
-		from: 'yassine78114@gmail.com',
+		from: mail,
 		to: 'yassine.rachah@epitech.eu',
 		subject: "Trop d'absences : " + firstName + " " + lastName,
 		text: 'A rectifier'
@@ -72,7 +74,7 @@ const checkStudent = () => {
 
 			let nb = 0;
 			user.forEach(function(row) {
-				if (row.role === "student" ) {
+				if (row.role === "student") {
 					if (row.absence.length != 0) {
 						if (row.nextMail === row.absence.length) {
 							console.log(row.firstName)

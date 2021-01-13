@@ -40,7 +40,7 @@ router.post(
     check(
       "status",
       'you must provide a status of value "open", "resolved" or "inProgress"'
-    ),
+    ).notEmpty(),
   ],
   checkFields,
   authenticateJwt,

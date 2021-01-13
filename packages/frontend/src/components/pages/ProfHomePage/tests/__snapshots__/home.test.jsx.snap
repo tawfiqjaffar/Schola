@@ -1,0 +1,241 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboard should render Profesor Dashboard 1`] = `
+<div
+  className="MuiContainer-root makeStyles-root-1 MuiContainer-maxWidthLg"
+>
+  <div
+    className="MuiPaper-root makeStyles-paper-2 MuiPaper-elevation1 MuiPaper-rounded"
+  >
+    <div
+      className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3"
+    >
+      <div
+        className=""
+        style={
+          Object {
+            "backgroundColor": "#9ed1cc",
+            "height": "315px",
+            "transform": "rotate(3deg)",
+            "width": "260px",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#70c6c7",
+              "display": "flex",
+              "height": "315px",
+              "justifyContent": "center",
+              "left": "50%",
+              "position": "absolute",
+              "top": "50%",
+              "transform": "translate(-50%, -50%) rotate(-10deg)",
+              "width": "260px",
+            }
+          }
+        >
+          <div
+            style={
+              Object {
+                "transform": "rotate(7deg)",
+              }
+            }
+          >
+            <div
+              className="MuiPaper-root makeStyles-paperphoto-4 makeStyles-background-9 MuiPaper-elevation1 MuiPaper-rounded"
+            >
+              <h3>
+                Mes infos
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className=""
+        style={
+          Object {
+            "backgroundColor": "#9ed1cc",
+            "height": "315px",
+            "marginLeft": "80px",
+            "transform": "rotate(3deg)",
+            "width": "260px",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#70c6c7",
+              "display": "flex",
+              "height": "315px",
+              "justifyContent": "center",
+              "left": "50%",
+              "position": "absolute",
+              "top": "50%",
+              "transform": "translate(-50%, -50%) rotate(-10deg)",
+              "width": "260px",
+            }
+          }
+        >
+          <div
+            style={
+              Object {
+                "transform": "rotate(7deg)",
+              }
+            }
+          >
+            <div
+              className="MuiPaper-root makeStyles-paperinfos-5 makeStyles-background-9 MuiPaper-elevation1 MuiPaper-rounded"
+            >
+              <h3>
+                Bloc-note
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className=""
+        style={
+          Object {
+            "backgroundColor": "#9ed1cc",
+            "height": "315px",
+            "marginLeft": "80px",
+            "transform": "rotate(3deg)",
+            "width": "490px",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#70c6c7",
+              "display": "flex",
+              "height": "315px",
+              "justifyContent": "center",
+              "left": "50%",
+              "position": "absolute",
+              "top": "50%",
+              "transform": "translate(-50%, -50%) rotate(-10deg)",
+              "width": "490px",
+            }
+          }
+        >
+          <div
+            style={
+              Object {
+                "transform": "rotate(7deg)",
+              }
+            }
+          >
+            <div
+              className="MuiPaper-root makeStyles-papernotifs-6 makeStyles-background-9 MuiPaper-elevation1 MuiPaper-rounded"
+            >
+              <h3>
+                Messagerie
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className=""
+        style={
+          Object {
+            "backgroundColor": "#9ed1cc",
+            "height": "340px",
+            "marginTop": "60px",
+            "transform": "rotate(3deg)",
+            "width": "690px",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#70c6c7",
+              "display": "flex",
+              "height": "340px",
+              "justifyContent": "center",
+              "left": "50%",
+              "position": "absolute",
+              "top": "50%",
+              "transform": "translate(-50%, -50%) rotate(-10deg)",
+              "width": "680px",
+            }
+          }
+        >
+          <div
+            style={
+              Object {
+                "transform": "rotate(7deg)",
+              }
+            }
+          >
+            <div
+              className="MuiPaper-root makeStyles-papercalendar-7 makeStyles-background-9 MuiPaper-elevation1 MuiPaper-rounded"
+            >
+              <h3>
+                Création évenments
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className=""
+        style={
+          Object {
+            "backgroundColor": "#9ed1cc",
+            "height": "350px",
+            "marginLeft": "100px",
+            "marginTop": "40px",
+            "transform": "rotate(3deg)",
+            "width": "400px",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#70c6c7",
+              "display": "flex",
+              "height": "350px",
+              "justifyContent": "center",
+              "left": "50%",
+              "position": "absolute",
+              "top": "50%",
+              "transform": "translate(-50%, -50%) rotate(-10deg)",
+              "width": "400px",
+            }
+          }
+        >
+          <div
+            style={
+              Object {
+                "transform": "rotate(7deg)",
+              }
+            }
+          >
+            <div
+              className="MuiPaper-root makeStyles-papergrades-8 makeStyles-background-9 MuiPaper-elevation1 MuiPaper-rounded"
+            >
+              <h3>
+                Création exercices
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

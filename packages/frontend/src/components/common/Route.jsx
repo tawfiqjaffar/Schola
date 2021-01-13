@@ -4,6 +4,7 @@ import Login from '../pages/Login';
 import Home from '../pages/HomePage/HomePage';
 import LandingPage from '../pages/LandingPage';
 import RollCall from '../pages/RollCall';
+import Dashboard from '../pages/ProfHomePage/Dashboard';
 
 const routes = [
   {
@@ -25,6 +26,14 @@ const routes = [
     component: (
       <Protected>
         <RollCall />
+      </Protected>
+    )
+  },
+  {
+    route: '/homepageprof',
+    component: (
+      <Protected>
+        <Dashboard />
       </Protected>
     ),
   },

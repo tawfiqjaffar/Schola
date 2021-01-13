@@ -34,11 +34,11 @@ const createUser = async (user) => {
 };
 
 createUser({
-  username: 'teacherone',
-  password: 'teacherone',
-  firstname: 'philippe',
-  lastname: 'roudaut',
-  email: 'teacherone@teacher.fr',
+  username: 'Mateo',
+  password: 'Mateo',
+  firstname: 'Mateo',
+  lastname: 'Quintero',
+  email: 'Mateo@teacher.fr',
   role: 'teacher',
   nextMail: '0',
   nextMailGrade: '0',

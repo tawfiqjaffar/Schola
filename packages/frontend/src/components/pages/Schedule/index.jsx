@@ -1,3 +1,3 @@
-import Schedule from "./ScheduleTest"
+import Schedule from "./Schedule"
 
 export default Schedule

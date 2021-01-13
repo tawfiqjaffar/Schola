@@ -17,6 +17,7 @@ const Main = () => {
         var result = await getWeekTask(Cookies.get('accessToken'))
         setPost(result.data[0]);
     }, []);
+
     return (
       <div>
 

@@ -151,6 +151,27 @@ const postResetPassword = async (email, newPassword, code) => {
   return res;
 };
 
+const postAddAbsence = async (date, hour, typeAbs, justified, id) => {
+  let res;
+  try {
+    const response = await axios({
+      method: uri.addAbs.method,
+      url: uri.addAbs.path,
+      data: {
+        date,
+        hour,
+        typeAbs,
+        justified,
+        studentId: id,
+      },
+    });
+    res = response.data;
+  } catch (axiosErr) {
+    res = axiosErr.response && axiosErr.response.data;
+  }
+  return res;
+};
+
 export {
   getAllUsers,
   getMe,
@@ -158,4 +179,5 @@ export {
   putChangeRole,
   postResetPasswordRequest,
   postResetPassword,
+  postAddAbsence,
 };

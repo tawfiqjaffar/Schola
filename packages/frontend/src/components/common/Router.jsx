@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import PageNotFound from '../pages/PageNotFound';
-import NavigationBar from './NavigationBar';
+import NavigationBar from './NavBar/NavigationBar';
 import routes from './Route';
 
 const Router = () => (

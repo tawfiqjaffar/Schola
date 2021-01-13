@@ -1,4 +1,5 @@
 import React from 'react';
+// import { useSelector } from 'react-redux';
 import {
   AppBar,
   Button,
@@ -16,10 +17,13 @@ import { useHistory } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import MenuIcon from '@material-ui/icons/Menu';
-import logo from '../../assets/logo.png';
+import logo from '../../../assets/logo.png';
+import './NavBar.css';
+import navRoutes from './NavBarRoute';
 
 const useStyles = makeStyles((theme) => ({
-  root: {},
+  root: {
+  },
   homeButton: {
     marginRight: theme.spacing(1),
     color: theme.palette.text.secondary,
@@ -30,10 +34,6 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(1),
   },
   logoContainer: {},
-  title: {
-    flexGrow: 1,
-    color: theme.palette.secondary.contrastText,
-  },
   menuButton: {
     padding: theme.spacing(1),
     marginRight: theme.spacing(1),
@@ -78,7 +78,7 @@ const StyledMenu = withStyles()((props) => (
 const StyledMenuItem = withStyles((theme) => ({
   root: {
     '&:focus': {
-      backgroundColor: '#2a8081',
+      backgroundColor: '#70c6c7',
       '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
         color: theme.palette.common.white,
       },
@@ -89,7 +89,6 @@ const StyledMenuItem = withStyles((theme) => ({
 function Logout(props) {
   const { disconnect, redirection } = props;
   const [anchorEl, setAnchorEl] = React.useState(null);
-
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -100,8 +99,8 @@ function Logout(props) {
 
   return (
     <div>
-      <IconButton onClick={handleClick}>
-        <MenuIcon />
+      <IconButton onClick={handleClick} className="ButtonRight">
+        <MenuIcon style={{ width: '50px', height: '50px' }} />
       </IconButton>
       <StyledMenu
         id="customized-menu"
@@ -110,34 +109,20 @@ function Logout(props) {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <StyledMenuItem
-          onClick={() => {
-            redirection('/home');
-          }}
-        >
-          <ListItemText primary="Home" />
-        </StyledMenuItem>
-        <StyledMenuItem
-          onClick={() => {
-            redirection('/schedule');
-          }}
-        >
-          <ListItemText primary="Emploi du temps" />
-        </StyledMenuItem>
-        <StyledMenuItem
-          onClick={() => {
-            redirection('/canteen');
-          }}
-        >
-          <ListItemText primary="Cantine" />
-        </StyledMenuItem>
-        <StyledMenuItem
-          onClick={() => {
-            redirection('/quizz');
-          }}
-        >
-          <ListItemText primary="Quizz" />
-        </StyledMenuItem>
+        {navRoutes.map((el) =>
+        // if (!el.access.includes(myRole)) {
+        //   return (<div />);
+        // }
+
+          (
+            <StyledMenuItem
+              onClick={() => {
+                redirection(el.route);
+              }}
+            >
+              <ListItemText primary={el.label} />
+            </StyledMenuItem>
+          ))}
         <StyledMenuItem onClick={() => disconnect()}>
           <ListItemText primary="Disconnect" />
         </StyledMenuItem>
@@ -150,7 +135,7 @@ function LoginRegister(props) {
   const { redirection } = props;
   const classes = useStyles();
   return (
-    <div>
+    <div className="ButtonRight">
       <Button
         className={[classes.menuButton, classes.buttonLogin].join(' ')}
         variant="contained"
@@ -170,6 +155,7 @@ function LoginRegister(props) {
 
 export default function NavigationBar() {
   const classes = useStyles();
+  // const user = useSelector((state) => state.user);
   const history = useHistory();
   const redirectTo = (path) => {
     history.push(path);
@@ -184,13 +170,15 @@ export default function NavigationBar() {
 
   return (
     <AppBar position="sticky" className={classes.root}>
-      <Toolbar>
-        <Link href="/">
-          <img src={logo} className={classes.logo} alt="Schola logo" />
-        </Link>
-        <Typography className={classes.title} variant="h5">
-          Schola
-        </Typography>
+      <Toolbar className="Container100">
+        <div className="wrapper">
+          <Link href="/" className="CenterImg">
+            <img src={logo} className={classes.logo} alt="Schola logo" />
+          </Link>
+          <Typography className="title" variant="h5">
+            Schola
+          </Typography>
+        </div>
         <LoginLogoutDisplay
           isLogged={isLogged}
           disconnect={redirectToLandingPage}

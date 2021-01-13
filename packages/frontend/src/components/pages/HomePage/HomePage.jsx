@@ -1,7 +1,13 @@
-import React from 'react';
-import { Container } from '@material-ui/core';
+import React, { useEffect, useState } from 'react';
+import { Container, Grid, Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
+import { useSelector } from 'react-redux';
+import Cookies from 'js-cookie';
+import clsx from 'clsx';
 import BlueBackground from '../../common/BlueBackground';
+import trombi from './avatar.png';
+import Chart from '../../common/Chart';
+import { getMyAbsence } from '../../../api/methods/user';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,9 +23,33 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    background: 'white',
   },
   fixedHeight: {
     height: '240px',
+  },
+  paperphoto: {
+    height: '270px',
+    width: '200px',
+  },
+  paperinfos: {
+    height: '270px',
+    width: '220px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  papernotifs: {
+    height: '310px',
+    width: '420px',
+  },
+  papercalendar: {
+    height: '300px',
+    width: '600px',
+  },
+  papergrades: {
+    height: '330px',
+    width: '330px',
   },
   background: {
     background: 'white',
@@ -27,23 +57,89 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Home = () => {
+  const [nbNotif, setNbNotif] = useState(0);
+  const [lastAbs, setLastAbs] = useState(false);
   const classes = useStyles();
+
+  const IdPhoto = clsx(classes.paperphoto, classes.background);
+
+  const Personal = clsx(classes.paperinfos, classes.background);
+
+  const Notifications = clsx(classes.papernotifs, classes.background);
+
+  const Calendar = clsx(classes.papercalendar, classes.background);
+
+  const Moyennes = clsx(classes.papergrades, classes.background);
+
+  const user = useSelector((state) => state.user);
+
+  useEffect(() => {
+    async function getAbsenceStudent() {
+      // eslint-disable-next-line no-underscore-dangle
+      const res = await getMyAbsence(Cookies.get('accessToken'), user._id);
+      if (res.data.length > 0) {
+        let msg = `le ${res.data[res.data.length - 1].date} à `;
+        msg = msg.concat(`${res.data[res.data.length - 1].hour} heure.`);
+        setNbNotif(res.data.length);
+        setLastAbs(msg);
+      }
+    }
+    getAbsenceStudent();
+  }, []);
 
   return (
     <Container className={classes.root}>
-      <BlueBackground BRota="8" FRota="-10" Fcolor="#ffe352" Bcolor="#fff0a5">
-        <img src="https://icon-library.com/images/default-profile-icon/default-profile-icon-16.jpg" width="160px" height="160px" alt="oui" />
-      </BlueBackground>
-      <BlueBackground BRota="6" FRota="-7" Bwidth="500" Fwidth="450" Fheight="280" Fcolor="#ffe352" Bcolor="#fff0a5" style={{ margin: '100px' }}>
-        <img src="https://icon-library.com/images/default-profile-icon/default-profile-icon-16.jpg" width="160px" height="160px" alt="oui" />
-        <p>Philippe ROUDAUT</p>
-      </BlueBackground>
-      <BlueBackground BRota="-10" FRota="-10" Fwidth="220" Fcolor="#b2ff12" Bcolor="#a1ff85" className="test">
-        <img src="https://icon-library.com/images/default-profile-icon/default-profile-icon-16.jpg" width="140px" height="140px" alt="oui" />
-      </BlueBackground>
-      <BlueBackground>
-        <img src="https://icon-library.com/images/default-profile-icon/default-profile-icon-16.jpg" width="140px" height="140px" alt="oui" />
-      </BlueBackground>
+      <Paper className={classes.paper}>
+        <Grid container spacing={3}>
+          <BlueBackground Bheight="315" Bwidth="260" Fheight="315" Fwidth="260">
+            <Paper className={IdPhoto}>
+              <img alt="trombi" src={trombi} />
+            </Paper>
+          </BlueBackground>
+          <BlueBackground Bheight="315" Bwidth="260" Fheight="315" Fwidth="260" style={{ marginLeft: '80px' }}>
+            <Paper className={Personal}>
+              <h3>Mes infos</h3>
+              {`${user.firstName} ${user.lastName}`}
+              <br />
+              <br />
+              {user.school ? user.school : 'École non renseignée'}
+              <br />
+              <br />
+              {`${user.role} `}
+              <br />
+              <br />
+              {user.email}
+            </Paper>
+          </BlueBackground>
+          <BlueBackground Bheight="315" Bwidth="490" Fheight="315" Fwidth="490" style={{ marginLeft: '80px' }}>
+            <Paper className={Notifications}>
+              Notifications
+              <p>
+                Vous avez été absent
+                {' '}
+                {nbNotif}
+                {' '}
+                fois cette année.
+              </p>
+              { lastAbs
+                && (
+                <p>
+                  Votre dernière absence est
+                  {lastAbs}
+                </p>
+                )}
+            </Paper>
+          </BlueBackground>
+          <BlueBackground Bheight="320" Bwidth="690" Fheight="320" Fwidth="680" style={{ marginTop: '60px' }}>
+            <Paper className={Calendar}> Calendrier</Paper>
+          </BlueBackground>
+          <BlueBackground Bheight="350" Bwidth="400" Fheight="350" Fwidth="400" style={{ marginLeft: '100px', marginTop: '40px' }}>
+            <Paper className={Moyennes}>
+              <Chart />
+            </Paper>
+          </BlueBackground>
+        </Grid>
+      </Paper>
     </Container>
   );
 };

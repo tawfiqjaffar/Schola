@@ -1,11 +1,11 @@
-const Task = require('../../models/task');
-const responseBody = require('../../routes/responseBody');
+const Task = require("../../models/task");
+const responseBody = require("../../routes/responseBody");
 const {
   getToday,
   getDayAfter,
   getStartWeek,
   getEndWeek,
-} = require('../dateFunction');
+} = require("../dateFunction");
 
 const getAllTask = (req, res) => {
   return Task.find({ usersId: req.user._id }, (err, data) => {

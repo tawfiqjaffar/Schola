@@ -32,7 +32,7 @@ const Login = () => {
   const loginReq = async () => {
     setLoading(true);
     const res = await postLoginUser(email, password);
-    if (res.data !== null) {
+    if (res.code === 200) {
       setLoading(false);
       setSuccess(true);
       setOpen(true);
@@ -40,6 +40,10 @@ const Login = () => {
         sameSite: 'strict',
       });
       await getMeReq();
+    } else {
+      setLoading(false);
+      setSuccess(false);
+      setOpen(true);
     }
   };
 

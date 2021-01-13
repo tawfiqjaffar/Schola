@@ -1,8 +1,8 @@
-const Grade = require('../../models/grade');
-const responseBody = require('../../routes/responseBody');
+const Grade = require("../../models/grade");
+const responseBody = require("../../routes/responseBody");
 
 const deleteGrade = (req, res) => {
-  if (req.user.role === 'viesco' || req.user.role === 'admin') {
+  if (req.user.role === "viesco" || req.user.role === "admin") {
     return Grade.deleteOne({ _id: req.body.id }, (err, data) => {
       if (err) {
         console.log(err);
@@ -30,7 +30,7 @@ const deleteGrade = (req, res) => {
       .status(responseBody.responseCode.FORBID)
       .send(
         responseBody.buildResponseBody(
-          'You do not have the access right to perform such a modification',
+          "You do not have the access right to perform such a modification",
           responseBody.responseCode.FORBID
         )
       );

@@ -1,8 +1,8 @@
-const Exercice = require('../../models/exercice');
-const responseBody = require('../../routes/responseBody');
+const Exercice = require("../../models/exercice");
+const responseBody = require("../../routes/responseBody");
 
 const getAllExercices = (req, res) => {
-  if (req.user.role === 'viesco' || req.user.role === 'admin') {
+  if (req.user.role === "viesco" || req.user.role === "admin") {
     return Exercice.find({}, (err, data) => {
       if (err) {
         return res
@@ -29,7 +29,7 @@ const getAllExercices = (req, res) => {
       .status(responseBody.responseCode.FORBID)
       .send(
         responseBody.buildResponseBody(
-          'You do not have the access right to get these informations',
+          "You do not have the access right to get these informations",
           responseBody.responseCode.FORBID
         )
       );
@@ -37,7 +37,7 @@ const getAllExercices = (req, res) => {
 };
 
 const getSubjectExercices = (req, res) => {
-  if (req.user.role === 'viesco' || req.user.role === 'admin') {
+  if (req.user.role === "viesco" || req.user.role === "admin") {
     return Exercice.find({ subjectId: req.body.subjectId }, (err, data) => {
       if (err) {
         return res
@@ -64,7 +64,7 @@ const getSubjectExercices = (req, res) => {
       .status(responseBody.responseCode.FORBID)
       .send(
         responseBody.buildResponseBody(
-          'You do not have the access right to get these informations',
+          "You do not have the access right to get these informations",
           responseBody.responseCode.FORBID
         )
       );

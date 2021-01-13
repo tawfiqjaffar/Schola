@@ -1,7 +1,7 @@
-require('dotenv');
-const { validationResult } = require('express-validator');
-const jwt = require('jsonwebtoken');
-const responseBody = require('./responseBody');
+require("dotenv");
+const { validationResult } = require("express-validator");
+const jwt = require("jsonwebtoken");
+const responseBody = require("./responseBody");
 
 const checkFields = (req, res, next) => {
   const errors = validationResult(req);
@@ -22,13 +22,13 @@ const authenticateJwt = (req, res, next) => {
   const authHeader = req.headers.authorization;
 
   if (authHeader) {
-    const token = authHeader.split(' ')[1];
+    const token = authHeader.split(" ")[1];
     jwt.verify(token, process.env.SECRET, (err, user) => {
       if (err) {
         return res.status(
           responseBody.responseCode.FORBID,
           responseBody.buildResponseBody(
-            { error: 'access level insufficient' },
+            { error: "access level insufficient" },
             responseBody.responseCode.FORBID
           )
         );
@@ -41,7 +41,7 @@ const authenticateJwt = (req, res, next) => {
       .status(responseBody.responseCode.UNAUTH)
       .send(
         responseBody.buildResponseBody(
-          { error: 'invalid username or password' },
+          { error: "invalid username or password" },
           responseBody.responseCode.UNAUTH
         )
       );

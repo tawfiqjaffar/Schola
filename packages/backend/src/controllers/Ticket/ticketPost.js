@@ -1,26 +1,26 @@
-const Ticket = require('../../models/ticket');
-const { responseCode } = require('../../routes/responseBody');
-const responseBody = require('../../routes/responseBody');
+const Ticket = require("../../models/ticket");
+const { responseCode } = require("../../routes/responseBody");
+const responseBody = require("../../routes/responseBody");
 
 const createTicket = (req, res) => {
   const { user } = req;
   const { role } = user;
   const { label, content, status } = req.body;
-  let assignedTo = '';
+  let assignedTo = "";
 
-  if (role === 'student') {
+  if (role === "student") {
     return res
       .status(responseBody.responseCode.FORBID)
       .send(
         responseBody.buildResponseBody(
-          'you do not have the required rights to do that',
+          "you do not have the required rights to do that",
           responseCode.FORBID
         )
       );
-  } else if (role === 'admin' || role === 'superadmin') {
-    assignedTo = 'superadmin';
+  } else if (role === "admin" || role === "superadmin") {
+    assignedTo = "superadmin";
   } else {
-    assignedTo = 'admin';
+    assignedTo = "admin";
   }
 
   const newTicket = new Ticket({
@@ -28,7 +28,7 @@ const createTicket = (req, res) => {
     content,
     creator: user._id,
     assignedTo,
-    status: status || 'open',
+    status: status || "open",
   });
 
   return newTicket.save((err, ticket) => {

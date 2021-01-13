@@ -1,9 +1,4 @@
 @font-face {
-  font-family: 'HoneyGuide';
-  src: url(./../HoneyGuide.otf) format('otf');
-}
-
-@font-face {
   font-family: 'SugarPunch';
   src: url(./../Sugarpunch.otf) format('otf');
 }

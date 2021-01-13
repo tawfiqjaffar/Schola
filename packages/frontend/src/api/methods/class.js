@@ -8,10 +8,9 @@ const getClassStudent = async (accessToken, classId) => {
       method: uri.class.method,
       url: uri.class.path,
       headers: {
+        'Content-type': 'x-www-form-urlencoded',
         authorization: `Bearer ${accessToken}`,
-      },
-      data: {
-        classId,
+        classId
       },
     });
     res = response.data;

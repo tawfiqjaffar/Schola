@@ -29,6 +29,7 @@ const StatutRow = (props) => {
   // const { name } = student;
   return (
     <div
+      aria-hidden="true"
       className="card"
       style={{ backgroundColor: color }}
       onClick={() => {
@@ -46,6 +47,7 @@ StatutRow.propTypes = {
   student: PropTypes.string.isRequired,
   statut: PropTypes.number.isRequired,
   changeStatut: PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired,
 };
 
 export default StatutRow;

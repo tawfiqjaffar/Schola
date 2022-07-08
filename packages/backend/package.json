@@ -39,7 +39,7 @@
     "form-data": "^3.0.0",
     "jsonwebtoken": "^8.5.1",
     "mockgoose": "^8.0.4",
-    "moment": "^2.27.0",
+    "moment": "^2.29.4",
     "moment-timezone": "^0.5.32",
     "mongoose": "^5.9.7",
     "mongoose-sequence": "^5.3.0",
